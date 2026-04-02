@@ -130,7 +130,9 @@ table.gtable{width:100%;border-collapse:separate;border-spacing:3px;table-layout
 /* Column headers with tooltips */
 .col-h{font-family:'Cinzel',serif;font-size:.58rem;font-weight:600;letter-spacing:.06em;color:var(--text-muted);text-align:center;padding:2px 2px 6px;text-transform:uppercase;position:relative;cursor:help;word-break:break-word;line-height:1.2}
 .col-h:hover .col-tip{opacity:1;pointer-events:auto}
-.col-tip{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#1a1a28;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:.7rem;color:var(--text-secondary);opacity:0;pointer-events:none;transition:opacity .15s;z-index:400;width:240px;white-space:normal;text-align:left;line-height:1.5;font-family:'Crimson Pro',serif;font-style:italic;font-weight:400;letter-spacing:0}
+.col-tip{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#1a1a28;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:.7rem;color:var(--text-secondary);opacity:0;pointer-events:none;transition:opacity .15s;z-index:400;width:220px;max-width:calc(100vw - 2rem);white-space:normal;text-align:left;line-height:1.5;font-family:'Crimson Pro',serif;font-style:italic;font-weight:400;letter-spacing:0}
+.col-h.tip-left .col-tip{left:auto;right:0;transform:none}
+.col-h.tip-right .col-tip{left:0;right:auto;transform:none}
 .col-tip strong{color:var(--text-primary);font-style:normal;display:block;margin-bottom:3px;font-family:'Cinzel',serif;font-size:.68rem}
 
 /* Effect types help button */
@@ -202,12 +204,12 @@ footer a{color:var(--accent-dim);text-decoration:none}
 footer a:hover{color:var(--accent)}
 
 /* ── Overlays ── */
-.overlay-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem}
+.overlay-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);align-items:flex-start;justify-content:center;padding:1rem;overflow-y:auto}
 .overlay-bg.show{display:flex;animation:fadeOv .3s ease}
 @keyframes fadeOv{from{opacity:0}to{opacity:1}}
 
 /* Win overlay */
-.win-card{background:linear-gradient(160deg,#0e1a06,#111808,#0a1220);border:1px solid #3a5a18;border-radius:20px;width:320px;overflow:hidden;animation:winPop .5s cubic-bezier(.34,1.56,.64,1);position:relative}
+.win-card{background:linear-gradient(160deg,#0e1a06,#111808,#0a1220);border:1px solid #3a5a18;border-radius:20px;width:min(320px,96vw);overflow:hidden;animation:winPop .5s cubic-bezier(.34,1.56,.64,1);position:relative;margin:auto}
 @keyframes winPop{from{opacity:0;transform:scale(.7) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .win-card-img{width:100%;display:block}
 .win-card-img-ph{width:100%;height:180px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:3rem}
@@ -287,6 +289,73 @@ footer a:hover{color:var(--accent)}
 
 /* mini color swatches in help */
 .swatch-inline{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin:0 2px}
+
+
+@media (min-width:581px){#guide-btn{display:none}}
+@media (max-width:580px){
+  .ac-thumb{width:40px;height:60px;border-radius:4px}
+  .btn-label-desktop{display:none}
+  .btn-label-mobile{display:inline}
+}
+@media (min-width:581px){
+  .btn-label-desktop{display:inline}
+  .btn-label-mobile{display:none}
+}
+
+@media (max-width:580px){
+  .table-wrap{display:none}
+  .mobile-cards{display:block}
+}
+@media (min-width:581px){
+  .mobile-cards{display:none}
+}
+.mobile-cards{margin-top:.5rem}
+.mcard{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden;animation:rowIn .32s cubic-bezier(.34,1.56,.64,1) both;width:100%;box-sizing:border-box}
+.mcard-header{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;border-bottom:1px solid var(--border)}
+.mcard-spell{font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-primary);letter-spacing:.03em}
+.mcard-school{font-size:.62rem;font-family:'Cinzel',serif;padding:2px 8px;border-radius:10px;letter-spacing:.04em;font-weight:600}
+.mcard-attrs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;padding:6px}
+.mcard-attr{border-radius:5px;padding:5px 4px;text-align:center;border:1px solid var(--border);background:var(--surface2)}
+.mcard-attr-label{font-family:'Cinzel',serif;font-size:.48rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.mcard-attr-val{font-size:.7rem;color:var(--text-secondary);font-weight:500;word-break:break-word}
+.mcard-attr.correct{background:var(--green-bg);border-color:#2a5010}
+.mcard-attr.correct .mcard-attr-val{color:var(--green-text)}
+.mcard-attr.correct .mcard-attr-label{color:#4a7a20}
+.mcard-attr.partial{background:var(--amber-bg);border-color:#4a2800}
+.mcard-attr.partial .mcard-attr-val{color:var(--amber-text)}
+.mcard-attr.partial .mcard-attr-label{color:#7a4a00}
+.mcard-attr.wrong{background:var(--gray-bg);border-color:#222}
+.mcard-attr.wrong .mcard-attr-val{color:var(--gray-text)}
+.mcard-attr.wrong .mcard-attr-label{color:#2a2a2a}
+.mcard-effects{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:0 6px 6px}
+.mcard-effect-box{border-radius:5px;padding:5px 7px;border:1px solid var(--border);background:var(--surface2)}
+.mcard-effect-box.correct{background:var(--green-bg);border-color:#2a5010}
+.mcard-effect-box.partial{background:var(--amber-bg);border-color:#4a2800}
+.mcard-effect-box.wrong{background:var(--gray-bg);border-color:#222}
+.mcard-effect-label{font-family:'Cinzel',serif;font-size:.48rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.mcard-effect-box.correct .mcard-effect-label{color:#4a7a20}
+.mcard-effect-box.partial .mcard-effect-label{color:#7a4a00}
+.mcard-effect-box.wrong .mcard-effect-label{color:#2a2a2a}
+.mcard.hint-card{border-color:var(--hint-border)}
+.mcard.hint-card .mcard-header{background:var(--hint-bg);border-color:var(--hint-border)}
+.mcard.hint-card .mcard-spell{color:var(--hint-text)}
+.mcard-hint-attr{background:var(--hint-bg);border-color:var(--hint-border)}
+.mcard-hint-attr .mcard-attr-val{color:var(--hint-text)}
+.mcard-hint-attr .mcard-attr-label{color:#5a4a00}
+.mcard-blank-attr{background:transparent;border-color:transparent}
+.mcard-blank-attr .mcard-attr-val{color:transparent}
+
+@media (max-height:600px){
+  #win-img-area{padding-top:12px}
+  .win-card-img{max-height:120px;width:auto;margin:0 auto;display:block}
+  .win-card-img-ph{height:80px}
+  .win-card-body{padding:12px 18px 18px}
+  .win-stars{margin-bottom:6px}
+  .win-title{font-size:1.1rem;margin-bottom:2px}
+  .win-spell-name{font-size:.9rem;margin-bottom:2px}
+  .win-desc{margin-bottom:8px;font-size:.8rem}
+  .win-guesses{margin-bottom:10px}
+}
 </style>
 </head>
 <body>
@@ -441,16 +510,18 @@ footer a:hover{color:var(--accent)}
       <div class="help-section-title">How Color Links Work</div>
       <div class="help-p">Color links connect an effect type to its target to show you which target belongs to which effect. Colors appear only when specific conditions are met:</div>
       <div class="help-step"><div class="help-step-num">1</div><div class="help-step-text">The game checks each effect in your guess as a <strong>pair</strong>: (effect type → target).</div></div>
-      <div class="help-step"><div class="help-step-num">2</div><div class="help-step-text">If that exact pair exists in the answer spell, <strong>both</strong> the effect tag and the target tag get the same color background.</div></div>
-      <div class="help-step"><div class="help-step-num">3</div><div class="help-step-text">Colors are assigned by <strong>target</strong>. All effects pointing to <strong>enemy</strong> share one color; all effects pointing to <strong>self</strong> share another. This means if your guess has two effects both targeting <strong>aoe</strong>, they both get the same color, and <strong>aoe</strong> in the targets column also shows that color.</div></div>
+      <div class="help-step"><div class="help-step-num">2</div><div class="help-step-text">If that exact pair exists in the answer spell, it becomes a <strong>linked pair</strong> and gets a color.</div></div>
+      <div class="help-step"><div class="help-step-num">3</div><div class="help-step-text">Colors are assigned by <strong>connected groups</strong>. If one effect type links to multiple targets (e.g. <strong>ward-trap→enemy</strong> and <strong>ward-trap→self</strong>), all three share one color. If two separate effect types each link to their own distinct target (e.g. <strong>damage→enemy</strong> and <strong>ward-shield→self</strong>), they get separate colors.</div></div>
       <div class="help-step"><div class="help-step-num">4</div><div class="help-step-text">If no exact pair matches, <strong>no colors appear</strong> — both columns show plain text regardless of whether individual types or targets partially match.</div></div>
       <div class="help-example">
-        <strong>Example A:</strong> Answer has <strong>damage → enemy</strong> and <strong>ward-shield → self</strong>. Your guess also has these exact pairs. Damage and enemy share
-        <span class="swatch-inline" style="background:var(--ec0-bg);border:1px solid var(--ec0-t)"></span>blue.
-        Ward-shield and self share <span class="swatch-inline" style="background:var(--ec1-bg);border:1px solid var(--ec1-t)"></span>orange.<br><br>
-        <strong>Example B:</strong> Answer has <strong>utility-remove → aoe</strong> and <strong>damage → aoe</strong>. Both effects point to aoe, so both share the same
-        <span class="swatch-inline" style="background:var(--ec0-bg);border:1px solid var(--ec0-t)"></span>blue color. Aoe in targets also shows blue.<br><br>
-        <strong>Example C:</strong> You guess a spell with <strong>ward-trap → aoe</strong> but the answer's trap targets <strong>enemy</strong>. No exact pair match — no colors shown even though ward-trap partially matches.
+        <strong>Example A:</strong> Answer has <strong>damage → enemy</strong> and <strong>ward-shield → self</strong>. Your guess also has these exact pairs. These are two separate groups — damage+enemy share
+        <span class="swatch-inline" style="background:var(--ec0-bg);border:1px solid var(--ec0-t)"></span>blue,
+        ward-shield+self share <span class="swatch-inline" style="background:var(--ec1-bg);border:1px solid var(--ec1-t)"></span>orange.<br><br>
+        <strong>Example B:</strong> Answer has <strong>ward-trap → enemy</strong> and <strong>ward-trap → self</strong>. Since ward-trap connects to both targets, all three (ward-trap, enemy, self) are in the same group and share
+        <span class="swatch-inline" style="background:var(--ec0-bg);border:1px solid var(--ec0-t)"></span>blue.<br><br>
+        <strong>Example C:</strong> Answer has <strong>utility-remove → aoe</strong> and <strong>damage → aoe</strong>. Both types connect to aoe, so all three share
+        <span class="swatch-inline" style="background:var(--ec0-bg);border:1px solid var(--ec0-t)"></span>blue.<br><br>
+        <strong>Example D:</strong> You guess a spell with <strong>ward-trap → aoe</strong> but the answer's trap targets <strong>enemy</strong>. No exact pair match — no colors shown even though ward-trap partially matches.
       </div>
     </div>
 
@@ -489,7 +560,8 @@ footer a:hover{color:var(--accent)}
       <div class="search-box">
         <span class="search-gem">&#9670;</span>
         <input id="spell-input" type="text" placeholder="Click to browse spells, or type to search..." autocomplete="off"/>
-        <button class="cast-btn" id="cast-btn" onclick="submitGuess()">Cast Guess</button>
+        <button class="cast-btn" id="cast-btn" onclick="submitGuess()"><span class="btn-label-desktop">Cast Guess</span><span class="btn-label-mobile">✦</span></button>
+        <button class="cast-btn" id="guide-btn" onclick="openOverlay('help-overlay')" style="background:var(--surface2);color:var(--accent-dim);border:1px solid var(--border);padding:5px 10px" title="Guide">ⓘ</button>
       </div>
       <div class="autocomplete" id="ac"></div>
     </div>
@@ -514,8 +586,10 @@ footer a:hover{color:var(--accent)}
     <span class="hint-count" id="hint-count"></span>
   </div>
 
+  <div class="mobile-cards" id="mobile-cards"></div>
+  <div class="no-g" id="no-g">cast your first guess above</div>
+
   <div class="table-wrap">
-    <div class="no-g" id="no-g">cast your first guess above</div>
     <table class="gtable" id="gtable" style="display:none">
       <colgroup>
   <col style="width:13%">
@@ -530,13 +604,13 @@ footer a:hover{color:var(--accent)}
 <thead>
         <tr>
           <th class="col-h">Spell</th>
-          <th class="col-h">School
+          <th class="col-h tip-right">School
             <div class="col-tip"><strong>School</strong>Each spell belongs to one of 7 schools: Fire, Ice, Storm, Myth, Life, Death, or Balance.</div>
           </th>
-          <th class="col-h">Pip Cost
+          <th class="col-h tip-right">Pip Cost
             <div class="col-tip"><strong>Pip Cost</strong>How many pips the spell costs to cast. School-specific pips (colored pips) count as 2 regular pips. Spells marked X scale with how many pips you use.</div>
           </th>
-          <th class="col-h">Archmastery
+          <th class="col-h tip-right">Archmastery
             <div class="col-tip"><strong>Archmastery</strong>Some spells require a specific school pip. Most spells have no archmastery requirement (shown as None).</div>
           </th>
           <th class="col-h">Arc
@@ -545,10 +619,10 @@ footer a:hover{color:var(--accent)}
           <th class="col-h">Source
             <div class="col-tip"><strong>Source</strong>How the spell is obtained. Trainer = bought from a school trainer. Quest = reward from completing a quest. Spellement = unlocked via spellements. Recipe = crafted at a crafting station. Drop = drops from enemies.</div>
           </th>
-          <th class="col-h">Effect Types <span class="effect-help-btn" onclick="event.stopPropagation();openOverlay('help-overlay')">? Guide</span>
+          <th class="col-h tip-left">Effect Types <span class="effect-help-btn" onclick="event.stopPropagation();openOverlay('help-overlay')">? Guide</span>
             <div class="col-tip"><strong>Effect Types</strong>What the spell does — damage, healing, traps, blades, etc. Click the Guide button for a full explanation of all categories, subtypes, and how partial matches work.</div>
           </th>
-          <th class="col-h">Targets
+          <th class="col-h tip-left">Targets
             <div class="col-tip"><strong>Targets</strong>Who the effects are applied to. enemy = single enemy, aoe = all enemies, self = caster, any-ally = any friendly target, ally = any-ally excluding self, all-allies = all allies, selected = player-selected targets, all = everyone, minion = summoned minion.</div>
           </th>
         </tr>
@@ -806,6 +880,7 @@ function initGame(resetAll=true){
   updateFilterFooter();
   updateHintBar();
   renderBoard();
+  renderMobileCards();
   updateCount();
 }
 
@@ -1004,11 +1079,19 @@ function showTooltip(spell,x,y){
   t.classList.add('visible');positionTooltip(t,x,y);
 }
 function positionTooltip(t,x,y){
-  const tw=190,th=300,vw=window.innerWidth,vh=window.innerHeight;
+  const vw=window.innerWidth,vh=window.innerHeight;
+  const rect=t.getBoundingClientRect();
+  const tw=rect.width||190,th=rect.height||300;
+  const margin=10;
   let left=x+16,top=y-20;
-  if(left+tw>vw-10)left=x-tw-16;
-  if(top+th>vh-10)top=vh-th-10;
-  if(top<10)top=10;
+  // horizontal: flip left if overflows right
+  if(left+tw>vw-margin)left=x-tw-16;
+  // if still off left edge, clamp
+  if(left<margin)left=margin;
+  // vertical: flip above cursor if overflows bottom
+  if(top+th>vh-margin)top=y-th-10;
+  // if still off top, clamp
+  if(top<margin)top=margin;
   t.style.left=left+'px';t.style.top=top+'px';
 }
 function hideTooltip(){clearTimeout(tooltipTimeout);document.getElementById('tooltip').classList.remove('visible');}
@@ -1142,6 +1225,7 @@ function useHint(colKey){
   hintRevealed[colKey]=true;
   hintsUsed++;
   renderBoard();
+  renderMobileCards();
   renderFilters();
   updateFilterFooter();
   updateHintBar();
@@ -1169,6 +1253,7 @@ function submitGuess(){
     setTimeout(showWin,600);
   }
   renderBoard();
+  renderMobileCards();
   renderFilters();
   renderSchoolFilters();
   updateFilterFooter();
@@ -1335,6 +1420,114 @@ function renderHintRow(){
   return`<tr class="hint-row"><td class="cell name-c">✦ HINTS</td>${cells}</tr>`;
 }
 
+
+function renderMobileCards(){
+  const container=document.getElementById('mobile-cards');
+  if(!container)return;
+
+  const hasContent=guesses.length>0||Object.keys(hintRevealed).length>0;
+  if(!hasContent){container.innerHTML='';return;}
+
+  let html='';
+
+  // Hint card — only show revealed attributes, no blank slots
+  if(Object.keys(hintRevealed).length>0){
+    const getHintVal=(key)=>{
+      if(key==='school')return ANSWER.school;
+      if(key==='pipCost')return ANSWER.pipCost;
+      if(key==='archmastery')return ANSWER.archmastery.length?ANSWER.archmastery.join(', '):'None';
+      if(key==='arc')return ANSWER.arc;
+      if(key==='source')return ANSWER.source.join(', ');
+      return '';
+    };
+    const scalarAttrs=[
+      {key:'school',label:'School'},
+      {key:'pipCost',label:'Pip Cost'},
+      {key:'archmastery',label:'Archmastery'},
+      {key:'arc',label:'Arc'},
+      {key:'source',label:'Source'},
+    ];
+    const revealedScalar=scalarAttrs.filter(({key})=>hintRevealed[key]);
+    const attrGrid=revealedScalar.map(({key,label})=>
+      `<div class="mcard-attr mcard-hint-attr"><div class="mcard-attr-label">${label}</div><div class="mcard-attr-val">${getHintVal(key)}</div></div>`
+    ).join('');
+
+    const hasEffects=hintRevealed.effectTypes||hintRevealed.targets;
+    let effectsHtml='';
+    if(hasEffects){
+      let effectHtml='<div class="mcard-effect-label">Effect Types</div>';
+      let targetHtml='<div class="mcard-effect-label">Targets</div>';
+      if(hintRevealed.effectTypes){
+        const seen=new Set(),types=[];
+        ANSWER.effects.forEach(e=>{if(!seen.has(e.type)){seen.add(e.type);types.push(e.type);}});
+        effectHtml+=types.map(t=>{
+          const dash=t.indexOf('-');
+          const prefix=dash===-1?t:t.slice(0,dash);
+          const suffix=dash===-1?'':t.slice(dash);
+          return`<span class="etag full" style="background:var(--hint-bg)"><span class="ep" style="color:var(--hint-text)">${prefix}</span>${suffix?`<span class="es" style="color:var(--hint-text);opacity:.7">${suffix}</span>`:''}</span>`;
+        }).join('');
+      }
+      if(hintRevealed.targets){
+        const seen=new Set(),tgts=[];
+        ANSWER.effects.forEach(e=>{if(!seen.has(e.target)){seen.add(e.target);tgts.push(e.target);}});
+        targetHtml+=tgts.map(t=>`<span class="ttag" style="background:var(--hint-bg);color:var(--hint-text)">${t}</span>`).join('');
+      }
+      effectsHtml=`<div class="mcard-effects">
+        ${hintRevealed.effectTypes?`<div class="mcard-effect-box" style="border-color:var(--hint-border);background:var(--hint-bg)">${effectHtml}</div>`:''}
+        ${hintRevealed.targets?`<div class="mcard-effect-box" style="border-color:var(--hint-border);background:var(--hint-bg)">${targetHtml}</div>`:''}
+      </div>`;
+    }
+
+    html+=`<div class="mcard hint-card">
+      <div class="mcard-header"><span class="mcard-spell">✦ Hints</span></div>
+      ${revealedScalar.length>0?`<div class="mcard-attrs" style="grid-template-columns:repeat(${Math.min(revealedScalar.length,3)},1fr)">${attrGrid}</div>`:''}
+      ${effectsHtml}
+    </div>`;
+  }
+
+  // Guess cards
+  guesses.forEach(g=>{
+    const sc=scalarMatch(g.school,ANSWER.school);
+    const pc=scalarMatch(g.pipCost,ANSWER.pipCost);
+    const arc=scalarMatch(g.arc,ANSWER.arc);
+    const am=setMatch(g.archmastery,ANSWER.archmastery);
+    const src=setMatch(g.source,ANSWER.source);
+    const et=effectTypeMatch(g.effects,ANSWER.effects);
+    const tc=targetMatch(g.effects,ANSWER.effects);
+    const schoolColor=SCHOOL_COLORS[g.school]||'#888';
+    const schoolBg=g.school==='Fire'?'#2e1000':g.school==='Ice'?'#001828':g.school==='Storm'?'#1a0a30':g.school==='Myth'?'#2a2000':g.school==='Life'?'#002800':g.school==='Death'?'#1a0a28':'#1a1000';
+    const headerCls=sc==='correct'?'style="background:var(--green-bg);border-color:#2a5010"':sc==='wrong'?'style="background:var(--gray-bg);border-color:#222"':'';
+    const spellColor=sc==='correct'?'color:var(--green-text)':sc==='wrong'?'color:var(--gray-text)':'color:var(--text-primary)';
+
+    const srcCell=src==='partial'?renderSourceTags(g,ANSWER):g.source.join(', ');
+    const archDisplay=g.archmastery.length?g.archmastery.join(', '):'None';
+
+    html+=`<div class="mcard">
+      <div class="mcard-header" ${headerCls}>
+        <span class="mcard-spell" style="${spellColor};cursor:pointer" data-spell="${g.name.replace(/"/g,'&quot;')}">${g.name}</span>
+        <span class="mcard-school" style="background:${schoolBg};color:${schoolColor}">${g.school}</span>
+      </div>
+      <div class="mcard-attrs">
+        <div class="mcard-attr ${pc}"><div class="mcard-attr-label">Pip Cost</div><div class="mcard-attr-val">${g.pipCost}</div></div>
+        <div class="mcard-attr ${am}"><div class="mcard-attr-label">Archmastery</div><div class="mcard-attr-val">${archDisplay}</div></div>
+        <div class="mcard-attr ${arc}"><div class="mcard-attr-label">Arc</div><div class="mcard-attr-val">${g.arc}</div></div>
+        <div class="mcard-attr ${src}"><div class="mcard-attr-label">Source</div><div class="mcard-attr-val">${srcCell}</div></div>
+      </div>
+      <div class="mcard-effects">
+        <div class="mcard-effect-box ${et}"><div class="mcard-effect-label">Effect Types</div><div class="efx-wrap">${renderEffectTags(g,ANSWER)}</div></div>
+        <div class="mcard-effect-box ${tc}"><div class="mcard-effect-label">Targets</div><div class="efx-wrap">${renderTargetTags(g,ANSWER)}</div></div>
+      </div>
+    </div>`;
+  });
+
+  container.innerHTML=html;
+  // Attach tooltips to mobile spell name spans
+  container.querySelectorAll('[data-spell]').forEach(el=>{
+    const spell=SPELLS.find(s=>s.name===el.dataset.spell);
+    if(spell)attachTooltip(el,spell);
+  });
+}
+
 function renderBoard(){
   const tbody=document.getElementById('gtbody');
   const table=document.getElementById('gtable');
@@ -1376,6 +1569,11 @@ function renderBoard(){
 // ─── Events ───────────────────────────────────────────────────────
 function attachInputEvents(){
   const inp=document.getElementById('spell-input');
+  const updatePlaceholder=()=>{
+    inp.placeholder=window.innerWidth<=580?'Search spells...':'Click to browse spells, or type to search...';
+  };
+  updatePlaceholder();
+  window.addEventListener('resize',updatePlaceholder);
   inp.addEventListener('focus',()=>openAC(inp.value));
   inp.addEventListener('input',e=>openAC(e.target.value));
   inp.addEventListener('keydown',e=>{
@@ -1393,6 +1591,9 @@ function attachInputEvents(){
     if(e.key==='Escape'){
       ['win-overlay','date-overlay','hint-overlay','help-overlay'].forEach(id=>document.getElementById(id).classList.remove('show'));
     }
+  });
+  document.addEventListener('touchstart',e=>{
+    if(!e.target.closest('[data-spell]'))hideTooltip();
   });
 }
 
@@ -1417,6 +1618,7 @@ function initGame(resetAll=true){
   updateFilterFooter();
   updateHintBar();
   renderBoard();
+  renderMobileCards();
   updateCount();
   attachInputEvents();
 }
