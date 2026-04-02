@@ -1,0 +1,850 @@
+[
+  {
+    "name": "Thunder Snake",
+    "school": "Storm",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Thunder_Snake.png",
+    "description": "Deals 105-145 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Lightning Bats",
+    "school": "Storm",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Lightning_Bats.png",
+    "description": "Deals 245-285 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Thermic Shield",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Thermic_Shield.png",
+    "description": "Applies -70% Ice and Fire Damage Wards",
+    "effects": [
+      { "type": "ward-shield", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Storm Shark",
+    "school": "Storm",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Storm_Shark.png",
+    "description": "Deals 375-435 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Storm Trap",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Storm_Trap.png",
+    "description": "Applies a +40% Storm Damage Ward",
+    "effects": [
+      { "type": "ward-trap", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Thermic Golem",
+    "school": "Storm",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Thermic_Golem.png",
+    "description": "Deals 325-485 Storm Damage to target and applies -70% Ice and Fire Damage Wards on caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "ward-shield", "target": "self" }
+    ]
+  },
+  {
+    "name": "Kraken",
+    "school": "Storm",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Kraken.png",
+    "description": "Deals 520-580 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Windstorm",
+    "school": "Storm",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Windstorm.png",
+    "description": "Applies a +25% Storm Damage Ward on all enemies",
+    "effects": [
+      { "type": "ward-trap", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Darkwind",
+    "school": "Storm",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Darkwind.png",
+    "description": "Applies a +25% Storm Damage Global",
+    "effects": [
+      { "type": "global", "target": "all" }
+    ]
+  },
+  {
+    "name": "Stormzilla",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Stormzilla.png",
+    "description": "Deals 650-730 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Stormwing",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Stormwing.png",
+    "description": "Deals 515 Storm Damage to target and applies a +30% outgoing Storm Damage Aura for 4 Rounds on caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "aura", "target": "self" }
+    ]
+  },
+  {
+    "name": "Triton",
+    "school": "Storm",
+    "pipCost": 6,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer", "quest"],
+    "image": "/assets/storm/Triton.png",
+    "description": "Deals 795-875 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Thunderman",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Thunderman.png",
+    "description": "Deals 345 Storm Damage and applies a +25% Storm Damage Global",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "global", "target": "all" }
+    ]
+  },
+  {
+    "name": "Reap the Whirlwind",
+    "school": "Storm",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Reap_the_Whirlwind.png",
+    "description": "Removes a Damage over Time effect from ally to apply a +35% Storm Damage Charm on ally",
+    "effects": [
+      { "type": "utility-clear", "target": "any-ally" },
+      { "type": "charm-blade", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Energy Transfer",
+    "school": "Storm",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Energy_Transfer.png",
+    "description": "Removes a Heal over Time effect from target to apply a +35% Healing Charm on caster",
+    "effects": [
+      { "type": "utility-clear", "target": "enemy" },
+      { "type": "charm-healing", "target": "self" }
+    ]
+  },
+  {
+    "name": "Storm Lord",
+    "school": "Storm",
+    "pipCost": 7,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/storm/Storm_Lord.png",
+    "description": "Deals 690 Storm Damage to and Stuns all enemies for 1 Round (and applies a Stun Block on all enemies)",
+    "effects": [
+      { "type": "damage", "target": "aoe" },
+      { "type": "ward-stun", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Leviathan",
+    "school": "Storm",
+    "pipCost": 8,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/storm/Leviathan.png",
+    "description": "Deals 975 Storm Damage to and removes two helpful Charms from target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-remove", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Jinn's Restoration",
+    "school": "Storm",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Jinn's_Restoration.png",
+    "description": "Removes a Heal over Time effect from target to restore 390 Health over 3 Rounds to caster",
+    "effects": [
+      { "type": "utility-clear", "target": "enemy" },
+      { "type": "hot", "target": "self" }
+    ]
+  },
+  {
+    "name": "Thundering Jinn",
+    "school": "Storm",
+    "pipCost": 7,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Thundering_Jinn.png",
+    "description": "Deals 830 Storm Damage or removes three Heal over Time effects from caster to deal 2,320 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-gambit", "target": "self" }
+    ]
+  },
+  {
+    "name": "Sirens",
+    "school": "Storm",
+    "pipCost": 9,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/storm/Sirens.png",
+    "description": "Deals 805-905 Storm Damage to and applies a -40% Accuracy Charm on all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" },
+      { "type": "charm-accuracy", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Storm Owl",
+    "school": "Storm",
+    "pipCost": 10,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/storm/Storm_Owl.png",
+    "description": "Deals 1,330-1,470 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "King Artorius (Storm)",
+    "school": "Storm",
+    "pipCost": 8,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/storm/King_Artorius_(Storm).png",
+    "description": "Deals 1,115 Storm Damage to target and applies a +10% Storm Armor Piercing Charm on self",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "charm-pierce", "target": "self" }
+    ]
+  },
+  {
+    "name": "Oni's Attrition",
+    "school": "Storm",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Oni's_Attrition.png",
+    "description": "Removes a Damage over Time effect from caster to apply a -25% Damage Charm on target",
+    "effects": [
+      { "type": "utility-clear", "target": "self" },
+      { "type": "charm-weakness", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Turmoil Oni",
+    "school": "Storm",
+    "pipCost": 9,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Turmoil_Oni.png",
+    "description": "Deals 1,080 Storm Damage or removes four harmful Charms from target to deal 2,250 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-gambit", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Storm Shield",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Storm_Shield.png",
+    "description": "Applies a -80% Storm Damage Ward",
+    "effects": [
+      { "type": "ward-shield", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Storm Weakness",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Storm_Weakness.png",
+    "description": "Applies a -35% Storm Damage Charm",
+    "effects": [
+      { "type": "charm-weakness", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Soothe",
+    "school": "Storm",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Soothe.png",
+    "description": "Pacifies caster for 1 Round",
+    "effects": [
+      { "type": "utility-aggro", "target": "self" }
+    ]
+  },
+  {
+    "name": "Dissipate",
+    "school": "Storm",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Dissipate.png",
+    "description": "Applies a Storm Dispel Charm",
+    "effects": [
+      { "type": "charm-dispel", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Sap Power",
+    "school": "Storm",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/storm/Sap_Power.png",
+    "description": "Sacrifices a Minion to give 4 Pips to caster",
+    "effects": [
+      { "type": "utility-sacrifice", "target": "minion" },
+      { "type": "utility-pip", "target": "self" }
+    ]
+  },
+  {
+    "name": "Mega Soothe",
+    "school": "Storm",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Mega_Soothe.png",
+    "description": "Pacifies ally for 1 Round (not caster)",
+    "effects": [
+      { "type": "utility-aggro", "target": "ally" }
+    ]
+  },
+  {
+    "name": "Mass Storm Prism",
+    "school": "Storm",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Mass_Storm_Prism.png",
+    "description": "Applies a Storm to Myth Damage Prism Ward on all enemies",
+    "effects": [
+      { "type": "ward-prism", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Stormspear",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Stormspear.png",
+    "description": "Applies a +30% Storm Armor Piercing Charm",
+    "effects": [
+      { "type": "charm-pierce", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Astraphobia",
+    "school": "Storm",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/storm/Astraphobia.png",
+    "description": "Applies a +20% Storm Armor Piercing and +20% Storm Critical Chance Global",
+    "effects": [
+      { "type": "global", "target": "all" }
+    ]
+  },
+  {
+    "name": "Lightning Strike",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/storm/Lightning_Strike.png",
+    "description": "Applies a +25% Storm Accuracy Charm",
+    "effects": [
+      { "type": "charm-accuracy", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Storm Prism",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/storm/Storm_Prism.png",
+    "description": "Applies a Storm to Myth Damage Prism Ward",
+    "effects": [
+      { "type": "ward-prism", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Stormblade",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/storm/Stormblade.png",
+    "description": "Applies a +35% Storm Damage Charm",
+    "effects": [
+      { "type": "charm-blade", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Disarm",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/storm/Disarm.png",
+    "description": "Removes a positive Charm",
+    "effects": [
+      { "type": "utility-remove", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Water Elemental",
+    "school": "Storm",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/storm/Water_Elemental.png",
+    "description": "Summons a Water Elemental",
+    "effects": [
+      { "type": "minion", "target": "self" }
+    ]
+  },
+  {
+    "name": "Cleanse Charm",
+    "school": "Storm",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/storm/Cleanse_Charm.png",
+    "description": "Removes 1 negative Charm",
+    "effects": [
+      { "type": "utility-remove", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Tempest",
+    "school": "Storm",
+    "pipCost": "X",
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/storm/Tempest.png",
+    "description": "Deals 80 Storm Damage per Pip to all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Wild Bolt",
+    "school": "Storm",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/storm/Wild_Bolt.png",
+    "description": "Deals 10 Storm Damage, 100 Storm Damage, or 1,000 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Supercharge",
+    "school": "Storm",
+    "pipCost": "X",
+    "archmastery": [],
+    "arc": "Side Arc",
+    "source": ["quest"],
+    "image": "/assets/storm/Supercharge.png",
+    "description": "Applies a +10% per Pip Storm Damage Charm on self",
+    "effects": [
+      { "type": "charm-blade", "target": "self" }
+    ]
+  },
+  {
+    "name": "Insane Bolt",
+    "school": "Storm",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Side Arc",
+    "source": ["quest"],
+    "image": "/assets/storm/Insane_Bolt.png",
+    "description": "Deals 145 Storm Damage to target three times, with each hit having a 20% chance to hit caster instead of target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "damage", "target": "self" }
+    ]
+  },
+  {
+    "name": "Enfeeble",
+    "school": "Storm",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["quest"],
+    "image": "/assets/storm/Enfeeble.png",
+    "description": "Removes all positive Charms",
+    "effects": [
+      { "type": "utility-remove", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Healing Current",
+    "school": "Storm",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["quest"],
+    "image": "/assets/storm/Healing_Current.png",
+    "description": "Restores 385 Health and 75 Health per Round for 3-5 Rounds",
+    "effects": [
+      { "type": "heal", "target": "any-ally" },
+      { "type": "hot", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Mokompo",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["quest"],
+    "image": "/assets/storm/Mokompo.png",
+    "description": "Summons Mokompo Storm Growler",
+    "effects": [
+      { "type": "minion", "target": "self" }
+    ]
+  },
+  {
+    "name": "Glowbug Squall",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Side Arc",
+    "source": ["quest"],
+    "image": "/assets/storm/Glowbug_Squall.png",
+    "description": "Deals 520 Storm Damage to all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Rusalka's Wrath",
+    "school": "Storm",
+    "pipCost": 6,
+    "archmastery": [],
+    "arc": "Arc 3",
+    "source": ["quest", "trainer"],
+    "image": "/assets/storm/Rusalka's_Wrath.png",
+    "description": "Deals 675 Storm Damage to target and applies a +15%, +45%, or +60% Storm Damage Charm on caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "charm-blade", "target": "self" }
+    ]
+  },
+  {
+    "name": "Iron Sultan",
+    "school": "Storm",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 3",
+    "source": ["quest", "trainer"],
+    "image": "/assets/storm/Iron_Sultan.png",
+    "description": "Deals 495 Storm Damage split among selected enemies",
+    "effects": [
+      { "type": "damage", "target": "selected" }
+    ]
+  },
+  {
+    "name": "Scion of Storm",
+    "school": "Storm",
+    "pipCost": 11,
+    "archmastery": [],
+    "arc": "Arc 3",
+    "source": ["quest", "trainer"],
+    "image": "/assets/storm/Scion_of_Storm.png",
+    "description": "Deals 1,400 Storm Damage to target, or deals 2,800 Storm Damage if target has no helpful Charms",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-conditional", "target": "enemy", "condition": "target has no helpful Charms" }
+    ]
+  },
+  {
+    "name": "Sound of Musicology",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/storm/Sound_of_Musicology.png",
+    "description": "Deals 430 Storm Damage to all enemies and applies a +35% Storm Damage Charm on caster",
+    "effects": [
+      { "type": "damage", "target": "aoe" },
+      { "type": "charm-blade", "target": "self" }
+    ]
+  },
+  {
+    "name": "Dark & Stormy",
+    "school": "Storm",
+    "pipCost": 6,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/storm/Dark_&_Stormy.png",
+    "description": "Deals 600 Storm Damage to target and restores 450 Health over 3 Rounds to caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "hot", "target": "self" }
+    ]
+  },
+  {
+    "name": "Tree of Strife",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": ["Life"],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/storm/Tree_of_Strife.png",
+    "description": "Deals 805 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Bunyip's Rage",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": ["Death"],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/storm/Bunyip's_Rage.png",
+    "description": "Deals 605 Storm Damage to all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Heqet",
+    "school": "Storm",
+    "pipCost": 7,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/storm/Heqet.png",
+    "description": "Deals 975 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "The Tower",
+    "school": "Storm",
+    "pipCost": 10,
+    "archmastery": [],
+    "arc": "Arc 5",
+    "source": ["quest", "trainer"],
+    "image": "/assets/storm/The_Tower.png",
+    "description": "Deals 1,145 Storm Damage to and applies a -25% Damage Charm on target and applies a +35% Storm Damage Charm on caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "charm-weakness", "target": "enemy" },
+      { "type": "charm-blade", "target": "self" }
+    ]
+  },
+  {
+    "name": "Beary Surprise",
+    "school": "Storm",
+    "pipCost": 4,
+    "archmastery": ["Storm"],
+    "arc": "Arc 1",
+    "source": ["spellement"],
+    "image": "/assets/storm/Beary_Surprise.png",
+    "description": "Deals 660 Storm Damage to target or restores 895 Health to caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "heal", "target": "self" }
+    ]
+  },
+  {
+    "name": "Catalan",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": ["Storm"],
+    "arc": "Arc 1",
+    "source": ["spellement", "recipe"],
+    "image": "/assets/storm/Catalan.png",
+    "description": "Deals 650 Storm Damage to and applies a -35% Damage Charm on target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "charm-weakness", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Catch of the Day",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": ["Storm"],
+    "arc": "Arc 1",
+    "source": ["spellement"],
+    "image": "/assets/storm/Catch_of_the_Day.png",
+    "description": "Deals 575 Storm Damage to and removes two helpful Charms from target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-remove", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Hammer of Thor",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": ["Storm"],
+    "arc": "Arc 1",
+    "source": ["spellement", "recipe"],
+    "image": "/assets/storm/Hammer_of_Thor.png",
+    "description": "Removes a harmful Charm from caster, then deals 690 Storm Damage to target",
+    "effects": [
+      { "type": "utility-remove", "target": "self" },
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Jupiter's Might",
+    "school": "Storm",
+    "pipCost": 7,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["spellement"],
+    "image": "/assets/storm/Jupiter's_Might.png",
+    "description": "Deals 730 Storm Damage to and applies a +35% incoming Damage Aura of caster's School for 4 Rounds on target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "aura", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Queen Calypso",
+    "school": "Storm",
+    "pipCost": 4,
+    "archmastery": ["Storm"],
+    "arc": "Arc 1",
+    "source": ["spellement", "recipe"],
+    "image": "/assets/storm/Queen_Calypso.png",
+    "description": "Applies a +30% Storm Damage Ward on all enemies, then deals 445-505 Storm Damage to target",
+    "effects": [
+      { "type": "ward-trap", "target": "aoe" },
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Revolutionary Strike",
+    "school": "Storm",
+    "pipCost": 5,
+    "archmastery": ["Storm"],
+    "arc": "Arc 1",
+    "source": ["spellement"],
+    "image": "/assets/storm/Revolutionary_Strike.png",
+    "description": "Deals 580 Storm Damage to target and extends the duration of two Heal over Time effects by 3 Rounds on caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-extend", "target": "self" }
+    ]
+  }
+]

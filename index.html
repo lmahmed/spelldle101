@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spelldle 101</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green-bg:#1a3a0a;--green-text:#a8d878;
+  --amber-bg:#3a2200;--amber-text:#f0a830;
+  --gray-bg:#1a1a1a;--gray-text:#555;
+  --hint-bg:#1a1500;--hint-border:#5a4a00;--hint-text:#d4b840;
+  --page-bg:#090910;--surface:#111118;--surface2:#18181f;
+  --text-primary:#e8e0d0;--text-secondary:#888;--text-muted:#3a3a3a;
+  --accent:#c8a060;--accent-dim:#7a5c30;--border:#1e1e2a;
+  --ec0-bg:#0e2040;--ec0-t:#5aa0e8;
+  --ec1-bg:#2e1800;--ec1-t:#d88030;
+  --ec2-bg:#082818;--ec2-t:#40b878;
+  --ec3-bg:#280a2e;--ec3-t:#c060d8;
+  --ec4-bg:#281000;--ec4-t:#d86040;
+}
+body{background:var(--page-bg);color:var(--text-primary);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column}
+.bg-glow{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 15% 60%,#0d082022 0%,transparent 55%),radial-gradient(ellipse at 85% 15%,#0a152022 0%,transparent 50%)}
+.app{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:1rem 1rem 2rem;flex:1;width:100%}
+
+/* Loading */
+#loading-screen{position:fixed;inset:0;z-index:1000;background:var(--page-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity .4s}
+#loading-screen.done{opacity:0;pointer-events:none}
+.loading-logo{font-family:'Cinzel',serif;font-size:2rem;font-weight:700;color:var(--accent);letter-spacing:.14em}
+.loading-logo sup{font-size:.9rem;color:var(--text-secondary);font-weight:400;vertical-align:super}
+.loading-bar-wrap{width:200px;height:3px;background:var(--surface2);border-radius:3px;overflow:hidden}
+.loading-bar{height:100%;background:var(--accent);border-radius:3px;width:0%;transition:width .3s ease}
+.loading-txt{font-size:.78rem;color:var(--text-muted);font-style:italic;font-family:'Cinzel',serif;letter-spacing:.06em}
+.loading-err{color:#d05050;font-size:.82rem;text-align:center;max-width:320px;line-height:1.6}
+
+/* Header */
+header{text-align:center;padding:2rem 0 1.5rem}
+.logo{font-family:'Cinzel',serif;font-size:2.4rem;font-weight:700;color:var(--accent);letter-spacing:.14em}
+.logo sup{font-size:1rem;color:var(--text-secondary);font-weight:400;letter-spacing:.05em;vertical-align:super}
+.tagline{font-style:italic;color:var(--text-secondary);font-size:.95rem;margin-top:.25rem}
+.date-pill{display:inline-flex;align-items:center;gap:6px;margin-top:.5rem;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:3px 14px;font-size:.72rem;color:var(--text-secondary);letter-spacing:.06em;font-family:'Cinzel',serif;cursor:pointer;transition:border-color .15s;user-select:none}
+.date-pill:hover{border-color:var(--accent-dim);color:var(--accent)}
+.date-pill-arrow{font-size:.6rem;opacity:.6}
+
+/* Search */
+.search-area{margin-bottom:.8rem}
+.search-box{display:flex;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:6px 10px}
+.search-gem{color:var(--accent-dim);font-size:.9rem;flex-shrink:0}
+#spell-input{flex:1;background:transparent;border:none;outline:none;font-family:'Crimson Pro',serif;font-size:1.05rem;color:var(--text-primary);caret-color:var(--accent)}
+#spell-input::placeholder{color:var(--text-muted)}
+#spell-input:disabled{opacity:.4}
+.cast-btn{background:var(--accent);color:#160900;border:none;border-radius:6px;padding:5px 18px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;letter-spacing:.07em;cursor:pointer;flex-shrink:0;transition:background .15s,transform .1s}
+.cast-btn:hover{background:#deb870}
+.cast-btn:active{transform:scale(.97)}
+.cast-btn:disabled{background:#333;color:#666;cursor:not-allowed}
+
+/* Autocomplete */
+.ac-wrap{position:relative}
+.autocomplete{background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-top:3px;max-height:280px;overflow-y:auto;display:none;position:absolute;width:100%;z-index:200;top:100%}
+.autocomplete.open{display:block}
+.ac-item{padding:7px 12px;cursor:pointer;font-size:.9rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px;transition:background .1s}
+.ac-item:last-child{border-bottom:none}
+.ac-item:hover,.ac-item.hi{background:var(--surface2)}
+.ac-item-left{display:flex;align-items:center;gap:10px}
+.ac-thumb{width:26px;height:40px;object-fit:cover;border-radius:3px;flex-shrink:0;background:var(--surface2)}
+.ac-name{font-size:.9rem;color:var(--text-primary)}
+.ac-school{font-size:.7rem;color:var(--text-secondary);font-style:italic;white-space:nowrap}
+.ac-load-more{padding:8px;text-align:center;font-size:.75rem;color:var(--accent-dim);cursor:pointer;font-family:'Cinzel',serif;letter-spacing:.04em;border-top:1px solid var(--border)}
+.ac-load-more:hover{color:var(--accent);background:var(--surface2)}
+.ac-empty{padding:10px 14px;font-size:.82rem;color:var(--text-muted);font-style:italic;text-align:center}
+
+/* Tooltip */
+.spell-tooltip{position:fixed;z-index:999;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;width:190px;box-shadow:0 8px 40px #000a;opacity:0;transition:opacity .15s;overflow:hidden}
+.spell-tooltip.visible{opacity:1}
+.tooltip-img{width:100%;display:block}
+.tooltip-body{padding:10px 12px}
+.tooltip-name{font-family:'Cinzel',serif;font-size:.76rem;font-weight:600;color:var(--text-primary);margin-bottom:3px;line-height:1.3}
+.tooltip-school{font-size:.68rem;margin-bottom:5px;font-weight:600;letter-spacing:.04em}
+.tooltip-desc{font-size:.7rem;color:var(--text-secondary);font-style:italic;line-height:1.4;margin-bottom:5px}
+.tooltip-pip{font-size:.68rem;color:var(--text-muted);font-family:'Cinzel',serif}
+
+/* Filters */
+.filters-area{margin-top:8px}
+.filter-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:5px}
+.filter-label{font-size:.72rem;color:var(--text-muted);font-family:'Cinzel',serif;letter-spacing:.04em;margin-right:2px}
+.ftoggle{position:relative;display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:3px 11px;cursor:pointer;font-size:.72rem;color:var(--text-secondary);font-family:'Cinzel',serif;letter-spacing:.04em;transition:all .15s;user-select:none}
+.ftoggle.on{border-color:var(--accent-dim);color:var(--accent);background:#120e00}
+.fdot{width:6px;height:6px;border-radius:50%;background:var(--text-muted);flex-shrink:0;transition:background .15s}
+.ftoggle.on .fdot{background:var(--accent)}
+.ftip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1a1a28;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.68rem;color:var(--text-secondary);pointer-events:none;opacity:0;transition:opacity .15s;z-index:300;font-family:'Crimson Pro',serif;font-style:italic;width:210px;white-space:normal;text-align:center;line-height:1.4}
+.ftoggle:hover .ftip{opacity:1}
+
+/* School pills */
+.school-pill{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:2px 10px;cursor:pointer;font-size:.7rem;font-family:'Cinzel',serif;letter-spacing:.04em;border:1px solid transparent;transition:all .15s;user-select:none;opacity:.4}
+.school-pill.active{opacity:1}
+.school-pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+.filter-footer{display:flex;align-items:center;gap:8px;margin-top:5px;flex-wrap:wrap}
+.remaining-count{font-size:.7rem;color:var(--text-muted)}
+.view-all-btn{font-size:.7rem;color:var(--accent-dim);font-family:'Cinzel',serif;letter-spacing:.04em;text-decoration:none;border:1px solid var(--border);border-radius:20px;padding:2px 10px;transition:all .15s}
+.view-all-btn:hover{color:var(--accent);border-color:var(--accent-dim)}
+
+.error-msg{color:#d05050;font-size:.8rem;padding:4px 0 0 4px;min-height:1.2em}
+.toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:#3a0a0a;border:1px solid #a03030;color:#e08080;border-radius:8px;padding:10px 18px;font-size:.82rem;font-family:'Crimson Pro',serif;z-index:2000;animation:toastIn .3s ease,toastOut .4s ease 3.5s forwards;pointer-events:none;white-space:nowrap}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes toastOut{from{opacity:1}to{opacity:0;pointer-events:none}}
+
+.guess-count{text-align:center;font-size:.75rem;color:var(--text-muted);margin:.5rem 0;font-family:'Cinzel',serif;letter-spacing:.08em}
+
+/* Hint bar */
+.hint-bar{display:flex;align-items:center;gap:8px;margin:.5rem 0;padding:6px 10px;background:var(--hint-bg);border:1px solid var(--hint-border);border-radius:8px;flex-wrap:wrap}
+.hint-bar-label{font-family:'Cinzel',serif;font-size:.7rem;color:var(--hint-text);letter-spacing:.06em;white-space:nowrap}
+.hint-btn{background:transparent;border:1px solid var(--hint-border);color:var(--hint-text);border-radius:20px;padding:3px 12px;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.05em;cursor:pointer;transition:all .15s}
+.hint-btn:hover{background:var(--hint-border);color:#e8d060}
+.hint-btn:disabled{opacity:.35;cursor:not-allowed}
+.hint-count{font-size:.7rem;color:var(--hint-text);opacity:.6;font-style:italic}
+.hint-bar.hidden{display:none}
+
+/* Table */
+.table-wrap{width:100%}
+table.gtable{width:100%;border-collapse:separate;border-spacing:3px;table-layout:fixed;overflow:visible}
+
+/* Column headers with tooltips */
+.col-h{font-family:'Cinzel',serif;font-size:.58rem;font-weight:600;letter-spacing:.06em;color:var(--text-muted);text-align:center;padding:2px 2px 6px;text-transform:uppercase;position:relative;cursor:help;word-break:break-word;line-height:1.2}
+.col-h:hover .col-tip{opacity:1;pointer-events:auto}
+.col-tip{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#1a1a28;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:.7rem;color:var(--text-secondary);opacity:0;pointer-events:none;transition:opacity .15s;z-index:400;width:240px;white-space:normal;text-align:left;line-height:1.5;font-family:'Crimson Pro',serif;font-style:italic;font-weight:400;letter-spacing:0}
+.col-tip strong{color:var(--text-primary);font-style:normal;display:block;margin-bottom:3px;font-family:'Cinzel',serif;font-size:.68rem}
+
+/* Effect types help button */
+.effect-help-btn{display:block;font-family:'Cinzel',serif;font-size:.5rem;color:var(--accent-dim);cursor:pointer;border:1px solid var(--border);border-radius:10px;padding:1px 4px;margin:2px auto 0;transition:all .15s;width:fit-content}
+.effect-help-btn:hover{color:var(--accent);border-color:var(--accent-dim)}
+
+.grow{animation:rowIn .32s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes rowIn{from{opacity:0;transform:translateY(-14px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+.cell{border-radius:6px;padding:5px 3px;text-align:center;font-size:.76rem;font-weight:500;vertical-align:middle;border:1px solid var(--border);background:var(--surface);color:var(--text-secondary);overflow:hidden;word-break:break-word}
+.cell.name-c{font-family:'Cinzel',serif;font-size:.63rem;color:var(--text-primary);letter-spacing:.01em;cursor:pointer;transition:color .15s;word-break:break-word}
+.cell.name-c:hover{color:var(--accent)}
+.cell.correct{background:var(--green-bg);border-color:#2a5010;color:var(--green-text)}
+.cell.partial{background:var(--amber-bg);border-color:#4a2800;color:var(--amber-text)}
+.cell.wrong{background:var(--gray-bg);border-color:#222;color:var(--gray-text)}
+.cell.hint-revealed{background:var(--green-bg);border-color:var(--hint-border);color:var(--hint-text)}
+.cell.hint-blank{background:transparent;border-color:transparent;color:transparent}
+
+/* Hint row */
+.hint-row td{border-color:var(--hint-border) !important}
+.hint-row .name-c{background:var(--hint-bg) !important;color:var(--hint-text) !important;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.06em;cursor:default !important}
+.hint-row .name-c:hover{color:var(--hint-text) !important}
+
+.efx-wrap{display:flex;flex-direction:column;gap:1px;align-items:center;overflow:hidden;width:100%}
+
+/* Effect type tags */
+.etag{display:inline-flex;align-items:center;border-radius:3px;font-size:.65rem;font-weight:500;white-space:nowrap;line-height:1.5}
+.etag .ep{padding:0 1px 0 3px;color:var(--text-secondary)}
+.etag .es{padding:0 3px 0 0;color:var(--text-secondary)}
+.etag.cat .ep{color:var(--text-primary)}
+.etag.cat .es{color:var(--text-secondary);opacity:.55}
+.etag.full .ep,.etag.full .es{color:var(--text-primary)}
+.etag.lk0{background:var(--ec0-bg)}.etag.lk0 .ep,.etag.lk0 .es{color:var(--ec0-t)}
+.etag.lk1{background:var(--ec1-bg)}.etag.lk1 .ep,.etag.lk1 .es{color:var(--ec1-t)}
+.etag.lk2{background:var(--ec2-bg)}.etag.lk2 .ep,.etag.lk2 .es{color:var(--ec2-t)}
+.etag.lk3{background:var(--ec3-bg)}.etag.lk3 .ep,.etag.lk3 .es{color:var(--ec3-t)}
+.etag.lk4{background:var(--ec4-bg)}.etag.lk4 .ep,.etag.lk4 .es{color:var(--ec4-t)}
+
+/* Target tags */
+.ttag{display:inline-block;border-radius:3px;padding:1px 5px;font-size:.65rem;font-weight:500;white-space:nowrap;line-height:1.5;color:var(--text-secondary)}
+.ttag.matched{color:var(--text-primary)}
+.ttag.unmatched{color:var(--text-secondary);opacity:.55}
+.ttag.tl0{background:var(--ec0-bg);color:var(--ec0-t)}
+.ttag.tl1{background:var(--ec1-bg);color:var(--ec1-t)}
+.ttag.tl2{background:var(--ec2-bg);color:var(--ec2-t)}
+.ttag.tl3{background:var(--ec3-bg);color:var(--ec3-t)}
+.ttag.tl4{background:var(--ec4-bg);color:var(--ec4-t)}
+
+/* Source tags */
+.stag{display:inline-block;border-radius:3px;padding:1px 4px;font-size:.65rem;white-space:nowrap;line-height:1.5}
+.stag.matched{color:var(--text-primary)}
+.stag.unmatched{color:var(--text-secondary);opacity:.55}
+
+.no-g{text-align:center;padding:2.5rem 0;color:var(--text-muted);font-style:italic;font-size:.92rem}
+
+/* Legend */
+.legend{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin:1rem 0 .5rem;padding:.5rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+.li{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--text-secondary)}
+.ls{width:11px;height:11px;border-radius:2px;flex-shrink:0}
+.ls.g{background:var(--green-bg);border:1px solid #2a5010}
+.ls.a{background:var(--amber-bg);border:1px solid #4a2800}
+.ls.gr{background:var(--gray-bg);border:1px solid #222}
+.link-swatches{display:flex;gap:2px}
+.lswatch{width:11px;height:11px;border-radius:2px}
+
+/* Footer */
+footer{position:relative;z-index:1;text-align:center;padding:1.5rem 1rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--text-muted);line-height:1.8}
+footer a{color:var(--accent-dim);text-decoration:none}
+footer a:hover{color:var(--accent)}
+
+/* ── Overlays ── */
+.overlay-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem}
+.overlay-bg.show{display:flex;animation:fadeOv .3s ease}
+@keyframes fadeOv{from{opacity:0}to{opacity:1}}
+
+/* Win overlay */
+.win-card{background:linear-gradient(160deg,#0e1a06,#111808,#0a1220);border:1px solid #3a5a18;border-radius:20px;width:320px;overflow:hidden;animation:winPop .5s cubic-bezier(.34,1.56,.64,1);position:relative}
+@keyframes winPop{from{opacity:0;transform:scale(.7) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.win-card-img{width:100%;display:block}
+.win-card-img-ph{width:100%;height:180px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:3rem}
+.win-card-body{padding:20px 24px 24px}
+.win-stars{text-align:center;font-size:1.1rem;letter-spacing:.2em;color:var(--accent);margin-bottom:10px;animation:starPulse 1s ease .4s both}
+@keyframes starPulse{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+.win-title{font-family:'Cinzel',serif;font-size:1.5rem;font-weight:700;color:var(--green-text);text-align:center;margin-bottom:4px}
+.win-spell-name{font-family:'Cinzel',serif;font-size:1.15rem;color:var(--accent);text-align:center;margin-bottom:4px}
+.win-school{text-align:center;font-size:.85rem;font-weight:600;letter-spacing:.06em;margin-bottom:12px}
+.win-desc{font-style:italic;color:var(--text-secondary);font-size:.88rem;text-align:center;margin-bottom:16px;line-height:1.5}
+.win-guesses{text-align:center;font-size:.82rem;color:#6aa040;margin-bottom:16px}
+.win-btns{display:flex;flex-direction:column;gap:8px}
+.win-btn{display:block;width:100%;border:none;border-radius:8px;padding:9px;font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;letter-spacing:.08em;cursor:pointer;transition:background .15s}
+.win-btn.primary{background:var(--accent);color:#160900}
+.win-btn.primary:hover{background:#deb870}
+.win-btn.secondary{background:var(--surface2);color:var(--text-secondary);border:1px solid var(--border)}
+.win-btn.secondary:hover{background:var(--border);color:var(--text-primary)}
+.win-confetti{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;border-radius:20px}
+.confetti-piece{position:absolute;top:-20px;animation:confettiFall linear both}
+@keyframes confettiFall{to{transform:translateY(420px) rotate(720deg);opacity:0}}
+
+/* Date picker overlay */
+.datepick-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;width:340px;animation:winPop .35s cubic-bezier(.34,1.56,.64,1)}
+.datepick-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--accent);margin-bottom:16px;text-align:center;letter-spacing:.08em}
+.datepick-option{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;margin-bottom:8px;transition:all .15s}
+.datepick-option:hover{border-color:var(--accent-dim);background:#120e00}
+.datepick-option-icon{font-size:1.2rem;flex-shrink:0}
+.datepick-option-text{font-size:.88rem;color:var(--text-primary)}
+.datepick-option-sub{font-size:.72rem;color:var(--text-secondary);margin-top:1px}
+.datepick-sep{text-align:center;font-size:.72rem;color:var(--text-muted);margin:10px 0;font-style:italic}
+.datepick-input-row{display:flex;gap:8px;align-items:center}
+.datepick-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text-primary);font-size:.88rem;font-family:'Crimson Pro',serif;outline:none}
+.datepick-input:focus{border-color:var(--accent-dim)}
+.datepick-go{background:var(--accent);color:#160900;border:none;border-radius:6px;padding:7px 14px;font-family:'Cinzel',serif;font-size:.72rem;font-weight:700;cursor:pointer}
+.datepick-go:hover{background:#deb870}
+.datepick-close{display:block;width:100%;margin-top:14px;background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.72rem;cursor:pointer}
+.datepick-close:hover{color:var(--text-secondary)}
+
+/* Hint picker overlay */
+.hint-card{background:var(--surface);border:1px solid var(--hint-border);border-radius:16px;padding:24px;width:380px;animation:winPop .35s cubic-bezier(.34,1.56,.64,1)}
+.hint-card-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--hint-text);margin-bottom:6px;text-align:center;letter-spacing:.08em}
+.hint-card-sub{font-size:.8rem;color:var(--text-secondary);text-align:center;font-style:italic;margin-bottom:16px}
+.hint-col-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hint-col-btn{padding:10px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .15s;text-align:left}
+.hint-col-btn:hover:not(:disabled){border-color:var(--hint-border);background:var(--hint-bg)}
+.hint-col-btn:disabled{opacity:.35;cursor:not-allowed}
+.hint-col-name{font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-primary);letter-spacing:.04em}
+.hint-col-status{font-size:.68rem;color:var(--text-muted);margin-top:2px;font-style:italic}
+.hint-col-btn.already-known{border-color:#2a5010;background:var(--green-bg)}
+.hint-col-btn.already-known .hint-col-name{color:var(--green-text)}
+.hint-col-btn.already-known .hint-col-status{color:#6aa040}
+.hint-cancel{display:block;width:100%;margin-top:14px;background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.72rem;cursor:pointer}
+.hint-cancel:hover{color:var(--text-secondary)}
+
+/* Effect types help overlay */
+.help-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;width:min(700px,96vw);max-height:85vh;overflow-y:auto;animation:winPop .35s cubic-bezier(.34,1.56,.64,1)}
+.help-card::-webkit-scrollbar{width:4px}
+.help-card::-webkit-scrollbar-track{background:transparent}
+.help-card::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.help-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--accent);margin-bottom:4px;letter-spacing:.08em}
+.help-subtitle{font-size:.82rem;color:var(--text-secondary);font-style:italic;margin-bottom:20px}
+.help-section{margin-bottom:20px}
+.help-section-title{font-family:'Cinzel',serif;font-size:.8rem;color:var(--text-primary);letter-spacing:.06em;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.help-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.help-cat{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:.72rem;color:var(--text-secondary)}
+.help-cat span{color:var(--text-primary);font-weight:500}
+.help-p{font-size:.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}
+.help-p strong{color:var(--text-primary)}
+.help-example{background:var(--surface2);border-left:3px solid var(--accent-dim);border-radius:4px;padding:8px 12px;font-size:.78rem;color:var(--text-secondary);margin:8px 0;line-height:1.6}
+.help-example strong{color:var(--accent-dim)}
+.help-step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start}
+.help-step-num{width:20px;height:20px;border-radius:50%;background:var(--accent-dim);color:#160900;font-family:'Cinzel',serif;font-size:.62rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.help-step-text{font-size:.8rem;color:var(--text-secondary);line-height:1.6}
+.help-step-text strong{color:var(--text-primary)}
+.help-close{display:block;width:100%;margin-top:16px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px;color:var(--text-secondary);font-family:'Cinzel',serif;font-size:.75rem;cursor:pointer;transition:all .15s}
+.help-close:hover{color:var(--text-primary);border-color:var(--accent-dim)}
+
+/* mini color swatches in help */
+.swatch-inline{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin:0 2px}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<div id="loading-screen">
+  <div class="loading-logo">Spelldle<sup>101</sup></div>
+  <div class="loading-bar-wrap"><div class="loading-bar" id="loading-bar"></div></div>
+  <div class="loading-txt" id="loading-txt">Loading spells...</div>
+</div>
+
+<!-- Spell tooltip -->
+<div class="spell-tooltip" id="tooltip">
+  <img class="tooltip-img" id="tooltip-img" src="" alt="" onerror="this.style.display='none'"/>
+  <div class="tooltip-body">
+    <div class="tooltip-name" id="tooltip-name"></div>
+    <div class="tooltip-school" id="tooltip-school"></div>
+    <div class="tooltip-desc" id="tooltip-desc"></div>
+    <div class="tooltip-pip" id="tooltip-pip"></div>
+  </div>
+</div>
+
+<!-- Win overlay -->
+<div class="overlay-bg" id="win-overlay" onclick="closeOverlay('win-overlay',event)">
+  <div class="win-card">
+    <div class="win-confetti" id="confetti"></div>
+    <div id="win-img-area"></div>
+    <div class="win-card-body">
+      <div class="win-stars">✦ ✦ ✦</div>
+      <div class="win-title">Spell Identified!</div>
+      <div class="win-spell-name" id="win-spell-name"></div>
+      <div class="win-school" id="win-school"></div>
+      <div class="win-desc" id="win-desc"></div>
+      <div class="win-guesses" id="win-guesses"></div>
+      <div class="win-btns">
+        <button class="win-btn primary" onclick="closeOverlay('win-overlay')">Continue ✦</button>
+        <button class="win-btn secondary" onclick="closeOverlay('win-overlay');openDatePicker()">Guess Another Spell ↗</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Date picker overlay -->
+<div class="overlay-bg" id="date-overlay" onclick="closeOverlay('date-overlay',event)">
+  <div class="datepick-card">
+    <div class="datepick-title">Choose a Spell to Guess</div>
+    <div class="datepick-option" onclick="setRandomSpell()">
+      <div class="datepick-option-icon">🎲</div>
+      <div>
+        <div class="datepick-option-text">Random Spell</div>
+        <div class="datepick-option-sub">Pick a completely random spell from all 482</div>
+      </div>
+    </div>
+    <div class="datepick-option" onclick="setTodaySpell()">
+      <div class="datepick-option-icon">📅</div>
+      <div>
+        <div class="datepick-option-text">Today's Daily Spell</div>
+        <div class="datepick-option-sub" id="today-date-sub"></div>
+      </div>
+    </div>
+    <div class="datepick-option" onclick="showChallengeCreator()">
+      <div class="datepick-option-icon">⚔</div>
+      <div>
+        <div class="datepick-option-text">Create a Challenge</div>
+        <div class="datepick-option-sub">Pick a spell and share a secret link with a friend</div>
+      </div>
+    </div>
+    <div class="datepick-sep">— or pick a past date —</div>
+    <div class="datepick-input-row">
+      <input class="datepick-input" type="date" id="date-input" />
+      <button class="datepick-go" onclick="setDateSpell()">Go</button>
+    </div>
+    <button class="datepick-close" onclick="closeOverlay('date-overlay')">Cancel</button>
+  </div>
+</div>
+
+
+<div class="overlay-bg" id="challenge-overlay" onclick="closeOverlay('challenge-overlay',event)">
+  <div class="datepick-card" style="width:380px">
+    <div class="datepick-title">Create a Challenge</div>
+    <div style="font-size:.78rem;color:var(--text-secondary);text-align:center;font-style:italic;margin-bottom:14px">Pick a spell — your friend won't see the answer</div>
+    <div style="position:relative;margin-bottom:10px">
+      <input id="challenge-spell-input" class="datepick-input" type="text" placeholder="Search for a spell..." autocomplete="off" style="width:100%"/>
+      <div id="challenge-ac" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;max-height:200px;overflow-y:auto;z-index:300;margin-top:3px"></div>
+    </div>
+    <div id="challenge-selected" style="display:none;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:12px">
+      <div style="font-size:.72rem;color:var(--text-muted);font-family:'Cinzel',serif;letter-spacing:.04em;margin-bottom:4px">SELECTED SPELL</div>
+      <div id="challenge-spell-name" style="font-family:'Cinzel',serif;font-size:.88rem;color:var(--accent)"></div>
+      <div id="challenge-spell-school" style="font-size:.72rem;color:var(--text-secondary);margin-top:2px"></div>
+    </div>
+    <div id="challenge-link-area" style="display:none">
+      <div style="font-size:.72rem;color:var(--text-muted);font-family:'Cinzel',serif;letter-spacing:.04em;margin-bottom:6px">CHALLENGE LINK</div>
+      <div style="display:flex;gap:6px;align-items:center">
+        <input id="challenge-link-input" class="datepick-input" type="text" readonly style="flex:1;font-size:.72rem;color:var(--text-secondary)"/>
+        <button class="datepick-go" id="challenge-copy-btn" onclick="copyChallenge()">Copy</button>
+      </div>
+    </div>
+    <button class="datepick-go" onclick="generateChallenge()" id="challenge-gen-btn" style="width:100%;margin-top:12px;padding:9px;opacity:.4;cursor:not-allowed" disabled>Generate Link</button>
+    <button class="datepick-close" onclick="closeOverlay('challenge-overlay')">Cancel</button>
+  </div>
+</div>
+<!-- Hint picker overlay -->
+<div class="overlay-bg" id="hint-overlay" onclick="closeOverlay('hint-overlay',event)">
+  <div class="hint-card">
+    <div class="hint-card-title">✦ Use a Hint ✦</div>
+    <div class="hint-card-sub">Choose a column to reveal. Already known columns are shown in green.</div>
+    <div class="hint-col-grid" id="hint-col-grid"></div>
+    <button class="hint-cancel" onclick="closeOverlay('hint-overlay')">Cancel</button>
+  </div>
+</div>
+
+<!-- Effect types help overlay -->
+<div class="overlay-bg" id="help-overlay" onclick="closeOverlay('help-overlay',event)">
+  <div class="help-card">
+    <div class="help-title">Effect Types — Complete Guide</div>
+    <div class="help-subtitle">How spells are categorized, how partial matches work, and how color links are shown</div>
+
+    <div class="help-section">
+      <div class="help-section-title">The 6 Top-Level Categories</div>
+      <div class="help-cats">
+        <div class="help-cat"><span>charm</span> — modifies outgoing effects (damage dealt, healing done, accuracy)</div>
+        <div class="help-cat"><span>ward</span> — modifies incoming effects (damage received, healing received)</div>
+        <div class="help-cat"><span>damage</span> — deals damage</div>
+        <div class="help-cat"><span>heal</span> — restores health</div>
+        <div class="help-cat"><span>utility</span> — special actions</div>
+        <div class="help-cat"><span>aura / global / minion / dot / hot</span> — standalone types</div>
+      </div>
+      <div class="help-p">Most effect types follow the pattern <strong>category-subtype</strong> (e.g. <strong>ward-shield</strong>, <strong>charm-blade</strong>, <strong>utility-gambit</strong>). Some like <strong>damage</strong>, <strong>heal</strong>, <strong>aura</strong>, <strong>global</strong>, and <strong>minion</strong> have no subtype.</div>
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-title">Subtypes by Category</div>
+      <div class="help-p"><strong>charm:</strong> accuracy · blade · dispel · healing · pierce · prism · weakness</div>
+      <div class="help-p"><strong>ward:</strong> absorb · healing · prism · shield · stun · trap</div>
+      <div class="help-p"><strong>utility:</strong> aggro · beguile · clear · conditional · confuse · convert · detonate · extend · gambit · mutate · pip · push · remove · reshuffle · revive · sacrifice · steal · swap</div>
+      <div class="help-p"><strong>Standalone types</strong> (no subtype): <strong>damage</strong> · <strong>aura</strong> · <strong>global</strong> · <strong>minion</strong> · <strong>heal</strong> · <strong>hot</strong> (heal over time) · <strong>dot</strong> (damage over time)</div>
+      <div class="help-p" style="margin-top:4px;font-size:.78rem;color:var(--text-muted)"><em>Note: <strong>damage-drain</strong> uses damage as a category prefix, making it a partial match with plain <strong>damage</strong> spells. This is the one exception where a standalone type also acts as a category parent.</em></div>
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-title">How Partial Matches Work (Step by Step)</div>
+      <div class="help-step"><div class="help-step-num">1</div><div class="help-step-text">The game compares your guessed spell's effect types to the answer's effect types.</div></div>
+      <div class="help-step"><div class="help-step-num">2</div><div class="help-step-text"><strong>Green (exact):</strong> Every effect type matches exactly and the counts are equal. e.g. guess has <strong>ward-trap</strong>, answer has <strong>ward-trap</strong>.</div></div>
+      <div class="help-step"><div class="help-step-num">3</div><div class="help-step-text"><strong>Yellow (partial — exact overlap):</strong> At least one effect type from your guess exists in the answer, but not all match. The matching type is shown at full brightness, non-matching types are dimmed.</div></div>
+      <div class="help-step"><div class="help-step-num">4</div><div class="help-step-text"><strong>Yellow (partial — category overlap only):</strong> No exact type matches, but at least one category prefix matches. e.g. you guessed <strong>ward-shield</strong> but the answer has <strong>ward-trap</strong>. The prefix <strong>ward</strong> is shown at full brightness, the suffix <strong>-shield</strong> is dimmed to signal the subtype is wrong.</div></div>
+      <div class="help-step"><div class="help-step-num">5</div><div class="help-step-text"><strong>Grey (no match):</strong> No exact types and no category prefixes overlap at all.</div></div>
+      <div class="help-example"><strong>Example:</strong> Answer is Feint (ward-trap/enemy, ward-trap/self). You guess a spell with <strong>ward-shield</strong>. The cell turns yellow. You see <strong>ward</strong><span style="opacity:.55">-shield</span> — telling you the ward category is right but the subtype is wrong.</div>
+
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-title">How Color Links Work</div>
+      <div class="help-p">Color links connect an effect type to its target to show you which target belongs to which effect. Colors appear only when specific conditions are met:</div>
+      <div class="help-step"><div class="help-step-num">1</div><div class="help-step-text">The game checks each effect in your guess as a <strong>pair</strong>: (effect type → target).</div></div>
+      <div class="help-step"><div class="help-step-num">2</div><div class="help-step-text">If that exact pair exists in the answer spell, <strong>both</strong> the effect tag and the target tag get the same color background.</div></div>
+      <div class="help-step"><div class="help-step-num">3</div><div class="help-step-text">Colors are assigned by <strong>target</strong>. All effects pointing to <strong>enemy</strong> share one color; all effects pointing to <strong>self</strong> share another. This means if your guess has two effects both targeting <strong>aoe</strong>, they both get the same color, and <strong>aoe</strong> in the targets column also shows that color.</div></div>
+      <div class="help-step"><div class="help-step-num">4</div><div class="help-step-text">If no exact pair matches, <strong>no colors appear</strong> — both columns show plain text regardless of whether individual types or targets partially match.</div></div>
+      <div class="help-example">
+        <strong>Example A:</strong> Answer has <strong>damage → enemy</strong> and <strong>ward-shield → self</strong>. Your guess also has these exact pairs. Damage and enemy share
+        <span class="swatch-inline" style="background:var(--ec0-bg);border:1px solid var(--ec0-t)"></span>blue.
+        Ward-shield and self share <span class="swatch-inline" style="background:var(--ec1-bg);border:1px solid var(--ec1-t)"></span>orange.<br><br>
+        <strong>Example B:</strong> Answer has <strong>utility-remove → aoe</strong> and <strong>damage → aoe</strong>. Both effects point to aoe, so both share the same
+        <span class="swatch-inline" style="background:var(--ec0-bg);border:1px solid var(--ec0-t)"></span>blue color. Aoe in targets also shows blue.<br><br>
+        <strong>Example C:</strong> You guess a spell with <strong>ward-trap → aoe</strong> but the answer's trap targets <strong>enemy</strong>. No exact pair match — no colors shown even though ward-trap partially matches.
+      </div>
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-title">Pip Cost Notes</div>
+      <div class="help-p">Pip cost shows the number of pips required to cast the spell. <strong>School pips</strong> count as <strong>2 regular pips</strong> for cost purposes. Spells with cost <strong>X</strong> scale with how many pips you put in.</div>
+    </div>
+
+    <div class="help-section">
+      <div class="help-section-title">Arc Notes</div>
+      <div class="help-p">Arcs represent which content update or storyline the spell belongs to:</div>
+      <div class="help-p"><strong>Arc 1</strong> — Wizard City through Dragonspyre<br>
+      <strong>Arc 2</strong> — Celestia through Khrysalis<br>
+      <strong>Arc 3</strong> — Polaris through Empyrea<br>
+      <strong>Arc 4</strong> — Karamelle through Wallaru<br>
+      <strong>Arc 5</strong> — Darkmoor and beyond<br>
+      <strong>Side Arc</strong> — Grizzleheim, Wintertusk, Castle Darkmoor</div>
+    </div>
+
+    <button class="help-close" onclick="closeOverlay('help-overlay')">Close Guide</button>
+  </div>
+</div>
+
+<div class="app" id="app" style="display:none">
+  <header>
+    <div class="logo">Spelldle<sup>101</sup></div>
+    <div class="tagline">guess today's wizard101 spell</div>
+    <div class="date-pill" id="date-pill" onclick="openDatePicker()">
+      <span id="date-pill-text"></span>
+      <span class="date-pill-arrow">▾</span>
+    </div>
+  </header>
+
+  <div class="search-area">
+    <div class="ac-wrap">
+      <div class="search-box">
+        <span class="search-gem">&#9670;</span>
+        <input id="spell-input" type="text" placeholder="Click to browse spells, or type to search..." autocomplete="off"/>
+        <button class="cast-btn" id="cast-btn" onclick="submitGuess()">Cast Guess</button>
+      </div>
+      <div class="autocomplete" id="ac"></div>
+    </div>
+    <div id="err" class="error-msg"></div>
+    <div class="filters-area">
+      <div class="filter-row">
+        <span class="filter-label">Smart filters:</span>
+        <div id="smart-filters"></div>
+      </div>
+      <div class="filter-row" id="school-filters"></div>
+      <div class="filter-footer">
+        <span class="remaining-count" id="remaining-count"></span>
+        <a class="view-all-btn" href="#" target="_blank">View All Cards ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="guess-count" id="gcount"></div>
+  <div class="hint-bar hidden" id="hint-bar">
+    <span class="hint-bar-label">✦ HINTS</span>
+    <button class="hint-btn" id="hint-btn" onclick="openHintPicker()">Use a Hint</button>
+    <span class="hint-count" id="hint-count"></span>
+  </div>
+
+  <div class="table-wrap">
+    <div class="no-g" id="no-g">cast your first guess above</div>
+    <table class="gtable" id="gtable" style="display:none">
+      <colgroup>
+  <col style="width:13%">
+  <col style="width:9%">
+  <col style="width:7%">
+  <col style="width:9%">
+  <col style="width:8%">
+  <col style="width:10%">
+  <col style="width:24%">
+  <col style="width:20%">
+</colgroup>
+<thead>
+        <tr>
+          <th class="col-h">Spell</th>
+          <th class="col-h">School
+            <div class="col-tip"><strong>School</strong>Each spell belongs to one of 7 schools: Fire, Ice, Storm, Myth, Life, Death, or Balance.</div>
+          </th>
+          <th class="col-h">Pip Cost
+            <div class="col-tip"><strong>Pip Cost</strong>How many pips the spell costs to cast. School-specific pips (colored pips) count as 2 regular pips. Spells marked X scale with how many pips you use.</div>
+          </th>
+          <th class="col-h">Archmastery
+            <div class="col-tip"><strong>Archmastery</strong>Some spells require a specific school pip. Most spells have no archmastery requirement (shown as None).</div>
+          </th>
+          <th class="col-h">Arc
+            <div class="col-tip"><strong>Arc</strong>Which story arc the spell was introduced in. Arc 1 = Wizard City–Dragonspyre. Arc 2 = Celestia–Khrysalis. Arc 3 = Polaris–Empyrea. Arc 4 = Karamelle–Wallaru. Arc 5 = Darkmoor+. Side Arc = Grizzleheim, Wintertusk, Castle Darkmoor.</div>
+          </th>
+          <th class="col-h">Source
+            <div class="col-tip"><strong>Source</strong>How the spell is obtained. Trainer = bought from a school trainer. Quest = reward from completing a quest. Spellement = unlocked via spellements. Recipe = crafted at a crafting station. Drop = drops from enemies.</div>
+          </th>
+          <th class="col-h">Effect Types <span class="effect-help-btn" onclick="event.stopPropagation();openOverlay('help-overlay')">? Guide</span>
+            <div class="col-tip"><strong>Effect Types</strong>What the spell does — damage, healing, traps, blades, etc. Click the Guide button for a full explanation of all categories, subtypes, and how partial matches work.</div>
+          </th>
+          <th class="col-h">Targets
+            <div class="col-tip"><strong>Targets</strong>Who the effects are applied to. enemy = single enemy, aoe = all enemies, self = caster, any-ally = any friendly target, ally = any-ally excluding self, all-allies = all allies, selected = player-selected targets, all = everyone, minion = summoned minion.</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="gtbody"></tbody>
+    </table>
+  </div>
+
+  <div class="legend">
+    <div class="li"><div class="ls g"></div>Exact match</div>
+    <div class="li"><div class="ls a"></div>Partial match</div>
+    <div class="li"><div class="ls gr"></div>Not in answer</div>
+    <div class="li" style="margin-left:.5rem;padding-left:.5rem;border-left:1px solid #222">
+      <div class="link-swatches">
+        <div class="lswatch" style="background:var(--ec0-bg);border:1px solid var(--ec0-t)"></div>
+        <div class="lswatch" style="background:var(--ec1-bg);border:1px solid var(--ec1-t)"></div>
+        <div class="lswatch" style="background:var(--ec2-bg);border:1px solid var(--ec2-t)"></div>
+      </div>
+      &nbsp;Colored bg = exact effect+target pair in answer
+    </div>
+    <div class="li">
+      <span style="font-size:.68rem;color:var(--text-primary);font-weight:500">ward</span><span style="font-size:.68rem;color:var(--text-secondary);opacity:.55">-shield</span>
+      &nbsp;= category match only
+    </div>
+    <div class="li"><span style="font-size:.68rem;color:var(--text-secondary);opacity:.55">dimmed</span>&nbsp;= not in answer</div>
+  </div>
+</div>
+
+<footer>
+  <div>Spelldle 101 is a fan-made project and is not affiliated with KingsIsle Entertainment.</div>
+  <div>All Wizard101 spell names, images, and game content are property of <a href="https://www.kingsisle.com" target="_blank">KingsIsle Entertainment</a>.</div>
+  <div style="margin-top:4px;color:var(--text-muted)">Made with ✦ by a fan &nbsp;·&nbsp; <a href="#">Source</a></div>
+</footer>
+
+<script>
+
+// ─── Toast ────────────────────────────────────────────────────────
+function showToast(msg){
+  const existing=document.querySelector('.toast');
+  if(existing)existing.remove();
+  const t=document.createElement('div');
+  t.className='toast';t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),4200);
+}
+
+// ─── URL param handling ───────────────────────────────────────────
+function parseURLParams(){
+  const params=new URLSearchParams(window.location.search);
+  if(params.has('dev')){
+    const name=decodeURIComponent(params.get('dev')).trim();
+    const spell=SPELLS.find(s=>s.name.toLowerCase()===name.toLowerCase());
+    if(spell){customSeed=null;devSpell=spell;}
+    else{devSpell=null;devUnknown=name;}
+    return;
+  }
+  if(params.has('challenge')){
+    const code=params.get('challenge');
+    const decoded=decodeChallenge(code);
+    if(decoded){customSeed=null;challengeSpell=decoded;challengeValid=true;}
+    else{challengeValid=false;}
+    return;
+  }
+}
+
+// ─── Challenge encoding ───────────────────────────────────────────
+const _CALPHA='23456789BCDFGHJKMNPQRSTVWXYZ';
+function encodeChallenge(spellIndex){
+  const salt=Math.floor(Math.random()*65535);
+  const n=((salt<<16)|(spellIndex&0xffff))>>>0;
+  let val=n,result='';
+  for(let i=0;i<7;i++){result=_CALPHA[val%28]+result;val=Math.floor(val/28);}
+  return result;
+}
+
+function decodeChallenge(code){
+  if(!code||code.length!==7)return null;
+  try{
+    let val=0;
+    for(const ch of code.toUpperCase()){
+      const idx=_CALPHA.indexOf(ch);
+      if(idx===-1)return null;
+      val=val*28+idx;
+    }
+    const idx=val&0xffff;
+    if(idx<0||idx>=SPELLS.length)return null;
+    return SPELLS[idx];
+  }catch{return null;}
+}
+
+// ─── Challenge creator UI ─────────────────────────────────────────
+let selectedChallengeSpell=null;
+
+function showChallengeCreator(){
+  closeOverlay('date-overlay');
+  selectedChallengeSpell=null;
+  document.getElementById('challenge-spell-input').value='';
+  document.getElementById('challenge-selected').style.display='none';
+  document.getElementById('challenge-link-area').style.display='none';
+  document.getElementById('challenge-gen-btn').disabled=true;
+  document.getElementById('challenge-gen-btn').style.opacity='.4';
+  document.getElementById('challenge-gen-btn').style.cursor='not-allowed';
+  document.getElementById('challenge-ac').style.display='none';
+  openOverlay('challenge-overlay');
+}
+
+function setupChallengeAC(){
+  const inp=document.getElementById('challenge-spell-input');
+  const ac=document.getElementById('challenge-ac');
+  inp.addEventListener('input',()=>{
+    const q=inp.value.trim().toLowerCase();
+    if(!q){ac.style.display='none';return;}
+    const matches=SPELLS.filter(s=>s.name.toLowerCase().includes(q)).slice(0,10);
+    if(!matches.length){ac.style.display='none';return;}
+    ac.innerHTML='';
+    matches.forEach(s=>{
+      const div=document.createElement('div');
+      div.style.cssText='padding:7px 12px;cursor:pointer;font-size:.88rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center';
+      div.innerHTML=`<span style="color:var(--text-primary)">${s.name}</span><span style="font-size:.7rem;color:var(--text-secondary);font-style:italic">${s.school}</span>`;
+      div.addEventListener('click',()=>selectChallengeSpell(s.name));
+      div.addEventListener('mouseover',()=>div.style.background='var(--surface2)');
+      div.addEventListener('mouseout',()=>div.style.background='');
+      ac.appendChild(div);
+    });
+    ac.style.display='block';
+  });
+  inp.addEventListener('focus',()=>{if(inp.value.trim())ac.style.display='block';});
+  document.addEventListener('click',e=>{if(!e.target.closest('#challenge-spell-input')&&!e.target.closest('#challenge-ac'))ac.style.display='none';});
+}
+
+function selectChallengeSpell(name){
+  selectedChallengeSpell=SPELLS.find(s=>s.name===name);
+  document.getElementById('challenge-spell-input').value=name;
+  document.getElementById('challenge-ac').style.display='none';
+  document.getElementById('challenge-selected').style.display='block';
+  document.getElementById('challenge-spell-name').textContent=name;
+  document.getElementById('challenge-spell-school').textContent=selectedChallengeSpell.school;
+  document.getElementById('challenge-spell-school').style.color=SCHOOL_COLORS[selectedChallengeSpell.school]||'#888';
+  document.getElementById('challenge-link-area').style.display='none';
+  const btn=document.getElementById('challenge-gen-btn');
+  btn.disabled=false;btn.style.opacity='1';btn.style.cursor='pointer';
+}
+
+function generateChallenge(){
+  if(!selectedChallengeSpell)return;
+  const idx=SPELLS.indexOf(selectedChallengeSpell);
+  const code=encodeChallenge(idx);
+  const url=`${location.origin}${location.pathname}?challenge=${code}`;
+  document.getElementById('challenge-link-input').value=url;
+  document.getElementById('challenge-link-area').style.display='block';
+}
+
+function copyChallenge(){
+  const inp=document.getElementById('challenge-link-input');
+  navigator.clipboard.writeText(inp.value).then(()=>{
+    const btn=document.getElementById('challenge-copy-btn');
+    btn.textContent='Copied!';
+    setTimeout(()=>btn.textContent='Copy',2000);
+  });
+}
+
+const SCHOOLS_LIST=['Ice','Fire','Storm','Myth','Life','Death','Balance'];
+const SCHOOL_FILES=['ice','death','myth','storm','fire','life','balance'];
+const TL=['tl0','tl1','tl2','tl3','tl4'];
+const LK=['lk0','lk1','lk2','lk3','lk4'];
+const SCHOOL_COLORS={Fire:'#e05020',Ice:'#60a8e0',Storm:'#9060e0',Myth:'#e0b820',Life:'#40b840',Death:'#a060d0',Balance:'#d09040'};
+const FILTER_TIPS=[
+  'Narrows the search to spells that share all green (correct) attribute values with your guesses.',
+  'Narrows the search to spells that share at least one yellow (partial) attribute value with your guesses.',
+  'Removes spells from search that have any grey (wrong) attribute values from your guesses.'
+];
+const COL_KEYS=['school','pipCost','archmastery','arc','source','effectTypes','targets'];
+const COL_NAMES=['School','Pip Cost','Archmastery','Arc','Source','Effect Types','Targets'];
+
+let SPELLS=[];
+let ANSWER=null;
+let devSpell=null;
+let devUnknown=null;
+let challengeSpell=null;
+let challengeValid=true;
+let customDate=null;
+let guesses=[],won=false,acIdx=-1;
+let filters=[false,false,false]; // all off by default
+let schoolFilter=new Set();
+let acOffset=0;
+const AC_PAGE=20;
+let tooltipTimeout=null;
+let currentMatches=[];
+// Hints
+let hintsUsed=0;
+const MAX_HINTS=3;
+const HINT_THRESHOLDS=[3,6,9];
+let hintRevealed={}; // col key -> answer value
+
+// ─── Load ─────────────────────────────────────────────────────────
+async function loadSpells(){
+  const bar=document.getElementById('loading-bar');
+  const txt=document.getElementById('loading-txt');
+  try{
+    const results=await Promise.all(
+      SCHOOL_FILES.map(async(school,i)=>{
+        txt.textContent=`Loading ${school} spells...`;
+        const res=await fetch(`assets/${school}/${school}Spells.json`);
+        if(!res.ok)throw new Error(`Failed to load ${school}Spells.json (${res.status})`);
+        const data=await res.json();
+        bar.style.width=`${((i+1)/SCHOOL_FILES.length)*100}%`;
+        return data;
+      })
+    );
+    SPELLS=results.flat();
+    bar.style.width='100%';
+    txt.textContent=`${SPELLS.length} spells loaded`;
+    setTimeout(()=>{
+      document.getElementById('loading-screen').classList.add('done');
+      document.getElementById('app').style.display='block';
+      initGame();
+    },400);
+  }catch(err){
+    txt.innerHTML='';
+    document.querySelector('.loading-bar-wrap').style.display='none';
+    const e=document.createElement('div');
+    e.className='loading-err';
+    e.textContent=`Error: ${err.message}. Make sure JSON files are in assets/{school}/ and the game is served from a web server.`;
+    document.getElementById('loading-screen').appendChild(e);
+  }
+}
+
+// ─── Date/seed ────────────────────────────────────────────────────
+function dateSeed(d){return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();}
+function seedToSpell(seed){let x=seed;x=((x*1664525+1013904223)&0xffffffff)>>>0;return SPELLS[x%SPELLS.length];}
+function getDailyAnswer(){return seedToSpell(dateSeed(new Date()));}
+
+let customSeed=null; // null = today's daily
+
+function getAnswer(){
+  if(devSpell)return devSpell;
+  if(challengeSpell)return challengeSpell;
+  if(customSeed!==null)return seedToSpell(customSeed);
+  return getDailyAnswer();
+}
+
+// ─── Init ─────────────────────────────────────────────────────────
+function initGame(resetAll=true){
+  if(resetAll){
+    ANSWER=getAnswer();
+    guesses=[];won=false;acIdx=-1;
+    hintsUsed=0;hintRevealed={};
+    document.getElementById('cast-btn').disabled=false;
+    document.getElementById('spell-input').disabled=false;
+    document.getElementById('err').textContent='';
+  }
+  updateDatePill();
+  renderFilters();
+  renderSchoolFilters();
+  updateFilterFooter();
+  updateHintBar();
+  renderBoard();
+  updateCount();
+}
+
+function updateDatePill(){
+  const txt=document.getElementById('date-pill-text');
+  const pill=document.getElementById('date-pill');
+  pill.style.borderColor='';pill.style.color='';
+  if(devSpell){
+    txt.textContent='Dev: '+devSpell.name;
+  } else if(devUnknown){
+    txt.textContent='Dev: Unknown';
+    pill.style.color='var(--text-muted)';
+  } else if(challengeSpell){
+    txt.textContent='Challenge ✦';
+  } else if(!challengeValid){
+    txt.textContent='Invalid Challenge';
+    pill.style.color='#d05050';
+    pill.style.borderColor='#a03030';
+  } else if(customDate!==null){
+    txt.textContent=customDate.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).toUpperCase();
+  } else if(customSeed!==null){
+    txt.textContent='Random Spell ▾';
+  } else {
+    const d=new Date();
+    txt.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).toUpperCase();
+  }
+}
+
+// ─── Match helpers ────────────────────────────────────────────────
+function getCategory(type){const i=type.indexOf('-');return i===-1?type:type.slice(0,i);}
+function scalarMatch(gVal,aVal){return String(gVal)===String(aVal)?'correct':'wrong';}
+function setMatch(gArr,aArr){
+  const gs=new Set(gArr),as=new Set(aArr);
+  const inter=[...gs].filter(x=>as.has(x));
+  if(inter.length===as.size&&gs.size===as.size)return'correct';
+  if(inter.length>0)return'partial';
+  return'wrong';
+}
+function effectTypeMatch(gEffects,aEffects){
+  const gTypes=new Set(gEffects.map(e=>e.type));
+  const aTypes=new Set(aEffects.map(e=>e.type));
+  const exact=[...gTypes].filter(t=>aTypes.has(t));
+  if(exact.length===aTypes.size&&gTypes.size===aTypes.size)return'correct';
+  if(exact.length>0)return'partial';
+  const gCats=new Set([...gTypes].map(getCategory));
+  const aCats=new Set([...aTypes].map(getCategory));
+  if([...gCats].some(c=>aCats.has(c)))return'partial';
+  return'wrong';
+}
+function targetMatch(gEffects,aEffects){
+  const gT=new Set(gEffects.map(e=>e.target));
+  const aT=new Set(aEffects.map(e=>e.target));
+  const exact=[...gT].filter(t=>aT.has(t));
+  if(exact.length===aT.size&&gT.size===aT.size)return'correct';
+  if(exact.length>0)return'partial';
+  return'wrong';
+}
+
+// ─── Filter ───────────────────────────────────────────────────────
+function getFilteredSpells(){
+  let pool=[...SPELLS];
+  if(schoolFilter.size>0)pool=pool.filter(s=>schoolFilter.has(s.school));
+
+  // Combine guesses + hints for filtering
+  const allGuesses=[...guesses];
+
+  for(const g of allGuesses){
+    const sc=scalarMatch(g.school,ANSWER.school);
+    const pc=scalarMatch(g.pipCost,ANSWER.pipCost);
+    const arc=scalarMatch(g.arc,ANSWER.arc);
+    const am=setMatch(g.archmastery,ANSWER.archmastery);
+    const src=setMatch(g.source,ANSWER.source);
+    const et=effectTypeMatch(g.effects,ANSWER.effects);
+    const tgt=targetMatch(g.effects,ANSWER.effects);
+
+    if(filters[0]){
+      if(sc==='correct')pool=pool.filter(s=>s.school===ANSWER.school);
+      if(pc==='correct')pool=pool.filter(s=>String(s.pipCost)===String(ANSWER.pipCost));
+      if(arc==='correct')pool=pool.filter(s=>s.arc===ANSWER.arc);
+      if(am==='correct'){const aA=new Set(ANSWER.archmastery);pool=pool.filter(s=>{const sA=new Set(s.archmastery);return sA.size===aA.size&&[...aA].every(x=>sA.has(x));});}
+      if(src==='correct'){const aS=new Set(ANSWER.source);pool=pool.filter(s=>{const sS=new Set(s.source);return sS.size===aS.size&&[...aS].every(x=>sS.has(x));});}
+      if(et==='correct'){const aT=new Set(ANSWER.effects.map(e=>e.type));pool=pool.filter(s=>{const sT=new Set(s.effects.map(e=>e.type));return sT.size===aT.size&&[...aT].every(t=>sT.has(t));});}
+      if(tgt==='correct'){const aT=new Set(ANSWER.effects.map(e=>e.target));pool=pool.filter(s=>{const sT=new Set(s.effects.map(e=>e.target));return sT.size===aT.size&&[...aT].every(t=>sT.has(t));});}
+    }
+    if(filters[1]){
+      if(am==='partial'){const ov=g.archmastery.filter(x=>ANSWER.archmastery.includes(x));if(ov.length)pool=pool.filter(s=>ov.some(x=>s.archmastery.includes(x)));}
+      if(src==='partial'){const ov=g.source.filter(x=>ANSWER.source.includes(x));if(ov.length)pool=pool.filter(s=>ov.some(x=>s.source.includes(x)));}
+      if(et==='partial'){
+        const gTypes=new Set(g.effects.map(e=>e.type));
+        const aTypes=new Set(ANSWER.effects.map(e=>e.type));
+        const exactOv=[...gTypes].filter(t=>aTypes.has(t));
+        if(exactOv.length){pool=pool.filter(s=>{const sT=new Set(s.effects.map(e=>e.type));return exactOv.some(t=>sT.has(t));});}
+        else{
+          const gCats=new Set([...gTypes].map(getCategory));
+          const aCats=new Set(ANSWER.effects.map(e=>getCategory(e.type)));
+          const catOv=[...gCats].filter(c=>aCats.has(c));
+          if(catOv.length)pool=pool.filter(s=>{const sC=new Set(s.effects.map(e=>getCategory(e.type)));return catOv.some(c=>sC.has(c));});
+        }
+      }
+      if(tgt==='partial'){
+        const gT=new Set(g.effects.map(e=>e.target));
+        const aT=new Set(ANSWER.effects.map(e=>e.target));
+        const ov=[...gT].filter(t=>aT.has(t));
+        if(ov.length)pool=pool.filter(s=>{const sT=new Set(s.effects.map(e=>e.target));return ov.some(t=>sT.has(t));});
+      }
+    }
+    if(filters[2]){
+      if(sc==='wrong')pool=pool.filter(s=>s.school!==g.school);
+      if(pc==='wrong')pool=pool.filter(s=>String(s.pipCost)!==String(g.pipCost));
+      if(arc==='wrong')pool=pool.filter(s=>s.arc!==g.arc);
+      if(am==='wrong'){if(g.archmastery.length>0)pool=pool.filter(s=>!g.archmastery.some(x=>s.archmastery.includes(x)));else pool=pool.filter(s=>s.archmastery.length>0);}
+      if(src==='wrong')pool=pool.filter(s=>!g.source.some(x=>s.source.includes(x)));
+      if(et==='wrong'){const gC=new Set(g.effects.map(e=>getCategory(e.type)));pool=pool.filter(s=>!s.effects.some(e=>gC.has(getCategory(e.type))));}
+      if(tgt==='wrong'){const gT=new Set(g.effects.map(e=>e.target));pool=pool.filter(s=>!s.effects.some(e=>gT.has(e.target)));}
+    }
+  }
+
+  // Apply hint filters — gated behind filters[0] just like guess-based correct matches
+  if(filters[0]){
+    if(hintRevealed.school)pool=pool.filter(s=>s.school===ANSWER.school);
+    if(hintRevealed.pipCost)pool=pool.filter(s=>String(s.pipCost)===String(ANSWER.pipCost));
+    if(hintRevealed.arc)pool=pool.filter(s=>s.arc===ANSWER.arc);
+    if(hintRevealed.archmastery){const aA=new Set(ANSWER.archmastery);pool=pool.filter(s=>{const sA=new Set(s.archmastery);return sA.size===aA.size&&[...aA].every(x=>sA.has(x));});}
+    if(hintRevealed.source){const aS=new Set(ANSWER.source);pool=pool.filter(s=>{const sS=new Set(s.source);return sS.size===aS.size&&[...aS].every(x=>sS.has(x));});}
+    if(hintRevealed.effectTypes){const aT=new Set(ANSWER.effects.map(e=>e.type));pool=pool.filter(s=>{const sT=new Set(s.effects.map(e=>e.type));return sT.size===aT.size&&[...aT].every(t=>sT.has(t));});}
+    if(hintRevealed.targets){const aT=new Set(ANSWER.effects.map(e=>e.target));pool=pool.filter(s=>{const sT=new Set(s.effects.map(e=>e.target));return sT.size===aT.size&&[...aT].every(t=>sT.has(t));});}
+  }
+
+  const gNames=new Set(guesses.map(g=>g.name));
+  return pool.filter(s=>!gNames.has(s.name)).sort((a,b)=>a.name.localeCompare(b.name));
+}
+
+// ─── Autocomplete ─────────────────────────────────────────────────
+function openAC(query){
+  const ac=document.getElementById('ac');
+  const q=query.trim().toLowerCase();
+  const pool=getFilteredSpells();
+  currentMatches=q?pool.filter(s=>s.name.toLowerCase().includes(q)):[...pool];
+  ac.innerHTML='';
+  if(!currentMatches.length){
+    ac.innerHTML=`<div class="ac-empty">No spells match current filters</div>`;
+    ac.classList.add('open');return;
+  }
+  acOffset=Math.min(AC_PAGE,currentMatches.length);
+  appendACItems(0,acOffset,ac);
+  if(currentMatches.length>AC_PAGE)appendLoadMore(ac);
+  ac.classList.add('open');acIdx=-1;
+}
+
+function appendACItems(from,to,ac){
+  const loadMore=ac.querySelector('.ac-load-more');
+  for(let i=from;i<to;i++){
+    const s=currentMatches[i];
+    const div=document.createElement('div');
+    div.className='ac-item';div.dataset.name=s.name;
+    div.innerHTML=`<div class="ac-item-left"><img class="ac-thumb" src="${s.image||''}" alt="" onerror="this.style.display='none'"/><span class="ac-name">${s.name}</span></div><span class="ac-school">${s.school}</span>`;
+    div.addEventListener('click',()=>selectSpell(s.name));
+    attachTooltip(div,s);
+    if(loadMore)ac.insertBefore(div,loadMore);else ac.appendChild(div);
+  }
+}
+
+function appendLoadMore(ac){
+  const btn=document.createElement('div');
+  btn.className='ac-load-more';
+  const rem=()=>currentMatches.length-acOffset;
+  btn.textContent=`Show more (${rem()} remaining)`;
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    const newOffset=Math.min(acOffset+AC_PAGE,currentMatches.length);
+    appendACItems(acOffset,newOffset,ac);
+    acOffset=newOffset;
+    if(acOffset>=currentMatches.length)btn.remove();
+    else btn.textContent=`Show more (${rem()} remaining)`;
+  });
+  ac.appendChild(btn);
+}
+
+function selectSpell(name){
+  document.getElementById('spell-input').value=name;
+  document.getElementById('ac').classList.remove('open');
+  document.getElementById('err').textContent='';
+  hideTooltip();
+}
+
+// ─── Tooltip ─────────────────────────────────────────────────────
+function showTooltip(spell,x,y){
+  const t=document.getElementById('tooltip');
+  document.getElementById('tooltip-name').textContent=spell.name;
+  document.getElementById('tooltip-school').textContent=spell.school.toUpperCase();
+  document.getElementById('tooltip-school').style.color=SCHOOL_COLORS[spell.school]||'#888';
+  document.getElementById('tooltip-desc').textContent=spell.description||'';
+  document.getElementById('tooltip-pip').textContent=`Pip Cost: ${spell.pipCost}${spell.archmastery.length?' · '+spell.archmastery.join(', '):''}`;
+  const img=document.getElementById('tooltip-img');
+  if(spell.image){img.src=spell.image;img.style.display='block';}else img.style.display='none';
+  t.classList.add('visible');positionTooltip(t,x,y);
+}
+function positionTooltip(t,x,y){
+  const tw=190,th=300,vw=window.innerWidth,vh=window.innerHeight;
+  let left=x+16,top=y-20;
+  if(left+tw>vw-10)left=x-tw-16;
+  if(top+th>vh-10)top=vh-th-10;
+  if(top<10)top=10;
+  t.style.left=left+'px';t.style.top=top+'px';
+}
+function hideTooltip(){clearTimeout(tooltipTimeout);document.getElementById('tooltip').classList.remove('visible');}
+function attachTooltip(el,spell){
+  el.addEventListener('mouseenter',e=>{clearTimeout(tooltipTimeout);tooltipTimeout=setTimeout(()=>showTooltip(spell,e.clientX,e.clientY),120);});
+  el.addEventListener('mousemove',e=>positionTooltip(document.getElementById('tooltip'),e.clientX,e.clientY));
+  el.addEventListener('mouseleave',()=>{clearTimeout(tooltipTimeout);hideTooltip();});
+}
+
+// ─── Overlays ─────────────────────────────────────────────────────
+function openOverlay(id){document.getElementById(id).classList.add('show');}
+function closeOverlay(id,e){
+  if(e&&!e.target.classList.contains('overlay-bg'))return;
+  document.getElementById(id).classList.remove('show');
+}
+
+// ─── Win ─────────────────────────────────────────────────────────
+function showWin(){
+  const s=ANSWER;
+  document.getElementById('win-spell-name').textContent=s.name;
+  document.getElementById('win-school').textContent=s.school.toUpperCase();
+  document.getElementById('win-school').style.color=SCHOOL_COLORS[s.school]||'#888';
+  document.getElementById('win-desc').textContent=s.description||'';
+  document.getElementById('win-guesses').textContent=`Identified in ${guesses.length} ${guesses.length===1?'guess':'guesses'}`;
+  const ia=document.getElementById('win-img-area');
+  ia.innerHTML=s.image?`<img src="${s.image}" class="win-card-img" onerror="this.parentElement.innerHTML='<div class=win-card-img-ph>✦</div>'"/>`:`<div class="win-card-img-ph">✦</div>`;
+  spawnConfetti();openOverlay('win-overlay');
+}
+function spawnConfetti(){
+  const c=document.getElementById('confetti');c.innerHTML='';
+  const cols=['#c8a060','#a8d878','#60a8e0','#c060d8','#d88030','#40b878'];
+  for(let i=0;i<40;i++){
+    const el=document.createElement('div');el.className='confetti-piece';
+    el.style.cssText=`left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${1.2+Math.random()*1.4}s;animation-delay:${Math.random()*.6}s;transform:rotate(${Math.random()*360}deg);border-radius:${Math.random()>.5?'50%':'2px'};width:${5+Math.random()*6}px;height:${8+Math.random()*8}px;opacity:${.7+Math.random()*.3}`;
+    c.appendChild(el);
+  }
+}
+
+// ─── Date picker ──────────────────────────────────────────────────
+function openDatePicker(){
+  const d=new Date();
+  document.getElementById('today-date-sub').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  const maxDate=d.toISOString().split('T')[0];
+  const inp=document.getElementById('date-input');
+  inp.max=maxDate;
+  if(!inp.value)inp.value=maxDate;
+  // Clear challenge so date picker can freely switch spell
+  // devSpell intentionally NOT cleared here — dev mode stays locked to URL param
+  challengeSpell=null;
+  openOverlay('date-overlay');
+}
+function setRandomSpell(){
+  customSeed=Math.floor(Math.random()*999999);
+  customDate=null;
+  closeOverlay('date-overlay');
+  initGame(true);
+}
+function setTodaySpell(){
+  customSeed=null;
+  customDate=null;
+  closeOverlay('date-overlay');
+  initGame(true);
+}
+function setDateSpell(){
+  const val=document.getElementById('date-input').value;
+  if(!val)return;
+  const [y,m,da]=val.split('-').map(Number);
+  const d=new Date(y,m-1,da);
+  customSeed=dateSeed(d);
+  customDate=d;
+  closeOverlay('date-overlay');
+  initGame(true);
+}
+
+// ─── Hints ────────────────────────────────────────────────────────
+function updateHintBar(){
+  const bar=document.getElementById('hint-bar');
+  const btn=document.getElementById('hint-btn');
+  const cnt=document.getElementById('hint-count');
+  const hintsAvailable=HINT_THRESHOLDS.filter(t=>guesses.length>=t).length;
+  const remaining=hintsAvailable-hintsUsed;
+
+  if(guesses.length<HINT_THRESHOLDS[0]||won){
+    if(won&&guesses.length>=HINT_THRESHOLDS[0])bar.classList.remove('hidden');
+    else{bar.classList.add('hidden');return;}
+  } else {
+    bar.classList.remove('hidden');
+  }
+
+  btn.disabled=remaining<=0||won;
+  const nextThreshold=HINT_THRESHOLDS[hintsUsed]||null;
+  if(remaining>0){
+    cnt.textContent=`${remaining} hint${remaining!==1?'s':''} available (${MAX_HINTS-hintsUsed} total remaining)`;
+  } else if(nextThreshold&&!won){
+    cnt.textContent=`Next hint unlocks at ${nextThreshold} guesses`;
+  } else {
+    cnt.textContent=`${hintsUsed}/${MAX_HINTS} hints used`;
+  }
+}
+
+function openHintPicker(){
+  const hintsAvailable=HINT_THRESHOLDS.filter(t=>guesses.length>=t).length;
+  if(hintsUsed>=hintsAvailable)return;
+
+  // Determine which columns are already known (green from guesses or hints)
+  const knownCols=new Set();
+  for(const g of guesses){
+    if(scalarMatch(g.school,ANSWER.school)==='correct')knownCols.add('school');
+    if(scalarMatch(g.pipCost,ANSWER.pipCost)==='correct')knownCols.add('pipCost');
+    if(scalarMatch(g.arc,ANSWER.arc)==='correct')knownCols.add('arc');
+    if(setMatch(g.archmastery,ANSWER.archmastery)==='correct')knownCols.add('archmastery');
+    if(setMatch(g.source,ANSWER.source)==='correct')knownCols.add('source');
+    if(effectTypeMatch(g.effects,ANSWER.effects)==='correct')knownCols.add('effectTypes');
+    if(targetMatch(g.effects,ANSWER.effects)==='correct')knownCols.add('targets');
+  }
+  Object.keys(hintRevealed).forEach(k=>knownCols.add(k));
+
+  const grid=document.getElementById('hint-col-grid');
+  grid.innerHTML=COL_KEYS.map((key,i)=>{
+    const known=knownCols.has(key);
+    return`<button class="hint-col-btn ${known?'already-known':''}" ${known?'disabled':''} onclick="useHint('${key}');closeOverlay('hint-overlay')">
+      <div class="hint-col-name">${COL_NAMES[i]}</div>
+      <div class="hint-col-status">${known?'Already known':'Click to reveal'}</div>
+    </button>`;
+  }).join('');
+  openOverlay('hint-overlay');
+}
+
+function useHint(colKey){
+  hintRevealed[colKey]=true;
+  hintsUsed++;
+  renderBoard();
+  renderFilters();
+  updateFilterFooter();
+  updateHintBar();
+  if(document.getElementById('ac').classList.contains('open'))openAC(document.getElementById('spell-input').value);
+}
+
+// ─── Submit ───────────────────────────────────────────────────────
+function submitGuess(){
+  if(won)return;
+  const input=document.getElementById('spell-input');
+  const name=input.value.trim();
+  if(!name)return;
+  const spell=SPELLS.find(s=>s.name.toLowerCase()===name.toLowerCase());
+  if(!spell){document.getElementById('err').textContent=`"${name}" not found. Use the dropdown.`;return;}
+  if(guesses.find(g=>g.name===spell.name)){document.getElementById('err').textContent=`Already guessed ${spell.name}.`;return;}
+  document.getElementById('err').textContent='';
+  guesses.unshift(spell);
+  input.value='';
+  document.getElementById('ac').classList.remove('open');
+  hideTooltip();
+  if(spell.name===ANSWER.name){
+    won=true;
+    document.getElementById('cast-btn').disabled=true;
+    input.disabled=true;
+    setTimeout(showWin,600);
+  }
+  renderBoard();
+  renderFilters();
+  renderSchoolFilters();
+  updateFilterFooter();
+  updateHintBar();
+  updateCount();
+}
+
+function updateCount(){
+  document.getElementById('gcount').textContent=guesses.length?`${guesses.length} guess${guesses.length!==1?'es':''} cast`:'';
+}
+
+// ─── Filters UI ───────────────────────────────────────────────────
+function renderFilters(){
+  const labels=['Filter by correct','Filter by partial','Eliminate wrong'];
+  document.getElementById('smart-filters').innerHTML=
+    labels.map((l,i)=>`
+      <div class="ftoggle ${filters[i]?'on':''}" onclick="toggleFilter(${i})" style="display:inline-flex">
+        <div class="fdot"></div>${l}
+        <div class="ftip">${FILTER_TIPS[i]}</div>
+      </div>`).join('');
+}
+function toggleFilter(i){
+  filters[i]=!filters[i];renderFilters();updateFilterFooter();
+  if(document.getElementById('ac').classList.contains('open'))openAC(document.getElementById('spell-input').value);
+}
+
+function renderSchoolFilters(){
+  document.getElementById('school-filters').innerHTML=
+    `<span class="filter-label">School:</span>`+
+    SCHOOLS_LIST.map(s=>`
+      <div class="school-pill ${schoolFilter.has(s)?'active':''}"
+           style="color:${SCHOOL_COLORS[s]};border-color:${schoolFilter.has(s)?SCHOOL_COLORS[s]:'transparent'}"
+           onclick="toggleSchool('${s}')">
+        <div class="school-pill-dot"></div>${s}
+      </div>`).join('');
+}
+function toggleSchool(school){
+  if(schoolFilter.has(school))schoolFilter.delete(school);else schoolFilter.add(school);
+  renderSchoolFilters();updateFilterFooter();
+  if(document.getElementById('ac').classList.contains('open'))openAC(document.getElementById('spell-input').value);
+}
+function updateFilterFooter(){
+  document.getElementById('remaining-count').textContent=`${getFilteredSpells().length} / ${SPELLS.length} remaining`;
+}
+
+// ─── Render board ─────────────────────────────────────────────────
+function buildColorMap(guess,answer){
+  const aPairs=new Set(answer.effects.map(e=>e.type+'|'+e.target));
+
+  // Find all guess effects whose exact pair exists in answer
+  const linkedEffects=guess.effects.filter(e=>aPairs.has(e.type+'|'+e.target));
+
+  // Build connected components using union-find
+  // Nodes are effect types and targets that participate in linked pairs
+  const parent={};
+  function find(x){
+    if(!(x in parent))parent[x]=x;
+    if(parent[x]!==x)parent[x]=find(parent[x]);
+    return parent[x];
+  }
+  function union(a,b){
+    const ra=find(a),rb=find(b);
+    if(ra!==rb)parent[ra]=rb;
+  }
+
+  // Union each linked effect's type and target together
+  linkedEffects.forEach(e=>{
+    union('t:'+e.type,'g:'+e.target);
+  });
+
+  // Assign color index per component root (in order of first appearance)
+  const compColor={};
+  let ci=0;
+  linkedEffects.forEach(e=>{
+    const root=find('t:'+e.type);
+    if(!(root in compColor))compColor[root]=ci++%LK.length;
+  });
+
+  // Build lookup maps
+  const typeColor={};
+  const targetColor={};
+  linkedEffects.forEach(e=>{
+    const root=find('t:'+e.type);
+    const color=compColor[root];
+    typeColor[e.type]=color;
+    targetColor[e.target]=color;
+  });
+
+  const linkedTypes=new Set(Object.keys(typeColor));
+  const linkedTargetSet=new Set(Object.keys(targetColor));
+
+  return{aPairs,linkedTypes,linkedTargetSet,typeColor,targetColor};
+}
+
+function renderEffectTags(guess,answer){
+  const aTypes=new Set(answer.effects.map(e=>e.type));
+  const aCats=new Set(answer.effects.map(e=>getCategory(e.type)));
+  const{aPairs,linkedTypes,typeColor}=buildColorMap(guess,answer);
+
+  const seen=new Set(),unique=[];
+  guess.effects.forEach(e=>{if(!seen.has(e.type)){seen.add(e.type);unique.push(e);}});
+
+  return unique.map(e=>{
+    const type=e.type,dash=type.indexOf('-');
+    const prefix=dash===-1?type:type.slice(0,dash);
+    const suffix=dash===-1?'':type.slice(dash);
+    const exactHit=aTypes.has(type),catHit=!exactHit&&aCats.has(prefix);
+    const linked=linkedTypes.has(type);
+    const colorIdx=linked?typeColor[type]:null;
+    const cls=colorIdx!==null?'full '+LK[colorIdx]:exactHit?'full':catHit?'cat':'';
+    return`<span class="etag ${cls}"><span class="ep">${prefix}</span>${suffix?`<span class="es">${suffix}</span>`:''}</span>`;
+  }).join('');
+}
+
+function renderTargetTags(guess,answer){
+  const aTargets=new Set(answer.effects.map(e=>e.target));
+  const{linkedTargetSet,targetColor}=buildColorMap(guess,answer);
+
+  const seenTargets=new Map();
+  guess.effects.forEach(e=>{
+    if(!seenTargets.has(e.target)){
+      const linked=linkedTargetSet.has(e.target);
+      const matched=aTargets.has(e.target);
+      seenTargets.set(e.target,{linked,matched,colorIdx:linked?targetColor[e.target]:null});
+    }
+  });
+
+  return[...seenTargets.entries()].map(([target,{linked,matched,colorIdx}])=>{
+    if(linked)return`<span class="ttag ${TL[colorIdx]}">${target}</span>`;
+    if(matched)return`<span class="ttag matched">${target}</span>`;
+    return`<span class="ttag unmatched">${target}</span>`;
+  }).join('');
+}
+
+function renderSourceTags(guess,answer){
+  const aSrc=new Set(answer.source);
+  return guess.source.map(s=>`<span class="stag ${aSrc.has(s)?'matched':'unmatched'}">${s}</span>`).join(' ');
+}
+
+function renderHintRow(){
+  if(Object.keys(hintRevealed).length===0)return'';
+  const cells=COL_KEYS.map(key=>{
+    if(hintRevealed[key]){
+      let val='';
+      if(key==='school')val=ANSWER.school;
+      else if(key==='pipCost')val=ANSWER.pipCost;
+      else if(key==='archmastery')val=ANSWER.archmastery.length?ANSWER.archmastery.join(', '):'None';
+      else if(key==='arc')val=ANSWER.arc;
+      else if(key==='source')val=ANSWER.source.join(', ');
+      else if(key==='effectTypes'){
+        const seen=new Set(),types=[];
+        ANSWER.effects.forEach(e=>{if(!seen.has(e.type)){seen.add(e.type);types.push(e.type);}});
+        val=types.join(', ');
+      }
+      else if(key==='targets'){
+        const seen=new Set(),tgts=[];
+        ANSWER.effects.forEach(e=>{if(!seen.has(e.target)){seen.add(e.target);tgts.push(e.target);}});
+        val=tgts.join(', ');
+      }
+      return`<td class="cell hint-revealed">${val}</td>`;
+    }
+    return`<td class="cell hint-blank">—</td>`;
+  }).join('');
+  return`<tr class="hint-row"><td class="cell name-c">✦ HINTS</td>${cells}</tr>`;
+}
+
+function renderBoard(){
+  const tbody=document.getElementById('gtbody');
+  const table=document.getElementById('gtable');
+  const nog=document.getElementById('no-g');
+  const hasContent=guesses.length>0||Object.keys(hintRevealed).length>0;
+  if(!hasContent){table.style.display='none';nog.style.display='block';return;}
+  table.style.display='table';nog.style.display='none';
+
+  const hintRow=renderHintRow();
+  const guessRows=guesses.map((g,i)=>{
+    const sc=scalarMatch(g.school,ANSWER.school);
+    const pc=scalarMatch(g.pipCost,ANSWER.pipCost);
+    const arc=scalarMatch(g.arc,ANSWER.arc);
+    const am=setMatch(g.archmastery,ANSWER.archmastery);
+    const src=setMatch(g.source,ANSWER.source);
+    const et=effectTypeMatch(g.effects,ANSWER.effects);
+    const tc=targetMatch(g.effects,ANSWER.effects);
+    const srcCell=src==='partial'?renderSourceTags(g,ANSWER):g.source.join(', ');
+    return`<tr class="${i===0?'grow':''}">
+      <td class="cell name-c" data-spell="${g.name.replace(/"/g,'&quot;')}">${g.name}</td>
+      <td class="cell ${sc}">${g.school}</td>
+      <td class="cell ${pc}">${g.pipCost}</td>
+      <td class="cell ${am}">${g.archmastery.length?g.archmastery.join(', '):'None'}</td>
+      <td class="cell ${arc}">${g.arc}</td>
+      <td class="cell ${src}">${srcCell}</td>
+      <td class="cell ${et}"><div class="efx-wrap">${renderEffectTags(g,ANSWER)}</div></td>
+      <td class="cell ${tc}"><div class="efx-wrap">${renderTargetTags(g,ANSWER)}</div></td>
+    </tr>`;
+  }).join('');
+
+  tbody.innerHTML=hintRow+guessRows;
+
+  tbody.querySelectorAll('.name-c[data-spell]').forEach(el=>{
+    const spell=SPELLS.find(s=>s.name===el.dataset.spell);
+    if(spell)attachTooltip(el,spell);
+  });
+}
+
+// ─── Events ───────────────────────────────────────────────────────
+function attachInputEvents(){
+  const inp=document.getElementById('spell-input');
+  inp.addEventListener('focus',()=>openAC(inp.value));
+  inp.addEventListener('input',e=>openAC(e.target.value));
+  inp.addEventListener('keydown',e=>{
+    const ac=document.getElementById('ac');
+    const items=ac.querySelectorAll('.ac-item');
+    if(e.key==='ArrowDown'){acIdx=Math.min(acIdx+1,items.length-1);items.forEach((el,i)=>el.classList.toggle('hi',i===acIdx));e.preventDefault();}
+    else if(e.key==='ArrowUp'){acIdx=Math.max(acIdx-1,0);items.forEach((el,i)=>el.classList.toggle('hi',i===acIdx));e.preventDefault();}
+    else if(e.key==='Enter'){if(acIdx>=0&&items[acIdx])selectSpell(items[acIdx].dataset.name);else submitGuess();}
+    else if(e.key==='Escape')ac.classList.remove('open');
+  });
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('.ac-wrap'))document.getElementById('ac').classList.remove('open');
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      ['win-overlay','date-overlay','hint-overlay','help-overlay'].forEach(id=>document.getElementById(id).classList.remove('show'));
+    }
+  });
+}
+
+loadSpells().then(()=>{}).catch(()=>{});
+// attachInputEvents is called inside initGame after load
+const _origInit=initGame;
+function initGame(resetAll=true){
+  if(resetAll){
+    ANSWER=getAnswer();
+    guesses=[];won=false;acIdx=-1;
+    hintsUsed=0;hintRevealed={};
+    const btn=document.getElementById('cast-btn');
+    const inp=document.getElementById('spell-input');
+    if(btn)btn.disabled=false;
+    if(inp)inp.disabled=false;
+    const err=document.getElementById('err');
+    if(err)err.textContent='';
+  }
+  updateDatePill();
+  renderFilters();
+  renderSchoolFilters();
+  updateFilterFooter();
+  updateHintBar();
+  renderBoard();
+  updateCount();
+  attachInputEvents();
+}
+
+async function loadSpells(){
+  const bar=document.getElementById('loading-bar');
+  const txt=document.getElementById('loading-txt');
+  try{
+    const results=await Promise.all(
+      SCHOOL_FILES.map(async(school,i)=>{
+        txt.textContent=`Loading ${school} spells...`;
+        const res=await fetch(`assets/${school}/${school}Spells.json`);
+        if(!res.ok)throw new Error(`Failed to load ${school}Spells.json (${res.status})`);
+        const data=await res.json();
+        bar.style.width=`${((i+1)/SCHOOL_FILES.length)*100}%`;
+        return data;
+      })
+    );
+    SPELLS=results.flat();
+    bar.style.width='100%';
+    txt.textContent=`${SPELLS.length} spells loaded`;
+    await new Promise(r=>setTimeout(r,400));
+    document.getElementById('loading-screen').classList.add('done');
+    document.getElementById('app').style.display='block';
+    parseURLParams();
+    setupChallengeAC();
+    const _invalidChallenge = !challengeValid;
+    if(_invalidChallenge) challengeValid=true; // reset before initGame so pill shows today's date
+    initGame(true);
+    if(_invalidChallenge) showToast("Challenge link was invalid — playing today\'s daily instead");
+  }catch(err){
+    txt.innerHTML='';
+    document.querySelector('.loading-bar-wrap').style.display='none';
+    const e=document.createElement('div');
+    e.className='loading-err';
+    e.textContent=`Error: ${err.message}. Make sure JSON files are in assets/{school}/ and the game is served from a web server.`;
+    document.getElementById('loading-screen').appendChild(e);
+  }
+}
+
+loadSpells();
+</script>
+</body>
+</html>

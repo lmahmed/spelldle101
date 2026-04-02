@@ -1,0 +1,1031 @@
+[
+  {
+    "name": "Scarab",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Scarab.png",
+    "description": "Deals 65-105 Balance Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Scorpion",
+    "school": "Balance",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Scorpion.png",
+    "description": "Deals 160-200 Balance Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Weakness",
+    "school": "Balance",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Weakness.png",
+    "description": "Applies a -25% Damage Charm",
+    "effects": [
+      { "type": "charm-weakness", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Locust Swarm",
+    "school": "Balance",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Locust_Swarm.png",
+    "description": "Deals 245-305 Balance Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Sandstorm",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Sandstorm.png",
+    "description": "Deals 255-295 Balance Damage to all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Elemental Golem",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Elemental_Golem.png",
+    "description": "Deals 300 Balance Damage to target and applies -40% Storm, Fire, and Ice Damage Wards on caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "ward-shield", "target": "self" }
+    ]
+  },
+  {
+    "name": "Gearhead Destroyer",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Gearhead_Destroyer.png",
+    "description": "Deals 345-405 Balance Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Balance of Power",
+    "school": "Balance",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Balance_of_Power.png",
+    "description": "Applies a +25% Balance Damage Global",
+    "effects": [
+      { "type": "global", "target": "all" }
+    ]
+  },
+  {
+    "name": "Spectral Blast",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Spectral_Blast.png",
+    "description": "Deals 440 Fire Damage, 365 Ice Damage, or 550 Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Donate Power",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Donate_Power.png",
+    "description": "Gives 2 Pips to target",
+    "effects": [
+      { "type": "utility-pip", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Blade Dilution",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Blade_Dilution.png",
+    "description": "Removes up to four helpful Charms from target to apply a +15% Damage Charm on target per Charm removed",
+    "effects": [
+      { "type": "utility-clear", "target": "enemy" },
+      { "type": "charm-blade", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Trap Dilution",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Trap_Dilution.png",
+    "description": "Removes up to four harmful Wards from ally to apply a +20% Damage Ward on ally per Ward removed",
+    "effects": [
+      { "type": "utility-clear", "target": "any-ally" },
+      { "type": "ward-trap", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Iron Curse",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Iron_Curse.png",
+    "description": "Deals 55 Balance Damage and 300 Balance Damage over 3 Rounds to all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" },
+      { "type": "dot", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Hydra",
+    "school": "Balance",
+    "pipCost": 6,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Hydra.png",
+    "description": "Deals 230 Fire Damage, Ice Damage, and Storm Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Obsidian Colossus",
+    "school": "Balance",
+    "pipCost": 6,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Obsidian_Colossus.png",
+    "description": "Deals 445 Balance Damage to and applies two -20% Damage Charms on target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "charm-weakness", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Righting the Scales",
+    "school": "Balance",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Righting_the_Scales.png",
+    "description": "Removes up to three helpful or harmful Wards from target to give target up to three Pips and removes up to three helpful or harmful Wards from caster to give caster up to three Pips",
+    "effects": [
+      { "type": "utility-clear", "target": "enemy" },
+      { "type": "utility-pip", "target": "enemy" },
+      { "type": "utility-clear", "target": "self" },
+      { "type": "utility-pip", "target": "self" }
+    ]
+  },
+  {
+    "name": "Eye of Vigilance",
+    "school": "Balance",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Eye_of_Vigilance.png",
+    "description": "Removes up to three helpful or harmful Charms from target to give caster up to three Pips and removes up to three helpful or harmful Charms from caster to give target up to three Pips",
+    "effects": [
+      { "type": "utility-clear", "target": "enemy" },
+      { "type": "utility-pip", "target": "self" },
+      { "type": "utility-clear", "target": "self" },
+      { "type": "utility-pip", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Power Nova",
+    "school": "Balance",
+    "pipCost": 7,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/balance/Power_Nova.png",
+    "description": "Deals 665 Balance Damage to all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Ra",
+    "school": "Balance",
+    "pipCost": 8,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/balance/Ra.png",
+    "description": "Deals 420-500 Balance Damage to and applies a -40% Damage Charm on all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" },
+      { "type": "charm-weakness", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Jinn's Fortune",
+    "school": "Balance",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Jinn's_Fortune.png",
+    "description": "Restores 345 Health over 3 Rounds to and applies a -50% Damage Ward on ally",
+    "effects": [
+      { "type": "hot", "target": "any-ally" },
+      { "type": "ward-shield", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Chimera",
+    "school": "Balance",
+    "pipCost": 9,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/balance/Chimera.png",
+    "description": "Deals 290 Myth Damage, Life Damage, and Death Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Duststorm Jinn",
+    "school": "Balance",
+    "pipCost": 9,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Duststorm_Jinn.png",
+    "description": "Deals 245 Balance Damage, 245 Life Damage, and 245 Ice Damage or removes two Heal over Time effects and two helpful Wards from caster to deal 590 Balance Damage, 590 Life Damage, and 590 Ice Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-gambit", "target": "self" }
+    ]
+  },
+  {
+    "name": "Courageous Charge",
+    "school": "Balance",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Courageous_Charge.png",
+    "description": "Deals 130 Balance Damage to target and applies a +25% outgoing Armor Piercing Aura on caster for 4 Rounds if target has a helpful Aura",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-conditional", "target": "self", "condition": "target has a helpful Aura" }
+    ]
+  },
+  {
+    "name": "Spinning Scythe",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Spinning_Scythe.png",
+    "description": "Deals 470 Balance Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Sabertooth",
+    "school": "Balance",
+    "pipCost": 10,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/balance/Sabertooth.png",
+    "description": "Deals 805-905 Balance Damage to target and applies -50% Fire, Ice, Storm, Myth, Life, and Death Damage Wards on caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "ward-shield", "target": "self" }
+    ]
+  },
+  {
+    "name": "King Artorius (Balance)",
+    "school": "Balance",
+    "pipCost": 8,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer", "quest"],
+    "image": "/assets/balance/King_Artorius_(Balance).png",
+    "description": "Deals 665 Balance Damage to and applies a -45% Damage Charm on target, and applies a +10% Balance Armor Piercing Charm on self",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "charm-weakness", "target": "enemy" },
+      { "type": "charm-pierce", "target": "self" }
+    ]
+  },
+  {
+    "name": "Oni's Shadow",
+    "school": "Balance",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Oni's_Shadow.png",
+    "description": "Applies a -20% incoming Damage Aura on caster for 4 Rounds and two +35% Damage Wards on target",
+    "effects": [
+      { "type": "aura", "target": "self" },
+      { "type": "ward-trap", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Tribunal Oni",
+    "school": "Balance",
+    "pipCost": 9,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Tribunal_Oni.png",
+    "description": "Deals 245 Balance Damage, 245 Storm Damage, and 245 Myth Damage or removes a helpful Aura from caster and 3 harmful Wards from target to deal 545 Balance Damage, 545 Storm Damage, and 545 Myth Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-gambit", "target": "self" }
+    ]
+  },
+  {
+    "name": "Elemental Trap",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Elemental_Trap.png",
+    "description": "Applies +30% Fire, Ice, and Storm Damage Wards",
+    "effects": [
+      { "type": "ward-trap", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Elemental Weakness",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Elemental_Weakness.png",
+    "description": "Applies -30% Ice, Storm, and Fire Damage Charms",
+    "effects": [
+      { "type": "charm-weakness", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Spirit Weakness",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Spirit_Weakness.png",
+    "description": "Applies -30% Death, Myth, and Life Damage Charms",
+    "effects": [
+      { "type": "charm-weakness", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Spirit Trap",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Spirit_Trap.png",
+    "description": "Applies +30% Death, Myth, and Life Damage Wards",
+    "effects": [
+      { "type": "ward-trap", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Reshuffle",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Reshuffle.png",
+    "description": "Reshuffles all used or discarded cards back into the deck",
+    "effects": [
+      { "type": "utility-reshuffle", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Unbalance",
+    "school": "Balance",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Unbalance.png",
+    "description": "Applies a Balance Dispel Charm",
+    "effects": [
+      { "type": "charm-dispel", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Elemental Blade",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Elemental_Blade.png",
+    "description": "Applies +35% Ice, Storm, and Fire Damage Charms",
+    "effects": [
+      { "type": "charm-blade", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Spirit Blade",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Spirit_Blade.png",
+    "description": "Applies +35% Death, Myth, and Life Damage Charms",
+    "effects": [
+      { "type": "charm-blade", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Sap Health",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer"],
+    "image": "/assets/balance/Sap_Health.png",
+    "description": "Sacrifices a Minion to restore 500 Health to caster",
+    "effects": [
+      { "type": "utility-sacrifice", "target": "minion" },
+      { "type": "heal", "target": "self" }
+    ]
+  },
+  {
+    "name": "Elemental Spear",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Elemental_Spear.png",
+    "description": "Applies +20% Ice, Storm, and Fire Armor Piercing Charms",
+    "effects": [
+      { "type": "charm-pierce", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Spirit Spear",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Spirit_Spear.png",
+    "description": "Applies +20% Death, Myth, and Life Armor Piercing Charms",
+    "effects": [
+      { "type": "charm-pierce", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Counterforce",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["trainer"],
+    "image": "/assets/balance/Counterforce.png",
+    "description": "Applies a +20% Balance Armor Piercing and +20% Balance Critical Chance Global",
+    "effects": [
+      { "type": "global", "target": "all" }
+    ]
+  },
+  {
+    "name": "Precision",
+    "school": "Balance",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["trainer", "quest"],
+    "image": "/assets/balance/Precision.png",
+    "description": "Applies a +25% Accuracy Charm",
+    "effects": [
+      { "type": "charm-accuracy", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Elemental Shield",
+    "school": "Balance",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Elemental_Shield.png",
+    "description": "Applies -50% Fire, Ice, and Storm Damage Wards",
+    "effects": [
+      { "type": "ward-shield", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Spirit Shield",
+    "school": "Balance",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Spirit_Shield.png",
+    "description": "Applies -50% Death, Myth, and Life Damage Wards",
+    "effects": [
+      { "type": "ward-shield", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Balanceblade",
+    "school": "Balance",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Balanceblade.png",
+    "description": "Applies a +25% Damage Charm",
+    "effects": [
+      { "type": "charm-blade", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Black Mantle",
+    "school": "Balance",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Black_Mantle.png",
+    "description": "Applies a -45% Accuracy Charm",
+    "effects": [
+      { "type": "charm-accuracy", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Mander Minion",
+    "school": "Balance",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Mander_Minion.png",
+    "description": "Summons a Minion of Balance",
+    "effects": [
+      { "type": "minion", "target": "self" }
+    ]
+  },
+  {
+    "name": "Helping Hands",
+    "school": "Balance",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Helping_Hands.png",
+    "description": "Restores 125 Health and 465 Health over 3 Rounds",
+    "effects": [
+      { "type": "heal", "target": "any-ally" },
+      { "type": "hot", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Hex",
+    "school": "Balance",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Hex.png",
+    "description": "Applies a +30% Damage Ward",
+    "effects": [
+      { "type": "ward-trap", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Judgement",
+    "school": "Balance",
+    "pipCost": "X",
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Judgement.png",
+    "description": "Deals 100 Balance Damage per Pip",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Bladestorm",
+    "school": "Balance",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Bladestorm.png",
+    "description": "Applies a +20% Damage Charm on all allies",
+    "effects": [
+      { "type": "charm-blade", "target": "all-allies" }
+    ]
+  },
+  {
+    "name": "Elemental Defuse",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Side Arc",
+    "source": ["quest"],
+    "image": "/assets/balance/Elemental_Defuse.png",
+    "description": "Applies Fire, Ice, and Storm Dispel Charms",
+    "effects": [
+      { "type": "charm-dispel", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Spirit Defuse",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Side Arc",
+    "source": ["quest"],
+    "image": "/assets/balance/Spirit_Defuse.png",
+    "description": "Applies Life, Death, and Myth Dispel Charms",
+    "effects": [
+      { "type": "charm-dispel", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Spectral Minion",
+    "school": "Balance",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["quest"],
+    "image": "/assets/balance/Spectral_Minion.png",
+    "description": "Summons a Minion of Fire, Ice, or Storm",
+    "effects": [
+      { "type": "minion", "target": "self" }
+    ]
+  },
+  {
+    "name": "Availing Hands",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["quest"],
+    "image": "/assets/balance/Availing_Hands.png",
+    "description": "Restores 85 Health and applies two Heal over time effects that each restore 520 Health over 4 Rounds",
+    "effects": [
+      { "type": "heal", "target": "any-ally" },
+      { "type": "hot", "target": "any-ally" }
+    ]
+  },
+  {
+    "name": "Mana Burn",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["quest"],
+    "image": "/assets/balance/Mana_Burn.png",
+    "description": "Deals 50 Balance Damage to target per target's Pips, and removes 3 Pips from target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-pip", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Supernova",
+    "school": "Balance",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["quest"],
+    "image": "/assets/balance/Supernova.png",
+    "description": "Destroys target's Aura to deal 405 Balance Damage",
+    "effects": [
+      { "type": "utility-detonate", "target": "enemy" },
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Nerys",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": ["quest"],
+    "image": "/assets/balance/Nerys.png",
+    "description": "Summons a Minion of Balance",
+    "effects": [
+      { "type": "minion", "target": "self" }
+    ]
+  },
+  {
+    "name": "Gaze of Fate",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Side Arc",
+    "source": ["quest"],
+    "image": "/assets/balance/Gaze_of_Fate.png",
+    "description": "Deals 120 Balance Damage and 120 random School Damage to target and applies a +25% Balance Damage Global",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "global", "target": "all" }
+    ]
+  },
+  {
+    "name": "Nested Fury",
+    "school": "Balance",
+    "pipCost": 6,
+    "archmastery": [],
+    "arc": "Arc 3",
+    "source": ["quest", "trainer"],
+    "image": "/assets/balance/Nested_Fury.png",
+    "description": "Deals 410 Ice Damage, 495 Fire Damage, or 620 Storm Damage to all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Sand Wurm",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/balance/Sand_Wurm.png",
+    "description": "Deals 250 Balance Damage and applies a +35% Damage Ward split among selected enemies",
+    "effects": [
+      { "type": "damage", "target": "selected" },
+      { "type": "ward-trap", "target": "selected" }
+    ]
+  },
+  {
+    "name": "Scion of Balance",
+    "school": "Balance",
+    "pipCost": 11,
+    "archmastery": [],
+    "arc": "Arc 3",
+    "source": ["quest", "trainer"],
+    "image": "/assets/balance/Scion_of_Balance.png",
+    "description": "Deals 955 Balance Damage to target, or if caster has at least six helpful Charms, deals 1,910 Balance Damage to target and removes all helpful Charms from caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-gambit", "target": "self" }
+    ]
+  },
+  {
+    "name": "Mockenspiel",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/balance/Mockenspiel.png",
+    "description": "Deals 390 Balance Damage to target then removes up to three School Blades from caster to apply a Damage Charm with the same percentage on caster per Blade removed",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "utility-convert", "target": "self" }
+    ]
+  },
+  {
+    "name": "Old One's Endgame",
+    "school": "Balance",
+    "pipCost": 6,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/balance/Old_One's_Endgame.png",
+    "description": "Deals 380 Balance Damage to all enemies and applies a Balance to random School Damage Prism Charm on caster",
+    "effects": [
+      { "type": "damage", "target": "aoe" },
+      { "type": "charm-prism", "target": "self" }
+    ]
+  },
+  {
+    "name": "Scales of Destiny",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": ["Ice", "Life"],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/balance/Scales_of_Destiny.png",
+    "description": "Deals 205 Life Damage, Ice Damage, and Balance Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Rainbow Serpent",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": ["Death"],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/balance/Rainbow_Serpent.png",
+    "description": "Deals 410 Storm Damage to all enemies",
+    "effects": [
+      { "type": "damage", "target": "aoe" }
+    ]
+  },
+  {
+    "name": "Chameleon Clash",
+    "school": "Balance",
+    "pipCost": 7,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": ["quest", "trainer"],
+    "image": "/assets/balance/Chameleon_Clash.png",
+    "description": "Deals 665 Damage of a random School except Balance",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Wheel of Fortune",
+    "school": "Balance",
+    "pipCost": 10,
+    "archmastery": [],
+    "arc": "Arc 5",
+    "source": ["quest", "trainer"],
+    "image": "/assets/balance/Wheel_of_Fortune.png",
+    "description": "Deals 700 Balance Damage and 210 Balance Damage after 3 Rounds to and applies a -25% Damage Charm on target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "dot", "target": "enemy" },
+      { "type": "charm-weakness", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Brave Sir Badger",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": ["Balance"],
+    "arc": "Arc 1",
+    "source": ["spellement"],
+    "image": "/assets/balance/Brave_Sir_Badger.png",
+    "description": "Deals 390 Balance Damage to target and applies a +25% outgoing Damage Aura on caster for 4 Rounds",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "aura", "target": "self" }
+    ]
+  },
+  {
+    "name": "Dyvim's Resurgence",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": ["Balance"],
+    "arc": "Arc 1",
+    "source": ["spellement"],
+    "image": "/assets/balance/Dyvim's_Resurgence.png",
+    "description": "Deals 315 Balance Damage to and a -60% Healing Ward and +30% Damage Ward on target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "ward-healing", "target": "enemy" },
+      { "type": "ward-trap", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Loremaster",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": ["Balance"],
+    "arc": "Arc 1",
+    "source": ["spellement", "recipe"],
+    "image": "/assets/balance/Loremaster.png",
+    "description": "Deals 315-395 Balance Damage to and applies a -15% Damage Charm and -25% Accuracy Charm on target",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "charm-weakness", "target": "enemy" },
+      { "type": "charm-accuracy", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Ninja Piglets",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": ["Balance"],
+    "arc": "Arc 1",
+    "source": ["spellement", "recipe"],
+    "image": "/assets/balance/Ninja_Piglets.png",
+    "description": "Deals 420-510 Balance Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Samoorai",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": ["Balance"],
+    "arc": "Arc 1",
+    "source": ["spellement", "recipe"],
+    "image": "/assets/balance/Samoorai.png",
+    "description": "Deals 510-590 Balance Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Savage Paw",
+    "school": "Balance",
+    "pipCost": 5,
+    "archmastery": ["Balance"],
+    "arc": "Arc 1",
+    "source": ["spellement", "recipe"],
+    "image": "/assets/balance/Savage_Paw.png",
+    "description": "Deals 500 Balance Damage to target and applies a +25% Damage Charm on caster",
+    "effects": [
+      { "type": "damage", "target": "enemy" },
+      { "type": "charm-blade", "target": "self" }
+    ]
+  },
+  {
+    "name": "Spiritual Tribunal",
+    "school": "Balance",
+    "pipCost": 4,
+    "archmastery": ["Balance"],
+    "arc": "Arc 1",
+    "source": ["spellement"],
+    "image": "/assets/balance/Spiritual_Tribunal.png",
+    "description": "Deals 425 Life Damage, 425 Myth Damage, or 425 Death Damage",
+    "effects": [
+      { "type": "damage", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Steal Pip",
+    "school": "Balance",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["spellement"],
+    "image": "/assets/balance/Steal_Pip.png",
+    "description": "Steals one Pip from target",
+    "effects": [
+      { "type": "utility-steal", "target": "enemy" },
+      { "type": "utility-pip", "target": "enemy" }
+    ]
+  },
+  {
+    "name": "Terminus' Strike",
+    "school": "Balance",
+    "pipCost": 8,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": ["spellement"],
+    "image": "/assets/balance/Terminus'_Strike.png",
+    "description": "Removes up to seven harmful Charms from caster to apply up to seven -15% Damage Charms on caster, then deals 645 Balance Damage to target",
+    "effects": [
+      { "type": "utility-clear", "target": "self" },
+      { "type": "charm-weakness", "target": "self" },
+      { "type": "damage", "target": "enemy" }
+    ]
+  }
+]

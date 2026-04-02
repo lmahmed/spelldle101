@@ -1,0 +1,1387 @@
+[
+  {
+    "name": "Frost Beetle",
+    "school": "Ice",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 65-105 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Frost_Beetle.png"
+  },
+  {
+    "name": "Snow Serpent",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 155-195 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Snow_Serpent.png"
+  },
+  {
+    "name": "Volcanic Shield",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies -70% Fire and Storm Damage Wards",
+    "effects": [
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
+    ],
+    "image": "/assets/ice/Volcanic_Shield.png"
+  },
+  {
+    "name": "Evil Snowman",
+    "school": "Ice",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 240-300 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Evil_Snowman.png"
+  },
+  {
+    "name": "Tower Shield",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies a -50% Damage Ward",
+    "effects": [
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
+    ],
+    "image": "/assets/ice/Tower_Shield.png"
+  },
+  {
+    "name": "Volcanic Golem",
+    "school": "Ice",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 255-285 Ice Damage to target and applies -70% Storm and Fire Damage Wards on caster",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-shield",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Volcanic_Golem.png"
+  },
+  {
+    "name": "Ice Wyvern",
+    "school": "Ice",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 335-395 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Ice_Wyvern.png"
+  },
+  {
+    "name": "Blizzard",
+    "school": "Ice",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 250-290 Ice Damage to all enemies",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
+    ],
+    "image": "/assets/ice/Blizzard.png"
+  },
+  {
+    "name": "Balefrost",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies a +25% Ice Damage Global",
+    "effects": [
+      {
+        "type": "global",
+        "target": "all"
+      }
+    ],
+    "image": "/assets/ice/Balefrost.png"
+  },
+  {
+    "name": "Blight Hound",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 420-500 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Blight_Hound.png"
+  },
+  {
+    "name": "Thieving Dragon",
+    "school": "Ice",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Steals a helpful Ward from and deals 120-150 Ice Damage to target",
+    "effects": [
+      {
+        "type": "utility-steal",
+        "target": "enemy"
+      },
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Thieving_Dragon.png"
+  },
+  {
+    "name": "Colossus",
+    "school": "Ice",
+    "pipCost": 6,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 515-595 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Colossus.png"
+  },
+  {
+    "name": "Frostfeather",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 230 Ice Damage and applies a +25% Ice Damage Global",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "global",
+        "target": "all"
+      }
+    ],
+    "image": "/assets/ice/Frostfeather.png"
+  },
+  {
+    "name": "Wall of Blades",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Removes up to two helpful Charms from target to apply a -40% Damage Ward on caster per Charm removed",
+    "effects": [
+      {
+        "type": "utility-clear",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-shield",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Wall_of_Blades.png"
+  },
+  {
+    "name": "Glacial Fortress",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Removes up to two harmful Charms from ally to apply a -40% Damage Ward on ally per Charm removed",
+    "effects": [
+      {
+        "type": "utility-clear",
+        "target": "any-ally"
+      },
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
+    ],
+    "image": "/assets/ice/Glacial_Fortress.png"
+  },
+  {
+    "name": "Frost Giant",
+    "school": "Ice",
+    "pipCost": 7,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "description": "Deals 570 Ice Damage to and Stuns all enemies for 1 Round (and applies a Stun Block on all enemies)",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "ward-stun",
+        "target": "aoe"
+      }
+    ],
+    "image": "/assets/ice/Frost_Giant.png"
+  },
+  {
+    "name": "Snow Angel",
+    "school": "Ice",
+    "pipCost": 8,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "description": "Deals 35 Ice Damage and 660 Ice Damage over 3 Rounds to all enemies",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "dot",
+        "target": "aoe"
+      }
+    ],
+    "image": "/assets/ice/Snow_Angel.png"
+  },
+  {
+    "name": "Jinn's Vexation",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Removes up to two harmful Charms from caster to apply a -20% Damage Charm on target per Charm removed",
+    "effects": [
+      {
+        "type": "utility-clear",
+        "target": "self"
+      },
+      {
+        "type": "charm-weakness",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Jinn's_Vexation.png"
+  },
+  {
+    "name": "Woolly Mammoth",
+    "school": "Ice",
+    "pipCost": 9,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "description": "Deals 740-840 Ice Damage to and Stuns target for 1 Round (and applies a Stun Block on target)",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-stun",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Woolly_Mammoth.png"
+  },
+  {
+    "name": "Iceburn Jinn",
+    "school": "Ice",
+    "pipCost": 9,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 710 Ice Damage or removes four harmful Charms from target to deal 1,490 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-gambit",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Iceburn_Jinn.png"
+  },
+  {
+    "name": "Impair",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Removes three helpful Charms from target",
+    "effects": [
+      {
+        "type": "utility-remove",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Impair.png"
+  },
+  {
+    "name": "Lord of Winter",
+    "school": "Ice",
+    "pipCost": 10,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "description": "Deals 775-895 Ice Damage to and removes 2 Pips from target (regular Pips are removed before Power Pips)",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-pip",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Lord_of_Winter.png"
+  },
+  {
+    "name": "King Artorius (Ice)",
+    "school": "Ice",
+    "pipCost": 8,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "description": "Deals 650 Ice Damage to target, and applies a +10% Ice Armor Piercing Charm on and gives a Pip to caster",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-pierce",
+        "target": "self"
+      },
+      {
+        "type": "utility-pip",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/King_Artorius_(Ice).png"
+  },
+  {
+    "name": "Oni's Destruction",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Removes up to two helpful Charms from target to apply a +35% Ice Damage Ward on target per Charm removed",
+    "effects": [
+      {
+        "type": "utility-clear",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Oni's_Destruction.png"
+  },
+  {
+    "name": "Everwinter Oni",
+    "school": "Ice",
+    "pipCost": 9,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Deals 710 Ice Damage or removes four harmful Wards from target to deal 1,300 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-gambit",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Everwinter_Oni.png"
+  },
+  {
+    "name": "Stun Block",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies two Stun Resist Wards on target",
+    "effects": [
+      {
+        "type": "ward-stun",
+        "target": "any-ally"
+      }
+    ],
+    "image": "/assets/ice/Stun_Block.png"
+  },
+  {
+    "name": "Snow Shield",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies a -80% Ice Damage Ward",
+    "effects": [
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
+    ],
+    "image": "/assets/ice/Snow_Shield.png"
+  },
+  {
+    "name": "Ice Weakness",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies a -35% Ice Damage Charm",
+    "effects": [
+      {
+        "type": "charm-weakness",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Ice_Weakness.png"
+  },
+  {
+    "name": "Distract",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Pacifies caster for 1 Round",
+    "effects": [
+      {
+        "type": "utility-aggro",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Distract.png"
+  },
+  {
+    "name": "Taunt",
+    "school": "Ice",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Taunts caster for 1 Round",
+    "effects": [
+      {
+        "type": "utility-aggro",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Taunt.png"
+  },
+  {
+    "name": "Melt",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies an Ice Dispel Charm",
+    "effects": [
+      {
+        "type": "charm-dispel",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Melt.png"
+  },
+  {
+    "name": "Draw Health",
+    "school": "Ice",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "trainer"
+    ],
+    "description": "Sacrifices a Minion to restore 350 Health to caster",
+    "effects": [
+      {
+        "type": "utility-sacrifice",
+        "target": "minion"
+      },
+      {
+        "type": "heal",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Draw_Health.png"
+  },
+  {
+    "name": "Mega Distract",
+    "school": "Ice",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Pacifies ally for 1 Round (not caster)",
+    "effects": [
+      {
+        "type": "utility-aggro",
+        "target": "ally"
+      }
+    ],
+    "image": "/assets/ice/Mega_Distract.png"
+  },
+  {
+    "name": "Mega Taunt",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Taunts caster for 2 Rounds",
+    "effects": [
+      {
+        "type": "utility-aggro",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Mega_Taunt.png"
+  },
+  {
+    "name": "Mass Ice Prism",
+    "school": "Ice",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies an Ice to Fire Damage Prism Ward on all enemies",
+    "effects": [
+      {
+        "type": "ward-prism",
+        "target": "aoe"
+      }
+    ],
+    "image": "/assets/ice/Mass_Ice_Prism.png"
+  },
+  {
+    "name": "Icespear",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies a +30% Ice Armor Piercing Charm",
+    "effects": [
+      {
+        "type": "charm-pierce",
+        "target": "any-ally"
+      }
+    ],
+    "image": "/assets/ice/Icespear.png"
+  },
+  {
+    "name": "Katabatic Wind",
+    "school": "Ice",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "trainer"
+    ],
+    "description": "Applies a +20% Ice Armor Piercing and +20% Ice Critical Chance Global",
+    "effects": [
+      {
+        "type": "global",
+        "target": "all"
+      }
+    ],
+    "image": "/assets/ice/Katabatic_Wind.png"
+  },
+  {
+    "name": "Ice Trap",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Applies a +40% Ice Damage Ward",
+    "effects": [
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Ice_Trap.png"
+  },
+  {
+    "name": "Freeze",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "quest"
+    ],
+    "description": "Stuns target for 1 Round (and applies a Stun Block on target)",
+    "effects": [
+      {
+        "type": "ward-stun",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Freeze.png"
+  },
+  {
+    "name": "Ice Prism",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "quest"
+    ],
+    "description": "Applies an Ice to Fire Damage Prism Ward",
+    "effects": [
+      {
+        "type": "ward-prism",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Ice_Prism.png"
+  },
+  {
+    "name": "Ice Armor",
+    "school": "Ice",
+    "pipCost": "X",
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "quest"
+    ],
+    "description": "Applies a 125 per Pip Damage Absorption Ward on caster",
+    "effects": [
+      {
+        "type": "ward-absorb",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Ice_Armor.png"
+  },
+  {
+    "name": "Steal Ward",
+    "school": "Ice",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "quest"
+    ],
+    "description": "Steals a helpful Ward from target",
+    "effects": [
+      {
+        "type": "utility-steal",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Steal_Ward.png"
+  },
+  {
+    "name": "Frostbite",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "quest"
+    ],
+    "description": "Deals 80 Ice Damage and 495 Ice Damage over 3 Rounds",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Frostbite.png"
+  },
+  {
+    "name": "Ice Guardian",
+    "school": "Ice",
+    "pipCost": 3,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "quest"
+    ],
+    "description": "Summons an Ice Guardian",
+    "effects": [
+      {
+        "type": "minion",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Ice_Guardian.png"
+  },
+  {
+    "name": "Legion Shield",
+    "school": "Ice",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Side Arc",
+    "source": [
+      "quest"
+    ],
+    "description": "Applies a -45% Damage Ward on all allies",
+    "effects": [
+      {
+        "type": "ward-shield",
+        "target": "all-allies"
+      }
+    ],
+    "image": "/assets/ice/Legion_Shield.png"
+  },
+  {
+    "name": "Iceblade",
+    "school": "Ice",
+    "pipCost": 0,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "quest"
+    ],
+    "description": "Applies a +35% Ice Damage Charm",
+    "effects": [
+      {
+        "type": "charm-blade",
+        "target": "any-ally"
+      }
+    ],
+    "image": "/assets/ice/Iceblade.png"
+  },
+  {
+    "name": "Frozen Armor",
+    "school": "Ice",
+    "pipCost": "X",
+    "archmastery": [],
+    "arc": "Side Arc",
+    "source": [
+      "quest"
+    ],
+    "description": "Applies a 175 per Pip Damage Absorption Ward",
+    "effects": [
+      {
+        "type": "ward-absorb",
+        "target": "any-ally"
+      }
+    ],
+    "image": "/assets/ice/Frozen_Armor.png"
+  },
+  {
+    "name": "Snow Drift",
+    "school": "Ice",
+    "pipCost": 2,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "quest"
+    ],
+    "description": "Steals a Heal over Time effect from target",
+    "effects": [
+      {
+        "type": "utility-steal",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Snow_Drift.png"
+  },
+  {
+    "name": "Cooldown",
+    "school": "Ice",
+    "pipCost": 1,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "quest"
+    ],
+    "description": "Removes 1 Round from all Damage over Time effects on self and all allies",
+    "effects": [
+      {
+        "type": "utility-remove",
+        "target": "all-allies"
+      }
+    ],
+    "image": "/assets/ice/Cooldown.png"
+  },
+  {
+    "name": "Freddo",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 2",
+    "source": [
+      "quest"
+    ],
+    "description": "Summons Freddo the Ice Fish",
+    "effects": [
+      {
+        "type": "minion",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Freddo.png"
+  },
+  {
+    "name": "Abominable Weaver",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Side Arc",
+    "source": [
+      "quest"
+    ],
+    "description": "Deals 385 Ice Damage to target and applies a -50% Damage Ward on caster",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-shield",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Abominable_Weaver.png"
+  },
+  {
+    "name": "Snowball Barrage",
+    "school": "Ice",
+    "pipCost": "X",
+    "archmastery": [],
+    "arc": "Arc 3",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Deals 45 Ice Damage per Pip to all enemies",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
+    ],
+    "image": "/assets/ice/Snowball_Barrage.png"
+  },
+  {
+    "name": "Climaclysm",
+    "school": "Ice",
+    "pipCost": 4,
+    "archmastery": [],
+    "arc": "Arc 3",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Deals 200 Ice Damage and applies a +60% Ice Damage Ward split among selected enemies",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "selected"
+      },
+      {
+        "type": "ward-trap",
+        "target": "selected"
+      }
+    ],
+    "image": "/assets/ice/Climaclysm.png"
+  },
+  {
+    "name": "Scion of Ice",
+    "school": "Ice",
+    "pipCost": 11,
+    "archmastery": [],
+    "arc": "Arc 3",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Deals 930 Ice Damage, or deals 1,860 Ice Damage if caster has at least 90% of their total Health",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-conditional",
+        "target": "self",
+        "condition": "caster has at least 90% total Health"
+      }
+    ],
+    "image": "/assets/ice/Scion_of_Ice.png"
+  },
+  {
+    "name": "Shatterhorn",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Deals 305 Ice Damage to target and Taunts caster for 2 Rounds",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-aggro",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/Shatterhorn.png"
+  },
+  {
+    "name": "Freeze Ray",
+    "school": "Ice",
+    "pipCost": 6,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Deals 415 Ice Damage to all enemies",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
+    ],
+    "image": "/assets/ice/Freeze_Ray.png"
+  },
+  {
+    "name": "Deathly Depths",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [
+      "Death"
+    ],
+    "arc": "Arc 4",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Deals 535 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Deathly_Depths.png"
+  },
+  {
+    "name": "Count Croakula",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [
+      "Myth"
+    ],
+    "arc": "Arc 4",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Deals 400 Ice Damage to all enemies",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
+    ],
+    "image": "/assets/ice/Count_Croakula.png"
+  },
+  {
+    "name": "Shu",
+    "school": "Ice",
+    "pipCost": 7,
+    "archmastery": [],
+    "arc": "Arc 4",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Deals 650 Ice Damage",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Shu.png"
+  },
+  {
+    "name": "The Hierophant",
+    "school": "Ice",
+    "pipCost": 10,
+    "archmastery": [],
+    "arc": "Arc 5",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "description": "Deals 760 Ice Damage to and applies a +40% Ice Damage Ward on target and applies a -60% Damage Ward of target's School on caster",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-shield",
+        "target": "self"
+      }
+    ],
+    "image": "/assets/ice/The_Hierophant.png"
+  },
+  {
+    "name": "Angry Snowpig",
+    "school": "Ice",
+    "pipCost": 4,
+    "archmastery": [
+      "Ice"
+    ],
+    "arc": "Arc 1",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "description": "Deals 265-325 Ice Damage to and steals a helpful Ward from target",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-steal",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Angry_Snowpig.png"
+  },
+  {
+    "name": "Celestial Intervention",
+    "school": "Ice",
+    "pipCost": 4,
+    "archmastery": [
+      "Ice"
+    ],
+    "arc": "Arc 1",
+    "source": [
+      "spellement"
+    ],
+    "description": "Removes up to three helpful Wards from caster to restore 500 Health to ally per Ward removed",
+    "effects": [
+      {
+        "type": "utility-gambit",
+        "target": "self"
+      },
+      {
+        "type": "heal",
+        "target": "ally"
+      }
+    ],
+    "image": "/assets/ice/Celestial_Intervention.png"
+  },
+  {
+    "name": "Deermouse Trap",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [
+      "Ice"
+    ],
+    "arc": "Arc 1",
+    "source": [
+      "spellement"
+    ],
+    "description": "Deals 385 Ice Damage to and applies a +55% Damage Ward on target",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Deermouse_Trap.png"
+  },
+  {
+    "name": "Handsome Fomori",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [
+      "Ice"
+    ],
+    "arc": "Arc 1",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "description": "Deals 440-540 Ice Damage to and applies a -25% Accuracy Charm on target",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-accuracy",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Handsome_Fomori.png"
+  },
+  {
+    "name": "Ice Elemental",
+    "school": "Ice",
+    "pipCost": 4,
+    "archmastery": [
+      "Ice"
+    ],
+    "arc": "Arc 1",
+    "source": [
+      "spellement"
+    ],
+    "description": "Deals 310 Ice Damage to and applies a -35% Damage Charm on target",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-weakness",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Ice_Elemental.png"
+  },
+  {
+    "name": "Neptune's Fury",
+    "school": "Ice",
+    "pipCost": 9,
+    "archmastery": [],
+    "arc": "Arc 1",
+    "source": [
+      "spellement"
+    ],
+    "description": "Deals 710 Ice Damage to and removes eight helpful Charms from target",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-remove",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Neptune's_Fury.png"
+  },
+  {
+    "name": "Reindeer Knight",
+    "school": "Ice",
+    "pipCost": 5,
+    "archmastery": [
+      "Ice"
+    ],
+    "arc": "Arc 1",
+    "source": [
+      "spellement"
+    ],
+    "description": "Deals 295 Ice Damage and 265 Ice Damage over 3 Rounds to all enemies",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "dot",
+        "target": "aoe"
+      }
+    ],
+    "image": "/assets/ice/Reindeer_Knight.png"
+  },
+  {
+    "name": "Winter Moon",
+    "school": "Ice",
+    "pipCost": 6,
+    "archmastery": [
+      "Ice"
+    ],
+    "arc": "Arc 1",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "description": "Deals 555 Ice Damage to and Stuns target for 1 Round (and applies a Stun Block on target)",
+    "effects": [
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-stun",
+        "target": "enemy"
+      }
+    ],
+    "image": "/assets/ice/Winter_Moon.png"
+  }
+]
