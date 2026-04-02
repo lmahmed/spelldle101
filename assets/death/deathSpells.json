@@ -8,7 +8,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Dark_Sprite.png",
+    "image": "./assets/death/Dark_Sprite.png",
     "description": "Deals 65-105 Death Damage",
     "effects": [
       {
@@ -26,7 +26,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Ghoul.png",
+    "image": "./assets/death/Ghoul.png",
     "description": "Deals 160 Death Drain Damage to target and heals the caster for half of the Damage dealt",
     "effects": [
       {
@@ -44,7 +44,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Dream_Shield.png",
+    "image": "./assets/death/Dream_Shield.png",
     "description": "Applies -70% Life and Myth Damage Wards",
     "effects": [
       {
@@ -62,7 +62,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Banshee.png",
+    "image": "./assets/death/Banshee.png",
     "description": "Deals 245-305 Death Damage",
     "effects": [
       {
@@ -80,7 +80,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Vampire.png",
+    "image": "./assets/death/Vampire.png",
     "description": "Deals 335 Death Drain Damage to target and heals the caster for half of the Damage dealt",
     "effects": [
       {
@@ -98,7 +98,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Dream_Golem.png",
+    "image": "./assets/death/Dream_Golem.png",
     "description": "Deals 245-305 Death Damage to target and applies -70% Life and Myth Damage Wards on caster",
     "effects": [
       {
@@ -120,7 +120,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Feint.png",
+    "image": "./assets/death/Feint.png",
     "description": "Applies a +70% Damage Ward on target and a +30% Damage Ward on caster",
     "effects": [
       {
@@ -142,7 +142,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Skeletal_Pirate.png",
+    "image": "./assets/death/Skeletal_Pirate.png",
     "description": "Deals 430-510 Death Damage",
     "effects": [
       {
@@ -160,7 +160,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Doom_and_Gloom.png",
+    "image": "./assets/death/Doom_and_Gloom.png",
     "description": "Applies a -50% outgoing Healing Global",
     "effects": [
       {
@@ -178,7 +178,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Deadzone.png",
+    "image": "./assets/death/Deadzone.png",
     "description": "Applies a +25% Death Damage Global",
     "effects": [
       {
@@ -196,7 +196,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Crimson_Phantom.png",
+    "image": "./assets/death/Crimson_Phantom.png",
     "description": "Deals 235 Death Damage and applies a +25% Death Damage Global",
     "effects": [
       {
@@ -218,7 +218,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Wraith.png",
+    "image": "./assets/death/Wraith.png",
     "description": "Deals 500 Death Drain Damage to target and heals the caster for half of the Damage dealt",
     "effects": [
       {
@@ -236,7 +236,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Monster_Mash.png",
+    "image": "./assets/death/Monster_Mash.png",
     "description": "Deals 475 Death Damage to target, and removes up to three harmful Charms from target to deal an additional 165 Death Damage per Charm removed",
     "effects": [
       {
@@ -258,7 +258,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Putrefaction.png",
+    "image": "./assets/death/Putrefaction.png",
     "description": "Removes up to two helpful Charms from target to apply a -20% Damage Charm on target per Charm removed",
     "effects": [
       {
@@ -280,7 +280,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Contagion.png",
+    "image": "./assets/death/Contagion.png",
     "description": "Removes a Heal over Time effect from target to apply a -65% Healing Charm on target",
     "effects": [
       {
@@ -303,7 +303,7 @@
       "trainer",
       "quest"
     ],
-    "image": "/assets/death/Scarecrow.png",
+    "image": "./assets/death/Scarecrow.png",
     "description": "Deals 590 Death Drain Damage to all enemies and heals the caster for half of the Damage dealt",
     "effects": [
       {
@@ -322,7 +322,7 @@
       "trainer",
       "quest"
     ],
-    "image": "/assets/death/Skeletal_Dragon.png",
+    "image": "./assets/death/Skeletal_Dragon.png",
     "description": "Deals 170 Death Damage and 780 Death Damage over 3 Rounds",
     "effects": [
       {
@@ -344,7 +344,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Jinn's_Larceny.png",
+    "image": "./assets/death/Jinn's_Larceny.png",
     "description": "Removes up to two helpful Charms from target to apply a +30% Death Damage Charm on caster per Charm removed",
     "effects": [
       {
@@ -367,7 +367,7 @@
       "trainer",
       "quest"
     ],
-    "image": "/assets/death/Dr._Von's_Monster.png",
+    "image": "./assets/death/Dr._Von's_Monster.png",
     "description": "Deals 720 Death Drain Damage to target and heals the caster for half of the Damage dealt, and applies a -65% Healing Charm on target",
     "effects": [
       {
@@ -389,7 +389,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Macabre_Jinn.png",
+    "image": "./assets/death/Macabre_Jinn.png",
     "description": "Deals 730 Death Damage or removes four helpful Charms from caster to deal 1,335 Death Damage",
     "effects": [
       {
@@ -412,7 +412,7 @@
       "trainer",
       "quest"
     ],
-    "image": "/assets/death/Avenging_Fossil.png",
+    "image": "./assets/death/Avenging_Fossil.png",
     "description": "Deals 710-810 Death Damage to target and 260 Death Damage over 3 Rounds to all enemies",
     "effects": [
       {
@@ -435,7 +435,7 @@
       "trainer",
       "quest"
     ],
-    "image": "/assets/death/King_Artorius_(Death).png",
+    "image": "./assets/death/King_Artorius_(Death).png",
     "description": "Deals 710 Death Damage to and applies a -65% Healing Charm on target, and applies a +10% Death Armor Piercing Charm on caster",
     "effects": [
       {
@@ -461,7 +461,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Oni's_Morbidity.png",
+    "image": "./assets/death/Oni's_Morbidity.png",
     "description": "Removes a Heal over Time effect from target to apply two -25% Damage Wards on caster",
     "effects": [
       {
@@ -483,7 +483,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Doom_Oni.png",
+    "image": "./assets/death/Doom_Oni.png",
     "description": "Deals 900 Death Damage or removes four helpful Wards from caster to deal 1,680 Death Damage",
     "effects": [
       {
@@ -505,7 +505,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Infection.png",
+    "image": "./assets/death/Infection.png",
     "description": "Applies a -65% Healing Charm",
     "effects": [
       {
@@ -523,7 +523,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Threefold_Fever.png",
+    "image": "./assets/death/Threefold_Fever.png",
     "description": "Applies three -65% Healing Charms",
     "effects": [
       {
@@ -541,7 +541,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Death_Shield.png",
+    "image": "./assets/death/Death_Shield.png",
     "description": "Applies a -80% Death Damage Ward",
     "effects": [
       {
@@ -559,7 +559,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Death_Weakness.png",
+    "image": "./assets/death/Death_Weakness.png",
     "description": "Applies a -35% Death Damage Charm",
     "effects": [
       {
@@ -577,7 +577,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Pacify.png",
+    "image": "./assets/death/Pacify.png",
     "description": "Pacifies caster for 1 Round",
     "effects": [
       {
@@ -595,7 +595,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Strangle.png",
+    "image": "./assets/death/Strangle.png",
     "description": "Applies a Death Dispel Charm",
     "effects": [
       {
@@ -613,7 +613,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Steal_Health.png",
+    "image": "./assets/death/Steal_Health.png",
     "description": "Deals 300 Death Drain Damage to a friendly Minion and heals the caster for the Damage dealt",
     "effects": [
       {
@@ -635,7 +635,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Mega_Pacify.png",
+    "image": "./assets/death/Mega_Pacify.png",
     "description": "Pacifies ally for 1 Round (not caster)",
     "effects": [
       {
@@ -653,7 +653,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Mass_Death_Prism.png",
+    "image": "./assets/death/Mass_Death_Prism.png",
     "description": "Applies a Death to Life Damage Prism Ward on all enemies",
     "effects": [
       {
@@ -671,7 +671,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Deathspear.png",
+    "image": "./assets/death/Deathspear.png",
     "description": "Applies a +30% Death Armor Piercing Charm",
     "effects": [
       {
@@ -689,7 +689,7 @@
     "source": [
       "trainer"
     ],
-    "image": "/assets/death/Age_of_Reckoning.png",
+    "image": "./assets/death/Age_of_Reckoning.png",
     "description": "Applies a +20% Death Armor Piercing and +20% Death Critical Chance Global",
     "effects": [
       {
@@ -708,7 +708,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Death_Trap.png",
+    "image": "./assets/death/Death_Trap.png",
     "description": "Applies a +40% Death Damage Ward",
     "effects": [
       {
@@ -726,7 +726,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Deathblade.png",
+    "image": "./assets/death/Deathblade.png",
     "description": "Applies a +35% Death Damage or Steal Charm",
     "effects": [
       {
@@ -744,7 +744,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Death_Prism.png",
+    "image": "./assets/death/Death_Prism.png",
     "description": "Applies a Death to Life Damage Prism Ward",
     "effects": [
       {
@@ -762,7 +762,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Sacrifice.png",
+    "image": "./assets/death/Sacrifice.png",
     "description": "Deals 250 Moon Damage to caster and restores 700 Health to target",
     "effects": [
       {
@@ -784,7 +784,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Curse.png",
+    "image": "./assets/death/Curse.png",
     "description": "Applies a +30% Damage Ward",
     "effects": [
       {
@@ -802,7 +802,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Poison.png",
+    "image": "./assets/death/Poison.png",
     "description": "Deals 35 Death Damage and 435 Death Damage over 3 Rounds",
     "effects": [
       {
@@ -824,7 +824,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Beguile.png",
+    "image": "./assets/death/Beguile.png",
     "description": "Target becomes an ally for 1 round",
     "effects": [
       {
@@ -842,7 +842,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Animate.png",
+    "image": "./assets/death/Animate.png",
     "description": "Summons a Death Minion for 1-5 Pips",
     "effects": [
       {
@@ -860,7 +860,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Plague.png",
+    "image": "./assets/death/Plague.png",
     "description": "Applies a -20% Damage Charm on all enemies",
     "effects": [
       {
@@ -878,7 +878,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Dark_Tribute.png",
+    "image": "./assets/death/Dark_Tribute.png",
     "description": "Deals 5% max Health Damage to caster to apply two +35% Blades on target",
     "effects": [
       {
@@ -900,7 +900,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Empower.png",
+    "image": "./assets/death/Empower.png",
     "description": "Deals 5% max Health Damage to caster to give 3 Pips to caster",
     "effects": [
       {
@@ -922,7 +922,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Virulent_Plague.png",
+    "image": "./assets/death/Virulent_Plague.png",
     "description": "Applies a -40% Damage Charm on all enemies",
     "effects": [
       {
@@ -940,7 +940,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Mass_Infection.png",
+    "image": "./assets/death/Mass_Infection.png",
     "description": "Applies a -45% Healing Charm on all enemies",
     "effects": [
       {
@@ -958,7 +958,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Bad_Juju.png",
+    "image": "./assets/death/Bad_Juju.png",
     "description": "Deals 300 Death Damage to caster and applies a -90% Damage Charm on target",
     "effects": [
       {
@@ -980,7 +980,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Malduit.png",
+    "image": "./assets/death/Malduit.png",
     "description": "Summons a Minion of Death",
     "effects": [
       {
@@ -998,7 +998,7 @@
     "source": [
       "quest"
     ],
-    "image": "/assets/death/Call_of_Khrulhu.png",
+    "image": "./assets/death/Call_of_Khrulhu.png",
     "description": "Deals 315 Death Drain Damage to all enemies and heals the caster for half of the Damage dealt",
     "effects": [
       {
@@ -1017,7 +1017,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Winged_Sorrow.png",
+    "image": "./assets/death/Winged_Sorrow.png",
     "description": "Deals 405 Death Damage to target and applies a -20% Damage Charm on all enemies",
     "effects": [
       {
@@ -1040,7 +1040,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Qismah's_Curse.png",
+    "image": "./assets/death/Qismah's_Curse.png",
     "description": "Deals 340 Death Damage split among selected enemies",
     "effects": [
       {
@@ -1059,7 +1059,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Scion_of_Death.png",
+    "image": "./assets/death/Scion_of_Death.png",
     "description": "Deals 850 Death Drain Damage to target and heals the caster for half of the Damage dealt, or if either caster or target has 33% or less of their total Health, deals 1,700 Death Drain Damage",
     "effects": [
       {
@@ -1083,7 +1083,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Snack_Attack.png",
+    "image": "./assets/death/Snack_Attack.png",
     "description": "Pushes a harmful Charm to target then deals 355 Death Damage to all enemies",
     "effects": [
       {
@@ -1106,7 +1106,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Grim_Reader.png",
+    "image": "./assets/death/Grim_Reader.png",
     "description": "Deals 405 Death Damage to and applies two -25% Damage Charms on target",
     "effects": [
       {
@@ -1131,7 +1131,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Gravestorm.png",
+    "image": "./assets/death/Gravestorm.png",
     "description": "Deals 485 Death Drain Damage to target and heals the caster for half of the Damage dealt",
     "effects": [
       {
@@ -1152,7 +1152,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Wobbegong_Frenzy.png",
+    "image": "./assets/death/Wobbegong_Frenzy.png",
     "description": "Deals 405 Death Damage to all enemies",
     "effects": [
       {
@@ -1171,7 +1171,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Anubis.png",
+    "image": "./assets/death/Anubis.png",
     "description": "Deals 665 Death Damage",
     "effects": [
       {
@@ -1190,7 +1190,7 @@
       "quest",
       "trainer"
     ],
-    "image": "/assets/death/Mortality.png",
+    "image": "./assets/death/Mortality.png",
     "description": "Deals 780 Death Damage to target and applies a +35% Death Damage Charm and -50% Damage Ward on caster",
     "effects": [
       {
@@ -1219,7 +1219,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "/assets/death/Deer_Knight.png",
+    "image": "./assets/death/Deer_Knight.png",
     "description": "Deals 300 Death Damage and 270 Death Damage over 3 Rounds to all enemies",
     "effects": [
       {
@@ -1244,7 +1244,7 @@
       "spellement",
       "drop"
     ],
-    "image": "/assets/death/Headless_Horseman.png",
+    "image": "./assets/death/Headless_Horseman.png",
     "description": "Deals 530-590 Death Damage",
     "effects": [
       {
@@ -1264,7 +1264,7 @@
     "source": [
       "spellement"
     ],
-    "image": "/assets/death/Kiiii-Yaaaa!.png",
+    "image": "./assets/death/Kiiii-Yaaaa!.png",
     "description": "Deals 300 Death Damage to target and applies a +45% Damage Charm on caster",
     "effects": [
       {
@@ -1289,7 +1289,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "/assets/death/Lord_of_Night.png",
+    "image": "./assets/death/Lord_of_Night.png",
     "description": "Deals 445 Death Drain Damage to target and heals the caster for half of the Damage dealt, and applies a -55% Healing Charm on target",
     "effects": [
       {
@@ -1313,7 +1313,7 @@
     "source": [
       "spellement"
     ],
-    "image": "/assets/death/Monk_of_Mourning.png",
+    "image": "./assets/death/Monk_of_Mourning.png",
     "description": "Deals 470 Death Damage to target and applies a -50% Damage Ward on caster",
     "effects": [
       {
@@ -1335,7 +1335,7 @@
     "source": [
       "spellement"
     ],
-    "image": "/assets/death/Pluto's_Peril.png",
+    "image": "./assets/death/Pluto's_Peril.png",
     "description": "Deals 500 Death Damage to and applies a -25% outgoing Damage Aura for 4 Rounds on target",
     "effects": [
       {
@@ -1359,7 +1359,7 @@
     "source": [
       "spellement"
     ],
-    "image": "/assets/death/Ship_of_Fools.png",
+    "image": "./assets/death/Ship_of_Fools.png",
     "description": "Deals 300 Death Drain Damage to all enemies and heals the caster for half of the Damage dealt",
     "effects": [
       {

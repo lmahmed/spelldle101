@@ -5,11 +5,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Fire_Cat.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Fire_Cat.png",
     "description": "Deals 80-120 Fire Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -18,12 +23,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Fire_Elf.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Fire_Elf.png",
     "description": "Deals 100 Fire Damage and 210 Fire Damage over 3 Rounds",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -32,11 +45,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Glacial_Shield.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Glacial_Shield.png",
     "description": "Applies -70% Ice and Storm Damage Wards",
     "effects": [
-      { "type": "ward-shield", "target": "any-ally" }
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -45,11 +63,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Sunbird.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Sunbird.png",
     "description": "Deals 295-355 Fire Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -58,11 +81,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Fire_Trap.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Fire_Trap.png",
     "description": "Applies a +40% Fire Damage Ward",
     "effects": [
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -71,12 +99,20 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Glacial_Golem.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Glacial_Golem.png",
     "description": "Deals 275-375 Fire Damage to target and applies -70% Storm and Ice Damage Wards on caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-shield", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-shield",
+        "target": "self"
+      }
     ]
   },
   {
@@ -85,11 +121,16 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Meteor_Strike.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Meteor_Strike.png",
     "description": "Deals 305-345 Fire Damage to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -98,12 +139,21 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer", "quest"],
-    "image": "/assets/fire/Immolate.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/fire/Immolate.png",
     "description": "Deals 200 Fire Damage to caster to deal 600 Fire Damage to target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "damage", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "damage",
+        "target": "self"
+      }
     ]
   },
   {
@@ -112,11 +162,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Wyldfire.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Wyldfire.png",
     "description": "Applies a +25% Fire Damage Global",
     "effects": [
-      { "type": "global", "target": "all" }
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
@@ -125,11 +180,16 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Phoenix.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Phoenix.png",
     "description": "Deals 515-595 Fire Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -138,12 +198,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Naphtha_Scarab.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Naphtha_Scarab.png",
     "description": "Deals 170 Fire Damage to and applies three +30% Fire Damage over Time Traps on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -152,11 +220,16 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Helephant.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Helephant.png",
     "description": "Deals 625-705 Fire Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -165,11 +238,16 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Inferno_Salamander.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Inferno_Salamander.png",
     "description": "Applies two Damage over Time effects on target that each deal 475 Fire Damage over 5 Rounds",
     "effects": [
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -178,12 +256,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Meltdown.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Meltdown.png",
     "description": "Removes up to two helpful Wards from target to deal 105 Fire Damage over 3 Rounds to target per Ward removed",
     "effects": [
-      { "type": "utility-clear", "target": "enemy" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "utility-clear",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -192,12 +278,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Backfire.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Backfire.png",
     "description": "Removes up to two harmful Wards from caster to deal 75 Fire Damage over 3 Rounds to target per Ward removed",
     "effects": [
-      { "type": "utility-clear", "target": "self" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "utility-clear",
+        "target": "self"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -206,12 +300,21 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/fire/Fire_Dragon.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/fire/Fire_Dragon.png",
     "description": "Deals 540 Fire Damage and 435 Fire Damage over 3 Rounds to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" },
-      { "type": "dot", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "dot",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -220,12 +323,21 @@
     "pipCost": 8,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/fire/Efreet.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/fire/Efreet.png",
     "description": "Deals 780 Fire Damage to and applies a -45% Damage Charm on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "charm-weakness", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-weakness",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -234,12 +346,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Jinn's_Reversal.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Jinn's_Reversal.png",
     "description": "Removes up to two harmful Wards from caster to apply a +70% Damage over Time Ward on target per Ward removed",
     "effects": [
-      { "type": "utility-clear", "target": "self" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "utility-clear",
+        "target": "self"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -248,12 +368,21 @@
     "pipCost": 9,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/fire/Rain_of_Fire.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/fire/Rain_of_Fire.png",
     "description": "Deals 130 Fire Damage + 810 Fire Damage over 3 Rounds to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" },
-      { "type": "dot", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "dot",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -262,12 +391,20 @@
     "pipCost": 9,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Caldera_Jinn.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Caldera_Jinn.png",
     "description": "Applies three Damage over Time effects on target that each deal 400 Fire Damage over 5 Rounds or removes four harmful Wards from target to deal 1,565 Fire Damage",
     "effects": [
-      { "type": "dot", "target": "enemy" },
-      { "type": "utility-gambit", "target": "enemy" }
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-gambit",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -276,12 +413,21 @@
     "pipCost": 10,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/fire/Sun_Serpent.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/fire/Sun_Serpent.png",
     "description": "Deals 785-885 Fire Damage to target and deals 330 Fire Damage to all enemies",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -290,13 +436,25 @@
     "pipCost": 8,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/fire/King_Artorius_(Fire).png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/fire/King_Artorius_(Fire).png",
     "description": "Deals 835 Fire Damage to and Stuns target for 1 Round (and applies 1 Stun Block on target), and applies a +10% Fire Armor Piercing Charm on self",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-stun", "target": "enemy" },
-      { "type": "charm-pierce", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-stun",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-pierce",
+        "target": "self"
+      }
     ]
   },
   {
@@ -305,12 +463,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Oni's_Forge.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Oni's_Forge.png",
     "description": "Removes up to two helpful Wards from target to restore 195 Health over 3 Rounds to caster per Ward removed",
     "effects": [
-      { "type": "utility-clear", "target": "enemy" },
-      { "type": "hot", "target": "self" }
+      {
+        "type": "utility-clear",
+        "target": "enemy"
+      },
+      {
+        "type": "hot",
+        "target": "self"
+      }
     ]
   },
   {
@@ -319,12 +485,20 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Infernal_Oni.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Infernal_Oni.png",
     "description": "Applies two Damage over Time effects on target that each deal 475 Fire Damage over 5 Rounds or removes three Heal over Time effects from caster to deal 1,855 Fire Damage",
     "effects": [
-      { "type": "dot", "target": "enemy" },
-      { "type": "utility-gambit", "target": "self" }
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-gambit",
+        "target": "self"
+      }
     ]
   },
   {
@@ -333,11 +507,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Fire_Shield.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Fire_Shield.png",
     "description": "Applies a -80% Fire Damage Ward",
     "effects": [
-      { "type": "ward-shield", "target": "any-ally" }
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -346,11 +525,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Fire_Weakness.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Fire_Weakness.png",
     "description": "Applies a -35% Fire Damage Charm",
     "effects": [
-      { "type": "charm-weakness", "target": "enemy" }
+      {
+        "type": "charm-weakness",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -359,11 +543,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Tranquilize.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Tranquilize.png",
     "description": "Pacifies caster for 1 Round",
     "effects": [
-      { "type": "utility-aggro", "target": "self" }
+      {
+        "type": "utility-aggro",
+        "target": "self"
+      }
     ]
   },
   {
@@ -372,11 +561,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Quench.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Quench.png",
     "description": "Applies a Fire Dispel Charm",
     "effects": [
-      { "type": "charm-dispel", "target": "enemy" }
+      {
+        "type": "charm-dispel",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -385,12 +579,20 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/fire/Take_Power.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Take_Power.png",
     "description": "Sacrifices a Minion to give 3 Pips to caster",
     "effects": [
-      { "type": "utility-sacrifice", "target": "minion" },
-      { "type": "utility-pip", "target": "self" }
+      {
+        "type": "utility-sacrifice",
+        "target": "minion"
+      },
+      {
+        "type": "utility-pip",
+        "target": "self"
+      }
     ]
   },
   {
@@ -399,11 +601,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Mega_Tranquilize.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Mega_Tranquilize.png",
     "description": "Pacifies ally for 1 Round (not caster)",
     "effects": [
-      { "type": "utility-aggro", "target": "ally" }
+      {
+        "type": "utility-aggro",
+        "target": "ally"
+      }
     ]
   },
   {
@@ -412,11 +619,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Mass_Fire_Prism.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Mass_Fire_Prism.png",
     "description": "Applies a Fire to Ice Damage Prism Ward on all enemies",
     "effects": [
-      { "type": "ward-prism", "target": "aoe" }
+      {
+        "type": "ward-prism",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -425,11 +637,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Firespear.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Firespear.png",
     "description": "Applies a +30% Fire Armor Piercing Charm",
     "effects": [
-      { "type": "charm-pierce", "target": "any-ally" }
+      {
+        "type": "charm-pierce",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -438,11 +655,16 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/fire/Combustion.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/fire/Combustion.png",
     "description": "Applies a +20% Fire Armor Piercing and +20% Fire Critical Chance Global",
     "effects": [
-      { "type": "global", "target": "all" }
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
@@ -451,14 +673,29 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer", "quest"],
-    "image": "/assets/fire/Link.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/fire/Link.png",
     "description": "Deals 30 Fire Damage and 150 Fire Damage over 3 Rounds to target and restores 15 Health and 105 Health over 3 Rounds to caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" },
-      { "type": "heal", "target": "self" },
-      { "type": "hot", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "heal",
+        "target": "self"
+      },
+      {
+        "type": "hot",
+        "target": "self"
+      }
     ]
   },
   {
@@ -467,11 +704,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/fire/Fireblade.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Fireblade.png",
     "description": "Applies a +35% Fire Damage Charm",
     "effects": [
-      { "type": "charm-blade", "target": "any-ally" }
+      {
+        "type": "charm-blade",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -480,11 +722,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/fire/Fire_Prism.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Fire_Prism.png",
     "description": "Applies a Fire to Ice Damage Prism Ward",
     "effects": [
-      { "type": "ward-prism", "target": "enemy" }
+      {
+        "type": "ward-prism",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -493,11 +740,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/fire/Steal_Charm.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Steal_Charm.png",
     "description": "Steals a helpful Charm",
     "effects": [
-      { "type": "utility-steal", "target": "enemy" }
+      {
+        "type": "utility-steal",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -506,11 +758,16 @@
     "pipCost": "X",
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/fire/Heck_Hound.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Heck_Hound.png",
     "description": "Deals 130 Fire Damage per Pip over 3 Rounds",
     "effects": [
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -519,11 +776,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/fire/Choke.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Choke.png",
     "description": "Stuns all enemies for 1 Round (and applies 1 Stun Block on all enemies)",
     "effects": [
-      { "type": "ward-stun", "target": "aoe" }
+      {
+        "type": "ward-stun",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -532,11 +794,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/fire/Fire_Elemental.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Fire_Elemental.png",
     "description": "Summons a Fire Elemental",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -545,11 +812,16 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/fire/Scald.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Scald.png",
     "description": "Deals 525 Fire Damage over 3 Rounds to all enemies",
     "effects": [
-      { "type": "dot", "target": "aoe" }
+      {
+        "type": "dot",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -558,11 +830,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Side Arc",
-    "source": ["quest"],
-    "image": "/assets/fire/Fuel.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Fuel.png",
     "description": "Applies three +40% Fire Damage Wards",
     "effects": [
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -571,11 +848,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/fire/Smoke_Screen.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Smoke_Screen.png",
     "description": "Applies a -40% Accuracy Charm on all enemies",
     "effects": [
-      { "type": "charm-accuracy", "target": "aoe" }
+      {
+        "type": "charm-accuracy",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -584,14 +866,28 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Side Arc",
-    "source": ["quest"],
-    "image": "/assets/fire/Power_Link.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Power_Link.png",
     "description": "Deals 55 Fire Damage and 345 Fire Damage over 3 Rounds to target and restores 40 Health and 240 Health over 3 Rounds to caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" },
-      { "type": "heal", "target": "self" },
-      { "type": "hot", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "heal",
+        "target": "self"
+      },
+      {
+        "type": "hot",
+        "target": "self"
+      }
     ]
   },
   {
@@ -600,11 +896,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["quest"],
-    "image": "/assets/fire/Detonate.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Detonate.png",
     "description": "Destroys 1 Damage over Time effect on target and deals its full remaining Damage",
     "effects": [
-      { "type": "utility-detonate", "target": "enemy" }
+      {
+        "type": "utility-detonate",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -613,11 +914,16 @@
     "pipCost": "X",
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["quest"],
-    "image": "/assets/fire/Backdraft.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Backdraft.png",
     "description": "Applies a +15% per Pip Fire Damage Ward",
     "effects": [
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -626,11 +932,16 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["quest"],
-    "image": "/assets/fire/Sir_Lamorak.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Sir_Lamorak.png",
     "description": "Summons Sir Lamorak Tinder Heart",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -639,12 +950,20 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Side Arc",
-    "source": ["quest"],
-    "image": "/assets/fire/Fire_from_Above.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/fire/Fire_from_Above.png",
     "description": "Deals 415 Fire Damage to and applies three +30% Fire Damage Wards on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -653,12 +972,21 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 3",
-    "source": ["quest", "trainer"],
-    "image": "/assets/fire/Raging_Bull.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/fire/Raging_Bull.png",
     "description": "Deals 430 Fire Damage to and applies a -40% Accuracy Charm on all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" },
-      { "type": "charm-accuracy", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "charm-accuracy",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -667,12 +995,21 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 3",
-    "source": ["quest", "trainer"],
-    "image": "/assets/fire/Scorching_Scimitars.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/fire/Scorching_Scimitars.png",
     "description": "Deals 220 Fire Damage split among selected enemies and restores 420 Health over 3 Rounds to caster",
     "effects": [
-      { "type": "damage", "target": "selected" },
-      { "type": "hot", "target": "self" }
+      {
+        "type": "damage",
+        "target": "selected"
+      },
+      {
+        "type": "hot",
+        "target": "self"
+      }
     ]
   },
   {
@@ -681,12 +1018,21 @@
     "pipCost": 11,
     "archmastery": [],
     "arc": "Arc 3",
-    "source": ["quest", "trainer"],
-    "image": "/assets/fire/Scion_of_Fire.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/fire/Scion_of_Fire.png",
     "description": "Deals 1,120 Fire Damage, or if target has at least six harmful Wards, removes all harmful Wards from target to deal 2,240 Fire Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "utility-gambit", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-gambit",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -695,12 +1041,21 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/fire/S'more_Machine.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/fire/S'more_Machine.png",
     "description": "Deals 465 Fire Damage to and applies three +40% Fire Damage over Time Wards on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -709,38 +1064,63 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/fire/Blast_Off!.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/fire/Blast_Off!.png",
     "description": "Extends the duration of a Damage over Time effect by one Round on and deals 690 Fire Damage after four Rounds to all enemies",
     "effects": [
-      { "type": "utility-extend", "target": "enemy" },
-      { "type": "dot", "target": "aoe" }
+      {
+        "type": "utility-extend",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "aoe"
+      }
     ]
   },
   {
     "name": "Glimpse of Infinity",
     "school": "Fire",
     "pipCost": 5,
-    "archmastery": ["Myth"],
+    "archmastery": [
+      "Myth"
+    ],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/fire/Glimpse_of_Infinity.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/fire/Glimpse_of_Infinity.png",
     "description": "Applies two Damage over Time effects on target that each deal 465 Fire Damage over 5 Rounds",
     "effects": [
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Phantasmania!",
     "school": "Fire",
     "pipCost": 5,
-    "archmastery": ["Life"],
+    "archmastery": [
+      "Life"
+    ],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/fire/Phantasmania!.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/fire/Phantasmania!.png",
     "description": "Deals 485 Fire Damage to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -749,11 +1129,17 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/fire/Ammut.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/fire/Ammut.png",
     "description": "Deals 780 Fire Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -762,55 +1148,98 @@
     "pipCost": 10,
     "archmastery": [],
     "arc": "Arc 5",
-    "source": ["quest", "trainer"],
-    "image": "/assets/fire/The_Chariot.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/fire/The_Chariot.png",
     "description": "Deals 830 Fire Damage to and applies a +40% Fire Damage Ward on target and restores 450 Health over 3 Rounds to caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-trap", "target": "enemy" },
-      { "type": "hot", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      },
+      {
+        "type": "hot",
+        "target": "self"
+      }
     ]
   },
   {
     "name": "A-Baahh-Calypse",
     "school": "Fire",
     "pipCost": 5,
-    "archmastery": ["Fire"],
+    "archmastery": [
+      "Fire"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/fire/A-Baahh-Calypse.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/fire/A-Baahh-Calypse.png",
     "description": "Deals 410 Fire Damage to and Detonates two Damage over Time effects on target to deal 145% of the remaining Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "utility-detonate", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-detonate",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Brimstone Revenant",
     "school": "Fire",
     "pipCost": 4,
-    "archmastery": ["Fire"],
+    "archmastery": [
+      "Fire"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/fire/Brimstone_Revenant.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/fire/Brimstone_Revenant.png",
     "description": "Deals 470 Fire Damage to and applies a +30% Fire Damage Ward on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Burning Rampage",
     "school": "Fire",
     "pipCost": 5,
-    "archmastery": ["Fire"],
+    "archmastery": [
+      "Fire"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/fire/Burning_Rampage.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/fire/Burning_Rampage.png",
     "description": "Deals 70 Fire Damage and applies two Damage over Time effects on target that each deal 420 Damage of caster's School after five Rounds",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -819,67 +1248,114 @@
     "pipCost": 8,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/fire/Fires_of_Mars.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/fire/Fires_of_Mars.png",
     "description": "Applies three Damage over Time effects on target that each deal 435 Damage of caster's School over 6 Rounds",
     "effects": [
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Hephaestus",
     "school": "Fire",
     "pipCost": 5,
-    "archmastery": ["Fire"],
+    "archmastery": [
+      "Fire"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/fire/Hephaestus.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/fire/Hephaestus.png",
     "description": "Deals 340-420 Fire Damage to target and applies a +25% Fire Damage Global",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "global", "target": "all" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
     "name": "Krampus",
     "school": "Fire",
     "pipCost": 4,
-    "archmastery": ["Fire"],
+    "archmastery": [
+      "Fire"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/fire/Krampus.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/fire/Krampus.png",
     "description": "Deals 420-460 Fire Damage to and applies a -45% Accuracy Charm on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "charm-accuracy", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-accuracy",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Nautilus Unleashed",
     "school": "Fire",
     "pipCost": 5,
-    "archmastery": ["Fire"],
+    "archmastery": [
+      "Fire"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/fire/Nautilus_Unleashed.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/fire/Nautilus_Unleashed.png",
     "description": "Steals a helpful Charm from and deals 415-505 Fire Damage to target",
     "effects": [
-      { "type": "utility-steal", "target": "enemy" },
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "utility-steal",
+        "target": "enemy"
+      },
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Whitehart Fire",
     "school": "Fire",
     "pipCost": 5,
-    "archmastery": ["Fire"],
+    "archmastery": [
+      "Fire"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/fire/Whitehart_Fire.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/fire/Whitehart_Fire.png",
     "description": "Deals 460 Fire Damage to target and restores 450 Health over 3 Rounds to caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "hot", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "hot",
+        "target": "self"
+      }
     ]
   }
 ]

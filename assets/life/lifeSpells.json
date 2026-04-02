@@ -5,11 +5,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Imp.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Imp.png",
     "description": "Deals 65-105 Life Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -18,11 +23,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Leprechaun.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Leprechaun.png",
     "description": "Deals 155-195 Life Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -31,11 +41,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Legend_Shield.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Legend_Shield.png",
     "description": "Applies -70% Death and Myth Damage Wards",
     "effects": [
-      { "type": "ward-shield", "target": "any-ally" }
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -44,12 +59,20 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Sprite.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Sprite.png",
     "description": "Restores 30 Health and 280 Health over 4 Rounds",
     "effects": [
-      { "type": "heal", "target": "any-ally" },
-      { "type": "hot", "target": "any-ally" }
+      {
+        "type": "heal",
+        "target": "any-ally"
+      },
+      {
+        "type": "hot",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -58,11 +81,17 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer", "quest"],
-    "image": "/assets/life/Nature's_Wrath.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/life/Nature's_Wrath.png",
     "description": "Deals 240-300 Life Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -71,11 +100,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Spirit_Armor.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Spirit_Armor.png",
     "description": "Applies a 400 Damage Absorption Ward",
     "effects": [
-      { "type": "ward-absorb", "target": "any-ally" }
+      {
+        "type": "ward-absorb",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -84,12 +118,20 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Legend_Golem.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Legend_Golem.png",
     "description": "Deals 255-285 Life Damage to target and applies -70% Death and Myth Damage Wards on caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-shield", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-shield",
+        "target": "self"
+      }
     ]
   },
   {
@@ -98,11 +140,16 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Seraph.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Seraph.png",
     "description": "Deals 335-395 Life Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -111,11 +158,16 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Satyr.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Satyr.png",
     "description": "Restores 860 Health",
     "effects": [
-      { "type": "heal", "target": "any-ally" }
+      {
+        "type": "heal",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -124,13 +176,24 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Hunting_Wyrm.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Hunting_Wyrm.png",
     "description": "Deals 75 Life Damage and 300 Life Damage after 3 Rounds to target, and restores 420 Health over 3 Rounds to caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" },
-      { "type": "hot", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "hot",
+        "target": "self"
+      }
     ]
   },
   {
@@ -139,12 +202,21 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer", "quest"],
-    "image": "/assets/life/Regenerate.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/life/Regenerate.png",
     "description": "Restores 420 Health and 1,150 Health over 5 Rounds",
     "effects": [
-      { "type": "heal", "target": "any-ally" },
-      { "type": "hot", "target": "any-ally" }
+      {
+        "type": "heal",
+        "target": "any-ally"
+      },
+      {
+        "type": "hot",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -153,11 +225,16 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Earth_Walker.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Earth_Walker.png",
     "description": "Deals 420-500 Life Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -166,11 +243,16 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Centaur.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Centaur.png",
     "description": "Deals 515-595 Life Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -179,11 +261,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Sanctuary.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Sanctuary.png",
     "description": "Applies a +35% Healing Global",
     "effects": [
-      { "type": "global", "target": "all" }
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
@@ -192,11 +279,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Circle_of_Thorns.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Circle_of_Thorns.png",
     "description": "Applies a +25% Life Damage Global",
     "effects": [
-      { "type": "global", "target": "all" }
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
@@ -205,12 +297,20 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Infestation.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Infestation.png",
     "description": "Deals 230 Life Damage and applies a +25% Life Damage Global",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "global", "target": "all" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
@@ -219,13 +319,25 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Sprite_Swarm.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Sprite_Swarm.png",
     "description": "Restores 55 Health and 525 Health over 3 Rounds to all allies and summons a Spritely Essence if caster has a Damage over Time effect",
     "effects": [
-      { "type": "heal", "target": "all-allies" },
-      { "type": "hot", "target": "all-allies" },
-      { "type": "utility-conditional", "target": "self", "condition": "caster has a Damage over Time effect" }
+      {
+        "type": "heal",
+        "target": "all-allies"
+      },
+      {
+        "type": "hot",
+        "target": "all-allies"
+      },
+      {
+        "type": "utility-conditional",
+        "target": "self",
+        "condition": "caster has a Damage over Time effect"
+      }
     ]
   },
   {
@@ -234,12 +346,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Tranquility.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Tranquility.png",
     "description": "Removes up to two harmful Wards from ally to restore 145 Health over 3 Rounds to ally per Ward removed",
     "effects": [
-      { "type": "utility-clear", "target": "any-ally" },
-      { "type": "hot", "target": "any-ally" }
+      {
+        "type": "utility-clear",
+        "target": "any-ally"
+      },
+      {
+        "type": "hot",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -248,12 +368,20 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Meditation.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Meditation.png",
     "description": "Removes a Damage over Time effect from ally to restore 390 Health over 3 Rounds to ally",
     "effects": [
-      { "type": "utility-clear", "target": "any-ally" },
-      { "type": "hot", "target": "any-ally" }
+      {
+        "type": "utility-clear",
+        "target": "any-ally"
+      },
+      {
+        "type": "hot",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -262,11 +390,17 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/life/Forest_Lord.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/life/Forest_Lord.png",
     "description": "Deals 620-680 Life Damage to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -275,12 +409,21 @@
     "pipCost": 8,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/life/Rebirth.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/life/Rebirth.png",
     "description": "Restores 870 Health to and applies a 400 Damage Absorption Ward on all allies",
     "effects": [
-      { "type": "heal", "target": "all-allies" },
-      { "type": "ward-absorb", "target": "all-allies" }
+      {
+        "type": "heal",
+        "target": "all-allies"
+      },
+      {
+        "type": "ward-absorb",
+        "target": "all-allies"
+      }
     ]
   },
   {
@@ -289,12 +432,20 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Jinn's_Affliction.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Jinn's_Affliction.png",
     "description": "Removes a Damage over Time effect from caster to deal 180 Life Damage after 3 Rounds to target",
     "effects": [
-      { "type": "utility-clear", "target": "self" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "utility-clear",
+        "target": "self"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -303,12 +454,20 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Verdurous_Jinn.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Verdurous_Jinn.png",
     "description": "Applies two Damage over Time effects on target that each deal 400 Life Damage after 5 Rounds or removes three Damage over Time effects from target to deal 1,545 Life Damage",
     "effects": [
-      { "type": "dot", "target": "enemy" },
-      { "type": "utility-gambit", "target": "enemy" }
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-gambit",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -317,12 +476,21 @@
     "pipCost": 9,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/life/Gnomes!.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/life/Gnomes!.png",
     "description": "Deals 740-840 Life Damage to target and applies a +30% Healing Charm on caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "charm-healing", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-healing",
+        "target": "self"
+      }
     ]
   },
   {
@@ -331,12 +499,21 @@
     "pipCost": 10,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/life/Spinysaur.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/life/Spinysaur.png",
     "description": "Deals 475 Life Damage and 690 Life Damage over 3 Rounds",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -345,13 +522,25 @@
     "pipCost": 8,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/life/King_Artorius_(Life).png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/life/King_Artorius_(Life).png",
     "description": "Deals 650 Life Damage to target and applies a +10% Life Armor Piercing Charm on and restores 300 Health over 3 Rounds to caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "charm-pierce", "target": "self" },
-      { "type": "hot", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-pierce",
+        "target": "self"
+      },
+      {
+        "type": "hot",
+        "target": "self"
+      }
     ]
   },
   {
@@ -360,12 +549,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Oni's_Naturalism.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Oni's_Naturalism.png",
     "description": "Removes up to two harmful Wards from ally to apply a +30% Life Damage Charm on ally per Ward removed",
     "effects": [
-      { "type": "utility-clear", "target": "any-ally" },
-      { "type": "charm-blade", "target": "any-ally" }
+      {
+        "type": "utility-clear",
+        "target": "any-ally"
+      },
+      {
+        "type": "charm-blade",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -374,12 +571,20 @@
     "pipCost": 9,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Primal_Oni.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Primal_Oni.png",
     "description": "Deals 710 Life Damage or removes four helpful Charms from caster to deal 1,300 Life Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "utility-gambit", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-gambit",
+        "target": "self"
+      }
     ]
   },
   {
@@ -388,11 +593,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Life_Shield.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Life_Shield.png",
     "description": "Applies a -80% Life Damage Ward",
     "effects": [
-      { "type": "ward-shield", "target": "any-ally" }
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -401,11 +611,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Life_Weakness.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Life_Weakness.png",
     "description": "Applies a -35% Life Damage Charm",
     "effects": [
-      { "type": "charm-weakness", "target": "enemy" }
+      {
+        "type": "charm-weakness",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -414,11 +629,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Life_Trap.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Life_Trap.png",
     "description": "Applies a +40% Life Damage Ward",
     "effects": [
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -427,11 +647,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Calm.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Calm.png",
     "description": "Pacifies caster for 1 Round",
     "effects": [
-      { "type": "utility-aggro", "target": "self" }
+      {
+        "type": "utility-aggro",
+        "target": "self"
+      }
     ]
   },
   {
@@ -440,11 +665,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Entangle.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Entangle.png",
     "description": "Applies a Life Dispel Charm",
     "effects": [
-      { "type": "charm-dispel", "target": "enemy" }
+      {
+        "type": "charm-dispel",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -453,12 +683,20 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/life/Drain_Health.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Drain_Health.png",
     "description": "Sacrifices a Minion to restore 450 Health to caster",
     "effects": [
-      { "type": "utility-sacrifice", "target": "minion" },
-      { "type": "heal", "target": "self" }
+      {
+        "type": "utility-sacrifice",
+        "target": "minion"
+      },
+      {
+        "type": "heal",
+        "target": "self"
+      }
     ]
   },
   {
@@ -467,11 +705,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Mega_Calm.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Mega_Calm.png",
     "description": "Pacifies ally for 1 Round (not caster)",
     "effects": [
-      { "type": "utility-aggro", "target": "ally" }
+      {
+        "type": "utility-aggro",
+        "target": "ally"
+      }
     ]
   },
   {
@@ -480,11 +723,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Mass_Life_Prism.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Mass_Life_Prism.png",
     "description": "Applies a Life to Death Damage Prism Ward on all enemies",
     "effects": [
-      { "type": "ward-prism", "target": "aoe" }
+      {
+        "type": "ward-prism",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -493,11 +741,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Lifespear.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Lifespear.png",
     "description": "Applies a +30% Life Armor Piercing Charm",
     "effects": [
-      { "type": "charm-pierce", "target": "any-ally" }
+      {
+        "type": "charm-pierce",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -506,11 +759,16 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/life/Namaste.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/life/Namaste.png",
     "description": "Applies a +20% Life Armor Piercing and +20% Life Critical Chance Global",
     "effects": [
-      { "type": "global", "target": "all" }
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
@@ -519,11 +777,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Minor_Blessing.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Minor_Blessing.png",
     "description": "Restores 120 Health",
     "effects": [
-      { "type": "heal", "target": "any-ally" }
+      {
+        "type": "heal",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -532,11 +795,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Fairy.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Fairy.png",
     "description": "Restores 420 Health",
     "effects": [
-      { "type": "heal", "target": "any-ally" }
+      {
+        "type": "heal",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -545,11 +813,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Pixie.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Pixie.png",
     "description": "Restores 400 Health to caster",
     "effects": [
-      { "type": "heal", "target": "self" }
+      {
+        "type": "heal",
+        "target": "self"
+      }
     ]
   },
   {
@@ -558,11 +831,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Unicorn.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Unicorn.png",
     "description": "Restores 465 Health to self and all allies",
     "effects": [
-      { "type": "heal", "target": "all-allies" }
+      {
+        "type": "heal",
+        "target": "all-allies"
+      }
     ]
   },
   {
@@ -571,11 +849,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Life_Prism.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Life_Prism.png",
     "description": "Applies a Life to Death Damage Prism Ward",
     "effects": [
-      { "type": "ward-prism", "target": "enemy" }
+      {
+        "type": "ward-prism",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -584,11 +867,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Sprite_Guardian.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Sprite_Guardian.png",
     "description": "Summons a Minion of Life",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -597,11 +885,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Lifeblade.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Lifeblade.png",
     "description": "Applies a +35% Life Damage Charm",
     "effects": [
-      { "type": "charm-blade", "target": "any-ally" }
+      {
+        "type": "charm-blade",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -610,11 +903,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Guidance.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Guidance.png",
     "description": "Applies a +20% Accuracy Charm on all allies",
     "effects": [
-      { "type": "charm-accuracy", "target": "all-allies" }
+      {
+        "type": "charm-accuracy",
+        "target": "all-allies"
+      }
     ]
   },
   {
@@ -623,11 +921,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Guiding_Light.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Guiding_Light.png",
     "description": "Applies a +35% Healing Charm",
     "effects": [
-      { "type": "charm-healing", "target": "any-ally" }
+      {
+        "type": "charm-healing",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -636,11 +939,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Side Arc",
-    "source": ["quest"],
-    "image": "/assets/life/Triage.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Triage.png",
     "description": "Removes a Damage over Time effect from target",
     "effects": [
-      { "type": "utility-remove", "target": "any-ally" }
+      {
+        "type": "utility-remove",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -649,11 +957,16 @@
     "pipCost": "X",
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/life/Dryad.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Dryad.png",
     "description": "Restores 200 Health per Pip",
     "effects": [
-      { "type": "heal", "target": "any-ally" }
+      {
+        "type": "heal",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -662,11 +975,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Side Arc",
-    "source": ["quest"],
-    "image": "/assets/life/Brilliant_Light.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Brilliant_Light.png",
     "description": "Applies a +30% Healing Charm on all allies",
     "effects": [
-      { "type": "charm-healing", "target": "all-allies" }
+      {
+        "type": "charm-healing",
+        "target": "all-allies"
+      }
     ]
   },
   {
@@ -675,11 +993,16 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["quest"],
-    "image": "/assets/life/Sir_Bedevere.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Sir_Bedevere.png",
     "description": "Summons a Minion of Life",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -688,11 +1011,16 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["quest"],
-    "image": "/assets/life/Guardian_Spirit.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Guardian_Spirit.png",
     "description": "Target regains 15% of their Health after being defeated. Cannot Critical",
     "effects": [
-      { "type": "utility-revive", "target": "any-ally" }
+      {
+        "type": "utility-revive",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -701,11 +1029,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["quest"],
-    "image": "/assets/life/Mass_Triage.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Mass_Triage.png",
     "description": "Removes a Damage over Time effect from all allies",
     "effects": [
-      { "type": "utility-remove", "target": "all-allies" }
+      {
+        "type": "utility-remove",
+        "target": "all-allies"
+      }
     ]
   },
   {
@@ -714,12 +1047,20 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Side Arc",
-    "source": ["quest"],
-    "image": "/assets/life/Hungry_Caterpillar.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/life/Hungry_Caterpillar.png",
     "description": "Deals 270 Life Damage to target and applies an 800 Damage Absorption Ward on caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-absorb", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-absorb",
+        "target": "self"
+      }
     ]
   },
   {
@@ -728,14 +1069,29 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 3",
-    "source": ["quest", "trainer"],
-    "image": "/assets/life/Wings_of_Fate.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/life/Wings_of_Fate.png",
     "description": "Deals 75 Life Damage and 270 Life Damage over 3 Rounds to all enemies and restores 75 Health and 270 Health over 3 Rounds to all allies",
     "effects": [
-      { "type": "damage", "target": "aoe" },
-      { "type": "dot", "target": "aoe" },
-      { "type": "heal", "target": "all-allies" },
-      { "type": "hot", "target": "all-allies" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "dot",
+        "target": "aoe"
+      },
+      {
+        "type": "heal",
+        "target": "all-allies"
+      },
+      {
+        "type": "hot",
+        "target": "all-allies"
+      }
     ]
   },
   {
@@ -744,11 +1100,17 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 3",
-    "source": ["quest", "trainer"],
-    "image": "/assets/life/Lamassu.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/life/Lamassu.png",
     "description": "Deals 330 Life Damage split among selected enemies",
     "effects": [
-      { "type": "damage", "target": "selected" }
+      {
+        "type": "damage",
+        "target": "selected"
+      }
     ]
   },
   {
@@ -757,13 +1119,26 @@
     "pipCost": 11,
     "archmastery": [],
     "arc": "Arc 3",
-    "source": ["quest", "trainer"],
-    "image": "/assets/life/Scion_of_Life.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/life/Scion_of_Life.png",
     "description": "Restores 1,480 Health to target and 300 Health over 3 Rounds to all allies, or if target has 25% or less of their total Health, restores 2,960 Health to target and 600 Health over 3 Rounds to all allies",
     "effects": [
-      { "type": "heal", "target": "any-ally" },
-      { "type": "hot", "target": "all-allies" },
-      { "type": "utility-conditional", "target": "any-ally", "condition": "target has 25% or less of their total Health" }
+      {
+        "type": "heal",
+        "target": "any-ally"
+      },
+      {
+        "type": "hot",
+        "target": "all-allies"
+      },
+      {
+        "type": "utility-conditional",
+        "target": "any-ally",
+        "condition": "target has 25% or less of their total Health"
+      }
     ]
   },
   {
@@ -772,12 +1147,21 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/life/Grrnadier.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/life/Grrnadier.png",
     "description": "Deals 305 Life Damage to target and Pacifies caster for 2 Rounds",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "utility-aggro", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-aggro",
+        "target": "self"
+      }
     ]
   },
   {
@@ -786,38 +1170,63 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/life/Lord_of_the_Jungle.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/life/Lord_of_the_Jungle.png",
     "description": "Deals 360 Life Damage to all enemies, then removes a Damage Absorption Ward from caster to apply a Life Damage Charm with percentage equal to 10% of the Ward's remaining Damage on caster",
     "effects": [
-      { "type": "damage", "target": "aoe" },
-      { "type": "utility-convert", "target": "self" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "utility-convert",
+        "target": "self"
+      }
     ]
   },
   {
     "name": "Starspawn",
     "school": "Life",
     "pipCost": 5,
-    "archmastery": ["Fire"],
+    "archmastery": [
+      "Fire"
+    ],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/life/Starspawn.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/life/Starspawn.png",
     "description": "Deals 535 Life Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Zand the Bandit",
     "school": "Life",
     "pipCost": 5,
-    "archmastery": ["Storm"],
+    "archmastery": [
+      "Storm"
+    ],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/life/Zand_the_Bandit.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/life/Zand_the_Bandit.png",
     "description": "Deals 400 Life Damage to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -826,11 +1235,17 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/life/Taweret.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/life/Taweret.png",
     "description": "Restores 1,480 Health",
     "effects": [
-      { "type": "heal", "target": "any-ally" }
+      {
+        "type": "heal",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -839,68 +1254,119 @@
     "pipCost": 10,
     "archmastery": [],
     "arc": "Arc 5",
-    "source": ["quest", "trainer"],
-    "image": "/assets/life/The_World.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/life/The_World.png",
     "description": "Deals 680 Life Damage and 210 Life Damage after 3 Rounds to target and applies a -25% incoming Damage Aura for 4 Rounds on caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" },
-      { "type": "aura", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "aura",
+        "target": "self"
+      }
     ]
   },
   {
     "name": "Burrowing Bane",
     "school": "Life",
     "pipCost": 5,
-    "archmastery": ["Life"],
+    "archmastery": [
+      "Life"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/life/Burrowing_Bane.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/life/Burrowing_Bane.png",
     "description": "Deals 375 Life Damage and 200 Life Damage after 3 Rounds",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Camp Bandit",
     "school": "Life",
     "pipCost": 5,
-    "archmastery": ["Life"],
+    "archmastery": [
+      "Life"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/life/Camp_Bandit.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/life/Camp_Bandit.png",
     "description": "Deals 295 Life Damage to target and removes a Damage Ward from caster to apply a Life Damage Ward with the same percentage on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "utility-convert", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-convert",
+        "target": "self"
+      }
     ]
   },
   {
     "name": "Goat Monk",
     "school": "Life",
     "pipCost": 5,
-    "archmastery": ["Life"],
+    "archmastery": [
+      "Life"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/life/Goat_Monk.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/life/Goat_Monk.png",
     "description": "Deals 515-555 Life Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Luminous Weaver",
     "school": "Life",
     "pipCost": 4,
-    "archmastery": ["Life"],
+    "archmastery": [
+      "Life"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/life/Luminous_Weaver.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/life/Luminous_Weaver.png",
     "description": "Deals 370 Life Damage to and applies a -25% Damage Charm on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "charm-weakness", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-weakness",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -909,52 +1375,86 @@
     "pipCost": 8,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/life/Phoebus'_Will.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/life/Phoebus'_Will.png",
     "description": "Deals 620 Life Damage to and Detonates three Damage over Time effects on target to deal 125% of the remaining Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "utility-detonate", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-detonate",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Pigsie",
     "school": "Life",
     "pipCost": 4,
-    "archmastery": ["Life"],
+    "archmastery": [
+      "Life"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/life/Pigsie.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/life/Pigsie.png",
     "description": "Restores 750 Health to all allies",
     "effects": [
-      { "type": "heal", "target": "all-allies" }
+      {
+        "type": "heal",
+        "target": "all-allies"
+      }
     ]
   },
   {
     "name": "Sacred Charge",
     "school": "Life",
     "pipCost": 6,
-    "archmastery": ["Life"],
+    "archmastery": [
+      "Life"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/life/Sacred_Charge.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/life/Sacred_Charge.png",
     "description": "Deals 525 Life Damage to target and applies a 250 Damage Absorption Ward on caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-absorb", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-absorb",
+        "target": "self"
+      }
     ]
   },
   {
     "name": "Ratatoskr's Spin",
     "school": "Life",
     "pipCost": 4,
-    "archmastery": ["Life"],
+    "archmastery": [
+      "Life"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/life/Ratatoskr's_Spin.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/life/Ratatoskr's_Spin.png",
     "description": "Deals 310-340 Life Damage to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   }
 ]

@@ -5,11 +5,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Blood_Bat.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Blood_Bat.png",
     "description": "Deals 70-110 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -18,11 +23,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Troll.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Troll.png",
     "description": "Deals 170-210 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -31,11 +41,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Myth_Trap.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Myth_Trap.png",
     "description": "Applies a +40% Myth Damage Ward",
     "effects": [
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -44,11 +59,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Cyclops.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Cyclops.png",
     "description": "Deals 265-325 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -57,11 +77,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Ether_Shield.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Ether_Shield.png",
     "description": "Applies -70% Life and Death Damage Wards",
     "effects": [
-      { "type": "ward-shield", "target": "any-ally" }
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -70,12 +95,20 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Ether_Golem.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Ether_Golem.png",
     "description": "Deals 250-340 Myth Damage to target and applies -70% Life and Death Damage Wards on caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-shield", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-shield",
+        "target": "self"
+      }
     ]
   },
   {
@@ -84,11 +117,16 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Humongofrog.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Humongofrog.png",
     "description": "Deals 275-315 Myth Damage to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -97,11 +135,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Time_of_Legend.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Time_of_Legend.png",
     "description": "Applies a +25% Myth Damage Global",
     "effects": [
-      { "type": "global", "target": "all" }
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
@@ -110,11 +153,16 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Minotaur.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Minotaur.png",
     "description": "Deals 50 Myth Damage and 445 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -123,11 +171,16 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Stone_Colossus.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Stone_Colossus.png",
     "description": "Deals 560-640 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -136,12 +189,20 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Vermin_Virtuoso.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Vermin_Virtuoso.png",
     "description": "Deals 250 Myth Damage and applies a +25% Myth Damage Global",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "global", "target": "all" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
@@ -150,12 +211,20 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Earthquake.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Earthquake.png",
     "description": "Deals 370 Myth Damage to and removes all Charms and Wards from all enemies (Stun Blocks will not be removed)",
     "effects": [
-      { "type": "damage", "target": "aoe" },
-      { "type": "utility-remove", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "utility-remove",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -164,11 +233,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Golem-_Taunt.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Golem-_Taunt.png",
     "description": "Mutates Golem Minion into Test Dummy",
     "effects": [
-      { "type": "utility-mutate", "target": "minion" }
+      {
+        "type": "utility-mutate",
+        "target": "minion"
+      }
     ]
   },
   {
@@ -177,12 +251,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Delusion.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Delusion.png",
     "description": "Removes up to two harmful Charms from caster to apply a +35% Myth Damage Ward on target per Charm removed",
     "effects": [
-      { "type": "utility-clear", "target": "self" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "utility-clear",
+        "target": "self"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -191,12 +273,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Betrayal.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Betrayal.png",
     "description": "Removes up to two helpful Wards from target to apply a +35% Myth Damage Ward on target per Ward removed",
     "effects": [
-      { "type": "utility-clear", "target": "enemy" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "utility-clear",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -205,11 +295,17 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/myth/Orthrus.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/myth/Orthrus.png",
     "description": "Deals 700 Myth Damage to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -218,12 +314,21 @@
     "pipCost": 8,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/myth/Medusa.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/myth/Medusa.png",
     "description": "Deals 700 Myth Damage to and Stuns target for 2 Rounds",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-stun", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-stun",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -232,12 +337,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Jinn's_Defense.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Jinn's_Defense.png",
     "description": "Removes up to two helpful Wards from target to apply a -40% Damage Ward on caster per Ward removed",
     "effects": [
-      { "type": "utility-clear", "target": "enemy" },
-      { "type": "ward-shield", "target": "self" }
+      {
+        "type": "utility-clear",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-shield",
+        "target": "self"
+      }
     ]
   },
   {
@@ -246,13 +359,25 @@
     "pipCost": 9,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/myth/Basilisk.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/myth/Basilisk.png",
     "description": "Deals 320 Myth Damage and 750 Myth Damage over 3 Rounds to and Stuns target for 1 Round",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" },
-      { "type": "ward-stun", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-stun",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -261,12 +386,20 @@
     "pipCost": 11,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Phantastic_Jinn.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Phantastic_Jinn.png",
     "description": "Deals 950 Myth Damage or removes four helpful Wards from caster to deal 1,775 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "utility-gambit", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-gambit",
+        "target": "self"
+      }
     ]
   },
   {
@@ -275,11 +408,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Purge.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Purge.png",
     "description": "Removes three harmful Charms from target",
     "effects": [
-      { "type": "utility-remove", "target": "any-ally" }
+      {
+        "type": "utility-remove",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -288,13 +426,25 @@
     "pipCost": 10,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/myth/Celestial_Calendar.png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/myth/Celestial_Calendar.png",
     "description": "Deals 860-950 Myth Damage to and steals 1 Pip from target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "utility-steal", "target": "enemy" },
-      { "type": "utility-pip", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-steal",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-pip",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -303,13 +453,25 @@
     "pipCost": 8,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer", "quest"],
-    "image": "/assets/myth/King_Artorius_(Myth).png",
+    "source": [
+      "trainer",
+      "quest"
+    ],
+    "image": "./assets/myth/King_Artorius_(Myth).png",
     "description": "Deals 945 Myth Damage over 3 Rounds, removes 1 positive Ward from target, and applies a +10% Myth Armor Piercing Charm on self",
     "effects": [
-      { "type": "dot", "target": "enemy" },
-      { "type": "utility-remove", "target": "enemy" },
-      { "type": "charm-pierce", "target": "self" }
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-remove",
+        "target": "enemy"
+      },
+      {
+        "type": "charm-pierce",
+        "target": "self"
+      }
     ]
   },
   {
@@ -318,12 +480,20 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Oni's_Projection.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Oni's_Projection.png",
     "description": "Removes up to two harmful Charms from caster to deal 70 Myth Damage after 3 Rounds to target per Charm removed",
     "effects": [
-      { "type": "utility-clear", "target": "self" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "utility-clear",
+        "target": "self"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -332,12 +502,20 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Trickster_Oni.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Trickster_Oni.png",
     "description": "Applies two Damage over Time effects on target that each deal 430 Myth Damage after 5 Rounds or removes three Damage over Time effects from target to deal 1,665 Myth Damage",
     "effects": [
-      { "type": "dot", "target": "enemy" },
-      { "type": "utility-gambit", "target": "enemy" }
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-gambit",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -346,11 +524,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Myth_Shield.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Myth_Shield.png",
     "description": "Applies a -80% Myth Damage Ward",
     "effects": [
-      { "type": "ward-shield", "target": "any-ally" }
+      {
+        "type": "ward-shield",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -359,11 +542,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Myth_Weakness.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Myth_Weakness.png",
     "description": "Applies a -35% Myth Damage Charm",
     "effects": [
-      { "type": "charm-weakness", "target": "enemy" }
+      {
+        "type": "charm-weakness",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -372,11 +560,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Shield_Minion.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Shield_Minion.png",
     "description": "Applies a -70% Damage Ward on a Minion",
     "effects": [
-      { "type": "ward-shield", "target": "minion" }
+      {
+        "type": "ward-shield",
+        "target": "minion"
+      }
     ]
   },
   {
@@ -385,11 +578,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Subdue.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Subdue.png",
     "description": "Pacifies caster for 1 Round",
     "effects": [
-      { "type": "utility-aggro", "target": "self" }
+      {
+        "type": "utility-aggro",
+        "target": "self"
+      }
     ]
   },
   {
@@ -398,11 +596,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Buff_Minion.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Buff_Minion.png",
     "description": "Applies a +40% Damage Charm on a Minion",
     "effects": [
-      { "type": "charm-blade", "target": "minion" }
+      {
+        "type": "charm-blade",
+        "target": "minion"
+      }
     ]
   },
   {
@@ -411,12 +614,20 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Siphon_Health.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Siphon_Health.png",
     "description": "Sacrifices Minion to restore 400 Health to caster",
     "effects": [
-      { "type": "utility-sacrifice", "target": "minion" },
-      { "type": "heal", "target": "self" }
+      {
+        "type": "utility-sacrifice",
+        "target": "minion"
+      },
+      {
+        "type": "heal",
+        "target": "self"
+      }
     ]
   },
   {
@@ -425,11 +636,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Vaporize.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Vaporize.png",
     "description": "Applies a Myth Dispel Charm",
     "effects": [
-      { "type": "charm-dispel", "target": "enemy" }
+      {
+        "type": "charm-dispel",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -438,11 +654,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Mend_Minion.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Mend_Minion.png",
     "description": "Restores 350 Health to a Minion",
     "effects": [
-      { "type": "heal", "target": "minion" }
+      {
+        "type": "heal",
+        "target": "minion"
+      }
     ]
   },
   {
@@ -451,12 +672,20 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["trainer"],
-    "image": "/assets/myth/Draw_Power.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Draw_Power.png",
     "description": "Sacrifices a Minion to give 2 Pips to caster",
     "effects": [
-      { "type": "utility-sacrifice", "target": "minion" },
-      { "type": "utility-pip", "target": "self" }
+      {
+        "type": "utility-sacrifice",
+        "target": "minion"
+      },
+      {
+        "type": "utility-pip",
+        "target": "self"
+      }
     ]
   },
   {
@@ -465,11 +694,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Mega_Subdue.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Mega_Subdue.png",
     "description": "Pacifies ally for 1 Round (not caster)",
     "effects": [
-      { "type": "utility-aggro", "target": "ally" }
+      {
+        "type": "utility-aggro",
+        "target": "ally"
+      }
     ]
   },
   {
@@ -478,11 +712,16 @@
     "pipCost": 1,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Mass_Myth_Prism.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Mass_Myth_Prism.png",
     "description": "Applies a Myth to Storm Damage Prism Ward on all enemies",
     "effects": [
-      { "type": "ward-prism", "target": "aoe" }
+      {
+        "type": "ward-prism",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -491,11 +730,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Mythspear.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Mythspear.png",
     "description": "Applies a +30% Myth Armor Piercing Charm",
     "effects": [
-      { "type": "charm-pierce", "target": "any-ally" }
+      {
+        "type": "charm-pierce",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -504,11 +748,16 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Saga_of_Heroes.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Saga_of_Heroes.png",
     "description": "Applies a +20% Myth Armor Piercing and +20% Myth Critical Chance Global",
     "effects": [
-      { "type": "global", "target": "all" }
+      {
+        "type": "global",
+        "target": "all"
+      }
     ]
   },
   {
@@ -517,11 +766,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["trainer"],
-    "image": "/assets/myth/Gobbler.png",
+    "source": [
+      "trainer"
+    ],
+    "image": "./assets/myth/Gobbler.png",
     "description": "Deals 310 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -530,11 +784,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Golem_Minion.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Golem_Minion.png",
     "description": "Summon a Minion of Myth",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -543,11 +802,16 @@
     "pipCost": "X",
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Troll_Minion.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Troll_Minion.png",
     "description": "Summons a Troll Minion for 1-3 Pips",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -556,11 +820,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Mythblade.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Mythblade.png",
     "description": "Applies a +35% Myth Damage Charm",
     "effects": [
-      { "type": "charm-blade", "target": "any-ally" }
+      {
+        "type": "charm-blade",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -569,11 +838,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Myth_Prism.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Myth_Prism.png",
     "description": "Applies a Myth to Storm Damage Prism Ward",
     "effects": [
-      { "type": "ward-prism", "target": "enemy" }
+      {
+        "type": "ward-prism",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -582,11 +856,16 @@
     "pipCost": "X",
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Cyclops_Minion.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Cyclops_Minion.png",
     "description": "Summons a Myth Minion for 1-4 Pips",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -595,11 +874,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Pierce.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Pierce.png",
     "description": "Removes a helpful Ward",
     "effects": [
-      { "type": "utility-remove", "target": "enemy" }
+      {
+        "type": "utility-remove",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -608,11 +892,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Cleanse_Ward.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Cleanse_Ward.png",
     "description": "Removes a harmful Ward",
     "effects": [
-      { "type": "utility-remove", "target": "any-ally" }
+      {
+        "type": "utility-remove",
+        "target": "any-ally"
+      }
     ]
   },
   {
@@ -621,11 +910,16 @@
     "pipCost": 0,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Stun.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Stun.png",
     "description": "Stuns target for 1 Round",
     "effects": [
-      { "type": "ward-stun", "target": "enemy" }
+      {
+        "type": "ward-stun",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -634,11 +928,16 @@
     "pipCost": 2,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Blinding_Light.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Blinding_Light.png",
     "description": "Stuns all enemies for 1 Round",
     "effects": [
-      { "type": "ward-stun", "target": "aoe" }
+      {
+        "type": "ward-stun",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -647,11 +946,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Side Arc",
-    "source": ["quest"],
-    "image": "/assets/myth/Shatter.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Shatter.png",
     "description": "Removes all helpful Wards from target",
     "effects": [
-      { "type": "utility-remove", "target": "enemy" }
+      {
+        "type": "utility-remove",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -660,11 +964,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["quest"],
-    "image": "/assets/myth/Minotaur_Minion.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Minotaur_Minion.png",
     "description": "Summons an Enraged Minotaur",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -673,11 +982,16 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Side Arc",
-    "source": ["quest"],
-    "image": "/assets/myth/Talos.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Talos.png",
     "description": "Summons a Minion of Myth",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -686,11 +1000,16 @@
     "pipCost": 3,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["quest"],
-    "image": "/assets/myth/Shift.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Shift.png",
     "description": "Push a Damage over Time effect from self to target",
     "effects": [
-      { "type": "utility-push", "target": "enemy" }
+      {
+        "type": "utility-push",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -699,11 +1018,16 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["quest"],
-    "image": "/assets/myth/Dimension_Shift.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Dimension_Shift.png",
     "description": "Swaps all Charms, Wards, and over Time effects with Minion",
     "effects": [
-      { "type": "utility-swap", "target": "minion" }
+      {
+        "type": "utility-swap",
+        "target": "minion"
+      }
     ]
   },
   {
@@ -712,11 +1036,16 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 2",
-    "source": ["quest"],
-    "image": "/assets/myth/Vassanji.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Vassanji.png",
     "description": "Summons a Minion of Myth",
     "effects": [
-      { "type": "minion", "target": "self" }
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -725,12 +1054,20 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Side Arc",
-    "source": ["quest"],
-    "image": "/assets/myth/Mystic_Colossus.png",
+    "source": [
+      "quest"
+    ],
+    "image": "./assets/myth/Mystic_Colossus.png",
     "description": "Removes a helpful Ward from and deals 290 Myth Damage to all enemies",
     "effects": [
-      { "type": "utility-remove", "target": "aoe" },
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "utility-remove",
+        "target": "aoe"
+      },
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -739,12 +1076,21 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 3",
-    "source": ["quest", "trainer"],
-    "image": "/assets/myth/Witch's_House_Call.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/myth/Witch's_House_Call.png",
     "description": "Deals 560 Myth Damage to target and summons a Myth Minion",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "minion", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "minion",
+        "target": "self"
+      }
     ]
   },
   {
@@ -753,11 +1099,17 @@
     "pipCost": 4,
     "archmastery": [],
     "arc": "Arc 3",
-    "source": ["quest", "trainer"],
-    "image": "/assets/myth/Snake_Charmer.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/myth/Snake_Charmer.png",
     "description": "Applies two Damage over Time effects that each deal 225 Myth Damage over 3 Rounds split among selected enemies",
     "effects": [
-      { "type": "dot", "target": "selected" }
+      {
+        "type": "dot",
+        "target": "selected"
+      }
     ]
   },
   {
@@ -766,12 +1118,22 @@
     "pipCost": 11,
     "archmastery": [],
     "arc": "Arc 3",
-    "source": ["quest", "trainer"],
-    "image": "/assets/myth/Scion_of_Myth.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/myth/Scion_of_Myth.png",
     "description": "Deals 1,010 Myth Damage to target, or if the target is Stunned or the caster has at least 3 Stun Shields, then deals 2,020 Myth Damage and removes all Stun Shields from caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "utility-conditional", "target": "self", "condition": "target is Stunned or caster has at least 3 Stun Shields" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "utility-conditional",
+        "target": "self",
+        "condition": "target is Stunned or caster has at least 3 Stun Shields"
+      }
     ]
   },
   {
@@ -780,12 +1142,21 @@
     "pipCost": 5,
     "archmastery": [],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/myth/Tatzlewurm_Terror.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/myth/Tatzlewurm_Terror.png",
     "description": "Deals 325 Myth Damage to all enemies and Confuses target with a 50% chance to randomize their Spell's targets for 1 Round",
     "effects": [
-      { "type": "damage", "target": "aoe" },
-      { "type": "utility-confuse", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      },
+      {
+        "type": "utility-confuse",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -794,38 +1165,63 @@
     "pipCost": 6,
     "archmastery": [],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/myth/Barbarian's_Saga.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/myth/Barbarian's_Saga.png",
     "description": "Deals 425 Myth Damage and 220 Myth Damage after three Rounds",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Improbable Gaze",
     "school": "Myth",
     "pipCost": 5,
-    "archmastery": ["Ice"],
+    "archmastery": [
+      "Ice"
+    ],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/myth/Improbable_Gaze.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/myth/Improbable_Gaze.png",
     "description": "Deals 50 Myth Damage and 530 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Drop Bear Fury",
     "school": "Myth",
     "pipCost": 5,
-    "archmastery": ["Fire"],
+    "archmastery": [
+      "Fire"
+    ],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/myth/Drop_Bear_Fury.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/myth/Drop_Bear_Fury.png",
     "description": "Deals 430 Myth Damage to all enemies",
     "effects": [
-      { "type": "damage", "target": "aoe" }
+      {
+        "type": "damage",
+        "target": "aoe"
+      }
     ]
   },
   {
@@ -834,11 +1230,17 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 4",
-    "source": ["quest", "trainer"],
-    "image": "/assets/myth/Thoth.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/myth/Thoth.png",
     "description": "Deals 70 Myth Damage and 630 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -847,81 +1249,141 @@
     "pipCost": 10,
     "archmastery": [],
     "arc": "Arc 5",
-    "source": ["quest", "trainer"],
-    "image": "/assets/myth/The_Emperor.png",
+    "source": [
+      "quest",
+      "trainer"
+    ],
+    "image": "./assets/myth/The_Emperor.png",
     "description": "Deals 730 Myth Damage and 240 Myth Damage after 3 Rounds to and applies a +35% Damage Ward of caster's School on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Athena Battle Sight",
     "school": "Myth",
     "pipCost": 5,
-    "archmastery": ["Myth"],
+    "archmastery": [
+      "Myth"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/myth/Athena_Battle_Sight.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/myth/Athena_Battle_Sight.png",
     "description": "Deals 520 Myth Damage to target and applies a -35% Damage Ward on caster",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-shield", "target": "self" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-shield",
+        "target": "self"
+      }
     ]
   },
   {
     "name": "Grendel's Amends",
     "school": "Myth",
     "pipCost": 5,
-    "archmastery": ["Myth"],
+    "archmastery": [
+      "Myth"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/myth/Grendel's_Amends.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/myth/Grendel's_Amends.png",
     "description": "Restores 1,225 Health",
     "effects": [
-      { "type": "heal", "target": "any-ally" }
+      {
+        "type": "heal",
+        "target": "any-ally"
+      }
     ]
   },
   {
     "name": "Hero of Khrysalis",
     "school": "Myth",
     "pipCost": 5,
-    "archmastery": ["Myth"],
+    "archmastery": [
+      "Myth"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/myth/Hero_of_Khrysalis.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/myth/Hero_of_Khrysalis.png",
     "description": "Deals 410 Myth Damage and 210 Myth Damage over 3 Rounds",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "dot", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "dot",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Keeper of the Flame",
     "school": "Myth",
     "pipCost": 4,
-    "archmastery": ["Myth"],
+    "archmastery": [
+      "Myth"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/myth/Keeper_of_the_Flame.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/myth/Keeper_of_the_Flame.png",
     "description": "Deals 400 Myth Damage to and applies a +35% Damage Ward of caster's School on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Ninja Pigs",
     "school": "Myth",
     "pipCost": 6,
-    "archmastery": ["Myth"],
+    "archmastery": [
+      "Myth"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement", "recipe"],
-    "image": "/assets/myth/Ninja_Pigs.png",
+    "source": [
+      "spellement",
+      "recipe"
+    ],
+    "image": "./assets/myth/Ninja_Pigs.png",
     "description": "Deals 685 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
@@ -930,39 +1392,64 @@
     "pipCost": 7,
     "archmastery": [],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/myth/Saturn's_Reaping.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/myth/Saturn's_Reaping.png",
     "description": "Deals 500 Myth Damage to and applies a +70% Damage Ward of caster's School on target",
     "effects": [
-      { "type": "damage", "target": "enemy" },
-      { "type": "ward-trap", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      },
+      {
+        "type": "ward-trap",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Splashsquatch",
     "school": "Myth",
     "pipCost": 4,
-    "archmastery": ["Myth"],
+    "archmastery": [
+      "Myth"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/myth/Splashsquatch.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/myth/Splashsquatch.png",
     "description": "Deals 425-525 Myth Damage",
     "effects": [
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   },
   {
     "name": "Wreckin' Ettin",
     "school": "Myth",
     "pipCost": 4,
-    "archmastery": ["Myth"],
+    "archmastery": [
+      "Myth"
+    ],
     "arc": "Arc 1",
-    "source": ["spellement"],
-    "image": "/assets/myth/Wreckin'_Ettin.png",
+    "source": [
+      "spellement"
+    ],
+    "image": "./assets/myth/Wreckin'_Ettin.png",
     "description": "Removes three helpful Wards from target, then deals 395 Myth Damage",
     "effects": [
-      { "type": "utility-remove", "target": "enemy" },
-      { "type": "damage", "target": "enemy" }
+      {
+        "type": "utility-remove",
+        "target": "enemy"
+      },
+      {
+        "type": "damage",
+        "target": "enemy"
+      }
     ]
   }
 ]

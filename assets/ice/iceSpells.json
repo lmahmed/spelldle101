@@ -15,7 +15,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Frost_Beetle.png"
+    "image": "./assets/ice/Frost_Beetle.png"
   },
   {
     "name": "Snow Serpent",
@@ -33,7 +33,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Snow_Serpent.png"
+    "image": "./assets/ice/Snow_Serpent.png"
   },
   {
     "name": "Volcanic Shield",
@@ -51,7 +51,7 @@
         "target": "any-ally"
       }
     ],
-    "image": "/assets/ice/Volcanic_Shield.png"
+    "image": "./assets/ice/Volcanic_Shield.png"
   },
   {
     "name": "Evil Snowman",
@@ -69,7 +69,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Evil_Snowman.png"
+    "image": "./assets/ice/Evil_Snowman.png"
   },
   {
     "name": "Tower Shield",
@@ -87,7 +87,7 @@
         "target": "any-ally"
       }
     ],
-    "image": "/assets/ice/Tower_Shield.png"
+    "image": "./assets/ice/Tower_Shield.png"
   },
   {
     "name": "Volcanic Golem",
@@ -109,7 +109,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Volcanic_Golem.png"
+    "image": "./assets/ice/Volcanic_Golem.png"
   },
   {
     "name": "Ice Wyvern",
@@ -127,7 +127,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Ice_Wyvern.png"
+    "image": "./assets/ice/Ice_Wyvern.png"
   },
   {
     "name": "Blizzard",
@@ -145,7 +145,7 @@
         "target": "aoe"
       }
     ],
-    "image": "/assets/ice/Blizzard.png"
+    "image": "./assets/ice/Blizzard.png"
   },
   {
     "name": "Balefrost",
@@ -163,7 +163,7 @@
         "target": "all"
       }
     ],
-    "image": "/assets/ice/Balefrost.png"
+    "image": "./assets/ice/Balefrost.png"
   },
   {
     "name": "Blight Hound",
@@ -181,7 +181,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Blight_Hound.png"
+    "image": "./assets/ice/Blight_Hound.png"
   },
   {
     "name": "Thieving Dragon",
@@ -203,7 +203,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Thieving_Dragon.png"
+    "image": "./assets/ice/Thieving_Dragon.png"
   },
   {
     "name": "Colossus",
@@ -221,7 +221,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Colossus.png"
+    "image": "./assets/ice/Colossus.png"
   },
   {
     "name": "Frostfeather",
@@ -243,7 +243,7 @@
         "target": "all"
       }
     ],
-    "image": "/assets/ice/Frostfeather.png"
+    "image": "./assets/ice/Frostfeather.png"
   },
   {
     "name": "Wall of Blades",
@@ -265,7 +265,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Wall_of_Blades.png"
+    "image": "./assets/ice/Wall_of_Blades.png"
   },
   {
     "name": "Glacial Fortress",
@@ -287,7 +287,7 @@
         "target": "any-ally"
       }
     ],
-    "image": "/assets/ice/Glacial_Fortress.png"
+    "image": "./assets/ice/Glacial_Fortress.png"
   },
   {
     "name": "Frost Giant",
@@ -310,7 +310,7 @@
         "target": "aoe"
       }
     ],
-    "image": "/assets/ice/Frost_Giant.png"
+    "image": "./assets/ice/Frost_Giant.png"
   },
   {
     "name": "Snow Angel",
@@ -333,7 +333,7 @@
         "target": "aoe"
       }
     ],
-    "image": "/assets/ice/Snow_Angel.png"
+    "image": "./assets/ice/Snow_Angel.png"
   },
   {
     "name": "Jinn's Vexation",
@@ -355,7 +355,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Jinn's_Vexation.png"
+    "image": "./assets/ice/Jinn's_Vexation.png"
   },
   {
     "name": "Woolly Mammoth",
@@ -378,7 +378,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Woolly_Mammoth.png"
+    "image": "./assets/ice/Woolly_Mammoth.png"
   },
   {
     "name": "Iceburn Jinn",
@@ -400,7 +400,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Iceburn_Jinn.png"
+    "image": "./assets/ice/Iceburn_Jinn.png"
   },
   {
     "name": "Impair",
@@ -418,7 +418,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Impair.png"
+    "image": "./assets/ice/Impair.png"
   },
   {
     "name": "Lord of Winter",
@@ -441,7 +441,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Lord_of_Winter.png"
+    "image": "./assets/ice/Lord_of_Winter.png"
   },
   {
     "name": "King Artorius (Ice)",
@@ -468,7 +468,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/King_Artorius_(Ice).png"
+    "image": "./assets/ice/King_Artorius_(Ice).png"
   },
   {
     "name": "Oni's Destruction",
@@ -490,7 +490,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Oni's_Destruction.png"
+    "image": "./assets/ice/Oni's_Destruction.png"
   },
   {
     "name": "Everwinter Oni",
@@ -512,7 +512,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Everwinter_Oni.png"
+    "image": "./assets/ice/Everwinter_Oni.png"
   },
   {
     "name": "Stun Block",
@@ -530,7 +530,7 @@
         "target": "any-ally"
       }
     ],
-    "image": "/assets/ice/Stun_Block.png"
+    "image": "./assets/ice/Stun_Block.png"
   },
   {
     "name": "Snow Shield",
@@ -548,7 +548,7 @@
         "target": "any-ally"
       }
     ],
-    "image": "/assets/ice/Snow_Shield.png"
+    "image": "./assets/ice/Snow_Shield.png"
   },
   {
     "name": "Ice Weakness",
@@ -566,7 +566,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Ice_Weakness.png"
+    "image": "./assets/ice/Ice_Weakness.png"
   },
   {
     "name": "Distract",
@@ -584,7 +584,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Distract.png"
+    "image": "./assets/ice/Distract.png"
   },
   {
     "name": "Taunt",
@@ -602,7 +602,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Taunt.png"
+    "image": "./assets/ice/Taunt.png"
   },
   {
     "name": "Melt",
@@ -620,7 +620,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Melt.png"
+    "image": "./assets/ice/Melt.png"
   },
   {
     "name": "Draw Health",
@@ -642,7 +642,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Draw_Health.png"
+    "image": "./assets/ice/Draw_Health.png"
   },
   {
     "name": "Mega Distract",
@@ -660,7 +660,7 @@
         "target": "ally"
       }
     ],
-    "image": "/assets/ice/Mega_Distract.png"
+    "image": "./assets/ice/Mega_Distract.png"
   },
   {
     "name": "Mega Taunt",
@@ -678,7 +678,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Mega_Taunt.png"
+    "image": "./assets/ice/Mega_Taunt.png"
   },
   {
     "name": "Mass Ice Prism",
@@ -696,7 +696,7 @@
         "target": "aoe"
       }
     ],
-    "image": "/assets/ice/Mass_Ice_Prism.png"
+    "image": "./assets/ice/Mass_Ice_Prism.png"
   },
   {
     "name": "Icespear",
@@ -714,7 +714,7 @@
         "target": "any-ally"
       }
     ],
-    "image": "/assets/ice/Icespear.png"
+    "image": "./assets/ice/Icespear.png"
   },
   {
     "name": "Katabatic Wind",
@@ -732,7 +732,7 @@
         "target": "all"
       }
     ],
-    "image": "/assets/ice/Katabatic_Wind.png"
+    "image": "./assets/ice/Katabatic_Wind.png"
   },
   {
     "name": "Ice Trap",
@@ -751,7 +751,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Ice_Trap.png"
+    "image": "./assets/ice/Ice_Trap.png"
   },
   {
     "name": "Freeze",
@@ -769,7 +769,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Freeze.png"
+    "image": "./assets/ice/Freeze.png"
   },
   {
     "name": "Ice Prism",
@@ -787,7 +787,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Ice_Prism.png"
+    "image": "./assets/ice/Ice_Prism.png"
   },
   {
     "name": "Ice Armor",
@@ -805,7 +805,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Ice_Armor.png"
+    "image": "./assets/ice/Ice_Armor.png"
   },
   {
     "name": "Steal Ward",
@@ -823,7 +823,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Steal_Ward.png"
+    "image": "./assets/ice/Steal_Ward.png"
   },
   {
     "name": "Frostbite",
@@ -845,7 +845,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Frostbite.png"
+    "image": "./assets/ice/Frostbite.png"
   },
   {
     "name": "Ice Guardian",
@@ -863,7 +863,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Ice_Guardian.png"
+    "image": "./assets/ice/Ice_Guardian.png"
   },
   {
     "name": "Legion Shield",
@@ -881,7 +881,7 @@
         "target": "all-allies"
       }
     ],
-    "image": "/assets/ice/Legion_Shield.png"
+    "image": "./assets/ice/Legion_Shield.png"
   },
   {
     "name": "Iceblade",
@@ -899,7 +899,7 @@
         "target": "any-ally"
       }
     ],
-    "image": "/assets/ice/Iceblade.png"
+    "image": "./assets/ice/Iceblade.png"
   },
   {
     "name": "Frozen Armor",
@@ -917,7 +917,7 @@
         "target": "any-ally"
       }
     ],
-    "image": "/assets/ice/Frozen_Armor.png"
+    "image": "./assets/ice/Frozen_Armor.png"
   },
   {
     "name": "Snow Drift",
@@ -935,7 +935,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Snow_Drift.png"
+    "image": "./assets/ice/Snow_Drift.png"
   },
   {
     "name": "Cooldown",
@@ -953,7 +953,7 @@
         "target": "all-allies"
       }
     ],
-    "image": "/assets/ice/Cooldown.png"
+    "image": "./assets/ice/Cooldown.png"
   },
   {
     "name": "Freddo",
@@ -971,7 +971,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Freddo.png"
+    "image": "./assets/ice/Freddo.png"
   },
   {
     "name": "Abominable Weaver",
@@ -993,7 +993,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Abominable_Weaver.png"
+    "image": "./assets/ice/Abominable_Weaver.png"
   },
   {
     "name": "Snowball Barrage",
@@ -1012,7 +1012,7 @@
         "target": "aoe"
       }
     ],
-    "image": "/assets/ice/Snowball_Barrage.png"
+    "image": "./assets/ice/Snowball_Barrage.png"
   },
   {
     "name": "Climaclysm",
@@ -1035,7 +1035,7 @@
         "target": "selected"
       }
     ],
-    "image": "/assets/ice/Climaclysm.png"
+    "image": "./assets/ice/Climaclysm.png"
   },
   {
     "name": "Scion of Ice",
@@ -1059,7 +1059,7 @@
         "condition": "caster has at least 90% total Health"
       }
     ],
-    "image": "/assets/ice/Scion_of_Ice.png"
+    "image": "./assets/ice/Scion_of_Ice.png"
   },
   {
     "name": "Shatterhorn",
@@ -1082,7 +1082,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/Shatterhorn.png"
+    "image": "./assets/ice/Shatterhorn.png"
   },
   {
     "name": "Freeze Ray",
@@ -1101,7 +1101,7 @@
         "target": "aoe"
       }
     ],
-    "image": "/assets/ice/Freeze_Ray.png"
+    "image": "./assets/ice/Freeze_Ray.png"
   },
   {
     "name": "Deathly Depths",
@@ -1122,7 +1122,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Deathly_Depths.png"
+    "image": "./assets/ice/Deathly_Depths.png"
   },
   {
     "name": "Count Croakula",
@@ -1143,7 +1143,7 @@
         "target": "aoe"
       }
     ],
-    "image": "/assets/ice/Count_Croakula.png"
+    "image": "./assets/ice/Count_Croakula.png"
   },
   {
     "name": "Shu",
@@ -1162,7 +1162,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Shu.png"
+    "image": "./assets/ice/Shu.png"
   },
   {
     "name": "The Hierophant",
@@ -1189,7 +1189,7 @@
         "target": "self"
       }
     ],
-    "image": "/assets/ice/The_Hierophant.png"
+    "image": "./assets/ice/The_Hierophant.png"
   },
   {
     "name": "Angry Snowpig",
@@ -1214,7 +1214,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Angry_Snowpig.png"
+    "image": "./assets/ice/Angry_Snowpig.png"
   },
   {
     "name": "Celestial Intervention",
@@ -1238,7 +1238,7 @@
         "target": "ally"
       }
     ],
-    "image": "/assets/ice/Celestial_Intervention.png"
+    "image": "./assets/ice/Celestial_Intervention.png"
   },
   {
     "name": "Deermouse Trap",
@@ -1262,7 +1262,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Deermouse_Trap.png"
+    "image": "./assets/ice/Deermouse_Trap.png"
   },
   {
     "name": "Handsome Fomori",
@@ -1287,7 +1287,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Handsome_Fomori.png"
+    "image": "./assets/ice/Handsome_Fomori.png"
   },
   {
     "name": "Ice Elemental",
@@ -1311,7 +1311,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Ice_Elemental.png"
+    "image": "./assets/ice/Ice_Elemental.png"
   },
   {
     "name": "Neptune's Fury",
@@ -1333,7 +1333,7 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Neptune's_Fury.png"
+    "image": "./assets/ice/Neptune's_Fury.png"
   },
   {
     "name": "Reindeer Knight",
@@ -1357,7 +1357,7 @@
         "target": "aoe"
       }
     ],
-    "image": "/assets/ice/Reindeer_Knight.png"
+    "image": "./assets/ice/Reindeer_Knight.png"
   },
   {
     "name": "Winter Moon",
@@ -1382,6 +1382,6 @@
         "target": "enemy"
       }
     ],
-    "image": "/assets/ice/Winter_Moon.png"
+    "image": "./assets/ice/Winter_Moon.png"
   }
 ]
