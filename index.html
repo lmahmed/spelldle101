@@ -71,6 +71,10 @@ header{text-align:center;padding:2rem 0 1.5rem}
 .ac-load-more{padding:8px;text-align:center;font-size:.75rem;color:var(--accent-dim);cursor:pointer;font-family:'Cinzel',serif;letter-spacing:.04em;border-top:1px solid var(--border)}
 .ac-load-more:hover{color:var(--accent);background:var(--surface2)}
 .ac-empty{padding:10px 14px;font-size:.82rem;color:var(--text-muted);font-style:italic;text-align:center}
+.autocomplete::-webkit-scrollbar{width:6px}
+.autocomplete::-webkit-scrollbar-track{background:transparent}
+.autocomplete::-webkit-scrollbar-thumb{background:var(--accent-dim);border-radius:4px}
+.autocomplete::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 
 /* Tooltip */
 .spell-tooltip{position:fixed;z-index:999;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:12px;width:190px;box-shadow:0 8px 40px #000a;opacity:0;transition:opacity .15s;overflow:hidden}
@@ -1047,7 +1051,8 @@ function spawnConfetti(){
 function openDatePicker(){
   const d=new Date();
   document.getElementById('today-date-sub').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-  const maxDate=d.toISOString().split('T')[0];
+  const pad=n=>String(n).padStart(2,'0');
+  const maxDate=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
   const inp=document.getElementById('date-input');
   inp.max=maxDate;
   if(!inp.value)inp.value=maxDate;
