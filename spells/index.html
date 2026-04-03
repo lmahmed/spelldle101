@@ -171,7 +171,7 @@ table.stable{width:100%;border-collapse:separate;border-spacing:3px;table-layout
 .mspell-effect-label{font-family:'Cinzel',serif;font-size:.48rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
 
 /* Spell detail overlay */
-.overlay-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);align-items:flex-start;justify-content:center;padding:1rem;overflow-y:auto}
+.overlay-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem;overflow-y:auto}
 .overlay-bg.show{display:flex;animation:fadeOv .3s ease}
 @keyframes fadeOv{from{opacity:0}to{opacity:1}}
 .detail-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;width:min(560px,96vw);margin:auto;overflow:hidden;animation:popIn .35s cubic-bezier(.34,1.56,.64,1)}
@@ -237,13 +237,42 @@ footer a:hover{color:var(--accent)}
       <div class="detail-effects" id="detail-effects"></div>
       <div class="detail-btns">
         <a class="detail-btn primary" id="detail-guess-btn" href="#" target="_blank" rel="noopener">Guess this Spell ↗</a>
-        <button class="detail-btn danger" id="detail-report-btn" onclick="reportCurrentSpell()">Report Issue</button>
+        <button class="detail-btn danger" id="detail-report-btn" onclick="openSpellReport()">Report Issue</button>
         <button class="detail-btn secondary" onclick="closeDetail()">Close</button>
       </div>
     </div>
   </div>
 </div>
 
+
+<div class="overlay-bg" id="spell-report-overlay" onclick="closeSpellReport(event)">
+  <div style="width:360px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;animation:popIn .35s cubic-bezier(.34,1.56,.64,1)">
+    <div class="settings-title">Report Spell Issue</div>
+    <div style="margin-bottom:10px">
+      <div style="font-family:'Cinzel',serif;font-size:.68rem;color:var(--text-muted);letter-spacing:.06em;margin-bottom:5px">SPELL</div>
+      <div id="spell-report-name" style="font-family:'Cinzel',serif;font-size:.85rem;color:var(--accent)"></div>
+    </div>
+    <div style="margin-bottom:12px">
+      <div style="font-family:'Cinzel',serif;font-size:.68rem;color:var(--text-muted);letter-spacing:.06em;margin-bottom:6px">ISSUE TYPE</div>
+      <select id="spell-report-type" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text-primary);font-family:'Crimson Pro',serif;font-size:.9rem;outline:none">
+        <option value="Wrong attribute">Wrong attribute</option>
+        <option value="Missing spell">Missing spell</option>
+        <option value="Wrong image">Wrong image</option>
+        <option value="Duplicate spell">Duplicate spell</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div style="margin-bottom:16px">
+      <div style="font-family:'Cinzel',serif;font-size:.68rem;color:var(--text-muted);letter-spacing:.06em;margin-bottom:6px">DESCRIPTION</div>
+      <textarea id="spell-report-desc" placeholder="Describe the issue..." style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px 10px;color:var(--text-primary);font-family:'Crimson Pro',serif;font-size:.9rem;outline:none;resize:vertical;min-height:80px"></textarea>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button onclick="submitSpellReport()" style="flex:1;background:var(--accent);color:#160900;border:none;border-radius:8px;padding:9px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;cursor:pointer">Submit</button>
+      <button onclick="closeSpellReport()" style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.72rem;cursor:pointer">Cancel</button>
+    </div>
+    <div id="spell-report-status" style="text-align:center;font-size:.75rem;margin-top:10px;min-height:1.2em;font-style:italic;color:var(--text-muted)"></div>
+  </div>
+</div>
 <!-- Effect filter overlay -->
 <div class="overlay-bg" id="effect-overlay" onclick="closeEffectFilter(event)">
   <div class="effect-filter-card">
@@ -347,6 +376,7 @@ footer a:hover{color:var(--accent)}
 </footer>
 
 <script>
+const API_URL='https://script.google.com/macros/s/AKfycbwPtdVCmKiboeZUqwOThYCs8mIiLaNP2-QXat38p0FC8QKtbUmXupXizaOWMoCDNtXuXQ/exec';
 const SCHOOL_FILES = ['ice','death','myth','storm','fire','life','balance'];
 const SCHOOL_COLORS = {Fire:'#e05020',Ice:'#60a8e0',Storm:'#9060e0',Myth:'#e0b820',Life:'#40b840',Death:'#a060d0',Balance:'#d09040'};
 const SCHOOL_BGS = {Fire:'#2e1000',Ice:'#001828',Storm:'#1a0a30',Myth:'#2a2000',Life:'#002800',Death:'#1a0a28',Balance:'#1a1000'};
@@ -809,6 +839,43 @@ function encodeChallenge(spellIndex){
   let val=n,result='';
   for(let i=0;i<7;i++){result=ALPHA[val%28]+result;val=Math.floor(val/28);}
   return result;
+}
+
+
+async function apiPost(data){
+  try{
+    const res=await fetch(API_URL,{method:'POST',body:JSON.stringify(data)});
+    return await res.json();
+  }catch{return null;}
+}
+
+function openSpellReport(){
+  if(!detailSpell)return;
+  document.getElementById('spell-report-name').textContent=detailSpell.name;
+  document.getElementById('spell-report-desc').value='';
+  document.getElementById('spell-report-status').textContent='';
+  document.getElementById('spell-report-overlay').classList.add('show');
+}
+
+function closeSpellReport(e){
+  if(e&&!e.target.classList.contains('overlay-bg'))return;
+  document.getElementById('spell-report-overlay').classList.remove('show');
+}
+
+async function submitSpellReport(){
+  const issueType=document.getElementById('spell-report-type').value;
+  const description=document.getElementById('spell-report-desc').value.trim();
+  const status=document.getElementById('spell-report-status');
+  if(!description){status.textContent='Please add a description.';status.style.color='#d05050';return;}
+  status.textContent='Submitting...';status.style.color='var(--text-muted)';
+  const res=await apiPost({action:'bug',type:'spell',spellName:detailSpell?detailSpell.name:'',issueType,description});
+  if(res&&res.success){
+    status.textContent='Thanks! Report submitted.';status.style.color='#40b840';
+    document.getElementById('spell-report-desc').value='';
+    setTimeout(()=>closeSpellReport(),1500);
+  } else {
+    status.textContent='Failed to submit. Please try again.';status.style.color='#d05050';
+  }
 }
 
 function reportSpell(name) {

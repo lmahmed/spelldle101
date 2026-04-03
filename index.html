@@ -463,6 +463,9 @@ footer a:hover{color:var(--accent)}
 .mcard-effect-reveal.revealed { animation: glowReveal .55s ease forwards; }
 .mcard-header-reveal { }
 .mcard-header-reveal.revealed { animation: glowReveal .5s ease forwards; }
+
+.completion-count{text-align:center;font-size:.72rem;color:var(--accent-dim);margin-top:4px;font-family:'Cinzel',serif;letter-spacing:.05em;font-style:italic;min-height:1.1em}
+.win-completion{text-align:center;font-size:.78rem;color:var(--accent-dim);margin-bottom:12px;font-style:italic}
 </style>
 </head>
 <body>
@@ -497,6 +500,7 @@ footer a:hover{color:var(--accent)}
       <div class="win-school" id="win-school"></div>
       <div class="win-desc" id="win-desc"></div>
       <div class="win-guesses" id="win-guesses"></div>
+      <div class="win-completion" id="win-completion"></div>
       <div class="win-btns">
         <button class="win-btn primary" onclick="closeOverlay('win-overlay')">Continue ✦</button>
         <button class="win-btn secondary" id="win-share-btn" onclick="shareResultWin()">Share Result ↗</button>
@@ -654,6 +658,30 @@ footer a:hover{color:var(--accent)}
 </div>
 
 
+<div class="overlay-bg" id="bug-overlay" onclick="closeOverlay('bug-overlay',event)">
+  <div class="settings-card" style="width:360px">
+    <div class="settings-title">Report a Bug</div>
+    <div style="margin-bottom:12px">
+      <div style="font-family:'Cinzel',serif;font-size:.68rem;color:var(--text-muted);letter-spacing:.06em;margin-bottom:6px">ISSUE TYPE</div>
+      <select id="bug-issue-type" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text-primary);font-family:'Crimson Pro',serif;font-size:.9rem;outline:none">
+        <option value="Bug">Bug</option>
+        <option value="UI Issue">UI Issue</option>
+        <option value="Suggestion">Suggestion</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div style="margin-bottom:16px">
+      <div style="font-family:'Cinzel',serif;font-size:.68rem;color:var(--text-muted);letter-spacing:.06em;margin-bottom:6px">DESCRIPTION</div>
+      <textarea id="bug-description" placeholder="Describe the issue..." style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px 10px;color:var(--text-primary);font-family:'Crimson Pro',serif;font-size:.9rem;outline:none;resize:vertical;min-height:90px"></textarea>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button onclick="submitBugReport()" style="flex:1;background:var(--accent);color:#160900;border:none;border-radius:8px;padding:9px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;cursor:pointer">Submit</button>
+      <button onclick="closeOverlay('bug-overlay')" style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.72rem;cursor:pointer">Cancel</button>
+    </div>
+    <div id="bug-status" style="text-align:center;font-size:.75rem;margin-top:10px;min-height:1.2em;font-style:italic;color:var(--text-muted)"></div>
+  </div>
+</div>
+
 <div class="overlay-bg" id="settings-overlay" onclick="closeOverlay('settings-overlay',event)">
   <div class="settings-card">
     <div class="settings-title">⚙ Settings</div>
@@ -698,6 +726,7 @@ footer a:hover{color:var(--accent)}
       <span id="date-pill-text"></span>
       <span class="date-pill-arrow">▾</span>
     </div>
+    <div class="completion-count" id="completion-count"></div>
   </header>
 
   <div class="search-area">
@@ -799,7 +828,7 @@ footer a:hover{color:var(--accent)}
 <footer>
   <div>Spelldle 101 is a fan-made project and is not affiliated with KingsIsle Entertainment.</div>
   <div>All Wizard101 spell names, images, and game content are property of <a href="https://www.kingsisle.com" target="_blank">KingsIsle Entertainment</a>.</div>
-  <div style="margin-top:4px;color:var(--text-muted)">Made with ✦ by a fan &nbsp;·&nbsp; Last updated April 2026</div>
+  <div style="margin-top:4px;color:var(--text-muted)">A new spell is chosen daily at midnight UTC &nbsp;·&nbsp; Made with ✦ by a fan &nbsp;·&nbsp; Last updated April 2026 &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim);text-decoration:none" onclick="openOverlay('bug-overlay')">Report a Bug</span></div>
 </footer>
 
 <script>
@@ -873,15 +902,19 @@ function getShareText(){
     header += ' — Challenge ✦';
     const code = window.location.search.match(/challenge=([^&]+)/)?.[1];
     if(code) link = 'spelldle101.com/?challenge=' + code;
-  } else if(customDate !== null){
-    header += ' — ' + customDate.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  } else if(customDateStr !== null){
+    const [sy,sm,sd]=customDateStr.split('-').map(Number);
+    const sd2=new Date(Date.UTC(sy,sm-1,sd));
+    header += ' — ' + sd2.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
   } else if(customSeed !== null){
     header += ' — Random Spell';
     const idx = SPELLS.indexOf(ANSWER);
     link = 'spelldle101.com/?challenge=' + encodeChallenge(idx);
   } else {
-    const d = new Date();
-    header += ' — ' + d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    const dateStr = apiDate || new Date().toISOString().split('T')[0];
+    const [sy,sm,sd]=dateStr.split('-').map(Number);
+    const d=new Date(Date.UTC(sy,sm-1,sd));
+    header += ' — ' + d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
   }
 
   return header + '\n' + (grid ? grid + '\n' : '') + lastRow + '\n' + link;
@@ -916,6 +949,100 @@ function showShareBtn(){
 }
 function hideShareBtn(){
   document.getElementById('share-btn').classList.remove('visible');
+}
+
+
+// ─── API ──────────────────────────────────────────────────────────
+async function apiGet(params){
+  try{
+    const url=API_URL+'?'+new URLSearchParams(params).toString();
+    const res=await fetch(url);
+    return await res.json();
+  }catch{return null;}
+}
+
+async function apiPost(data){
+  try{
+    const res=await fetch(API_URL,{
+      method:'POST',
+      body:JSON.stringify(data)
+    });
+    return await res.json();
+  }catch{return null;}
+}
+
+async function fetchDailySpell(){
+  const data=await apiGet({action:'daily'});
+  if(data&&data.success&&data.spell){
+    const spell=SPELLS.find(s=>s.name===data.spell);
+    if(spell){
+      apiDate=data.date;
+      isApiDaily=true;
+      return spell;
+    }
+  }
+  return null;
+}
+
+async function fetchPastSpell(dateStr){
+  const data=await apiGet({action:'past',date:dateStr});
+  if(data&&data.success&&data.spell){
+    const spell=SPELLS.find(s=>s.name===data.spell);
+    if(spell) return spell;
+  }
+  return null;
+}
+
+async function fetchFirstDate(){
+  const data=await apiGet({action:'firstdate'});
+  if(data&&data.success&&data.firstDate) return data.firstDate;
+  return null;
+}
+
+async function fetchCompletions(){
+  if(_fetchingCompletions) return null;
+  _fetchingCompletions=true;
+  try{
+    const data=await apiGet({action:'completions'});
+    return (data&&data.success) ? data.count : null;
+  } finally { _fetchingCompletions=false; }
+}
+
+async function postCompletion(){
+  await apiPost({action:'complete'});
+  const count=await fetchCompletions();
+  if(count!==null){
+    completionCount=count;
+    updateCompletionDisplay();
+    const wc=document.getElementById('win-completion');
+    if(wc) wc.textContent=count===1?'1 wizard identified today\'s spell':`${count} wizards identified today\'s spell`;
+  }
+}
+
+function updateCompletionDisplay(){
+  const el=document.getElementById('completion-count');
+  if(!el)return;
+  if(isApiDaily&&completionCount!==null){
+    el.textContent=completionCount===1?'✦ 1 wizard identified today\'s spell':`✦ ${completionCount} wizards identified today\'s spell`;
+  } else {
+    el.textContent='';
+  }
+}
+
+async function submitBugReport(){
+  const issueType=document.getElementById('bug-issue-type').value;
+  const description=document.getElementById('bug-description').value.trim();
+  const status=document.getElementById('bug-status');
+  if(!description){status.textContent='Please add a description.';status.style.color='#d05050';return;}
+  status.textContent='Submitting...';status.style.color='var(--text-muted)';
+  const res=await apiPost({action:'bug',type:'game',spellName:'',issueType,description});
+  if(res&&res.success){
+    status.textContent='Thanks! Report submitted.';status.style.color='var(--green-text)';
+    document.getElementById('bug-description').value='';
+    setTimeout(()=>closeOverlay('bug-overlay'),1500);
+  } else {
+    status.textContent='Failed to submit. Please try again.';status.style.color='#d05050';
+  }
 }
 
 // ─── Toast ────────────────────────────────────────────────────────
@@ -1063,6 +1190,12 @@ let devUnknown=null;
 let challengeSpell=null;
 let challengeValid=true;
 let customDate=null;
+let customDateStr=null; // raw yyyy-MM-dd string for display
+let apiDate=null; // date string from API e.g. "2026-04-02"
+let completionCount=null;
+let isApiDaily=false; // true when playing today's API daily
+let _fetchingCompletions=false;
+const API_URL='https://script.google.com/macros/s/AKfycbwPtdVCmKiboeZUqwOThYCs8mIiLaNP2-QXat38p0FC8QKtbUmXupXizaOWMoCDNtXuXQ/exec';
 let guesses=[],won=false,acIdx=-1;
 let filters=[false,false,false]; // all off by default
 let schoolFilter=new Set();
@@ -1120,12 +1253,15 @@ function getAnswer(){
   if(devSpell)return devSpell;
   if(challengeSpell)return challengeSpell;
   if(customSeed!==null)return seedToSpell(customSeed);
-  return getDailyAnswer();
+  return getDailyAnswer(); // fallback, overridden async by initGameAsync
 }
 
 // ─── Init ─────────────────────────────────────────────────────────
 function initGame(resetAll=true){
   if(resetAll){
+    isApiDaily=false;
+    completionCount=null;
+    customDateStr=null;
     ANSWER=getAnswer();
     guesses=[];won=false;acIdx=-1;
     hintsUsed=0;hintRevealed={};
@@ -1134,7 +1270,16 @@ function initGame(resetAll=true){
     document.getElementById('spell-input').disabled=false;
     document.getElementById('err').textContent='';
   }
-  updateDatePill();
+  // If no apiDate yet, show UTC date immediately as placeholder
+  if(!apiDate && !customDateStr && !devSpell && !challengeSpell && customSeed===null){
+    const utcStr=new Date().toISOString().split('T')[0];
+    const [y,m,da]=utcStr.split('-').map(Number);
+    const d=new Date(Date.UTC(y,m-1,da));
+    const txt=document.getElementById('date-pill-text');
+    if(txt) txt.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).toUpperCase();
+  } else {
+    updateDatePill();
+  }
   renderFilters();
   renderSchoolFilters();
   updateFilterFooter();
@@ -1160,13 +1305,23 @@ function updateDatePill(){
     txt.textContent='Invalid Challenge';
     pill.style.color='#d05050';
     pill.style.borderColor='#a03030';
-  } else if(customDate!==null){
-    txt.textContent=customDate.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).toUpperCase();
+  } else if(customDateStr!==null){
+    const [y,m,da]=customDateStr.split('-').map(Number);
+    const d=new Date(Date.UTC(y,m-1,da));
+    txt.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).toUpperCase();
   } else if(customSeed!==null){
     txt.textContent='Random Spell ▾';
+  } else if(apiDate){
+    // Parse UTC date string directly to avoid timezone shift
+    const [y,m,da] = apiDate.split('-').map(Number);
+    const d = new Date(Date.UTC(y,m-1,da));
+    txt.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).toUpperCase();
   } else {
-    const d=new Date();
-    txt.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).toUpperCase();
+    // No API date yet — use UTC date client-side
+    const utcStr = new Date().toISOString().split('T')[0];
+    const [y,m,da] = utcStr.split('-').map(Number);
+    const d = new Date(Date.UTC(y,m-1,da));
+    txt.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).toUpperCase();
   }
 }
 
@@ -1372,6 +1527,9 @@ function closeOverlay(id,e){
 // ─── Win ─────────────────────────────────────────────────────────
 function showWin(){
   const s=ANSWER;
+  // Always clear completion count — repopulate only if isApiDaily via postCompletion
+  const wc=document.getElementById('win-completion');
+  if(wc)wc.textContent='';
   document.getElementById('win-spell-name').textContent=s.name;
   document.getElementById('win-school').textContent=s.school.toUpperCase();
   document.getElementById('win-school').style.color=SCHOOL_COLORS[s.school]||'#888';
@@ -1379,7 +1537,7 @@ function showWin(){
   document.getElementById('win-guesses').textContent=`Identified in ${guesses.length} ${guesses.length===1?'guess':'guesses'}`;
   const ia=document.getElementById('win-img-area');
   ia.innerHTML=s.image?`<img src="${s.image}" class="win-card-img" onerror="this.parentElement.innerHTML='<div class=win-card-img-ph>✦</div>'"/>`:`<div class="win-card-img-ph">✦</div>`;
-  spawnConfetti();openOverlay('win-overlay');showShareBtn();
+  spawnConfetti();openOverlay('win-overlay');showShareBtn();if(isApiDaily)postCompletion();
 }
 function spawnConfetti(){
   const c=document.getElementById('confetti');c.innerHTML='';
@@ -1392,13 +1550,58 @@ function spawnConfetti(){
 }
 
 // ─── Date picker ──────────────────────────────────────────────────
+
+function resetGameState(){
+  // Clear all mode state
+  customSeed=null;
+  customDate=null;
+  customDateStr=null;
+  challengeSpell=null;
+  // devSpell intentionally not cleared — stays locked to URL
+  isApiDaily=false;
+  completionCount=null;
+  apiDate=null;
+  // Clear game state
+  guesses=[];won=false;acIdx=-1;
+  hintsUsed=0;hintRevealed={};
+  // Clear UI
+  hideShareBtn();
+  const btn=document.getElementById('cast-btn');
+  const inp=document.getElementById('spell-input');
+  if(btn)btn.disabled=false;
+  if(inp){inp.disabled=false;inp.value='';}
+  const err=document.getElementById('err');
+  if(err)err.textContent='';
+  updateCompletionDisplay();
+  const wc=document.getElementById('win-completion');
+  if(wc)wc.textContent='';
+}
+
+function lockDatePill(loading=true){
+  const pill=document.getElementById('date-pill');
+  const txt=document.getElementById('date-pill-text');
+  if(loading){
+    pill.style.pointerEvents='none';
+    pill.style.opacity='.6';
+    if(txt)txt.textContent='Loading...';
+  } else {
+    pill.style.pointerEvents='';
+    pill.style.opacity='';
+  }
+  const inp=document.getElementById('spell-input');
+  if(inp)inp.disabled=loading;
+  const btn=document.getElementById('cast-btn');
+  if(btn)btn.disabled=loading;
+}
+
 function openDatePicker(){
   const d=new Date();
   document.getElementById('today-date-sub').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
   const pad=n=>String(n).padStart(2,'0');
-  const maxDate=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const maxDate=new Date().toISOString().split('T')[0];
   const inp=document.getElementById('date-input');
   inp.max=maxDate;
+  if(window._firstDate) inp.min=window._firstDate;
   if(!inp.value)inp.value=maxDate;
   // Clear challenge so date picker can freely switch spell
   // devSpell intentionally NOT cleared here — dev mode stays locked to URL param
@@ -1406,26 +1609,51 @@ function openDatePicker(){
   openOverlay('date-overlay');
 }
 function setRandomSpell(){
+  resetGameState();
   customSeed=Math.floor(Math.random()*999999);
-  customDate=null;
   closeOverlay('date-overlay');
-  initGame(true);
+  ANSWER=getAnswer();
+  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();
 }
-function setTodaySpell(){
-  customSeed=null;
-  customDate=null;
+async function setTodaySpell(){
+  resetGameState();
   closeOverlay('date-overlay');
-  initGame(true);
+  lockDatePill(true);
+  const spell=await fetchDailySpell();
+  if(spell){ANSWER=spell;isApiDaily=true;}
+  else{ANSWER=getDailyAnswer();}
+  lockDatePill(false);
+  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();
+  fetchCompletions().then(count=>{if(count!==null){completionCount=count;updateCompletionDisplay();}});
 }
-function setDateSpell(){
+async function setDateSpell(){
   const val=document.getElementById('date-input').value;
   if(!val)return;
-  const [y,m,da]=val.split('-').map(Number);
-  const d=new Date(y,m-1,da);
-  customSeed=dateSeed(d);
-  customDate=d;
   closeOverlay('date-overlay');
-  initGame(true);
+  resetGameState();
+  lockDatePill(true);
+  const utcToday=new Date().toISOString().split('T')[0];
+  if(val===utcToday||val===apiDate){
+    // Today
+    const spell=await fetchDailySpell();
+    if(spell){ANSWER=spell;isApiDaily=true;}
+    else{ANSWER=getDailyAnswer();}
+    lockDatePill(false);
+    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();
+    fetchCompletions().then(count=>{if(count!==null){completionCount=count;updateCompletionDisplay();}});
+  } else {
+    // Past date
+    customDateStr=val;
+    const spell=await fetchPastSpell(val);
+    if(spell){ANSWER=spell;}
+    else{
+      const [y,m,da]=val.split('-').map(Number);
+      customSeed=dateSeed(new Date(y,m-1,da));
+      ANSWER=getAnswer();
+    }
+    lockDatePill(false);
+    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();
+  }
 }
 
 // ─── Hints ────────────────────────────────────────────────────────
@@ -1894,7 +2122,7 @@ function attachInputEvents(){
   });
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'){
-      ['win-overlay','date-overlay','hint-overlay','help-overlay'].forEach(id=>document.getElementById(id).classList.remove('show'));
+      ['win-overlay','date-overlay','hint-overlay','help-overlay','bug-overlay'].forEach(id=>document.getElementById(id).classList.remove('show'));
     }
   });
   document.addEventListener('touchstart',e=>{
@@ -1907,6 +2135,9 @@ loadSpells().then(()=>{}).catch(()=>{});
 const _origInit=initGame;
 function initGame(resetAll=true){
   if(resetAll){
+    isApiDaily=false;
+    completionCount=null;
+    customDateStr=null;
     ANSWER=getAnswer();
     guesses=[];won=false;acIdx=-1;
     hintsUsed=0;hintRevealed={};
@@ -1934,6 +2165,9 @@ async function loadSpells(){
   const bar=document.getElementById('loading-bar');
   const txt=document.getElementById('loading-txt');
   try{
+    window._firstDate = '2026-03-26';
+
+    // Load spell JSON files first
     const results=await Promise.all(
       SCHOOL_FILES.map(async(school,i)=>{
         txt.textContent=`Loading ${school} spells...`;
@@ -1945,16 +2179,60 @@ async function loadSpells(){
       })
     );
     SPELLS=results.flat();
+
+    // Parse URL params NOW that SPELLS is loaded — challenge decoding works correctly
+    parseURLParams();
+    const isChallenge = !!challengeSpell;
+    const isDev = !!devSpell;
+    const needsApiDaily = !isChallenge && !isDev && customSeed===null;
+
+    // Only fetch daily spell if actually needed
+    let apiSpell = null;
+    if(needsApiDaily){
+      txt.textContent='Checking today\'s spell...';
+      apiSpell = await fetchDailySpell();
+    }
+
     bar.style.width='100%';
-    txt.textContent=`${SPELLS.length} spells loaded`;
-    await new Promise(r=>setTimeout(r,400));
+    txt.textContent=`${SPELLS.length} spells ready`;
+    await new Promise(r=>setTimeout(r,300));
+
     document.getElementById('loading-screen').classList.add('done');
     document.getElementById('app').style.display='block';
-    parseURLParams();
+
+    // Immediately show date in pill — don't wait for initGame
+    {
+      const txt=document.getElementById('date-pill-text');
+      if(txt&&!devSpell&&!challengeSpell&&customSeed===null){
+        const utcStr=apiDate||new Date().toISOString().split('T')[0];
+        const [y,m,da]=utcStr.split('-').map(Number);
+        const d=new Date(Date.UTC(y,m-1,da));
+        txt.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).toUpperCase();
+      }
+    }
+
     setupChallengeAC();
     const _invalidChallenge = !challengeValid;
-    if(_invalidChallenge) challengeValid=true; // reset before initGame so pill shows today's date
-    initGame(true);
+    if(_invalidChallenge) challengeValid=true;
+
+    if(apiSpell){
+      ANSWER=apiSpell;
+      fetchCompletions().then(count=>{
+        if(count!==null){completionCount=count;updateCompletionDisplay();}
+      });
+    }
+    // For challenge/dev/custom modes, always use initGame(true) to set ANSWER from getAnswer()
+    // For daily API mode, use initGame(false) only if player hasn't started guessing
+    if(challengeSpell||devSpell||customSeed!==null){
+      initGame(true);
+    } else if(guesses.length===0){
+      initGame(false);
+    } else {
+      // Daily — player already guessing — just update display
+      updateDatePill();
+      loadSettings();
+    }
+    updateDatePill();
     if(_invalidChallenge) showToast("Challenge link was invalid — playing today\'s daily instead");
   }catch(err){
     txt.innerHTML='';
