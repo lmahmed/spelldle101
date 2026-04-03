@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spell Library — Spelldle 101</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta name="keywords" content="wizard101, spells, spell library, wizard101 spells, spell database, spelldle">
+  <meta name="description" content="Browse Wizard101 spells — filter by school, arc, source, and effect type. Part of Spelldle 101.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://spelldle101.com/spells/">
+  <meta name="theme-color" content="#090910">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spelldle101.com/spells/">
+  <meta property="og:title" content="Spell Library — Spelldle 101">
+  <meta property="og:description" content="Browse Wizard101 spells — filter by school, arc, source, and effect type.">
+  <meta property="og:image" content="https://spelldle101.com/assets/og-image.jpg">
+  <meta property="og:site_name" content="Spelldle 101">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spell Library — Spelldle 101">
+  <meta name="twitter:description" content="Browse Wizard101 spells — filter by school, arc, source, and effect type.">
+  <meta name="twitter:image" content="https://spelldle101.com/assets/og-image.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --page-bg:#090910;--surface:#111118;--surface2:#18181f;
+  --text-primary:#e8e0d0;--text-secondary:#888;--text-muted:#3a3a3a;
+  --accent:#c8a060;--accent-dim:#7a5c30;--border:#1e1e2a;
+  --green-bg:#1a3a0a;--green-text:#a8d878;
+  --ec0-bg:#0e2040;--ec0-t:#5aa0e8;
+  --ec1-bg:#2e1800;--ec1-t:#d88030;
+  --ec2-bg:#082818;--ec2-t:#40b878;
+  --ec3-bg:#280a2e;--ec3-t:#c060d8;
+  --ec4-bg:#281000;--ec4-t:#d86040;
+}
+html,body{max-width:100%;overflow-x:hidden}
+body{background:var(--page-bg);color:var(--text-primary);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;display:flex;flex-direction:column}
+.bg-glow{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 15% 60%,#0d082022 0%,transparent 55%),radial-gradient(ellipse at 85% 15%,#0a152022 0%,transparent 50%)}
+.app{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:1rem 1rem 2rem;flex:1;width:100%}
+
+/* Header */
+header{text-align:center;padding:1.5rem 0 1rem;position:relative}
+.back-btn{position:absolute;left:0;top:50%;transform:translateY(-50%);font-family:'Cinzel',serif;font-size:.72rem;color:var(--accent-dim);text-decoration:none;border:1px solid var(--border);border-radius:20px;padding:4px 14px;transition:all .15s}
+.back-btn:hover{color:var(--accent);border-color:var(--accent-dim)}
+@media(max-width:580px){
+  .back-btn{position:relative;top:auto;left:auto;transform:none;display:inline-block;margin-bottom:10px}
+  header{padding-top:.75rem}
+}
+.logo{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;color:var(--accent);letter-spacing:.14em}
+.logo sup{font-size:.85rem;color:var(--text-secondary);font-weight:400;vertical-align:super}
+.subtitle{font-style:italic;color:var(--text-secondary);font-size:.9rem;margin-top:.25rem}
+.spell-count-badge{display:inline-block;margin-top:.4rem;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:2px 12px;font-size:.7rem;color:var(--text-muted);font-family:'Cinzel',serif;letter-spacing:.05em}
+
+/* Loading */
+#loading-screen{text-align:center;padding:4rem 1rem;color:var(--text-muted);font-style:italic}
+.loading-bar-wrap{width:200px;height:3px;background:var(--surface2);border-radius:3px;overflow:hidden;margin:.8rem auto 0}
+.loading-bar{height:100%;background:var(--accent);border-radius:3px;width:0%;transition:width .3s ease}
+
+/* Search + Filters bar */
+.controls{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px}
+.controls-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.search-wrap{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:5px 10px;flex:1;min-width:180px}
+.search-wrap input{background:transparent;border:none;outline:none;font-family:'Crimson Pro',serif;font-size:.95rem;color:var(--text-primary);width:100%;caret-color:var(--accent)}
+.search-wrap input::placeholder{color:var(--text-muted)}
+.search-gem{color:var(--accent-dim);font-size:.85rem;flex-shrink:0}
+
+.filter-btn{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.05em;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:5px 12px;cursor:pointer;color:var(--text-secondary);transition:all .15s;white-space:nowrap;flex-shrink:0}
+.filter-btn:hover{color:var(--accent);border-color:var(--accent-dim)}
+.filter-btn.active{border-color:var(--accent-dim);color:var(--accent);background:#120e00}
+.reset-all-btn{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.05em;background:transparent;border:1px solid var(--border);border-radius:8px;padding:5px 10px;cursor:pointer;color:var(--text-muted);transition:all .15s;flex-shrink:0}
+.reset-all-btn:hover{color:var(--text-secondary)}
+
+/* Mobile filters toggle */
+.mobile-filters-btn{display:none;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.05em;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:5px 12px;cursor:pointer;color:var(--text-secondary);width:100%;text-align:center;margin-top:8px;transition:all .15s}
+.mobile-filters-btn.active{border-color:var(--accent-dim);color:var(--accent)}
+@media(max-width:580px){
+  .mobile-filters-btn{display:block}
+  .desktop-only{display:none}
+  .filters-desktop{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:max-height .35s ease, opacity .25s ease;
+    display:flex !important;
+    pointer-events:none;
+  }
+  .filters-desktop.open{
+    max-height:400px;
+    opacity:1;
+    pointer-events:auto;
+  }
+}
+
+.filters-desktop{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.filter-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.filter-row-label{font-family:'Cinzel',serif;font-size:.62rem;color:var(--text-muted);letter-spacing:.06em;min-width:52px;flex-shrink:0}
+.filter-pill{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:2px 10px;cursor:pointer;font-size:.7rem;font-family:'Cinzel',serif;letter-spacing:.04em;border:1px solid transparent;transition:all .15s;user-select:none;opacity:.45;background:var(--surface2)}
+.filter-pill.active{opacity:1}
+.filter-pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.filter-pill-x{font-size:.6rem;opacity:.6;margin-left:2px}
+.filter-reset{font-size:.62rem;color:var(--text-muted);cursor:pointer;font-family:'Cinzel',serif;border:none;background:none;padding:2px 6px;transition:color .15s}
+.filter-reset:hover{color:var(--text-secondary)}
+
+/* Sort bar */
+.sort-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.sort-label{font-family:'Cinzel',serif;font-size:.62rem;color:var(--text-muted);letter-spacing:.06em}
+.sort-btn{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.04em;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:3px 10px;cursor:pointer;color:var(--text-secondary);transition:all .15s}
+.sort-btn:hover{color:var(--accent);border-color:var(--accent-dim)}
+.sort-btn.active{border-color:var(--accent-dim);color:var(--accent);background:#120e00}
+
+/* Table */
+.table-wrap{overflow-x:auto;width:100%}
+table.stable{width:100%;border-collapse:separate;border-spacing:3px;table-layout:fixed}
+.col-h{font-family:'Cinzel',serif;font-size:.58rem;font-weight:600;letter-spacing:.06em;color:var(--text-muted);text-align:center;padding:2px 2px 6px;text-transform:uppercase;cursor:pointer;white-space:nowrap;user-select:none;transition:color .15s}
+.col-h:hover{color:var(--accent-dim)}
+.col-h.sorted{color:var(--accent)}
+.col-h .sort-arrow{font-size:.5rem;margin-left:2px}
+.cell{border-radius:6px;padding:5px 3px;text-align:center;font-size:.76rem;font-weight:500;vertical-align:middle;border:1px solid var(--border);background:var(--surface);color:var(--text-secondary);overflow:hidden;word-break:break-word}
+.cell.img-c{width:50px;cursor:pointer;padding:3px}
+.cell.img-c:hover{border-color:var(--accent-dim)}
+.spell-thumb{width:36px;height:54px;object-fit:cover;border-radius:3px;display:block;margin:0 auto}
+.cell.name-c{font-family:'Cinzel',serif;font-size:.63rem;color:var(--text-primary);letter-spacing:.01em;cursor:pointer;transition:color .15s;text-align:left;padding-left:8px}
+.cell.name-c:hover{color:var(--accent)}
+.efx-wrap{display:flex;flex-direction:column;gap:2px;align-items:center;overflow:hidden;width:100%}
+.etag{display:inline-flex;align-items:center;border-radius:3px;font-size:.65rem;font-weight:500;white-space:nowrap;line-height:1.5}
+.etag .ep{padding:0 1px 0 3px;color:var(--text-secondary)}
+.etag .es{padding:0 3px 0 0;color:var(--text-secondary)}
+.etag.lk0{background:var(--ec0-bg)}.etag.lk0 .ep,.etag.lk0 .es{color:var(--ec0-t)}
+.etag.lk1{background:var(--ec1-bg)}.etag.lk1 .ep,.etag.lk1 .es{color:var(--ec1-t)}
+.etag.lk2{background:var(--ec2-bg)}.etag.lk2 .ep,.etag.lk2 .es{color:var(--ec2-t)}
+.etag.lk3{background:var(--ec3-bg)}.etag.lk3 .ep,.etag.lk3 .es{color:var(--ec3-t)}
+.etag.lk4{background:var(--ec4-bg)}.etag.lk4 .ep,.etag.lk4 .es{color:var(--ec4-t)}
+.ttag{display:inline-block;border-radius:3px;padding:1px 5px;font-size:.65rem;font-weight:500;white-space:nowrap;line-height:1.5;color:var(--text-secondary)}
+.ttag.tl0{background:var(--ec0-bg);color:var(--ec0-t)}
+.ttag.tl1{background:var(--ec1-bg);color:var(--ec1-t)}
+.ttag.tl2{background:var(--ec2-bg);color:var(--ec2-t)}
+.ttag.tl3{background:var(--ec3-bg);color:var(--ec3-t)}
+.ttag.tl4{background:var(--ec4-bg);color:var(--ec4-t)}
+.stag{display:inline-block;border-radius:3px;padding:1px 4px;font-size:.65rem;white-space:nowrap;line-height:1.5;color:var(--text-secondary)}
+
+/* Pagination */
+.pagination{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:14px;flex-wrap:wrap}
+.page-btn{font-family:'Cinzel',serif;font-size:.68rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 12px;cursor:pointer;color:var(--text-secondary);transition:all .15s}
+.page-btn:hover{color:var(--accent);border-color:var(--accent-dim)}
+.page-btn.active{border-color:var(--accent-dim);color:var(--accent);background:#120e00}
+.page-btn:disabled{opacity:.3;cursor:not-allowed}
+.page-info{font-size:.72rem;color:var(--text-muted);font-family:'Cinzel',serif}
+.no-results{text-align:center;padding:3rem;color:var(--text-muted);font-style:italic}
+
+/* Mobile card view */
+@media(max-width:580px){
+  .table-wrap{display:none}
+  .mobile-spell-list{display:block}
+}
+@media(min-width:581px){.mobile-spell-list{display:none}}
+.mobile-spell-list{margin-top:8px}
+.mspell-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.mspell-header{display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--border)}
+.mspell-thumb{width:36px;height:54px;object-fit:cover;border-radius:3px;cursor:pointer;flex-shrink:0}
+.mspell-thumb:hover{opacity:.85}
+.mspell-name{font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-primary);cursor:pointer;flex:1}
+.mspell-name:hover{color:var(--accent)}
+.mspell-school{font-size:.62rem;font-family:'Cinzel',serif;padding:2px 8px;border-radius:10px;letter-spacing:.04em;font-weight:600;flex-shrink:0}
+.mspell-attrs{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:6px}
+.mspell-attr{border-radius:5px;padding:5px 4px;text-align:center;border:1px solid var(--border);background:var(--surface2)}
+.mspell-attr-label{font-family:'Cinzel',serif;font-size:.48rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.mspell-attr-val{font-size:.7rem;color:var(--text-secondary);font-weight:500;word-break:break-word}
+.mspell-effects{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:0 6px 6px}
+.mspell-effect-box{border-radius:5px;padding:5px 7px;border:1px solid var(--border);background:var(--surface2)}
+.mspell-effect-label{font-family:'Cinzel',serif;font-size:.48rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+
+/* Spell detail overlay */
+.overlay-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);align-items:flex-start;justify-content:center;padding:1rem;overflow-y:auto}
+.overlay-bg.show{display:flex;animation:fadeOv .3s ease}
+@keyframes fadeOv{from{opacity:0}to{opacity:1}}
+.detail-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;width:min(560px,96vw);margin:auto;overflow:hidden;animation:popIn .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes popIn{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.detail-img-wrap{display:flex;justify-content:center;padding:20px 20px 0;background:var(--surface2)}
+.detail-img{max-height:200px;object-fit:contain;border-radius:6px}
+.detail-img-ph{height:140px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--text-muted)}
+.detail-body{padding:18px 20px 20px}
+.detail-name{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--accent);margin-bottom:3px}
+.detail-school{font-size:.78rem;font-weight:600;letter-spacing:.06em;margin-bottom:10px}
+.detail-desc{font-style:italic;color:var(--text-secondary);font-size:.85rem;margin-bottom:14px;line-height:1.6;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.detail-attrs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px}
+.detail-attr{background:var(--surface2);border-radius:6px;padding:7px 10px}
+.detail-attr-label{font-family:'Cinzel',serif;font-size:.58rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.detail-attr-val{font-size:.82rem;color:var(--text-primary)}
+.detail-effects{background:var(--surface2);border-radius:6px;padding:10px;margin-bottom:14px}
+.detail-effects-title{font-family:'Cinzel',serif;font-size:.62rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.detail-effect-row{display:flex;align-items:center;gap:6px;margin-bottom:5px;flex-wrap:wrap}
+.detail-effect-row:last-child{margin-bottom:0}
+.detail-btns{display:flex;gap:8px;flex-wrap:wrap}
+.detail-btn{flex:1;border:none;border-radius:8px;padding:9px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;letter-spacing:.07em;cursor:pointer;transition:all .15s;min-width:120px;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:5px}
+.detail-btn.primary{background:var(--accent);color:#160900}
+.detail-btn.primary:hover{background:#deb870}
+.detail-btn.secondary{background:var(--surface2);color:var(--text-secondary);border:1px solid var(--border)}
+.detail-btn.secondary:hover{color:var(--text-primary)}
+.detail-btn.danger{background:transparent;color:#d05050;border:1px solid #3a1010}
+.detail-btn.danger:hover{background:#1a0808}
+
+/* Effect filter overlay */
+.effect-filter-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;width:min(520px,96vw);margin:auto;padding:20px;animation:popIn .35s cubic-bezier(.34,1.56,.64,1)}
+.eff-title{font-family:'Cinzel',serif;font-size:.9rem;color:var(--accent);margin-bottom:14px;letter-spacing:.07em}
+.eff-category{margin-bottom:12px}
+.eff-cat-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.eff-cat-btn{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.05em;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:3px 12px;cursor:pointer;color:var(--text-secondary);transition:all .15s}
+.eff-cat-btn.active{border-color:var(--accent-dim);color:var(--accent);background:#120e00}
+.eff-subtypes{display:flex;flex-wrap:wrap;gap:5px;padding-left:8px}
+.eff-sub-btn{font-size:.65rem;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 8px;cursor:pointer;color:var(--text-secondary);font-family:'Cinzel',serif;transition:all .15s}
+.eff-sub-btn.active{border-color:var(--accent-dim);color:var(--accent);background:#120e00}
+.eff-footer{display:flex;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+.eff-apply-btn{flex:1;background:var(--accent);color:#160900;border:none;border-radius:8px;padding:8px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;cursor:pointer}
+.eff-apply-btn:hover{background:#deb870}
+.eff-reset-btn{background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-muted);cursor:pointer}
+.eff-reset-btn:hover{color:var(--text-secondary)}
+
+/* Footer */
+footer{position:relative;z-index:1;text-align:center;padding:1.5rem 1rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--text-muted);line-height:1.8}
+footer a{color:var(--accent-dim);text-decoration:none}
+footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<!-- Spell detail overlay -->
+<div class="overlay-bg" id="detail-overlay" onclick="closeDetail(event)">
+  <div class="detail-card">
+    <div class="detail-img-wrap" id="detail-img-wrap"></div>
+    <div class="detail-body">
+      <div class="detail-name" id="detail-name"></div>
+      <div class="detail-school" id="detail-school"></div>
+      <div class="detail-desc" id="detail-desc"></div>
+      <div class="detail-attrs" id="detail-attrs"></div>
+      <div class="detail-effects" id="detail-effects"></div>
+      <div class="detail-btns">
+        <a class="detail-btn primary" id="detail-guess-btn" href="#" target="_blank" rel="noopener">Guess this Spell ↗</a>
+        <button class="detail-btn danger" id="detail-report-btn" onclick="reportCurrentSpell()">Report Issue</button>
+        <button class="detail-btn secondary" onclick="closeDetail()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Effect filter overlay -->
+<div class="overlay-bg" id="effect-overlay" onclick="closeEffectFilter(event)">
+  <div class="effect-filter-card">
+    <div class="eff-title">Filter by Effect Types</div>
+    <div id="eff-filter-body"></div>
+    <div class="eff-footer">
+      <button class="eff-reset-btn" onclick="resetEffectFilter()">Reset</button>
+      <button class="eff-apply-btn" onclick="applyEffectFilter()">Apply Filters</button>
+    </div>
+  </div>
+</div>
+
+<div class="app">
+  <header>
+    <a class="back-btn" href="../">← Back to Game</a>
+    <div class="logo">Spelldle<sup>101</sup></div>
+    <div class="subtitle">Complete Spell Library</div>
+    <div class="spell-count-badge" id="count-badge">Loading...</div>
+  </header>
+
+  <div id="loading-screen">
+    <div>Loading spells...</div>
+    <div class="loading-bar-wrap"><div class="loading-bar" id="loading-bar"></div></div>
+  </div>
+
+  <div id="main-content" style="display:none">
+    <div class="controls">
+      <div class="controls-top">
+        <div class="search-wrap">
+          <span class="search-gem">◆</span>
+          <input id="search-input" type="text" placeholder="Search spells..." autocomplete="off"/>
+        </div>
+        <button class="filter-btn" id="eff-filter-btn" onclick="openEffectFilter()">Effects</button>
+        <button class="reset-all-btn" onclick="resetAllFilters()">Reset All</button>
+      </div>
+      <button class="mobile-filters-btn" id="mobile-filters-btn" onclick="toggleMobileFilters()">▾ Filters</button>
+      <div class="filters-desktop" id="filters-desktop">
+        <div class="filter-row">
+          <span class="filter-row-label">School</span>
+          <div id="school-pills"></div>
+          <button class="filter-reset" onclick="resetFilter('school')">✕</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-row-label">Arc</span>
+          <div id="arc-pills"></div>
+          <button class="filter-reset" onclick="resetFilter('arc')">✕</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-row-label">Source</span>
+          <div id="source-pills"></div>
+          <button class="filter-reset" onclick="resetFilter('source')">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sort-bar">
+      <span class="sort-label">Sort by:</span>
+      <div id="sort-btns"></div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="stable" id="stable">
+        <colgroup>
+          <col style="width:54px">
+          <col style="width:14%">
+          <col style="width:9%">
+          <col style="width:7%">
+          <col style="width:10%">
+          <col style="width:8%">
+          <col style="width:10%">
+          <col style="width:22%">
+          <col style="width:18%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th class="col-h" style="cursor:default"></th>
+            <th class="col-h" data-col="name" onclick="setSort('name')">Spell <span class="sort-arrow"></span></th>
+            <th class="col-h" data-col="school" onclick="setSort('school')">School <span class="sort-arrow"></span></th>
+            <th class="col-h" data-col="pipCost" onclick="setSort('pipCost')">Pip <span class="sort-arrow"></span></th>
+            <th class="col-h">Archmastery</th>
+            <th class="col-h" data-col="arc" onclick="setSort('arc')">Arc <span class="sort-arrow"></span></th>
+            <th class="col-h" data-col="source" onclick="setSort('source')">Source <span class="sort-arrow"></span></th>
+            <th class="col-h">Effect Types</th>
+            <th class="col-h">Targets</th>
+          </tr>
+        </thead>
+        <tbody id="stbody"></tbody>
+      </table>
+    </div>
+
+    <div class="mobile-spell-list" id="mobile-spell-list"></div>
+
+    <div class="pagination" id="pagination"></div>
+  </div>
+</div>
+
+<footer>
+  <div>Spelldle 101 is a fan-made project and is not affiliated with KingsIsle Entertainment.</div>
+  <div>All Wizard101 spell names, images, and game content are property of <a href="https://www.kingsisle.com" target="_blank">KingsIsle Entertainment</a>.</div>
+  <div style="margin-top:4px;color:var(--text-muted)">Made with ✦ by a fan &nbsp;·&nbsp; Last updated April 2026</div>
+</footer>
+
+<script>
+const SCHOOL_FILES = ['ice','death','myth','storm','fire','life','balance'];
+const SCHOOL_COLORS = {Fire:'#e05020',Ice:'#60a8e0',Storm:'#9060e0',Myth:'#e0b820',Life:'#40b840',Death:'#a060d0',Balance:'#d09040'};
+const SCHOOL_BGS = {Fire:'#2e1000',Ice:'#001828',Storm:'#1a0a30',Myth:'#2a2000',Life:'#002800',Death:'#1a0a28',Balance:'#1a1000'};
+const ARC_ORDER = {'Arc 1':1,'Arc 2':2,'Arc 3':3,'Arc 4':4,'Arc 5':5,'Side Arc':6};
+const LK = ['lk0','lk1','lk2','lk3','lk4'];
+const TL = ['tl0','tl1','tl2','tl3','tl4'];
+const PAGE_SIZE = 50;
+
+const EFFECT_CATEGORIES = {
+  charm:  ['accuracy','blade','dispel','healing','pierce','prism','weakness'],
+  ward:   ['absorb','healing','prism','shield','stun','trap'],
+  utility:['aggro','beguile','clear','conditional','confuse','convert','detonate','extend','gambit','mutate','pip','push','remove','reshuffle','revive','sacrifice','steal','swap'],
+  damage: [],
+  'damage-drain': [],
+  dot:    [],
+  heal:   [],
+  hot:    [],
+  aura:   [],
+  global: [],
+  minion: [],
+};
+
+let SPELLS = [];
+let filtered = [];
+let currentPage = 1;
+let sortCol = 'name';
+let sortDir = 1;
+let detailSpell = null;
+
+// Filters
+let schoolFilter = new Set();
+let arcFilter = new Set();
+let sourceFilter = new Set();
+let effectFilter = new Set(); // set of type strings
+let effectFilterTemp = new Set(); // temp while overlay open
+let searchQuery = '';
+
+// ─── Load ─────────────────────────────────────────────────────────
+async function loadSpells() {
+  const bar = document.getElementById('loading-bar');
+  try {
+    const results = await Promise.all(SCHOOL_FILES.map(async (school, i) => {
+      const res = await fetch(`../assets/${school}/${school}Spells.json`);
+      if (!res.ok) throw new Error(`Failed: ${school}Spells.json`);
+      const data = await res.json();
+      bar.style.width = `${((i+1)/SCHOOL_FILES.length)*100}%`;
+      return data;
+    }));
+    const SPELLS_GAME_ORDER = results.flat(); // preserve game load order for challenge encoding
+    window.SPELLS_GAME_ORDER = SPELLS_GAME_ORDER;
+    SPELLS = [...SPELLS_GAME_ORDER].sort((a,b) => a.name.localeCompare(b.name));
+    // Fix image paths: ./assets/... -> ../assets/...
+    SPELLS.forEach(s => { if(s.image && s.image.startsWith('./')) s.image = '..' + s.image.slice(1); });
+    document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    initUI();
+  } catch(err) {
+    document.getElementById('loading-screen').innerHTML = `<div style="color:#d05050">Error loading spells: ${err.message}</div>`;
+  }
+}
+
+function initUI() {
+  buildSchoolPills();
+  buildArcPills();
+  buildSourcePills();
+  buildSortBtns();
+  buildEffectFilterUI();
+  applyAndRender();
+  document.getElementById('search-input').addEventListener('input', e => {
+    searchQuery = e.target.value.trim().toLowerCase();
+    currentPage = 1;
+    applyAndRender();
+  });
+}
+
+// ─── Filter/Sort/Render ───────────────────────────────────────────
+function applyAndRender() {
+  filtered = SPELLS.filter(s => {
+    if (schoolFilter.size > 0 && !schoolFilter.has(s.school)) return false;
+    if (arcFilter.size > 0 && !arcFilter.has(s.arc)) return false;
+    if (sourceFilter.size > 0 && !s.source.some(src => sourceFilter.has(src))) return false;
+    if (effectFilter.size > 0) {
+      const types = new Set(s.effects.map(e => e.type));
+      const cats = new Set(s.effects.map(e => getCategory(e.type)));
+      const matches = [...effectFilter].every(f => types.has(f) || cats.has(f));
+      if (!matches) return false;
+    }
+    if (searchQuery && !s.name.toLowerCase().includes(searchQuery)) return false;
+    return true;
+  });
+
+  // Sort
+  filtered.sort((a, b) => {
+    let av, bv;
+    if (sortCol === 'name') { av = a.name; bv = b.name; return av.localeCompare(bv) * sortDir; }
+    if (sortCol === 'school') { av = a.school; bv = b.school; return av.localeCompare(bv) * sortDir; }
+    if (sortCol === 'pipCost') {
+      av = a.pipCost === 'X' ? 999 : Number(a.pipCost);
+      bv = b.pipCost === 'X' ? 999 : Number(b.pipCost);
+      return (av - bv) * sortDir;
+    }
+    if (sortCol === 'arc') { av = ARC_ORDER[a.arc]||99; bv = ARC_ORDER[b.arc]||99; return (av-bv)*sortDir; }
+    if (sortCol === 'source') { av = a.source[0]||''; bv = b.source[0]||''; return av.localeCompare(bv)*sortDir; }
+    return 0;
+  });
+
+  updateCountBadge();
+  renderPage();
+  renderPagination();
+  updateEffectFilterBtn();
+}
+
+function updateCountBadge() {
+  const total = filtered.length;
+  document.getElementById('count-badge').textContent = `${total} / ${SPELLS.length} spells`;
+}
+
+function renderPage() {
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const page = filtered.slice(start, start + PAGE_SIZE);
+  renderTable(page);
+  renderMobileList(page);
+}
+
+// ─── Color linking (same logic as game) ──────────────────────────
+function getCategory(type) { const i = type.indexOf('-'); return i===-1?type:type.slice(0,i); }
+
+function buildColorMap(effects) {
+  const parent = {};
+  function find(x) { if(!(x in parent))parent[x]=x; if(parent[x]!==x)parent[x]=find(parent[x]); return parent[x]; }
+  function union(a,b) { const ra=find(a),rb=find(b); if(ra!==rb)parent[ra]=rb; }
+  effects.forEach(e => union('t:'+e.type,'g:'+e.target));
+  const compColor = {}; let ci = 0;
+  effects.forEach(e => { const r=find('t:'+e.type); if(!(r in compColor))compColor[r]=ci++%LK.length; });
+  const typeColor = {}, targetColor = {};
+  effects.forEach(e => { const r=find('t:'+e.type); typeColor[e.type]=compColor[r]; targetColor[e.target]=compColor[r]; });
+  return { typeColor, targetColor };
+}
+
+function renderEffectTags(effects) {
+  const { typeColor } = buildColorMap(effects);
+  const seen = new Set(), unique = [];
+  effects.forEach(e => { if(!seen.has(e.type)){seen.add(e.type);unique.push(e);} });
+  return unique.map(e => {
+    const t = e.type, dash = t.indexOf('-');
+    const prefix = dash===-1?t:t.slice(0,dash);
+    const suffix = dash===-1?'':t.slice(dash);
+    const cls = LK[typeColor[t]];
+    return `<span class="etag ${cls}"><span class="ep">${prefix}</span>${suffix?`<span class="es">${suffix}</span>`:''}</span>`;
+  }).join('');
+}
+
+function renderTargetTags(effects) {
+  const { targetColor } = buildColorMap(effects);
+  const seen = new Map();
+  effects.forEach(e => { if(!seen.has(e.target)) seen.set(e.target, TL[targetColor[e.target]]); });
+  return [...seen.entries()].map(([t,cls]) => `<span class="ttag ${cls}">${t}</span>`).join('');
+}
+
+// ─── Table ────────────────────────────────────────────────────────
+function renderTable(page) {
+  const tbody = document.getElementById('stbody');
+  tbody.innerHTML = page.map(s => {
+    const arch = s.archmastery.length ? s.archmastery.join(', ') : 'None';
+    const imgSrc = s.image || '';
+    return `<tr>
+      <td class="cell img-c" onclick="openDetail('${s.name.replace(/'/g,"\\'")}')">
+        <img class="spell-thumb" src="${imgSrc}" alt="${s.name}" onerror="this.style.display='none'"/>
+      </td>
+      <td class="cell name-c" onclick="openDetail('${s.name.replace(/'/g,"\\'")}')">${s.name}</td>
+      <td class="cell" style="display:none">${s.name}</td>
+      <td class="cell" style="color:${SCHOOL_COLORS[s.school]}">${s.school}</td>
+      <td class="cell">${s.pipCost}</td>
+      <td class="cell">${arch}</td>
+      <td class="cell">${s.arc}</td>
+      <td class="cell">${s.source.join(', ')}</td>
+      <td class="cell"><div class="efx-wrap">${renderEffectTags(s.effects)}</div></td>
+      <td class="cell"><div class="efx-wrap">${renderTargetTags(s.effects)}</div></td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── Mobile list ──────────────────────────────────────────────────
+function renderMobileList(page) {
+  const container = document.getElementById('mobile-spell-list');
+  container.innerHTML = page.map(s => {
+    const arch = s.archmastery.length ? s.archmastery.join(', ') : 'None';
+    const schoolColor = SCHOOL_COLORS[s.school]||'#888';
+    const schoolBg = SCHOOL_BGS[s.school]||'#111';
+    return `<div class="mspell-card">
+      <div class="mspell-header">
+        <img class="mspell-thumb" src="${s.image||''}" alt="${s.name}" onerror="this.style.display='none'" onclick="openDetail('${s.name.replace(/'/g,"\\'")}')"/>
+        <span class="mspell-name" onclick="openDetail('${s.name.replace(/'/g,"\\'")}'">${s.name}</span>
+        <span class="mspell-school" style="background:${schoolBg};color:${schoolColor}">${s.school}</span>
+      </div>
+      <div class="mspell-attrs">
+        <div class="mspell-attr"><div class="mspell-attr-label">Pip Cost</div><div class="mspell-attr-val">${s.pipCost}</div></div>
+        <div class="mspell-attr"><div class="mspell-attr-label">Archmastery</div><div class="mspell-attr-val">${arch}</div></div>
+        <div class="mspell-attr"><div class="mspell-attr-label">Arc</div><div class="mspell-attr-val">${s.arc}</div></div>
+        <div class="mspell-attr"><div class="mspell-attr-label">Source</div><div class="mspell-attr-val">${s.source.join(', ')}</div></div>
+      </div>
+      <div class="mspell-effects">
+        <div class="mspell-effect-box"><div class="mspell-effect-label">Effect Types</div><div class="efx-wrap">${renderEffectTags(s.effects)}</div></div>
+        <div class="mspell-effect-box"><div class="mspell-effect-label">Targets</div><div class="efx-wrap">${renderTargetTags(s.effects)}</div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── Pagination ───────────────────────────────────────────────────
+function renderPagination() {
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const pg = document.getElementById('pagination');
+  if (totalPages <= 1) { pg.innerHTML = ''; return; }
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>◀</button>`;
+  const range = [];
+  for (let i = 1; i <= totalPages; i++) {
+    if (i===1||i===totalPages||Math.abs(i-currentPage)<=2) range.push(i);
+    else if (range[range.length-1]!=='…') range.push('…');
+  }
+  range.forEach(p => {
+    if (p==='…') html += `<span class="page-info">…</span>`;
+    else html += `<button class="page-btn ${p===currentPage?'active':''}" onclick="goPage(${p})">${p}</button>`;
+  });
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''}>▶</button>`;
+  html += `<span class="page-info">${filtered.length} spells</span>`;
+  pg.innerHTML = html;
+}
+
+function goPage(p) {
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  if (p < 1 || p > totalPages) return;
+  currentPage = p;
+  renderPage();
+  renderPagination();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ─── Sort ─────────────────────────────────────────────────────────
+const SORT_COLS = [
+  {key:'name',label:'Name'},
+  {key:'school',label:'School'},
+  {key:'pipCost',label:'Pip Cost'},
+  {key:'arc',label:'Arc'},
+  {key:'source',label:'Source'},
+];
+
+function buildSortBtns() {
+  document.getElementById('sort-btns').innerHTML = SORT_COLS.map(c =>
+    `<button class="sort-btn ${sortCol===c.key?'active':''}" onclick="setSort('${c.key}')" id="sort-${c.key}">${c.label} <span id="sarr-${c.key}">${sortCol===c.key?(sortDir===1?'↑':'↓'):''}</span></button>`
+  ).join('');
+}
+
+function setSort(col) {
+  if (sortCol === col) sortDir *= -1;
+  else { sortCol = col; sortDir = 1; }
+  buildSortBtns();
+  document.querySelectorAll('.col-h[data-col]').forEach(th => {
+    th.classList.toggle('sorted', th.dataset.col === sortCol);
+    th.querySelector('.sort-arrow').textContent = th.dataset.col===sortCol?(sortDir===1?'↑':'↓'):'';
+  });
+  currentPage = 1;
+  applyAndRender();
+}
+
+// ─── Filter pills ─────────────────────────────────────────────────
+function buildSchoolPills() {
+  const schools = [...new Set(SPELLS.map(s=>s.school))].sort();
+  document.getElementById('school-pills').innerHTML = schools.map(s =>
+    `<span class="filter-pill ${schoolFilter.has(s)?'active':''}" style="color:${SCHOOL_COLORS[s]};border-color:${schoolFilter.has(s)?SCHOOL_COLORS[s]:'transparent'}" onclick="toggleFilter('school','${s}')">
+      <span class="filter-pill-dot"></span>${s}
+    </span>`
+  ).join('');
+}
+
+function buildArcPills() {
+  const arcs = [...new Set(SPELLS.map(s=>s.arc))].sort((a,b)=>(ARC_ORDER[a]||99)-(ARC_ORDER[b]||99));
+  document.getElementById('arc-pills').innerHTML = arcs.map(a =>
+    `<span class="filter-pill ${arcFilter.has(a)?'active':''}" style="color:var(--accent-dim);border-color:${arcFilter.has(a)?'var(--accent-dim)':'transparent'}" onclick="toggleFilter('arc','${a}')">
+      ${a}
+    </span>`
+  ).join('');
+}
+
+function buildSourcePills() {
+  const sources = [...new Set(SPELLS.flatMap(s=>s.source))].sort();
+  document.getElementById('source-pills').innerHTML = sources.map(src =>
+    `<span class="filter-pill ${sourceFilter.has(src)?'active':''}" style="color:var(--accent-dim);border-color:${sourceFilter.has(src)?'var(--accent-dim)':'transparent'}" onclick="toggleFilter('source','${src}')">
+      ${src}
+    </span>`
+  ).join('');
+}
+
+function toggleFilter(type, val) {
+  const map = {school:schoolFilter, arc:arcFilter, source:sourceFilter};
+  const f = map[type];
+  if (f.has(val)) f.delete(val); else f.add(val);
+  if (type==='school') buildSchoolPills();
+  if (type==='arc') buildArcPills();
+  if (type==='source') buildSourcePills();
+  currentPage = 1;
+  applyAndRender();
+}
+
+function resetFilter(type) {
+  if (type==='school') { schoolFilter.clear(); buildSchoolPills(); }
+  if (type==='arc') { arcFilter.clear(); buildArcPills(); }
+  if (type==='source') { sourceFilter.clear(); buildSourcePills(); }
+  currentPage = 1; applyAndRender();
+}
+
+function resetAllFilters() {
+  schoolFilter.clear(); arcFilter.clear(); sourceFilter.clear();
+  effectFilter.clear(); searchQuery = '';
+  document.getElementById('search-input').value = '';
+  buildSchoolPills(); buildArcPills(); buildSourcePills();
+  currentPage = 1; applyAndRender();
+}
+
+function toggleMobileFilters() {
+  const fd = document.getElementById('filters-desktop');
+  const btn = document.getElementById('mobile-filters-btn');
+  fd.classList.toggle('open');
+  btn.classList.toggle('active');
+  btn.textContent = fd.classList.contains('open') ? '▴ Filters' : '▾ Filters';
+}
+
+// ─── Effect filter ────────────────────────────────────────────────
+function buildEffectFilterUI() {
+  const body = document.getElementById('eff-filter-body');
+  const standalones = ['damage','damage-drain','dot','heal','hot','aura','global','minion'];
+  const withSubs = ['charm','ward','utility'];
+  let html = '';
+  withSubs.forEach(cat => {
+    const subs = EFFECT_CATEGORIES[cat];
+    const catActive = effectFilterTemp.has(cat);
+    html += `<div class="eff-category">
+      <div class="eff-cat-header">
+        <button class="eff-cat-btn ${catActive?'active':''}" onclick="toggleEffTemp('${cat}')">${cat}</button>
+      </div>
+      <div class="eff-subtypes">${subs.map(sub => {
+        const full = cat+'-'+sub;
+        const active = effectFilterTemp.has(full);
+        return `<button class="eff-sub-btn ${active?'active':''}" onclick="toggleEffTemp('${full}')">${sub}</button>`;
+      }).join('')}</div>
+    </div>`;
+  });
+  html += `<div class="eff-category"><div class="eff-cat-header">${standalones.map(t => {
+    const active = effectFilterTemp.has(t);
+    return `<button class="eff-cat-btn ${active?'active':''}" onclick="toggleEffTemp('${t}')">${t}</button>`;
+  }).join('')}</div></div>`;
+  body.innerHTML = html;
+}
+
+function toggleEffTemp(val) {
+  if (effectFilterTemp.has(val)) effectFilterTemp.delete(val);
+  else effectFilterTemp.add(val);
+  buildEffectFilterUI();
+}
+
+function openEffectFilter() {
+  effectFilterTemp = new Set(effectFilter);
+  buildEffectFilterUI();
+  document.getElementById('effect-overlay').classList.add('show');
+}
+
+function closeEffectFilter(e) {
+  if (e && !e.target.classList.contains('overlay-bg')) return;
+  document.getElementById('effect-overlay').classList.remove('show');
+}
+
+function applyEffectFilter() {
+  effectFilter = new Set(effectFilterTemp);
+  document.getElementById('effect-overlay').classList.remove('show');
+  currentPage = 1; applyAndRender();
+}
+
+function resetEffectFilter() {
+  effectFilterTemp.clear();
+  buildEffectFilterUI();
+}
+
+function updateEffectFilterBtn() {
+  const btn = document.getElementById('eff-filter-btn');
+  const count = effectFilter.size;
+  btn.textContent = count > 0 ? `Effects (${count})` : 'Effects';
+  btn.classList.toggle('active', count > 0);
+}
+
+// ─── Detail overlay ───────────────────────────────────────────────
+function openDetail(name) {
+  const spell = SPELLS.find(s => s.name === name);
+  if (!spell) return;
+  detailSpell = spell;
+
+  const imgWrap = document.getElementById('detail-img-wrap');
+  imgWrap.innerHTML = spell.image
+    ? `<img class="detail-img" src="${spell.image}" alt="${spell.name}" onerror="this.parentElement.innerHTML='<div class=detail-img-ph>✦</div>'"/>`
+    : `<div class="detail-img-ph">✦</div>`;
+
+  document.getElementById('detail-name').textContent = spell.name;
+  document.getElementById('detail-school').textContent = spell.school.toUpperCase();
+  document.getElementById('detail-school').style.color = SCHOOL_COLORS[spell.school]||'#888';
+  document.getElementById('detail-desc').textContent = spell.description || 'No description available.';
+
+  document.getElementById('detail-attrs').innerHTML = [
+    {label:'School', val:spell.school},
+    {label:'Pip Cost', val:spell.pipCost},
+    {label:'Archmastery', val:spell.archmastery.length?spell.archmastery.join(', '):'None'},
+    {label:'Arc', val:spell.arc},
+    {label:'Source', val:spell.source.join(', ')},
+  ].map(({label,val}) => `
+    <div class="detail-attr">
+      <div class="detail-attr-label">${label}</div>
+      <div class="detail-attr-val">${val}</div>
+    </div>`).join('');
+
+  // Full effect→target breakdown with color linking
+  const {typeColor, targetColor} = buildColorMap(spell.effects);
+  const effectRows = spell.effects.map(e => {
+    const t = e.type, dash = t.indexOf('-');
+    const prefix = dash===-1?t:t.slice(0,dash);
+    const suffix = dash===-1?'':t.slice(dash);
+    const lk = LK[typeColor[t]];
+    const tl = TL[targetColor[e.target]];
+    return `<div class="detail-effect-row">
+      <span class="etag ${lk}"><span class="ep">${prefix}</span>${suffix?`<span class="es">${suffix}</span>`:''}</span>
+      <span style="color:var(--text-muted);font-size:.7rem">→</span>
+      <span class="ttag ${tl}">${e.target}</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('detail-effects').innerHTML = `
+    <div class="detail-effects-title">Effect → Target Breakdown</div>
+    ${effectRows}`;
+
+  const spellIdx = window.SPELLS_GAME_ORDER.findIndex(s => s.name === spell.name);
+  const challengeCode = encodeChallenge(spellIdx);
+  document.getElementById('detail-guess-btn').href = `../?challenge=${challengeCode}`;
+
+  document.getElementById('detail-overlay').classList.add('show');
+}
+
+function closeDetail(e) {
+  if (e && !e.target.classList.contains('overlay-bg')) return;
+  document.getElementById('detail-overlay').classList.remove('show');
+  detailSpell = null;
+}
+
+function reportCurrentSpell() {
+  if (!detailSpell) return;
+  reportSpell(detailSpell.name);
+}
+
+
+function encodeChallenge(spellIndex){
+  const salt=Math.floor(Math.random()*65535);
+  const n=((salt<<16)|(spellIndex&0xffff))>>>0;
+  const ALPHA='23456789BCDFGHJKMNPQRSTVWXYZ';
+  let val=n,result='';
+  for(let i=0;i<7;i++){result=ALPHA[val%28]+result;val=Math.floor(val/28);}
+  return result;
+}
+
+function reportSpell(name) {
+  // Placeholder — hook up to form/email/GitHub issue when ready
+  console.log('Reported spell:', name);
+  const btn = document.getElementById('detail-report-btn');
+  const orig = btn.textContent;
+  btn.textContent = 'Reported ✓';
+  setTimeout(() => btn.textContent = orig, 2000);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('detail-overlay').classList.remove('show');
+    document.getElementById('effect-overlay').classList.remove('show');
+  }
+});
+
+loadSpells();
+</script>
+</body>
+</html>

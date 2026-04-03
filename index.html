@@ -73,7 +73,7 @@
   --ec3-bg:#280a2e;--ec3-t:#c060d8;
   --ec4-bg:#281000;--ec4-t:#d86040;
 }
-body{background:var(--page-bg);color:var(--text-primary);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column}
+html,body{max-width:100%;overflow-x:hidden}body{background:var(--page-bg);color:var(--text-primary);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;display:flex;flex-direction:column}
 .bg-glow{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 15% 60%,#0d082022 0%,transparent 55%),radial-gradient(ellipse at 85% 15%,#0a152022 0%,transparent 50%)}
 .app{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:1rem 1rem 2rem;flex:1;width:100%}
 
@@ -103,7 +103,7 @@ header{text-align:center;padding:2rem 0 1.5rem}
 #spell-input{flex:1;background:transparent;border:none;outline:none;font-family:'Crimson Pro',serif;font-size:1.05rem;color:var(--text-primary);caret-color:var(--accent)}
 #spell-input::placeholder{color:var(--text-muted)}
 #spell-input:disabled{opacity:.4}
-.cast-btn{background:var(--accent);color:#160900;border:none;border-radius:6px;padding:5px 18px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;letter-spacing:.07em;cursor:pointer;flex-shrink:0;transition:background .15s,transform .1s}
+.cast-btn{background:var(--accent);color:#160900;border:none;border-radius:6px;padding:5px 18px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;letter-spacing:.07em;cursor:pointer;transition:background .15s,transform .1s}
 .cast-btn:hover{background:#deb870}
 .cast-btn:active{transform:scale(.97)}
 .cast-btn:disabled{background:#333;color:#666;cursor:not-allowed}
@@ -365,7 +365,7 @@ footer a:hover{color:var(--accent)}
 .mcard-header{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;border-bottom:1px solid var(--border)}
 .mcard-spell{font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-primary);letter-spacing:.03em}
 .mcard-school{font-size:.62rem;font-family:'Cinzel',serif;padding:2px 8px;border-radius:10px;letter-spacing:.04em;font-weight:600}
-.mcard-attrs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;padding:6px}
+.mcard-attrs{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:6px}
 .mcard-attr{border-radius:5px;padding:5px 4px;text-align:center;border:1px solid var(--border);background:var(--surface2)}
 .mcard-attr-label{font-family:'Cinzel',serif;font-size:.48rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
 .mcard-attr-val{font-size:.7rem;color:var(--text-secondary);font-weight:500;word-break:break-word}
@@ -407,6 +407,62 @@ footer a:hover{color:var(--accent)}
   .win-desc{margin-bottom:8px;font-size:.8rem}
   .win-guesses{margin-bottom:10px}
 }
+
+.header-btn{position:absolute;top:2rem;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.06em;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 14px;cursor:pointer;color:var(--text-secondary);transition:all .15s;user-select:none;display:flex;align-items:center;gap:5px}
+.header-btn:hover{color:var(--accent);border-color:var(--accent-dim)}
+.header-btn-left{left:1rem}
+.header-btn-right{right:1rem;display:none}
+.header-btn-right.visible{display:flex}
+.header-btn .htip{position:absolute;top:calc(100% + 6px);background:#1a1a28;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.68rem;color:var(--text-secondary);pointer-events:none;opacity:0;transition:opacity .15s;z-index:300;font-family:'Crimson Pro',serif;font-style:italic;width:180px;white-space:normal;text-align:center;line-height:1.4}
+.header-btn:hover .htip{opacity:1}
+.header-btn-left .htip{left:0;transform:none}
+.header-btn-right .htip{right:0;transform:none}
+
+/* Settings overlay */
+.settings-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;width:340px;animation:winPop .35s cubic-bezier(.34,1.56,.64,1)}
+.settings-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--accent);margin-bottom:18px;text-align:center;letter-spacing:.08em}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+.settings-row:last-of-type{border-bottom:none}
+.settings-label{font-family:'Cinzel',serif;font-size:.75rem;color:var(--text-primary);letter-spacing:.04em}
+.settings-sub{font-size:.7rem;color:var(--text-muted);font-style:italic;margin-top:2px;font-family:'Crimson Pro',serif}
+.settings-toggle{width:40px;height:22px;border-radius:11px;background:var(--border);border:none;cursor:pointer;position:relative;transition:background .2s;flex-shrink:0}
+.settings-toggle.on{background:var(--accent-dim)}
+.settings-toggle::after{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;top:3px;left:3px;transition:transform .2s}
+.settings-toggle.on::after{transform:translateX(18px)}
+.settings-note{font-size:.68rem;color:var(--text-muted);font-style:italic;font-family:'Crimson Pro',serif;text-align:center;margin-top:16px;padding-top:12px;border-top:1px solid var(--border)}
+.settings-close{display:block;width:100%;margin-top:14px;background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.72rem;cursor:pointer;transition:all .15s}
+.settings-close:hover{color:var(--text-secondary)}
+
+@media (max-width:580px){
+  .header-btn{top:.5rem}
+}
+
+@media (max-width:580px){
+  .cast-btn{padding:5px 12px;flex-shrink:0;width:auto}
+  .search-box{padding:6px 8px;gap:5px;min-width:0}
+  #spell-input{min-width:0;width:0;flex:1}
+  #guide-btn{flex-shrink:0;padding:5px 8px}
+}
+
+@media (max-width:320px){
+  .logo{font-size:1.8rem;letter-spacing:.08em}
+  .logo sup{font-size:.75rem}
+  .tagline{font-size:.8rem}
+}
+
+@keyframes glowReveal {
+  0%   { opacity:0; box-shadow:0 0 0px currentColor; }
+  40%  { opacity:1; box-shadow:0 0 16px currentColor; }
+  100% { opacity:1; box-shadow:0 0 0px currentColor; }
+}
+.cell-reveal { opacity:0; }
+.cell-reveal.revealed { animation: glowReveal .55s ease forwards; }
+.mcard-attr-reveal { }
+.mcard-attr-reveal.revealed { animation: glowReveal .55s ease forwards; }
+.mcard-effect-reveal { }
+.mcard-effect-reveal.revealed { animation: glowReveal .55s ease forwards; }
+.mcard-header-reveal { }
+.mcard-header-reveal.revealed { animation: glowReveal .5s ease forwards; }
 </style>
 </head>
 <body>
@@ -443,6 +499,7 @@ footer a:hover{color:var(--accent)}
       <div class="win-guesses" id="win-guesses"></div>
       <div class="win-btns">
         <button class="win-btn primary" onclick="closeOverlay('win-overlay')">Continue ✦</button>
+        <button class="win-btn secondary" id="win-share-btn" onclick="shareResultWin()">Share Result ↗</button>
         <button class="win-btn secondary" onclick="closeOverlay('win-overlay');openDatePicker()">Guess Another Spell ↗</button>
       </div>
     </div>
@@ -596,8 +653,45 @@ footer a:hover{color:var(--accent)}
   </div>
 </div>
 
+
+<div class="overlay-bg" id="settings-overlay" onclick="closeOverlay('settings-overlay',event)">
+  <div class="settings-card">
+    <div class="settings-title">⚙ Settings</div>
+    <div class="settings-row">
+      <div>
+        <div class="settings-label">Smart Filters</div>
+        <div class="settings-sub">Show filter toggles below search</div>
+      </div>
+      <button class="settings-toggle on" id="st-smartfilters" onclick="toggleSetting('smartfilters')"></button>
+    </div>
+    <div class="settings-row">
+      <div>
+        <div class="settings-label">School Filter</div>
+        <div class="settings-sub">Show school filter pills</div>
+      </div>
+      <button class="settings-toggle on" id="st-schoolfilter" onclick="toggleSetting('schoolfilter')"></button>
+    </div>
+    <div class="settings-row">
+      <div>
+        <div class="settings-label">Hints</div>
+        <div class="settings-sub">Show hint bar after 3 guesses</div>
+      </div>
+      <button class="settings-toggle on" id="st-hints" onclick="toggleSetting('hints')"></button>
+    </div>
+    <div class="settings-note">&#128190; Your preferences are saved automatically</div>
+    <button class="settings-close" onclick="closeOverlay('settings-overlay')">Close</button>
+  </div>
+</div>
 <div class="app" id="app" style="display:none">
-  <header>
+  <header style="position:relative">
+    <button class="header-btn header-btn-left" onclick="openOverlay('settings-overlay')">
+      Settings
+      <div class="htip">Customize your gameplay experience</div>
+    </button>
+    <button class="header-btn header-btn-right" id="share-btn" onclick="shareResult()">
+      Share
+      <div class="htip">Copy your result to share with friends</div>
+    </button>
     <div class="logo">Spelldle<sup>101</sup></div>
     <div class="tagline">guess today's wizard101 spell</div>
     <div class="date-pill" id="date-pill" onclick="openDatePicker()">
@@ -618,14 +712,14 @@ footer a:hover{color:var(--accent)}
     </div>
     <div id="err" class="error-msg"></div>
     <div class="filters-area">
-      <div class="filter-row">
+      <div class="filter-row" id="smart-filters-row">
         <span class="filter-label">Smart filters:</span>
         <div id="smart-filters"></div>
       </div>
       <div class="filter-row" id="school-filters"></div>
       <div class="filter-footer">
         <span class="remaining-count" id="remaining-count"></span>
-        <a class="view-all-btn" href="#" target="_blank">View All Cards ↗</a>
+        <a class="view-all-btn" href="./spells" target="_blank">View All Cards ↗</a>
       </div>
     </div>
   </div>
@@ -705,10 +799,124 @@ footer a:hover{color:var(--accent)}
 <footer>
   <div>Spelldle 101 is a fan-made project and is not affiliated with KingsIsle Entertainment.</div>
   <div>All Wizard101 spell names, images, and game content are property of <a href="https://www.kingsisle.com" target="_blank">KingsIsle Entertainment</a>.</div>
-  <div style="margin-top:4px;color:var(--text-muted)">Made with ✦ by a fan &nbsp;·&nbsp; <a href="#">Source</a></div>
+  <div style="margin-top:4px;color:var(--text-muted)">Made with ✦ by a fan &nbsp;·&nbsp; Last updated April 2026</div>
 </footer>
 
 <script>
+
+
+// ─── Settings ────────────────────────────────────────────────────
+const SETTING_DEFAULTS = {smartfilters:true, schoolfilter:true, hints:true};
+let settings = {...SETTING_DEFAULTS};
+
+function loadSettings(){
+  try {
+    const saved = localStorage.getItem('spelldle_settings');
+    if(saved) settings = {...SETTING_DEFAULTS, ...JSON.parse(saved)};
+  } catch{}
+  applySettings();
+}
+
+function saveSettings(){
+  try { localStorage.setItem('spelldle_settings', JSON.stringify(settings)); } catch{}
+}
+
+function toggleSetting(key){
+  settings[key] = !settings[key];
+  saveSettings();
+  applySettings();
+}
+
+function applySettings(){
+  // Update toggle UI
+  Object.keys(settings).forEach(key => {
+    const btn = document.getElementById('st-'+key);
+    if(btn) btn.classList.toggle('on', settings[key]);
+  });
+  // Show/hide filter areas
+  const sf = document.getElementById('smart-filters-row');
+  const scf = document.getElementById('school-filters');
+  const hb = document.getElementById('hint-bar');
+  if(sf) sf.style.display = settings.smartfilters ? '' : 'none';
+  if(scf) scf.style.display = settings.schoolfilter ? '' : 'none';
+  // Hint bar: always hide if setting off, otherwise re-evaluate normally
+  if(hb && !settings.hints) hb.classList.add('hidden');
+  else if(hb && settings.hints) updateHintBar();
+}
+
+// ─── Share ────────────────────────────────────────────────────────
+function buildEmojiGrid(){
+  const nonWinning = guesses.filter(g => g.name !== ANSWER.name);
+  return nonWinning.map(g => {
+    const sc  = scalarMatch(g.school, ANSWER.school);
+    const pc  = scalarMatch(g.pipCost, ANSWER.pipCost);
+    const arc = scalarMatch(g.arc, ANSWER.arc);
+    const am  = setMatch(g.archmastery, ANSWER.archmastery);
+    const src = setMatch(g.source, ANSWER.source);
+    const et  = effectTypeMatch(g.effects, ANSWER.effects);
+    const tc  = targetMatch(g.effects, ANSWER.effects);
+    return [sc,pc,am,arc,src,et,tc].map(m =>
+      m==='correct'?'🟩':m==='partial'?'🟨':'⬛'
+    ).join('');
+  }).reverse().join('\n');
+}
+
+function getShareText(){
+  const grid = buildEmojiGrid();
+  const lastRow = '🟩🟩🟩🟩🟩🟩🟩 ✦';
+  let header = 'Spelldle 101';
+  let link = 'spelldle101.com';
+
+  if(devSpell){
+    header += ' — Dev Mode';
+  } else if(challengeSpell){
+    header += ' — Challenge ✦';
+    const code = window.location.search.match(/challenge=([^&]+)/)?.[1];
+    if(code) link = 'spelldle101.com/?challenge=' + code;
+  } else if(customDate !== null){
+    header += ' — ' + customDate.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  } else if(customSeed !== null){
+    header += ' — Random Spell';
+    const idx = SPELLS.indexOf(ANSWER);
+    link = 'spelldle101.com/?challenge=' + encodeChallenge(idx);
+  } else {
+    const d = new Date();
+    header += ' — ' + d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  }
+
+  return header + '\n' + (grid ? grid + '\n' : '') + lastRow + '\n' + link;
+}
+
+function _doCopy(text, onSuccess){
+  navigator.clipboard.writeText(text).then(onSuccess).catch(()=>{ prompt('Copy your result:', text); });
+}
+
+function shareResult(){
+  _doCopy(getShareText(), ()=>{
+    const btn=document.getElementById('share-btn');
+    if(btn){
+      const orig=btn.childNodes[0].textContent.trim();
+      btn.childNodes[0].textContent=' Copied! ';
+      setTimeout(()=>{btn.childNodes[0].textContent=orig;},2000);
+    }
+  });
+}
+
+function shareResultWin(){
+  _doCopy(getShareText(), ()=>{
+    const btn = document.getElementById('win-share-btn');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied! ✓';
+    setTimeout(()=>{ btn.textContent=orig; }, 2000);
+  });
+}
+
+function showShareBtn(){
+  document.getElementById('share-btn').classList.add('visible');
+}
+function hideShareBtn(){
+  document.getElementById('share-btn').classList.remove('visible');
+}
 
 // ─── Toast ────────────────────────────────────────────────────────
 function showToast(msg){
@@ -921,6 +1129,7 @@ function initGame(resetAll=true){
     ANSWER=getAnswer();
     guesses=[];won=false;acIdx=-1;
     hintsUsed=0;hintRevealed={};
+    hideShareBtn();
     document.getElementById('cast-btn').disabled=false;
     document.getElementById('spell-input').disabled=false;
     document.getElementById('err').textContent='';
@@ -932,6 +1141,7 @@ function initGame(resetAll=true){
   updateHintBar();
   renderBoard();
   renderMobileCards();
+  loadSettings();
   updateCount();
 }
 
@@ -1169,7 +1379,7 @@ function showWin(){
   document.getElementById('win-guesses').textContent=`Identified in ${guesses.length} ${guesses.length===1?'guess':'guesses'}`;
   const ia=document.getElementById('win-img-area');
   ia.innerHTML=s.image?`<img src="${s.image}" class="win-card-img" onerror="this.parentElement.innerHTML='<div class=win-card-img-ph>✦</div>'"/>`:`<div class="win-card-img-ph">✦</div>`;
-  spawnConfetti();openOverlay('win-overlay');
+  spawnConfetti();openOverlay('win-overlay');showShareBtn();
 }
 function spawnConfetti(){
   const c=document.getElementById('confetti');c.innerHTML='';
@@ -1225,6 +1435,9 @@ function updateHintBar(){
   const cnt=document.getElementById('hint-count');
   const hintsAvailable=HINT_THRESHOLDS.filter(t=>guesses.length>=t).length;
   const remaining=hintsAvailable-hintsUsed;
+
+  // If hints setting is off, always keep bar hidden
+  if(!settings.hints){bar.classList.add('hidden');return;}
 
   if(guesses.length<HINT_THRESHOLDS[0]||won){
     if(won&&guesses.length>=HINT_THRESHOLDS[0])bar.classList.remove('hidden');
@@ -1301,10 +1514,12 @@ function submitGuess(){
     won=true;
     document.getElementById('cast-btn').disabled=true;
     input.disabled=true;
-    setTimeout(showWin,600);
   }
   renderBoard();
   renderMobileCards();
+  triggerRevealDesktop();
+  triggerRevealMobile();
+  if(won) waitForAnimationsThenWin();
   renderFilters();
   renderSchoolFilters();
   updateFilterFooter();
@@ -1547,26 +1762,32 @@ function renderMobileCards(){
     const tc=targetMatch(g.effects,ANSWER.effects);
     const schoolColor=SCHOOL_COLORS[g.school]||'#888';
     const schoolBg=g.school==='Fire'?'#2e1000':g.school==='Ice'?'#001828':g.school==='Storm'?'#1a0a30':g.school==='Myth'?'#2a2000':g.school==='Life'?'#002800':g.school==='Death'?'#1a0a28':'#1a1000';
-    const headerCls=sc==='correct'?'style="background:var(--green-bg);border-color:#2a5010"':sc==='wrong'?'style="background:var(--gray-bg);border-color:#222"':'';
-    const spellColor=sc==='correct'?'color:var(--green-text)':sc==='wrong'?'color:var(--gray-text)':'color:var(--text-primary)';
+    const schoolBadgeBorder=sc==='correct'?'2px solid #2a5010':sc==='wrong'?'2px solid #222':'1px solid transparent';
+    const schoolBadgeBg=sc==='correct'?'var(--green-bg)':sc==='wrong'?'var(--gray-bg)':schoolBg;
+    const schoolBadgeColor=sc==='correct'?'var(--green-text)':sc==='wrong'?'var(--gray-text)':schoolColor;
+    const isWin=g.name===ANSWER.name;
+    const headerCls=isWin?'style="background:var(--green-bg);border-color:#2a5010"':'';
+    const spellColor=isWin?'color:var(--green-text)':'color:var(--text-primary)';
 
     const srcCell=src==='partial'?renderSourceTags(g,ANSWER):g.source.join(', ');
     const archDisplay=g.archmastery.length?g.archmastery.join(', '):'None';
 
+    const isNewest = guesses.indexOf(g) === 0;
+    const rev = isNewest ? 'mcard-reveal-el' : '';
     html+=`<div class="mcard">
-      <div class="mcard-header" ${headerCls}>
+      <div class="mcard-header ${rev}" ${headerCls}>
         <span class="mcard-spell" style="${spellColor};cursor:pointer" data-spell="${g.name.replace(/"/g,'&quot;')}">${g.name}</span>
-        <span class="mcard-school" style="background:${schoolBg};color:${schoolColor}">${g.school}</span>
+        <span class="mcard-school" style="background:${schoolBadgeBg};color:${schoolBadgeColor};border:${schoolBadgeBorder}">${g.school}</span>
       </div>
       <div class="mcard-attrs">
-        <div class="mcard-attr ${pc}"><div class="mcard-attr-label">Pip Cost</div><div class="mcard-attr-val">${g.pipCost}</div></div>
-        <div class="mcard-attr ${am}"><div class="mcard-attr-label">Archmastery</div><div class="mcard-attr-val">${archDisplay}</div></div>
-        <div class="mcard-attr ${arc}"><div class="mcard-attr-label">Arc</div><div class="mcard-attr-val">${g.arc}</div></div>
-        <div class="mcard-attr ${src}"><div class="mcard-attr-label">Source</div><div class="mcard-attr-val">${srcCell}</div></div>
+        <div class="mcard-attr ${rev} ${pc}"><div class="mcard-attr-label">Pip Cost</div><div class="mcard-attr-val">${g.pipCost}</div></div>
+        <div class="mcard-attr ${rev} ${am}"><div class="mcard-attr-label">Archmastery</div><div class="mcard-attr-val">${archDisplay}</div></div>
+        <div class="mcard-attr ${rev} ${arc}"><div class="mcard-attr-label">Arc</div><div class="mcard-attr-val">${g.arc}</div></div>
+        <div class="mcard-attr ${rev} ${src}"><div class="mcard-attr-label">Source</div><div class="mcard-attr-val">${srcCell}</div></div>
       </div>
       <div class="mcard-effects">
-        <div class="mcard-effect-box ${et}"><div class="mcard-effect-label">Effect Types</div><div class="efx-wrap">${renderEffectTags(g,ANSWER)}</div></div>
-        <div class="mcard-effect-box ${tc}"><div class="mcard-effect-label">Targets</div><div class="efx-wrap">${renderTargetTags(g,ANSWER)}</div></div>
+        <div class="mcard-effect-box ${rev} ${et}"><div class="mcard-effect-label">Effect Types</div><div class="efx-wrap">${renderEffectTags(g,ANSWER)}</div></div>
+        <div class="mcard-effect-box ${rev} ${tc}"><div class="mcard-effect-label">Targets</div><div class="efx-wrap">${renderTargetTags(g,ANSWER)}</div></div>
       </div>
     </div>`;
   });
@@ -1577,6 +1798,37 @@ function renderMobileCards(){
     const spell=SPELLS.find(s=>s.name===el.dataset.spell);
     if(spell)attachTooltip(el,spell);
   });
+}
+
+
+function triggerRevealDesktop(){
+  const cells = document.querySelectorAll('.cell-reveal');
+  cells.forEach((el,i) => {
+    el.style.opacity = '0';
+    setTimeout(() => el.classList.add('revealed'), i * 100);
+  });
+}
+
+function triggerRevealMobile(){
+  const all = [...document.querySelectorAll('.mcard-reveal-el')];
+  if(!all.length) return;
+  all.forEach(el => {
+    el.style.opacity = '0';
+    void el.offsetWidth;
+  });
+  all.forEach((el,i) => setTimeout(() => {
+    el.style.opacity = '';
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = 'glowReveal .55s ease forwards';
+  }, i * 100));
+}
+
+
+function waitForAnimationsThenWin(){
+  // 7 elements, 100ms stagger, 550ms animation = last finishes at 600+550=1150ms
+  // Add 400ms pause after so player can see the result
+  setTimeout(showWin, 1600);
 }
 
 function renderBoard(){
@@ -1597,15 +1849,17 @@ function renderBoard(){
     const et=effectTypeMatch(g.effects,ANSWER.effects);
     const tc=targetMatch(g.effects,ANSWER.effects);
     const srcCell=src==='partial'?renderSourceTags(g,ANSWER):g.source.join(', ');
-    return`<tr class="${i===0?'grow':''}">
-      <td class="cell name-c" data-spell="${g.name.replace(/"/g,'&quot;')}">${g.name}</td>
-      <td class="cell ${sc}">${g.school}</td>
-      <td class="cell ${pc}">${g.pipCost}</td>
-      <td class="cell ${am}">${g.archmastery.length?g.archmastery.join(', '):'None'}</td>
-      <td class="cell ${arc}">${g.arc}</td>
-      <td class="cell ${src}">${srcCell}</td>
-      <td class="cell ${et}"><div class="efx-wrap">${renderEffectTags(g,ANSWER)}</div></td>
-      <td class="cell ${tc}"><div class="efx-wrap">${renderTargetTags(g,ANSWER)}</div></td>
+    const rev = i===0 ? 'cell-reveal' : '';
+    const nameClass = g.name===ANSWER.name ? 'correct' : '';
+    return`<tr>
+      <td class="cell name-c ${nameClass} ${rev}" data-spell="${g.name.replace(/"/g,'&quot;')}">${g.name}</td>
+      <td class="cell ${sc} ${rev}">${g.school}</td>
+      <td class="cell ${pc} ${rev}">${g.pipCost}</td>
+      <td class="cell ${am} ${rev}">${g.archmastery.length?g.archmastery.join(', '):'None'}</td>
+      <td class="cell ${arc} ${rev}">${g.arc}</td>
+      <td class="cell ${src} ${rev}">${srcCell}</td>
+      <td class="cell ${et} ${rev}"><div class="efx-wrap">${renderEffectTags(g,ANSWER)}</div></td>
+      <td class="cell ${tc} ${rev}"><div class="efx-wrap">${renderTargetTags(g,ANSWER)}</div></td>
     </tr>`;
   }).join('');
 
@@ -1656,6 +1910,7 @@ function initGame(resetAll=true){
     ANSWER=getAnswer();
     guesses=[];won=false;acIdx=-1;
     hintsUsed=0;hintRevealed={};
+    hideShareBtn();
     const btn=document.getElementById('cast-btn');
     const inp=document.getElementById('spell-input');
     if(btn)btn.disabled=false;
@@ -1672,6 +1927,7 @@ function initGame(resetAll=true){
   renderMobileCards();
   updateCount();
   attachInputEvents();
+  loadSettings();
 }
 
 async function loadSpells(){
