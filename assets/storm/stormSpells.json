@@ -9,7 +9,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/storm/Thunder_Snake.png",
+    "image": "./assets/storm/Thunder_Snake.jpg",
     "description": "Deals 105-145 Storm Damage",
     "effects": [
       {
@@ -27,7 +27,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Lightning_Bats.png",
+    "image": "./assets/storm/Lightning_Bats.jpg",
     "description": "Deals 245-285 Storm Damage",
     "effects": [
       {
@@ -45,7 +45,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Thermic_Shield.png",
+    "image": "./assets/storm/Thermic_Shield.jpg",
     "description": "Applies -70% Ice and Fire Damage Wards",
     "effects": [
       {
@@ -63,7 +63,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Storm_Shark.png",
+    "image": "./assets/storm/Storm_Shark.jpg",
     "description": "Deals 375-435 Storm Damage",
     "effects": [
       {
@@ -81,7 +81,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Storm_Trap.png",
+    "image": "./assets/storm/Storm_Trap.jpg",
     "description": "Applies a +40% Storm Damage Ward",
     "effects": [
       {
@@ -99,7 +99,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Thermic_Golem.png",
+    "image": "./assets/storm/Thermic_Golem.jpg",
     "description": "Deals 325-485 Storm Damage to target and applies -70% Ice and Fire Damage Wards on caster",
     "effects": [
       {
@@ -121,7 +121,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Kraken.png",
+    "image": "./assets/storm/Kraken.jpg",
     "description": "Deals 520-580 Storm Damage",
     "effects": [
       {
@@ -139,7 +139,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Windstorm.png",
+    "image": "./assets/storm/Windstorm.jpg",
     "description": "Applies a +25% Storm Damage Ward on all enemies",
     "effects": [
       {
@@ -157,7 +157,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Darkwind.png",
+    "image": "./assets/storm/Darkwind.jpg",
     "description": "Applies a +25% Storm Damage Global",
     "effects": [
       {
@@ -175,7 +175,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Stormzilla.png",
+    "image": "./assets/storm/Stormzilla.jpg",
     "description": "Deals 650-730 Storm Damage",
     "effects": [
       {
@@ -193,7 +193,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Stormwing.png",
+    "image": "./assets/storm/Stormwing.jpg",
     "description": "Deals 515 Storm Damage to target and applies a +30% outgoing Storm Damage Aura for 4 Rounds on caster",
     "effects": [
       {
@@ -216,7 +216,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/storm/Triton.png",
+    "image": "./assets/storm/Triton.jpg",
     "description": "Deals 795-875 Storm Damage",
     "effects": [
       {
@@ -234,7 +234,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Thunderman.png",
+    "image": "./assets/storm/Thunderman.jpg",
     "description": "Deals 345 Storm Damage and applies a +25% Storm Damage Global",
     "effects": [
       {
@@ -256,7 +256,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Reap_the_Whirlwind.png",
+    "image": "./assets/storm/Reap_the_Whirlwind.jpg",
     "description": "Removes a Damage over Time effect from ally to apply a +35% Storm Damage Charm on ally",
     "effects": [
       {
@@ -278,7 +278,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Energy_Transfer.png",
+    "image": "./assets/storm/Energy_Transfer.jpg",
     "description": "Removes a Heal over Time effect from target to apply a +35% Healing Charm on caster",
     "effects": [
       {
@@ -301,7 +301,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/storm/Storm_Lord.png",
+    "image": "./assets/storm/Storm_Lord.jpg",
     "description": "Deals 690 Storm Damage to and Stuns all enemies for 1 Round (and applies a Stun Block on all enemies)",
     "effects": [
       {
@@ -324,7 +324,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/storm/Leviathan.png",
+    "image": "./assets/storm/Leviathan.jpg",
     "description": "Deals 975 Storm Damage to and removes two helpful Charms from target",
     "effects": [
       {
@@ -346,7 +346,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Jinn's_Restoration.png",
+    "image": "./assets/storm/Jinn's_Restoration.jpg",
     "description": "Removes a Heal over Time effect from target to restore 390 Health over 3 Rounds to caster",
     "effects": [
       {
@@ -368,7 +368,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Thundering_Jinn.png",
+    "image": "./assets/storm/Thundering_Jinn.jpg",
     "description": "Deals 830 Storm Damage or removes three Heal over Time effects from caster to deal 2,320 Storm Damage",
     "effects": [
       {
@@ -391,7 +391,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/storm/Sirens.png",
+    "image": "./assets/storm/Sirens.jpg",
     "description": "Deals 805-905 Storm Damage to and applies a -40% Accuracy Charm on all enemies",
     "effects": [
       {
@@ -414,7 +414,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/storm/Storm_Owl.png",
+    "image": "./assets/storm/Storm_Owl.jpg",
     "description": "Deals 1,330-1,470 Storm Damage",
     "effects": [
       {
@@ -433,7 +433,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/storm/King_Artorius_(Storm).png",
+    "image": "./assets/storm/King_Artorius_(Storm).jpg",
     "description": "Deals 1,115 Storm Damage to target and applies a +10% Storm Armor Piercing Charm on self",
     "effects": [
       {
@@ -455,7 +455,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Oni's_Attrition.png",
+    "image": "./assets/storm/Oni's_Attrition.jpg",
     "description": "Removes a Damage over Time effect from caster to apply a -25% Damage Charm on target",
     "effects": [
       {
@@ -477,7 +477,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Turmoil_Oni.png",
+    "image": "./assets/storm/Turmoil_Oni.jpg",
     "description": "Deals 1,080 Storm Damage or removes four harmful Charms from target to deal 2,250 Storm Damage",
     "effects": [
       {
@@ -499,7 +499,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Storm_Shield.png",
+    "image": "./assets/storm/Storm_Shield.jpg",
     "description": "Applies a -80% Storm Damage Ward",
     "effects": [
       {
@@ -517,7 +517,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Storm_Weakness.png",
+    "image": "./assets/storm/Storm_Weakness.jpg",
     "description": "Applies a -35% Storm Damage Charm",
     "effects": [
       {
@@ -535,7 +535,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Soothe.png",
+    "image": "./assets/storm/Soothe.jpg",
     "description": "Pacifies caster for 1 Round",
     "effects": [
       {
@@ -553,7 +553,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Dissipate.png",
+    "image": "./assets/storm/Dissipate.jpg",
     "description": "Applies a Storm Dispel Charm",
     "effects": [
       {
@@ -571,7 +571,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Sap_Power.png",
+    "image": "./assets/storm/Sap_Power.jpg",
     "description": "Sacrifices a Minion to give 4 Pips to caster",
     "effects": [
       {
@@ -593,7 +593,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Mega_Soothe.png",
+    "image": "./assets/storm/Mega_Soothe.jpg",
     "description": "Pacifies ally for 1 Round (not caster)",
     "effects": [
       {
@@ -611,7 +611,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Mass_Storm_Prism.png",
+    "image": "./assets/storm/Mass_Storm_Prism.jpg",
     "description": "Applies a Storm to Myth Damage Prism Ward on all enemies",
     "effects": [
       {
@@ -629,7 +629,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Stormspear.png",
+    "image": "./assets/storm/Stormspear.jpg",
     "description": "Applies a +30% Storm Armor Piercing Charm",
     "effects": [
       {
@@ -647,7 +647,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/storm/Astraphobia.png",
+    "image": "./assets/storm/Astraphobia.jpg",
     "description": "Applies a +20% Storm Armor Piercing and +20% Storm Critical Chance Global",
     "effects": [
       {
@@ -665,7 +665,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Lightning_Strike.png",
+    "image": "./assets/storm/Lightning_Strike.jpg",
     "description": "Applies a +25% Storm Accuracy Charm",
     "effects": [
       {
@@ -683,7 +683,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Storm_Prism.png",
+    "image": "./assets/storm/Storm_Prism.jpg",
     "description": "Applies a Storm to Myth Damage Prism Ward",
     "effects": [
       {
@@ -701,7 +701,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Stormblade.png",
+    "image": "./assets/storm/Stormblade.jpg",
     "description": "Applies a +35% Storm Damage Charm",
     "effects": [
       {
@@ -719,7 +719,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Disarm.png",
+    "image": "./assets/storm/Disarm.jpg",
     "description": "Removes a positive Charm",
     "effects": [
       {
@@ -737,7 +737,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Water_Elemental.png",
+    "image": "./assets/storm/Water_Elemental.jpg",
     "description": "Summons a Water Elemental",
     "effects": [
       {
@@ -755,7 +755,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Cleanse_Charm.png",
+    "image": "./assets/storm/Cleanse_Charm.jpg",
     "description": "Removes 1 negative Charm",
     "effects": [
       {
@@ -773,7 +773,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Tempest.png",
+    "image": "./assets/storm/Tempest.jpg",
     "description": "Deals 80 Storm Damage per Pip to all enemies",
     "effects": [
       {
@@ -791,7 +791,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Wild_Bolt.png",
+    "image": "./assets/storm/Wild_Bolt.jpg",
     "description": "Deals 10 Storm Damage, 100 Storm Damage, or 1,000 Storm Damage",
     "effects": [
       {
@@ -809,7 +809,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Supercharge.png",
+    "image": "./assets/storm/Supercharge.jpg",
     "description": "Applies a +10% per Pip Storm Damage Charm on self",
     "effects": [
       {
@@ -827,7 +827,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Insane_Bolt.png",
+    "image": "./assets/storm/Insane_Bolt.jpg",
     "description": "Deals 145 Storm Damage to target three times, with each hit having a 20% chance to hit caster instead of target",
     "effects": [
       {
@@ -849,7 +849,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Enfeeble.png",
+    "image": "./assets/storm/Enfeeble.jpg",
     "description": "Removes all positive Charms",
     "effects": [
       {
@@ -867,7 +867,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Healing_Current.png",
+    "image": "./assets/storm/Healing_Current.jpg",
     "description": "Restores 385 Health and 75 Health per Round for 3-5 Rounds",
     "effects": [
       {
@@ -889,7 +889,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Mokompo.png",
+    "image": "./assets/storm/Mokompo.jpg",
     "description": "Summons Mokompo Storm Growler",
     "effects": [
       {
@@ -907,7 +907,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/storm/Glowbug_Squall.png",
+    "image": "./assets/storm/Glowbug_Squall.jpg",
     "description": "Deals 520 Storm Damage to all enemies",
     "effects": [
       {
@@ -926,7 +926,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/storm/Rusalka's_Wrath.png",
+    "image": "./assets/storm/Rusalka's_Wrath.jpg",
     "description": "Deals 675 Storm Damage to target and applies a +15%, +45%, or +60% Storm Damage Charm on caster",
     "effects": [
       {
@@ -949,7 +949,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/storm/Iron_Sultan.png",
+    "image": "./assets/storm/Iron_Sultan.jpg",
     "description": "Deals 495 Storm Damage split among selected enemies",
     "effects": [
       {
@@ -968,7 +968,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/storm/Scion_of_Storm.png",
+    "image": "./assets/storm/Scion_of_Storm.jpg",
     "description": "Deals 1,400 Storm Damage to target, or deals 2,800 Storm Damage if target has no helpful Charms",
     "effects": [
       {
@@ -992,7 +992,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/storm/Sound_of_Musicology.png",
+    "image": "./assets/storm/Sound_of_Musicology.jpg",
     "description": "Deals 430 Storm Damage to all enemies and applies a +35% Storm Damage Charm on caster",
     "effects": [
       {
@@ -1015,7 +1015,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/storm/Dark_&_Stormy.png",
+    "image": "./assets/storm/Dark_&_Stormy.jpg",
     "description": "Deals 600 Storm Damage to target and restores 450 Health over 3 Rounds to caster",
     "effects": [
       {
@@ -1040,7 +1040,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/storm/Tree_of_Strife.png",
+    "image": "./assets/storm/Tree_of_Strife.jpg",
     "description": "Deals 805 Storm Damage",
     "effects": [
       {
@@ -1061,7 +1061,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/storm/Bunyip's_Rage.png",
+    "image": "./assets/storm/Bunyip's_Rage.jpg",
     "description": "Deals 605 Storm Damage to all enemies",
     "effects": [
       {
@@ -1080,7 +1080,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/storm/Heqet.png",
+    "image": "./assets/storm/Heqet.jpg",
     "description": "Deals 975 Storm Damage",
     "effects": [
       {
@@ -1099,7 +1099,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/storm/The_Tower.png",
+    "image": "./assets/storm/The_Tower.jpg",
     "description": "Deals 1,145 Storm Damage to and applies a -25% Damage Charm on target and applies a +35% Storm Damage Charm on caster",
     "effects": [
       {
@@ -1127,7 +1127,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/storm/Beary_Surprise.png",
+    "image": "./assets/storm/Beary_Surprise.jpg",
     "description": "Deals 660 Storm Damage to target or restores 895 Health to caster",
     "effects": [
       {
@@ -1152,7 +1152,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/storm/Catalan.png",
+    "image": "./assets/storm/Catalan.jpg",
     "description": "Deals 650 Storm Damage to and applies a -35% Damage Charm on target",
     "effects": [
       {
@@ -1176,7 +1176,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/storm/Catch_of_the_Day.png",
+    "image": "./assets/storm/Catch_of_the_Day.jpg",
     "description": "Deals 575 Storm Damage to and removes two helpful Charms from target",
     "effects": [
       {
@@ -1201,7 +1201,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/storm/Hammer_of_Thor.png",
+    "image": "./assets/storm/Hammer_of_Thor.jpg",
     "description": "Removes a harmful Charm from caster, then deals 690 Storm Damage to target",
     "effects": [
       {
@@ -1223,7 +1223,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/storm/Jupiter's_Might.png",
+    "image": "./assets/storm/Jupiter's_Might.jpg",
     "description": "Deals 730 Storm Damage to and applies a +35% incoming Damage Aura of caster's School for 4 Rounds on target",
     "effects": [
       {
@@ -1248,7 +1248,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/storm/Queen_Calypso.png",
+    "image": "./assets/storm/Queen_Calypso.jpg",
     "description": "Applies a +30% Storm Damage Ward on all enemies, then deals 445-505 Storm Damage to target",
     "effects": [
       {
@@ -1272,7 +1272,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/storm/Revolutionary_Strike.png",
+    "image": "./assets/storm/Revolutionary_Strike.jpg",
     "description": "Deals 580 Storm Damage to target and extends the duration of two Heal over Time effects by 3 Rounds on caster",
     "effects": [
       {

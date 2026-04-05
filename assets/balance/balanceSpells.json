@@ -9,7 +9,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/balance/Scarab.png",
+    "image": "./assets/balance/Scarab.jpg",
     "description": "Deals 65-105 Balance Damage",
     "effects": [
       {
@@ -27,7 +27,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Scorpion.png",
+    "image": "./assets/balance/Scorpion.jpg",
     "description": "Deals 160-200 Balance Damage",
     "effects": [
       {
@@ -45,7 +45,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Weakness.png",
+    "image": "./assets/balance/Weakness.jpg",
     "description": "Applies a -25% Damage Charm",
     "effects": [
       {
@@ -63,7 +63,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Locust_Swarm.png",
+    "image": "./assets/balance/Locust_Swarm.jpg",
     "description": "Deals 245-305 Balance Damage",
     "effects": [
       {
@@ -81,7 +81,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Sandstorm.png",
+    "image": "./assets/balance/Sandstorm.jpg",
     "description": "Deals 255-295 Balance Damage to all enemies",
     "effects": [
       {
@@ -99,7 +99,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Elemental_Golem.png",
+    "image": "./assets/balance/Elemental_Golem.jpg",
     "description": "Deals 300 Balance Damage to target and applies -40% Storm, Fire, and Ice Damage Wards on caster",
     "effects": [
       {
@@ -121,7 +121,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Gearhead_Destroyer.png",
+    "image": "./assets/balance/Gearhead_Destroyer.jpg",
     "description": "Deals 345-405 Balance Damage",
     "effects": [
       {
@@ -139,7 +139,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Balance_of_Power.png",
+    "image": "./assets/balance/Balance_of_Power.jpg",
     "description": "Applies a +25% Balance Damage Global",
     "effects": [
       {
@@ -157,7 +157,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Spectral_Blast.png",
+    "image": "./assets/balance/Spectral_Blast.jpg",
     "description": "Deals 440 Fire Damage, 365 Ice Damage, or 550 Storm Damage",
     "effects": [
       {
@@ -175,7 +175,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Donate_Power.png",
+    "image": "./assets/balance/Donate_Power.jpg",
     "description": "Gives 2 Pips to target",
     "effects": [
       {
@@ -193,7 +193,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Blade_Dilution.png",
+    "image": "./assets/balance/Blade_Dilution.jpg",
     "description": "Removes up to four helpful Charms from target to apply a +15% Damage Charm on target per Charm removed",
     "effects": [
       {
@@ -215,7 +215,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Trap_Dilution.png",
+    "image": "./assets/balance/Trap_Dilution.jpg",
     "description": "Removes up to four harmful Wards from ally to apply a +20% Damage Ward on ally per Ward removed",
     "effects": [
       {
@@ -237,7 +237,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Iron_Curse.png",
+    "image": "./assets/balance/Iron_Curse.jpg",
     "description": "Deals 55 Balance Damage and 300 Balance Damage over 3 Rounds to all enemies",
     "effects": [
       {
@@ -259,7 +259,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Hydra.png",
+    "image": "./assets/balance/Hydra.jpg",
     "description": "Deals 230 Fire Damage, Ice Damage, and Storm Damage",
     "effects": [
       {
@@ -277,7 +277,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Obsidian_Colossus.png",
+    "image": "./assets/balance/Obsidian_Colossus.jpg",
     "description": "Deals 445 Balance Damage to and applies two -20% Damage Charms on target",
     "effects": [
       {
@@ -299,7 +299,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Righting_the_Scales.png",
+    "image": "./assets/balance/Righting_the_Scales.jpg",
     "description": "Removes up to three helpful or harmful Wards from target to give target up to three Pips and removes up to three helpful or harmful Wards from caster to give caster up to three Pips",
     "effects": [
       {
@@ -329,7 +329,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Eye_of_Vigilance.png",
+    "image": "./assets/balance/Eye_of_Vigilance.jpg",
     "description": "Removes up to three helpful or harmful Charms from target to give caster up to three Pips and removes up to three helpful or harmful Charms from caster to give target up to three Pips",
     "effects": [
       {
@@ -360,7 +360,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/balance/Power_Nova.png",
+    "image": "./assets/balance/Power_Nova.jpg",
     "description": "Deals 665 Balance Damage to all enemies",
     "effects": [
       {
@@ -379,7 +379,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/balance/Ra.png",
+    "image": "./assets/balance/Ra.jpg",
     "description": "Deals 420-500 Balance Damage to and applies a -40% Damage Charm on all enemies",
     "effects": [
       {
@@ -401,7 +401,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Jinn's_Fortune.png",
+    "image": "./assets/balance/Jinn's_Fortune.jpg",
     "description": "Restores 345 Health over 3 Rounds to and applies a -50% Damage Ward on ally",
     "effects": [
       {
@@ -424,7 +424,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/balance/Chimera.png",
+    "image": "./assets/balance/Chimera.jpg",
     "description": "Deals 290 Myth Damage, Life Damage, and Death Damage",
     "effects": [
       {
@@ -442,7 +442,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Duststorm_Jinn.png",
+    "image": "./assets/balance/Duststorm_Jinn.jpg",
     "description": "Deals 245 Balance Damage, 245 Life Damage, and 245 Ice Damage or removes two Heal over Time effects and two helpful Wards from caster to deal 590 Balance Damage, 590 Life Damage, and 590 Ice Damage",
     "effects": [
       {
@@ -464,7 +464,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Courageous_Charge.png",
+    "image": "./assets/balance/Courageous_Charge.jpg",
     "description": "Deals 130 Balance Damage to target and applies a +25% outgoing Armor Piercing Aura on caster for 4 Rounds if target has a helpful Aura",
     "effects": [
       {
@@ -487,7 +487,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Spinning_Scythe.png",
+    "image": "./assets/balance/Spinning_Scythe.jpg",
     "description": "Deals 470 Balance Damage",
     "effects": [
       {
@@ -506,7 +506,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/balance/Sabertooth.png",
+    "image": "./assets/balance/Sabertooth.jpg",
     "description": "Deals 805-905 Balance Damage to target and applies -50% Fire, Ice, Storm, Myth, Life, and Death Damage Wards on caster",
     "effects": [
       {
@@ -529,7 +529,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/balance/King_Artorius_(Balance).png",
+    "image": "./assets/balance/King_Artorius_(Balance).jpg",
     "description": "Deals 665 Balance Damage to and applies a -45% Damage Charm on target, and applies a +10% Balance Armor Piercing Charm on self",
     "effects": [
       {
@@ -555,7 +555,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Oni's_Shadow.png",
+    "image": "./assets/balance/Oni's_Shadow.jpg",
     "description": "Applies a -20% incoming Damage Aura on caster for 4 Rounds and two +35% Damage Wards on target",
     "effects": [
       {
@@ -577,7 +577,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Tribunal_Oni.png",
+    "image": "./assets/balance/Tribunal_Oni.jpg",
     "description": "Deals 245 Balance Damage, 245 Storm Damage, and 245 Myth Damage or removes a helpful Aura from caster and 3 harmful Wards from target to deal 545 Balance Damage, 545 Storm Damage, and 545 Myth Damage",
     "effects": [
       {
@@ -599,7 +599,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Elemental_Trap.png",
+    "image": "./assets/balance/Elemental_Trap.jpg",
     "description": "Applies +30% Fire, Ice, and Storm Damage Wards",
     "effects": [
       {
@@ -617,7 +617,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Elemental_Weakness.png",
+    "image": "./assets/balance/Elemental_Weakness.jpg",
     "description": "Applies -30% Ice, Storm, and Fire Damage Charms",
     "effects": [
       {
@@ -635,7 +635,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Spirit_Weakness.png",
+    "image": "./assets/balance/Spirit_Weakness.jpg",
     "description": "Applies -30% Death, Myth, and Life Damage Charms",
     "effects": [
       {
@@ -653,7 +653,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Spirit_Trap.png",
+    "image": "./assets/balance/Spirit_Trap.jpg",
     "description": "Applies +30% Death, Myth, and Life Damage Wards",
     "effects": [
       {
@@ -671,7 +671,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Reshuffle.png",
+    "image": "./assets/balance/Reshuffle.jpg",
     "description": "Reshuffles all used or discarded cards back into the deck",
     "effects": [
       {
@@ -689,7 +689,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Unbalance.png",
+    "image": "./assets/balance/Unbalance.jpg",
     "description": "Applies a Balance Dispel Charm",
     "effects": [
       {
@@ -707,7 +707,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Elemental_Blade.png",
+    "image": "./assets/balance/Elemental_Blade.jpg",
     "description": "Applies +35% Ice, Storm, and Fire Damage Charms",
     "effects": [
       {
@@ -725,7 +725,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Spirit_Blade.png",
+    "image": "./assets/balance/Spirit_Blade.jpg",
     "description": "Applies +35% Death, Myth, and Life Damage Charms",
     "effects": [
       {
@@ -743,7 +743,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Sap_Health.png",
+    "image": "./assets/balance/Sap_Health.jpg",
     "description": "Sacrifices a Minion to restore 500 Health to caster",
     "effects": [
       {
@@ -765,7 +765,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Elemental_Spear.png",
+    "image": "./assets/balance/Elemental_Spear.jpg",
     "description": "Applies +20% Ice, Storm, and Fire Armor Piercing Charms",
     "effects": [
       {
@@ -783,7 +783,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Spirit_Spear.png",
+    "image": "./assets/balance/Spirit_Spear.jpg",
     "description": "Applies +20% Death, Myth, and Life Armor Piercing Charms",
     "effects": [
       {
@@ -801,7 +801,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/balance/Counterforce.png",
+    "image": "./assets/balance/Counterforce.jpg",
     "description": "Applies a +20% Balance Armor Piercing and +20% Balance Critical Chance Global",
     "effects": [
       {
@@ -820,7 +820,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/balance/Precision.png",
+    "image": "./assets/balance/Precision.jpg",
     "description": "Applies a +25% Accuracy Charm",
     "effects": [
       {
@@ -838,7 +838,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Elemental_Shield.png",
+    "image": "./assets/balance/Elemental_Shield.jpg",
     "description": "Applies -50% Fire, Ice, and Storm Damage Wards",
     "effects": [
       {
@@ -856,7 +856,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Spirit_Shield.png",
+    "image": "./assets/balance/Spirit_Shield.jpg",
     "description": "Applies -50% Death, Myth, and Life Damage Wards",
     "effects": [
       {
@@ -874,7 +874,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Balanceblade.png",
+    "image": "./assets/balance/Balanceblade.jpg",
     "description": "Applies a +25% Damage Charm",
     "effects": [
       {
@@ -892,7 +892,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Black_Mantle.png",
+    "image": "./assets/balance/Black_Mantle.jpg",
     "description": "Applies a -45% Accuracy Charm",
     "effects": [
       {
@@ -910,7 +910,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Mander_Minion.png",
+    "image": "./assets/balance/Mander_Minion.jpg",
     "description": "Summons a Minion of Balance",
     "effects": [
       {
@@ -928,7 +928,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Helping_Hands.png",
+    "image": "./assets/balance/Helping_Hands.jpg",
     "description": "Restores 125 Health and 465 Health over 3 Rounds",
     "effects": [
       {
@@ -950,7 +950,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Hex.png",
+    "image": "./assets/balance/Hex.jpg",
     "description": "Applies a +30% Damage Ward",
     "effects": [
       {
@@ -968,7 +968,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Judgement.png",
+    "image": "./assets/balance/Judgement.jpg",
     "description": "Deals 100 Balance Damage per Pip",
     "effects": [
       {
@@ -986,7 +986,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Bladestorm.png",
+    "image": "./assets/balance/Bladestorm.jpg",
     "description": "Applies a +20% Damage Charm on all allies",
     "effects": [
       {
@@ -1004,7 +1004,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Elemental_Defuse.png",
+    "image": "./assets/balance/Elemental_Defuse.jpg",
     "description": "Applies Fire, Ice, and Storm Dispel Charms",
     "effects": [
       {
@@ -1022,7 +1022,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Spirit_Defuse.png",
+    "image": "./assets/balance/Spirit_Defuse.jpg",
     "description": "Applies Life, Death, and Myth Dispel Charms",
     "effects": [
       {
@@ -1040,7 +1040,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Spectral_Minion.png",
+    "image": "./assets/balance/Spectral_Minion.jpg",
     "description": "Summons a Minion of Fire, Ice, or Storm",
     "effects": [
       {
@@ -1058,7 +1058,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Availing_Hands.png",
+    "image": "./assets/balance/Availing_Hands.jpg",
     "description": "Restores 85 Health and applies two Heal over time effects that each restore 520 Health over 4 Rounds",
     "effects": [
       {
@@ -1080,7 +1080,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Mana_Burn.png",
+    "image": "./assets/balance/Mana_Burn.jpg",
     "description": "Deals 50 Balance Damage to target per target's Pips, and removes 3 Pips from target",
     "effects": [
       {
@@ -1102,7 +1102,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Supernova.png",
+    "image": "./assets/balance/Supernova.jpg",
     "description": "Destroys target's Aura to deal 405 Balance Damage",
     "effects": [
       {
@@ -1124,7 +1124,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Nerys.png",
+    "image": "./assets/balance/Nerys.jpg",
     "description": "Summons a Minion of Balance",
     "effects": [
       {
@@ -1142,7 +1142,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/balance/Gaze_of_Fate.png",
+    "image": "./assets/balance/Gaze_of_Fate.jpg",
     "description": "Deals 120 Balance Damage and 120 random School Damage to target and applies a +25% Balance Damage Global",
     "effects": [
       {
@@ -1165,7 +1165,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/balance/Nested_Fury.png",
+    "image": "./assets/balance/Nested_Fury.jpg",
     "description": "Deals 410 Ice Damage, 495 Fire Damage, or 620 Storm Damage to all enemies",
     "effects": [
       {
@@ -1184,7 +1184,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/balance/Sand_Wurm.png",
+    "image": "./assets/balance/Sand_Wurm.jpg",
     "description": "Deals 250 Balance Damage and applies a +35% Damage Ward split among selected enemies",
     "effects": [
       {
@@ -1207,7 +1207,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/balance/Scion_of_Balance.png",
+    "image": "./assets/balance/Scion_of_Balance.jpg",
     "description": "Deals 955 Balance Damage to target, or if caster has at least six helpful Charms, deals 1,910 Balance Damage to target and removes all helpful Charms from caster",
     "effects": [
       {
@@ -1230,7 +1230,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/balance/Mockenspiel.png",
+    "image": "./assets/balance/Mockenspiel.jpg",
     "description": "Deals 390 Balance Damage to target then removes up to three School Blades from caster to apply a Damage Charm with the same percentage on caster per Blade removed",
     "effects": [
       {
@@ -1253,7 +1253,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/balance/Old_One's_Endgame.png",
+    "image": "./assets/balance/Old_One's_Endgame.jpg",
     "description": "Deals 380 Balance Damage to all enemies and applies a Balance to random School Damage Prism Charm on caster",
     "effects": [
       {
@@ -1279,7 +1279,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/balance/Scales_of_Destiny.png",
+    "image": "./assets/balance/Scales_of_Destiny.jpg",
     "description": "Deals 205 Life Damage, Ice Damage, and Balance Damage",
     "effects": [
       {
@@ -1300,7 +1300,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/balance/Rainbow_Serpent.png",
+    "image": "./assets/balance/Rainbow_Serpent.jpg",
     "description": "Deals 410 Storm Damage to all enemies",
     "effects": [
       {
@@ -1319,7 +1319,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/balance/Chameleon_Clash.png",
+    "image": "./assets/balance/Chameleon_Clash.jpg",
     "description": "Deals 665 Damage of a random School except Balance",
     "effects": [
       {
@@ -1338,7 +1338,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/balance/Wheel_of_Fortune.png",
+    "image": "./assets/balance/Wheel_of_Fortune.jpg",
     "description": "Deals 700 Balance Damage and 210 Balance Damage after 3 Rounds to and applies a -25% Damage Charm on target",
     "effects": [
       {
@@ -1366,7 +1366,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/balance/Brave_Sir_Badger.png",
+    "image": "./assets/balance/Brave_Sir_Badger.jpg",
     "description": "Deals 390 Balance Damage to target and applies a +25% outgoing Damage Aura on caster for 4 Rounds",
     "effects": [
       {
@@ -1390,7 +1390,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/balance/Dyvim's_Resurgence.png",
+    "image": "./assets/balance/Dyvim's_Resurgence.jpg",
     "description": "Deals 315 Balance Damage to and a -60% Healing Ward and +30% Damage Ward on target",
     "effects": [
       {
@@ -1419,7 +1419,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/balance/Loremaster.png",
+    "image": "./assets/balance/Loremaster.jpg",
     "description": "Deals 315-395 Balance Damage to and applies a -15% Damage Charm and -25% Accuracy Charm on target",
     "effects": [
       {
@@ -1448,7 +1448,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/balance/Ninja_Piglets.png",
+    "image": "./assets/balance/Ninja_Piglets.jpg",
     "description": "Deals 420-510 Balance Damage",
     "effects": [
       {
@@ -1469,7 +1469,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/balance/Samoorai.png",
+    "image": "./assets/balance/Samoorai.jpg",
     "description": "Deals 510-590 Balance Damage",
     "effects": [
       {
@@ -1490,7 +1490,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/balance/Savage_Paw.png",
+    "image": "./assets/balance/Savage_Paw.jpg",
     "description": "Deals 500 Balance Damage to target and applies a +25% Damage Charm on caster",
     "effects": [
       {
@@ -1514,7 +1514,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/balance/Spiritual_Tribunal.png",
+    "image": "./assets/balance/Spiritual_Tribunal.jpg",
     "description": "Deals 425 Life Damage, 425 Myth Damage, or 425 Death Damage",
     "effects": [
       {
@@ -1532,7 +1532,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/balance/Steal_Pip.png",
+    "image": "./assets/balance/Steal_Pip.jpg",
     "description": "Steals one Pip from target",
     "effects": [
       {
@@ -1554,7 +1554,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/balance/Terminus'_Strike.png",
+    "image": "./assets/balance/Terminus'_Strike.jpg",
     "description": "Removes up to seven harmful Charms from caster to apply up to seven -15% Damage Charms on caster, then deals 645 Balance Damage to target",
     "effects": [
       {

@@ -9,7 +9,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/fire/Fire_Cat.png",
+    "image": "./assets/fire/Fire_Cat.jpg",
     "description": "Deals 80-120 Fire Damage",
     "effects": [
       {
@@ -27,7 +27,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Fire_Elf.png",
+    "image": "./assets/fire/Fire_Elf.jpg",
     "description": "Deals 100 Fire Damage and 210 Fire Damage over 3 Rounds",
     "effects": [
       {
@@ -49,7 +49,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Glacial_Shield.png",
+    "image": "./assets/fire/Glacial_Shield.jpg",
     "description": "Applies -70% Ice and Storm Damage Wards",
     "effects": [
       {
@@ -67,7 +67,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Sunbird.png",
+    "image": "./assets/fire/Sunbird.jpg",
     "description": "Deals 295-355 Fire Damage",
     "effects": [
       {
@@ -85,7 +85,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Fire_Trap.png",
+    "image": "./assets/fire/Fire_Trap.jpg",
     "description": "Applies a +40% Fire Damage Ward",
     "effects": [
       {
@@ -103,7 +103,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Glacial_Golem.png",
+    "image": "./assets/fire/Glacial_Golem.jpg",
     "description": "Deals 275-375 Fire Damage to target and applies -70% Storm and Ice Damage Wards on caster",
     "effects": [
       {
@@ -125,7 +125,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Meteor_Strike.png",
+    "image": "./assets/fire/Meteor_Strike.jpg",
     "description": "Deals 305-345 Fire Damage to all enemies",
     "effects": [
       {
@@ -144,7 +144,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/fire/Immolate.png",
+    "image": "./assets/fire/Immolate.jpg",
     "description": "Deals 200 Fire Damage to caster to deal 600 Fire Damage to target",
     "effects": [
       {
@@ -166,7 +166,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Wyldfire.png",
+    "image": "./assets/fire/Wyldfire.jpg",
     "description": "Applies a +25% Fire Damage Global",
     "effects": [
       {
@@ -184,7 +184,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Phoenix.png",
+    "image": "./assets/fire/Phoenix.jpg",
     "description": "Deals 515-595 Fire Damage",
     "effects": [
       {
@@ -202,7 +202,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Naphtha_Scarab.png",
+    "image": "./assets/fire/Naphtha_Scarab.jpg",
     "description": "Deals 170 Fire Damage to and applies three +30% Fire Damage over Time Traps on target",
     "effects": [
       {
@@ -224,7 +224,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Helephant.png",
+    "image": "./assets/fire/Helephant.jpg",
     "description": "Deals 625-705 Fire Damage",
     "effects": [
       {
@@ -242,7 +242,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Inferno_Salamander.png",
+    "image": "./assets/fire/Inferno_Salamander.jpg",
     "description": "Applies two Damage over Time effects on target that each deal 475 Fire Damage over 5 Rounds",
     "effects": [
       {
@@ -260,7 +260,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Meltdown.png",
+    "image": "./assets/fire/Meltdown.jpg",
     "description": "Removes up to two helpful Wards from target to deal 105 Fire Damage over 3 Rounds to target per Ward removed",
     "effects": [
       {
@@ -282,7 +282,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Backfire.png",
+    "image": "./assets/fire/Backfire.jpg",
     "description": "Removes up to two harmful Wards from caster to deal 75 Fire Damage over 3 Rounds to target per Ward removed",
     "effects": [
       {
@@ -305,7 +305,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/fire/Fire_Dragon.png",
+    "image": "./assets/fire/Fire_Dragon.jpg",
     "description": "Deals 540 Fire Damage and 435 Fire Damage over 3 Rounds to all enemies",
     "effects": [
       {
@@ -328,7 +328,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/fire/Efreet.png",
+    "image": "./assets/fire/Efreet.jpg",
     "description": "Deals 780 Fire Damage to and applies a -45% Damage Charm on target",
     "effects": [
       {
@@ -350,7 +350,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Jinn's_Reversal.png",
+    "image": "./assets/fire/Jinn's_Reversal.jpg",
     "description": "Removes up to two harmful Wards from caster to apply a +70% Damage over Time Ward on target per Ward removed",
     "effects": [
       {
@@ -373,7 +373,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/fire/Rain_of_Fire.png",
+    "image": "./assets/fire/Rain_of_Fire.jpg",
     "description": "Deals 130 Fire Damage + 810 Fire Damage over 3 Rounds to all enemies",
     "effects": [
       {
@@ -395,7 +395,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Caldera_Jinn.png",
+    "image": "./assets/fire/Caldera_Jinn.jpg",
     "description": "Applies three Damage over Time effects on target that each deal 400 Fire Damage over 5 Rounds or removes four harmful Wards from target to deal 1,565 Fire Damage",
     "effects": [
       {
@@ -418,7 +418,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/fire/Sun_Serpent.png",
+    "image": "./assets/fire/Sun_Serpent.jpg",
     "description": "Deals 785-885 Fire Damage to target and deals 330 Fire Damage to all enemies",
     "effects": [
       {
@@ -441,7 +441,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/fire/King_Artorius_(Fire).png",
+    "image": "./assets/fire/King_Artorius_(Fire).jpg",
     "description": "Deals 835 Fire Damage to and Stuns target for 1 Round (and applies 1 Stun Block on target), and applies a +10% Fire Armor Piercing Charm on self",
     "effects": [
       {
@@ -467,7 +467,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Oni's_Forge.png",
+    "image": "./assets/fire/Oni's_Forge.jpg",
     "description": "Removes up to two helpful Wards from target to restore 195 Health over 3 Rounds to caster per Ward removed",
     "effects": [
       {
@@ -489,7 +489,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Infernal_Oni.png",
+    "image": "./assets/fire/Infernal_Oni.jpg",
     "description": "Applies two Damage over Time effects on target that each deal 475 Fire Damage over 5 Rounds or removes three Heal over Time effects from caster to deal 1,855 Fire Damage",
     "effects": [
       {
@@ -511,7 +511,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Fire_Shield.png",
+    "image": "./assets/fire/Fire_Shield.jpg",
     "description": "Applies a -80% Fire Damage Ward",
     "effects": [
       {
@@ -529,7 +529,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Fire_Weakness.png",
+    "image": "./assets/fire/Fire_Weakness.jpg",
     "description": "Applies a -35% Fire Damage Charm",
     "effects": [
       {
@@ -547,7 +547,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Tranquilize.png",
+    "image": "./assets/fire/Tranquilize.jpg",
     "description": "Pacifies caster for 1 Round",
     "effects": [
       {
@@ -565,7 +565,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Quench.png",
+    "image": "./assets/fire/Quench.jpg",
     "description": "Applies a Fire Dispel Charm",
     "effects": [
       {
@@ -583,7 +583,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Take_Power.png",
+    "image": "./assets/fire/Take_Power.jpg",
     "description": "Sacrifices a Minion to give 3 Pips to caster",
     "effects": [
       {
@@ -605,7 +605,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Mega_Tranquilize.png",
+    "image": "./assets/fire/Mega_Tranquilize.jpg",
     "description": "Pacifies ally for 1 Round (not caster)",
     "effects": [
       {
@@ -623,7 +623,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Mass_Fire_Prism.png",
+    "image": "./assets/fire/Mass_Fire_Prism.jpg",
     "description": "Applies a Fire to Ice Damage Prism Ward on all enemies",
     "effects": [
       {
@@ -641,7 +641,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Firespear.png",
+    "image": "./assets/fire/Firespear.jpg",
     "description": "Applies a +30% Fire Armor Piercing Charm",
     "effects": [
       {
@@ -659,7 +659,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/fire/Combustion.png",
+    "image": "./assets/fire/Combustion.jpg",
     "description": "Applies a +20% Fire Armor Piercing and +20% Fire Critical Chance Global",
     "effects": [
       {
@@ -678,7 +678,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/fire/Link.png",
+    "image": "./assets/fire/Link.jpg",
     "description": "Deals 30 Fire Damage and 150 Fire Damage over 3 Rounds to target and restores 15 Health and 105 Health over 3 Rounds to caster",
     "effects": [
       {
@@ -708,7 +708,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Fireblade.png",
+    "image": "./assets/fire/Fireblade.jpg",
     "description": "Applies a +35% Fire Damage Charm",
     "effects": [
       {
@@ -726,7 +726,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Fire_Prism.png",
+    "image": "./assets/fire/Fire_Prism.jpg",
     "description": "Applies a Fire to Ice Damage Prism Ward",
     "effects": [
       {
@@ -744,7 +744,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Steal_Charm.png",
+    "image": "./assets/fire/Steal_Charm.jpg",
     "description": "Steals a helpful Charm",
     "effects": [
       {
@@ -762,7 +762,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Heck_Hound.png",
+    "image": "./assets/fire/Heck_Hound.jpg",
     "description": "Deals 130 Fire Damage per Pip over 3 Rounds",
     "effects": [
       {
@@ -780,7 +780,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Choke.png",
+    "image": "./assets/fire/Choke.jpg",
     "description": "Stuns all enemies for 1 Round (and applies 1 Stun Block on all enemies)",
     "effects": [
       {
@@ -798,7 +798,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Fire_Elemental.png",
+    "image": "./assets/fire/Fire_Elemental.jpg",
     "description": "Summons a Fire Elemental",
     "effects": [
       {
@@ -816,7 +816,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Scald.png",
+    "image": "./assets/fire/Scald.jpg",
     "description": "Deals 525 Fire Damage over 3 Rounds to all enemies",
     "effects": [
       {
@@ -834,7 +834,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Fuel.png",
+    "image": "./assets/fire/Fuel.jpg",
     "description": "Applies three +40% Fire Damage Wards",
     "effects": [
       {
@@ -852,7 +852,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Smoke_Screen.png",
+    "image": "./assets/fire/Smoke_Screen.jpg",
     "description": "Applies a -40% Accuracy Charm on all enemies",
     "effects": [
       {
@@ -870,7 +870,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Power_Link.png",
+    "image": "./assets/fire/Power_Link.jpg",
     "description": "Deals 55 Fire Damage and 345 Fire Damage over 3 Rounds to target and restores 40 Health and 240 Health over 3 Rounds to caster",
     "effects": [
       {
@@ -900,7 +900,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Detonate.png",
+    "image": "./assets/fire/Detonate.jpg",
     "description": "Destroys 1 Damage over Time effect on target and deals its full remaining Damage",
     "effects": [
       {
@@ -918,7 +918,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Backdraft.png",
+    "image": "./assets/fire/Backdraft.jpg",
     "description": "Applies a +15% per Pip Fire Damage Ward",
     "effects": [
       {
@@ -936,7 +936,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Sir_Lamorak.png",
+    "image": "./assets/fire/Sir_Lamorak.jpg",
     "description": "Summons Sir Lamorak Tinder Heart",
     "effects": [
       {
@@ -954,7 +954,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/fire/Fire_from_Above.png",
+    "image": "./assets/fire/Fire_from_Above.jpg",
     "description": "Deals 415 Fire Damage to and applies three +30% Fire Damage Wards on target",
     "effects": [
       {
@@ -977,7 +977,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/fire/Raging_Bull.png",
+    "image": "./assets/fire/Raging_Bull.jpg",
     "description": "Deals 430 Fire Damage to and applies a -40% Accuracy Charm on all enemies",
     "effects": [
       {
@@ -1000,7 +1000,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/fire/Scorching_Scimitars.png",
+    "image": "./assets/fire/Scorching_Scimitars.jpg",
     "description": "Deals 220 Fire Damage split among selected enemies and restores 420 Health over 3 Rounds to caster",
     "effects": [
       {
@@ -1023,7 +1023,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/fire/Scion_of_Fire.png",
+    "image": "./assets/fire/Scion_of_Fire.jpg",
     "description": "Deals 1,120 Fire Damage, or if target has at least six harmful Wards, removes all harmful Wards from target to deal 2,240 Fire Damage",
     "effects": [
       {
@@ -1046,7 +1046,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/fire/S'more_Machine.png",
+    "image": "./assets/fire/S'more_Machine.jpg",
     "description": "Deals 465 Fire Damage to and applies three +40% Fire Damage over Time Wards on target",
     "effects": [
       {
@@ -1069,7 +1069,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/fire/Blast_Off!.png",
+    "image": "./assets/fire/Blast_Off!.jpg",
     "description": "Extends the duration of a Damage over Time effect by one Round on and deals 690 Fire Damage after four Rounds to all enemies",
     "effects": [
       {
@@ -1094,7 +1094,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/fire/Glimpse_of_Infinity.png",
+    "image": "./assets/fire/Glimpse_of_Infinity.jpg",
     "description": "Applies two Damage over Time effects on target that each deal 465 Fire Damage over 5 Rounds",
     "effects": [
       {
@@ -1115,7 +1115,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/fire/Phantasmania!.png",
+    "image": "./assets/fire/Phantasmania!.jpg",
     "description": "Deals 485 Fire Damage to all enemies",
     "effects": [
       {
@@ -1134,7 +1134,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/fire/Ammut.png",
+    "image": "./assets/fire/Ammut.jpg",
     "description": "Deals 780 Fire Damage",
     "effects": [
       {
@@ -1153,7 +1153,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/fire/The_Chariot.png",
+    "image": "./assets/fire/The_Chariot.jpg",
     "description": "Deals 830 Fire Damage to and applies a +40% Fire Damage Ward on target and restores 450 Health over 3 Rounds to caster",
     "effects": [
       {
@@ -1181,7 +1181,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/fire/A-Baahh-Calypse.png",
+    "image": "./assets/fire/A-Baahh-Calypse.jpg",
     "description": "Deals 410 Fire Damage to and Detonates two Damage over Time effects on target to deal 145% of the remaining Damage",
     "effects": [
       {
@@ -1206,7 +1206,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/fire/Brimstone_Revenant.png",
+    "image": "./assets/fire/Brimstone_Revenant.jpg",
     "description": "Deals 470 Fire Damage to and applies a +30% Fire Damage Ward on target",
     "effects": [
       {
@@ -1230,7 +1230,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/fire/Burning_Rampage.png",
+    "image": "./assets/fire/Burning_Rampage.jpg",
     "description": "Deals 70 Fire Damage and applies two Damage over Time effects on target that each deal 420 Damage of caster's School after five Rounds",
     "effects": [
       {
@@ -1252,7 +1252,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/fire/Fires_of_Mars.png",
+    "image": "./assets/fire/Fires_of_Mars.jpg",
     "description": "Applies three Damage over Time effects on target that each deal 435 Damage of caster's School over 6 Rounds",
     "effects": [
       {
@@ -1273,7 +1273,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/fire/Hephaestus.png",
+    "image": "./assets/fire/Hephaestus.jpg",
     "description": "Deals 340-420 Fire Damage to target and applies a +25% Fire Damage Global",
     "effects": [
       {
@@ -1298,7 +1298,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/fire/Krampus.png",
+    "image": "./assets/fire/Krampus.jpg",
     "description": "Deals 420-460 Fire Damage to and applies a -45% Accuracy Charm on target",
     "effects": [
       {
@@ -1322,7 +1322,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/fire/Nautilus_Unleashed.png",
+    "image": "./assets/fire/Nautilus_Unleashed.jpg",
     "description": "Steals a helpful Charm from and deals 415-505 Fire Damage to target",
     "effects": [
       {
@@ -1346,7 +1346,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/fire/Whitehart_Fire.png",
+    "image": "./assets/fire/Whitehart_Fire.jpg",
     "description": "Deals 460 Fire Damage to target and restores 450 Health over 3 Rounds to caster",
     "effects": [
       {

@@ -9,7 +9,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/life/Imp.png",
+    "image": "./assets/life/Imp.jpg",
     "description": "Deals 65-105 Life Damage",
     "effects": [
       {
@@ -27,7 +27,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Leprechaun.png",
+    "image": "./assets/life/Leprechaun.jpg",
     "description": "Deals 155-195 Life Damage",
     "effects": [
       {
@@ -45,7 +45,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Legend_Shield.png",
+    "image": "./assets/life/Legend_Shield.jpg",
     "description": "Applies -70% Death and Myth Damage Wards",
     "effects": [
       {
@@ -63,7 +63,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Sprite.png",
+    "image": "./assets/life/Sprite.jpg",
     "description": "Restores 30 Health and 280 Health over 4 Rounds",
     "effects": [
       {
@@ -86,7 +86,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/life/Nature's_Wrath.png",
+    "image": "./assets/life/Nature's_Wrath.jpg",
     "description": "Deals 240-300 Life Damage",
     "effects": [
       {
@@ -104,7 +104,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Spirit_Armor.png",
+    "image": "./assets/life/Spirit_Armor.jpg",
     "description": "Applies a 400 Damage Absorption Ward",
     "effects": [
       {
@@ -122,7 +122,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Legend_Golem.png",
+    "image": "./assets/life/Legend_Golem.jpg",
     "description": "Deals 255-285 Life Damage to target and applies -70% Death and Myth Damage Wards on caster",
     "effects": [
       {
@@ -144,7 +144,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Seraph.png",
+    "image": "./assets/life/Seraph.jpg",
     "description": "Deals 335-395 Life Damage",
     "effects": [
       {
@@ -162,7 +162,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Satyr.png",
+    "image": "./assets/life/Satyr.jpg",
     "description": "Restores 860 Health",
     "effects": [
       {
@@ -180,7 +180,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Hunting_Wyrm.png",
+    "image": "./assets/life/Hunting_Wyrm.jpg",
     "description": "Deals 75 Life Damage and 300 Life Damage after 3 Rounds to target, and restores 420 Health over 3 Rounds to caster",
     "effects": [
       {
@@ -207,7 +207,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/life/Regenerate.png",
+    "image": "./assets/life/Regenerate.jpg",
     "description": "Restores 420 Health and 1,150 Health over 5 Rounds",
     "effects": [
       {
@@ -229,7 +229,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Earth_Walker.png",
+    "image": "./assets/life/Earth_Walker.jpg",
     "description": "Deals 420-500 Life Damage",
     "effects": [
       {
@@ -247,7 +247,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Centaur.png",
+    "image": "./assets/life/Centaur.jpg",
     "description": "Deals 515-595 Life Damage",
     "effects": [
       {
@@ -265,7 +265,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Sanctuary.png",
+    "image": "./assets/life/Sanctuary.jpg",
     "description": "Applies a +35% Healing Global",
     "effects": [
       {
@@ -283,7 +283,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Circle_of_Thorns.png",
+    "image": "./assets/life/Circle_of_Thorns.jpg",
     "description": "Applies a +25% Life Damage Global",
     "effects": [
       {
@@ -301,7 +301,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Infestation.png",
+    "image": "./assets/life/Infestation.jpg",
     "description": "Deals 230 Life Damage and applies a +25% Life Damage Global",
     "effects": [
       {
@@ -323,7 +323,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Sprite_Swarm.png",
+    "image": "./assets/life/Sprite_Swarm.jpg",
     "description": "Restores 55 Health and 525 Health over 3 Rounds to all allies and summons a Spritely Essence if caster has a Damage over Time effect",
     "effects": [
       {
@@ -350,7 +350,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Tranquility.png",
+    "image": "./assets/life/Tranquility.jpg",
     "description": "Removes up to two harmful Wards from ally to restore 145 Health over 3 Rounds to ally per Ward removed",
     "effects": [
       {
@@ -372,7 +372,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Meditation.png",
+    "image": "./assets/life/Meditation.jpg",
     "description": "Removes a Damage over Time effect from ally to restore 390 Health over 3 Rounds to ally",
     "effects": [
       {
@@ -395,7 +395,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/life/Forest_Lord.png",
+    "image": "./assets/life/Forest_Lord.jpg",
     "description": "Deals 620-680 Life Damage to all enemies",
     "effects": [
       {
@@ -414,7 +414,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/life/Rebirth.png",
+    "image": "./assets/life/Rebirth.jpg",
     "description": "Restores 870 Health to and applies a 400 Damage Absorption Ward on all allies",
     "effects": [
       {
@@ -436,7 +436,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Jinn's_Affliction.png",
+    "image": "./assets/life/Jinn's_Affliction.jpg",
     "description": "Removes a Damage over Time effect from caster to deal 180 Life Damage after 3 Rounds to target",
     "effects": [
       {
@@ -458,7 +458,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Verdurous_Jinn.png",
+    "image": "./assets/life/Verdurous_Jinn.jpg",
     "description": "Applies two Damage over Time effects on target that each deal 400 Life Damage after 5 Rounds or removes three Damage over Time effects from target to deal 1,545 Life Damage",
     "effects": [
       {
@@ -481,7 +481,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/life/Gnomes!.png",
+    "image": "./assets/life/Gnomes!.jpg",
     "description": "Deals 740-840 Life Damage to target and applies a +30% Healing Charm on caster",
     "effects": [
       {
@@ -504,7 +504,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/life/Spinysaur.png",
+    "image": "./assets/life/Spinysaur.jpg",
     "description": "Deals 475 Life Damage and 690 Life Damage over 3 Rounds",
     "effects": [
       {
@@ -527,7 +527,7 @@
       "trainer",
       "quest"
     ],
-    "image": "./assets/life/King_Artorius_(Life).png",
+    "image": "./assets/life/King_Artorius_(Life).jpg",
     "description": "Deals 650 Life Damage to target and applies a +10% Life Armor Piercing Charm on and restores 300 Health over 3 Rounds to caster",
     "effects": [
       {
@@ -553,7 +553,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Oni's_Naturalism.png",
+    "image": "./assets/life/Oni's_Naturalism.jpg",
     "description": "Removes up to two harmful Wards from ally to apply a +30% Life Damage Charm on ally per Ward removed",
     "effects": [
       {
@@ -575,7 +575,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Primal_Oni.png",
+    "image": "./assets/life/Primal_Oni.jpg",
     "description": "Deals 710 Life Damage or removes four helpful Charms from caster to deal 1,300 Life Damage",
     "effects": [
       {
@@ -597,7 +597,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Life_Shield.png",
+    "image": "./assets/life/Life_Shield.jpg",
     "description": "Applies a -80% Life Damage Ward",
     "effects": [
       {
@@ -615,7 +615,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Life_Weakness.png",
+    "image": "./assets/life/Life_Weakness.jpg",
     "description": "Applies a -35% Life Damage Charm",
     "effects": [
       {
@@ -633,7 +633,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Life_Trap.png",
+    "image": "./assets/life/Life_Trap.jpg",
     "description": "Applies a +40% Life Damage Ward",
     "effects": [
       {
@@ -651,7 +651,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Calm.png",
+    "image": "./assets/life/Calm.jpg",
     "description": "Pacifies caster for 1 Round",
     "effects": [
       {
@@ -669,7 +669,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Entangle.png",
+    "image": "./assets/life/Entangle.jpg",
     "description": "Applies a Life Dispel Charm",
     "effects": [
       {
@@ -687,7 +687,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Drain_Health.png",
+    "image": "./assets/life/Drain_Health.jpg",
     "description": "Sacrifices a Minion to restore 450 Health to caster",
     "effects": [
       {
@@ -709,7 +709,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Mega_Calm.png",
+    "image": "./assets/life/Mega_Calm.jpg",
     "description": "Pacifies ally for 1 Round (not caster)",
     "effects": [
       {
@@ -727,7 +727,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Mass_Life_Prism.png",
+    "image": "./assets/life/Mass_Life_Prism.jpg",
     "description": "Applies a Life to Death Damage Prism Ward on all enemies",
     "effects": [
       {
@@ -745,7 +745,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Lifespear.png",
+    "image": "./assets/life/Lifespear.jpg",
     "description": "Applies a +30% Life Armor Piercing Charm",
     "effects": [
       {
@@ -763,7 +763,7 @@
     "source": [
       "trainer"
     ],
-    "image": "./assets/life/Namaste.png",
+    "image": "./assets/life/Namaste.jpg",
     "description": "Applies a +20% Life Armor Piercing and +20% Life Critical Chance Global",
     "effects": [
       {
@@ -781,7 +781,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Minor_Blessing.png",
+    "image": "./assets/life/Minor_Blessing.jpg",
     "description": "Restores 120 Health",
     "effects": [
       {
@@ -799,7 +799,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Fairy.png",
+    "image": "./assets/life/Fairy.jpg",
     "description": "Restores 420 Health",
     "effects": [
       {
@@ -817,7 +817,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Pixie.png",
+    "image": "./assets/life/Pixie.jpg",
     "description": "Restores 400 Health to caster",
     "effects": [
       {
@@ -835,7 +835,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Unicorn.png",
+    "image": "./assets/life/Unicorn.jpg",
     "description": "Restores 465 Health to self and all allies",
     "effects": [
       {
@@ -853,7 +853,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Life_Prism.png",
+    "image": "./assets/life/Life_Prism.jpg",
     "description": "Applies a Life to Death Damage Prism Ward",
     "effects": [
       {
@@ -871,7 +871,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Sprite_Guardian.png",
+    "image": "./assets/life/Sprite_Guardian.jpg",
     "description": "Summons a Minion of Life",
     "effects": [
       {
@@ -889,7 +889,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Lifeblade.png",
+    "image": "./assets/life/Lifeblade.jpg",
     "description": "Applies a +35% Life Damage Charm",
     "effects": [
       {
@@ -907,7 +907,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Guidance.png",
+    "image": "./assets/life/Guidance.jpg",
     "description": "Applies a +20% Accuracy Charm on all allies",
     "effects": [
       {
@@ -925,7 +925,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Guiding_Light.png",
+    "image": "./assets/life/Guiding_Light.jpg",
     "description": "Applies a +35% Healing Charm",
     "effects": [
       {
@@ -943,7 +943,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Triage.png",
+    "image": "./assets/life/Triage.jpg",
     "description": "Removes a Damage over Time effect from target",
     "effects": [
       {
@@ -961,7 +961,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Dryad.png",
+    "image": "./assets/life/Dryad.jpg",
     "description": "Restores 200 Health per Pip",
     "effects": [
       {
@@ -979,7 +979,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Brilliant_Light.png",
+    "image": "./assets/life/Brilliant_Light.jpg",
     "description": "Applies a +30% Healing Charm on all allies",
     "effects": [
       {
@@ -997,7 +997,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Sir_Bedevere.png",
+    "image": "./assets/life/Sir_Bedevere.jpg",
     "description": "Summons a Minion of Life",
     "effects": [
       {
@@ -1015,7 +1015,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Guardian_Spirit.png",
+    "image": "./assets/life/Guardian_Spirit.jpg",
     "description": "Target regains 15% of their Health after being defeated. Cannot Critical",
     "effects": [
       {
@@ -1033,7 +1033,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Mass_Triage.png",
+    "image": "./assets/life/Mass_Triage.jpg",
     "description": "Removes a Damage over Time effect from all allies",
     "effects": [
       {
@@ -1051,7 +1051,7 @@
     "source": [
       "quest"
     ],
-    "image": "./assets/life/Hungry_Caterpillar.png",
+    "image": "./assets/life/Hungry_Caterpillar.jpg",
     "description": "Deals 270 Life Damage to target and applies an 800 Damage Absorption Ward on caster",
     "effects": [
       {
@@ -1074,7 +1074,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/life/Wings_of_Fate.png",
+    "image": "./assets/life/Wings_of_Fate.jpg",
     "description": "Deals 75 Life Damage and 270 Life Damage over 3 Rounds to all enemies and restores 75 Health and 270 Health over 3 Rounds to all allies",
     "effects": [
       {
@@ -1105,7 +1105,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/life/Lamassu.png",
+    "image": "./assets/life/Lamassu.jpg",
     "description": "Deals 330 Life Damage split among selected enemies",
     "effects": [
       {
@@ -1124,7 +1124,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/life/Scion_of_Life.png",
+    "image": "./assets/life/Scion_of_Life.jpg",
     "description": "Restores 1,480 Health to target and 300 Health over 3 Rounds to all allies, or if target has 25% or less of their total Health, restores 2,960 Health to target and 600 Health over 3 Rounds to all allies",
     "effects": [
       {
@@ -1152,7 +1152,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/life/Grrnadier.png",
+    "image": "./assets/life/Grrnadier.jpg",
     "description": "Deals 305 Life Damage to target and Pacifies caster for 2 Rounds",
     "effects": [
       {
@@ -1175,7 +1175,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/life/Lord_of_the_Jungle.png",
+    "image": "./assets/life/Lord_of_the_Jungle.jpg",
     "description": "Deals 360 Life Damage to all enemies, then removes a Damage Absorption Ward from caster to apply a Life Damage Charm with percentage equal to 10% of the Ward's remaining Damage on caster",
     "effects": [
       {
@@ -1200,7 +1200,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/life/Starspawn.png",
+    "image": "./assets/life/Starspawn.jpg",
     "description": "Deals 535 Life Damage",
     "effects": [
       {
@@ -1221,7 +1221,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/life/Zand_the_Bandit.png",
+    "image": "./assets/life/Zand_the_Bandit.jpg",
     "description": "Deals 400 Life Damage to all enemies",
     "effects": [
       {
@@ -1240,7 +1240,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/life/Taweret.png",
+    "image": "./assets/life/Taweret.jpg",
     "description": "Restores 1,480 Health",
     "effects": [
       {
@@ -1259,7 +1259,7 @@
       "quest",
       "trainer"
     ],
-    "image": "./assets/life/The_World.png",
+    "image": "./assets/life/The_World.jpg",
     "description": "Deals 680 Life Damage and 210 Life Damage after 3 Rounds to target and applies a -25% incoming Damage Aura for 4 Rounds on caster",
     "effects": [
       {
@@ -1287,7 +1287,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/life/Burrowing_Bane.png",
+    "image": "./assets/life/Burrowing_Bane.jpg",
     "description": "Deals 375 Life Damage and 200 Life Damage after 3 Rounds",
     "effects": [
       {
@@ -1311,7 +1311,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/life/Camp_Bandit.png",
+    "image": "./assets/life/Camp_Bandit.jpg",
     "description": "Deals 295 Life Damage to target and removes a Damage Ward from caster to apply a Life Damage Ward with the same percentage on target",
     "effects": [
       {
@@ -1336,7 +1336,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/life/Goat_Monk.png",
+    "image": "./assets/life/Goat_Monk.jpg",
     "description": "Deals 515-555 Life Damage",
     "effects": [
       {
@@ -1357,7 +1357,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/life/Luminous_Weaver.png",
+    "image": "./assets/life/Luminous_Weaver.jpg",
     "description": "Deals 370 Life Damage to and applies a -25% Damage Charm on target",
     "effects": [
       {
@@ -1379,7 +1379,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/life/Phoebus'_Will.png",
+    "image": "./assets/life/Phoebus'_Will.jpg",
     "description": "Deals 620 Life Damage to and Detonates three Damage over Time effects on target to deal 125% of the remaining Damage",
     "effects": [
       {
@@ -1404,7 +1404,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/life/Pigsie.png",
+    "image": "./assets/life/Pigsie.jpg",
     "description": "Restores 750 Health to all allies",
     "effects": [
       {
@@ -1424,7 +1424,7 @@
     "source": [
       "spellement"
     ],
-    "image": "./assets/life/Sacred_Charge.png",
+    "image": "./assets/life/Sacred_Charge.jpg",
     "description": "Deals 525 Life Damage to target and applies a 250 Damage Absorption Ward on caster",
     "effects": [
       {
@@ -1449,7 +1449,7 @@
       "spellement",
       "recipe"
     ],
-    "image": "./assets/life/Ratatoskr's_Spin.png",
+    "image": "./assets/life/Ratatoskr's_Spin.jpg",
     "description": "Deals 310-340 Life Damage to all enemies",
     "effects": [
       {
