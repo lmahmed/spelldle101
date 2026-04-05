@@ -580,6 +580,22 @@ footer a:hover{color:var(--accent)}
 .lb-close{background:transparent;border:1px solid var(--border);border-radius:8px;padding:6px 14px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.75rem;cursor:pointer;transition:color .15s}
 .lb-close:hover{color:var(--text-secondary)}
 .lb-loading{text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;font-size:.8rem}
+
+/* Countdown timer under date pill */
+.date-countdown{font-size:.68rem;color:var(--text-muted);font-family:'Cinzel',serif;letter-spacing:.04em;margin-top:4px;text-align:center;min-height:1em;cursor:default;position:relative}
+.date-countdown-tip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:.65rem;color:var(--accent-dim);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .15s;font-family:'Cinzel',serif;letter-spacing:.04em}
+.date-countdown:hover .date-countdown-tip,.date-countdown.tip-show .date-countdown-tip{opacity:1}
+
+/* Nudge toast */
+.nudge-toast{position:fixed;bottom:0;left:0;right:0;z-index:9000;background:var(--surface);border-top:1px solid var(--accent-dim);transform:translateY(100%);transition:transform .4s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column}
+.nudge-toast.show{transform:translateY(0)}
+.nudge-progress{height:3px;background:var(--accent);width:100%;transform-origin:left;transition:width linear}
+.nudge-body{display:flex;align-items:center;gap:10px;padding:10px 16px}
+.nudge-text{flex:1;font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-primary);letter-spacing:.03em}
+.nudge-countdown{font-size:.78rem;color:var(--accent);font-family:'Cinzel',serif;font-weight:700;flex-shrink:0}
+.nudge-play{background:var(--accent);color:#160900;border:none;border-radius:6px;padding:5px 12px;font-family:'Cinzel',serif;font-size:.68rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.nudge-dismiss{background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;flex-shrink:0;line-height:1}
+.nudge-dismiss:hover{color:var(--text-secondary)}
 </style>
 </head>
 <body>
@@ -632,12 +648,17 @@ footer a:hover{color:var(--accent)}
 <div class="overlay-bg" id="date-overlay" onclick="closeOverlay('date-overlay',event)">
   <div class="datepick-card">
     <div class="datepick-title">✦ Choose a Spell</div>
-    <div class="datepick-option" onclick="setTodaySpell()">
+    <div class="datepick-option" onclick="setTodaySpell()" style="position:relative">
       <div class="datepick-option-icon">✦</div>
-      <div>
+      <div style="flex:1">
         <div class="datepick-option-text">Today's Daily</div>
         <div class="datepick-option-sub" id="today-date-sub"></div>
       </div>
+      <span id="datepick-today-check" class="date-check" style="position:relative;left:0;transform:none;margin-left:6px">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+          <path class="check-path" d="M1.5 6L5.5 10.5L14.5 1.5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
     </div>
     <div class="datepick-option" onclick="setRandomSpell()">
       <div class="datepick-option-icon">⚡</div>
@@ -919,6 +940,7 @@ footer a:hover{color:var(--accent)}
       </span>
     </div>
     <div class="completion-count" id="completion-count"></div>
+      <div class="date-countdown" id="date-countdown" ontouchstart="this.classList.add('tip-show')" ontouchend="setTimeout(()=>document.getElementById('date-countdown').classList.remove('tip-show'),2000)"><span id="date-countdown-text"></span><div class="date-countdown-tip" id="date-countdown-tip"></div></div>
     <div class="completion-count" id="streak-display" style="color:var(--accent)"></div>
   </header>
 
@@ -1270,23 +1292,7 @@ async function handleSignOut(){
   } catch(e){ console.warn('Sign out failed:', e); }
 }
 
-async function recordPastCompletion(dateStr){
-  if(!currentUser) return;
-  try{
-    const uid = currentUser.uid;
-    const compRef = db.collection('completions').doc(uid).collection('days').doc(dateStr);
-    const compSnap = await compRef.get();
-    if(compSnap.exists) return; // already recorded
-
-    await compRef.set({
-      completedAt: firebase.firestore.FieldValue.serverTimestamp(),
-      onTime: false
-    });
-    calCompletions[dateStr] = 'late';
-    updateDateCheckmark();
-    // No streak update, no leaderboard — past completions don't count
-  } catch(e){ console.warn('recordPastCompletion error:', e); }
-}
+// recordPastCompletion merged into recordCompletion
 
 
 async function loadUserProfile(){
@@ -1400,7 +1406,8 @@ function updateDateCheckmark(){
 function updateStreakDisplay(){
   const el = document.getElementById('streak-display');
   if(!el) return;
-  if(!currentUser || currentUser.isAnonymous || !userProfile || userProfile.displayName === 'guest'){
+  const isOnToday = apiDate !== null && apiDate === new Date().toISOString().split('T')[0];
+  if(!isOnToday || !currentUser || currentUser.isAnonymous || !userProfile || userProfile.displayName === 'guest'){
     el.textContent = '';
     return;
   }
@@ -1575,7 +1582,7 @@ async function fetchDailySpell(){
     if(snap.exists){
       const spellName=snap.data().spellName;
       const spell=SPELLS.find(s=>s.name===spellName);
-      if(spell){ apiDate=today; isApiDaily=true; return spell; }
+      if(spell){ apiDate=today; return spell; }
       else{ console.warn('Daily spell not found in SPELLS array:', spellName); }
     }
   }catch(e){console.warn('fetchDailySpell error:',e);}
@@ -1604,12 +1611,10 @@ async function fetchCompletions(){
   finally{ _fetchingCompletions=false; }
 }
 
-async function postCompletion(){
+async function postCompletion(spellDate){
   try{
-    const today=new Date().toISOString().split('T')[0];
-
-    // 1. Increment daily count
-    await db.collection('dailyStats').doc(today).update({count:firebase.firestore.FieldValue.increment(1)});
+    // spellDate is guaranteed to equal utcNow by showWin before calling this
+    await db.collection('dailyStats').doc(spellDate).update({count:firebase.firestore.FieldValue.increment(1)});
     const count=await fetchCompletions();
     if(count!==null){
       completionCount=count;
@@ -1617,26 +1622,24 @@ async function postCompletion(){
       const wc=document.getElementById('win-completion');
       if(wc) wc.textContent=count===1?'1 wizard identified today\'s spell':`${count} wizards identified today\'s spell`;
     }
-
-    // 2. Record completion if logged in
-    if(currentUser){
-      await recordCompletion(today);
-    }
+    await recordCompletion(spellDate);
   }catch(e){console.warn('postCompletion error:',e);}
 }
 
-async function recordCompletion(today){
+async function recordCompletion(spellDate){
   try{
     const uid = currentUser.uid;
+    const utcNow = new Date().toISOString().split('T')[0];
+    const onTime = spellDate === utcNow;
 
     // Write to completions — create only, immutable
-    const compRef = db.collection('completions').doc(uid).collection('days').doc(today);
+    const compRef = db.collection('completions').doc(uid).collection('days').doc(spellDate);
     const compSnap = await compRef.get();
     if(compSnap.exists) return; // already completed today
 
     await compRef.set({
       completedAt: firebase.firestore.FieldValue.serverTimestamp(),
-      onTime: true // postCompletion only called for today's daily
+      onTime: onTime
     });
 
     // Update or create userProfiles
@@ -1644,14 +1647,15 @@ async function recordCompletion(today){
     const profileSnap = await profileRef.get();
     const yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
 
-    if(!profileSnap.exists){
+    if(!onTime){
+      // Past date or late completion — don't update streak or profile
+    } else if(!profileSnap.exists){
       // Create new profile
-      // Always create with 'guest' — username is set separately via submitUsername
       await profileRef.set({
         displayName: 'guest',
         currentStreak: 1,
         longestStreak: 1,
-        lastCompletedDate: today,
+        lastCompletedDate: spellDate,
         onTimeCompleted: 1
       });
     } else {
@@ -1662,16 +1666,18 @@ async function recordCompletion(today){
       await profileRef.update({
         currentStreak: newStreak,
         longestStreak: newLongest,
-        lastCompletedDate: today,
+        lastCompletedDate: spellDate,
         onTimeCompleted: (p.onTimeCompleted || 0) + 1
       });
     }
 
     // Reload profile and update UI
     await loadUserProfile();
-    calCompletions[today] = 'ontime';
+    calCompletions[spellDate] = onTime ? 'ontime' : 'late';
     updateAuthUI();
     updateDateCheckmark();
+    // Auto-dismiss nudge toast if completed today
+    if(onTime) dismissNudge();
     // Invalidate leaderboard caches so next open gets fresh data
     _profilesCache = null; _profilesCacheTime = 0; _profilesFetchedAt = 0;
     _dailyLbCache = null; _dailyLbCacheTime = 0; _dailyFetchedAt = 0;
@@ -1684,8 +1690,8 @@ async function recordCompletion(today){
     }
 
     // Write to leaderboard if Google user with username
-    if(!currentUser.isAnonymous && userProfile && userProfile.displayName && userProfile.displayName !== 'guest'){
-      const lbRef = db.collection('dailyLeaderboard').doc(today).collection('entries').doc(uid);
+    if(onTime && !currentUser.isAnonymous && userProfile && userProfile.displayName && userProfile.displayName !== 'guest'){
+      const lbRef = db.collection('dailyLeaderboard').doc(spellDate).collection('entries').doc(uid);
       const lbSnap = await lbRef.get();
       if(!lbSnap.exists){
         await lbRef.set({
@@ -1701,7 +1707,7 @@ async function recordCompletion(today){
 function updateCompletionDisplay(){
   const el=document.getElementById('completion-count');
   if(!el)return;
-  if(isApiDaily&&completionCount!==null){
+  if((apiDate !== null && apiDate === new Date().toISOString().split('T')[0])&&completionCount!==null){
     el.textContent=completionCount===1?'✦ 1 wizard identified today\'s spell':`✦ ${completionCount} wizards identified today\'s spell`;
   } else {
     el.textContent='';
@@ -1880,7 +1886,6 @@ let customDate=null;
 let customDateStr=null; // raw yyyy-MM-dd string for display
 let apiDate=null; // date string from API e.g. "2026-04-02"
 let completionCount=null;
-let isApiDaily=false; // true when playing today's API daily
 let _fetchingCompletions=false;
 let guesses=[],won=false,acIdx=-1;
 let filters=[false,false,false]; // all off by default
@@ -2162,7 +2167,7 @@ function closeOverlay(id,e){
 // ─── Win ─────────────────────────────────────────────────────────
 function showWin(){
   const s=ANSWER;
-  // Always clear completion count — repopulate only if isApiDaily via postCompletion
+  // Always clear completion count — repopulated by postCompletion if today's daily
   const wc=document.getElementById('win-completion');
   if(wc)wc.textContent='';
   const el=document.getElementById('date-checkmark');
@@ -2171,7 +2176,7 @@ function showWin(){
   const sp=document.getElementById('win-streak-prompt');
   if(sp){
     const streak = userProfile ? getLiveStreak() : 0;
-    const showPrompt = currentUser && currentUser.isAnonymous && isApiDaily && streak > 2;
+    const showPrompt = currentUser && currentUser.isAnonymous && (apiDate !== null && apiDate === new Date().toISOString().split('T')[0]) && streak > 2;
     sp.style.display = showPrompt ? 'block' : 'none';
     if(showPrompt){
       sp.querySelector('.win-streak-prompt-text').textContent = '🔥 ' + streak + ' day streak — Save it →';
@@ -2185,8 +2190,16 @@ function showWin(){
   const ia=document.getElementById('win-img-area');
   ia.innerHTML=s.image?`<img src="${s.image}" class="win-card-img" onerror="this.parentElement.innerHTML='<div class=win-card-img-ph>✦</div>'"/>`:`<div class="win-card-img-ph">✦</div>`;
   spawnConfetti();openOverlay('win-overlay');showShareBtn();
-  if(isApiDaily) postCompletion();
-  else if(currentUser && customDateStr) recordPastCompletion(customDateStr);
+  if(currentUser){
+    const spellDate = customDateStr || apiDate;
+    if(spellDate){
+      const utcNow = new Date().toISOString().split('T')[0];
+      const onTime = spellDate === utcNow;
+      if(onTime) postCompletion(spellDate);
+      else recordCompletion(spellDate);
+    }
+  }
+
 }
 function spawnConfetti(){
   const c=document.getElementById('confetti');c.innerHTML='';
@@ -2207,7 +2220,6 @@ function resetGameState(){
   customDateStr=null;
   challengeSpell=null;
   // devSpell intentionally not cleared — stays locked to URL
-  isApiDaily=false;
   completionCount=null;
   apiDate=null;
   // Clear game state
@@ -2247,6 +2259,129 @@ function lockDatePill(loading=true){
 
 
 
+
+
+// ─── Countdown Timer ──────────────────────────────────────────────
+let _timerInterval = null;
+let _nudgeShown = false;
+
+function getSecondsUntilMidnight(){
+  const now = new Date();
+  const midnight = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1));
+  return Math.floor((midnight - now) / 1000);
+}
+
+function formatCountdown(secs){
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+  if(h > 0) return h + 'h ' + m + 'm';
+  if(m > 0) return m + 'm ' + String(s).padStart(2,'0') + 's';
+  return String(s) + 's';
+}
+
+function formatNudgeCountdown(secs){
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  return m + ':' + String(s).padStart(2,'0');
+}
+
+function todayCompleted(){
+  const today = new Date().toISOString().split('T')[0];
+  return !!calCompletions[today];
+}
+
+function showNudgeToast(remainingSecs){
+  const today = new Date().toISOString().split('T')[0];
+  const shownDate = localStorage.getItem('nudge_shown_date');
+  if(shownDate === today) return; // already shown today
+  localStorage.setItem('nudge_shown_date', today);
+  _nudgeShown = true;
+
+  // Show/hide play now button depending on if already on today's daily
+  const isOnToday = apiDate !== null && apiDate === today;
+  const playBtn = document.getElementById('nudge-play-btn');
+  if(playBtn) playBtn.style.display = isOnToday ? 'none' : 'block';
+
+  // Set progress bar transition
+  const progress = document.getElementById('nudge-progress');
+  if(progress){
+    progress.style.transition = 'none';
+    progress.style.width = '100%';
+    // Force reflow then start transition
+    void progress.offsetWidth;
+    progress.style.transition = `width ${remainingSecs}s linear`;
+    progress.style.width = '0%';
+  }
+
+  document.getElementById('nudge-toast').classList.add('show');
+}
+
+function dismissNudge(){
+  document.getElementById('nudge-toast').classList.remove('show');
+}
+
+function nudgePlayNow(){
+  dismissNudge();
+  setTodaySpell();
+}
+
+function startCountdownTimer(){
+  if(_timerInterval) clearInterval(_timerInterval);
+  _timerInterval = setInterval(tickTimer, 1000);
+  tickTimer(); // run immediately
+}
+
+function tickTimer(){
+  const secs = getSecondsUntilMidnight();
+  const today = new Date().toISOString().split('T')[0];
+  const isOnToday = apiDate !== null && apiDate === today;
+
+  // Update date pill countdown
+  const el = document.getElementById('date-countdown');
+  if(el){
+    const textEl = document.getElementById('date-countdown-text');
+    const tipEl = document.getElementById('date-countdown-tip');
+    if(isOnToday && secs > 0){
+      el.style.pointerEvents = 'auto';
+      if(textEl) textEl.textContent = 'Next spell in ' + formatCountdown(secs);
+      if(tipEl && !tipEl.textContent){
+        const midnight = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate() + 1));
+        tipEl.textContent = 'Resets at ' + midnight.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true});
+      }
+    } else {
+      el.style.pointerEvents = 'none';
+      if(textEl) textEl.textContent = '';
+    }
+  }
+
+  // Update nudge toast countdown
+  const nudgeEl = document.getElementById('nudge-countdown');
+  if(nudgeEl && document.getElementById('nudge-toast').classList.contains('show')){
+    nudgeEl.textContent = formatNudgeCountdown(secs);
+  }
+
+  // Midnight hit
+  if(secs === 0){
+    // Update text displays
+    const cc = document.getElementById('completion-count');
+    if(cc && cc.textContent) cc.textContent = cc.textContent.replace("today's", "yesterday's");
+    // Hide nudge toast
+    dismissNudge();
+    // Show new spell toast
+    setTimeout(() => showToast('✦ A new spell is now available!'), 500);
+    // Update streak display
+    updateStreakDisplay();
+    // Reset nudge shown for new day
+    _nudgeShown = false;
+    return;
+  }
+
+  // Check if we should show nudge toast (T-10 min)
+  if(secs <= 600 && !todayCompleted() && !_nudgeShown){
+    showNudgeToast(secs);
+  }
+}
 
 // ─── Leaderboard ──────────────────────────────────────────────────
 const LEADERBOARD_CACHE_MS = 3 * 60 * 60 * 1000; // 3 hours
@@ -2497,11 +2632,25 @@ function openDatePicker(){
   calYear = ay;
   calMonth = am - 1;
   challengeSpell = null;
-  const [y,m,da] = activeStr.split('-').map(Number);
+  const nowStr = new Date().toISOString().split('T')[0];
+  const [y,m,da] = nowStr.split('-').map(Number);
   const dt = new Date(Date.UTC(y,m-1,da));
   document.getElementById('today-date-sub').textContent =
     dt.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
-  loadCalCompletions().then(() => renderCalendar());
+  loadCalCompletions().then(() => {
+    renderCalendar();
+    // Show checkmark on today's daily if completed
+    const todayStr = new Date().toISOString().split('T')[0];
+    const completion = calCompletions[todayStr];
+    const ck = document.getElementById('datepick-today-check');
+    if(ck){
+      ck.className = 'date-check';
+      if(completion){
+        void ck.offsetWidth;
+        ck.className = 'date-check show ' + (completion === 'ontime' ? 'ontime' : 'late');
+      }
+    }
+  });
   openOverlay('date-overlay');
 }
 
@@ -2587,17 +2736,17 @@ function setRandomSpell(){
   customSeed=Math.floor(Math.random()*999999);
   closeOverlay('date-overlay');
   ANSWER=getAnswer();
-  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();
+  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();updateStreakDisplay();
 }
 async function setTodaySpell(){
   resetGameState();
   closeOverlay('date-overlay');
   lockDatePill(true);
   const spell=await fetchDailySpell();
-  if(spell){ANSWER=spell;isApiDaily=true;}
+  if(spell){ANSWER=spell;}
   else{ANSWER=getDailyAnswer();}
   lockDatePill(false);
-  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();
+  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();updateStreakDisplay();
   fetchCompletions().then(count=>{if(count!==null){completionCount=count;updateCompletionDisplay();}});
 }
 async function setDateSpell(dateStr){
@@ -2607,13 +2756,13 @@ async function setDateSpell(dateStr){
   resetGameState();
   lockDatePill(true);
   const utcToday=new Date().toISOString().split('T')[0];
-  if(val===utcToday||val===apiDate){
+  if(val===utcToday){
     // Today
     const spell=await fetchDailySpell();
-    if(spell){ANSWER=spell;isApiDaily=true;}
+    if(spell){ANSWER=spell;}
     else{ANSWER=getDailyAnswer();}
     lockDatePill(false);
-    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();
+    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();updateStreakDisplay();
     fetchCompletions().then(count=>{if(count!==null){completionCount=count;updateCompletionDisplay();}});
   } else {
     // Past date
@@ -2626,7 +2775,7 @@ async function setDateSpell(dateStr){
       ANSWER=getAnswer();
     }
     lockDatePill(false);
-    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();
+    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();updateStreakDisplay();
   }
 }
 
@@ -3107,7 +3256,7 @@ function attachInputEvents(){
 
 function initGame(resetAll=true){
   if(resetAll){
-    isApiDaily=false;
+    apiDate=null;
     completionCount=null;
     customDateStr=null;
     ANSWER=getAnswer();
@@ -3219,6 +3368,7 @@ async function loadSpells(){
     }
     updateDatePill();
     updateDateCheckmark();
+    startCountdownTimer();
     if(_invalidChallenge) showToast("Challenge link was invalid — playing today\'s daily instead");
   }catch(err){
     txt.innerHTML='';
@@ -3296,7 +3446,7 @@ loadSpells();
 
       <h3>What We Collect</h3>
       <p>If you play anonymously, Firebase assigns you a temporary anonymous identifier stored in your browser. Your completion history is stored in our database under this identifier. No name, email, or personally identifiable information is collected. Anonymous accounts and their data are automatically deleted by Firebase after 30 days of inactivity.</p>
-      <p>If you sign in with Google, Google's authentication service processes your Google account information (such as email, name, and profile photo) as part of the sign-in process. This is handled by Firebase Auth on Google's infrastructure and is subject to Google's privacy policy. Within our Firestore database, we only store a unique identifier (your Firebase UID), your chosen Spelldle 101 username, and your completion history (dates completed and whether they were on time). We do <strong>not</strong> use your Google name, email, or profile photo for any purpose within or outside of the game.</p>
+      <p>If you sign in with Google, Google's authentication service processes your Google account information (such as email, name, and profile photo) as part of the sign-in process. This is handled by Firebase Auth on Google's infrastructure and is subject to Google's privacy policy. Within our Firestore database, we only store a unique identifier (your Firebase UID), your chosen Spelldle 101 username, and your completion history (dates completed and whether they were on time). We do not use your Google name, email, or profile photo for any purpose within or outside of the game.</p>
 
       <h3>How We Use It</h3>
       <p>Your data is used solely to track streaks, display leaderboards, and show your completion history in the calendar. It is never used for advertising or shared with third parties.</p>
@@ -3347,6 +3497,16 @@ loadSpells();
     <div class="legal-footer">
       <button class="legal-close" onclick="closeOverlay('terms-overlay')">Close</button>
     </div>
+  </div>
+</div>
+
+<div class="nudge-toast" id="nudge-toast">
+  <div class="nudge-progress" id="nudge-progress"></div>
+  <div class="nudge-body">
+    <div class="nudge-text">⏰ Today's spell expires in</div>
+    <div class="nudge-countdown" id="nudge-countdown"></div>
+    <button class="nudge-play" id="nudge-play-btn" onclick="nudgePlayNow()">Play Now</button>
+    <button class="nudge-dismiss" onclick="dismissNudge()">✕</button>
   </div>
 </div>
 </body>
