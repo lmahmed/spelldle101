@@ -6,7 +6,8 @@
     "archmastery": [],
     "arc": "Arc 1",
     "source": [
-      "trainer"
+      "trainer",
+      "quest"
     ],
     "image": "./assets/storm/Thunder_Snake.png",
     "description": "Deals 105-145 Storm Damage",

@@ -6,7 +6,8 @@
     "archmastery": [],
     "arc": "Arc 1",
     "source": [
-      "trainer"
+      "trainer",
+      "quest"
     ],
     "image": "./assets/death/Dark_Sprite.png",
     "description": "Deals 65-105 Death Damage",

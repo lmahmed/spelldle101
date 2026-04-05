@@ -6,7 +6,8 @@
     "archmastery": [],
     "arc": "Arc 1",
     "source": [
-      "trainer"
+      "trainer",
+      "quest"
     ],
     "image": "./assets/balance/Scarab.png",
     "description": "Deals 65-105 Balance Damage",

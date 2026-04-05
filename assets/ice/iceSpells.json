@@ -6,7 +6,8 @@
     "archmastery": [],
     "arc": "Arc 1",
     "source": [
-      "trainer"
+      "trainer",
+      "quest"
     ],
     "description": "Deals 65-105 Ice Damage",
     "effects": [

@@ -6,7 +6,8 @@
     "archmastery": [],
     "arc": "Arc 1",
     "source": [
-      "trainer"
+      "trainer",
+      "quest"
     ],
     "image": "./assets/fire/Fire_Cat.png",
     "description": "Deals 80-120 Fire Damage",

@@ -6,7 +6,8 @@
     "archmastery": [],
     "arc": "Arc 1",
     "source": [
-      "trainer"
+      "trainer",
+      "quest"
     ],
     "image": "./assets/myth/Blood_Bat.png",
     "description": "Deals 70-110 Myth Damage",

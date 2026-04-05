@@ -283,21 +283,41 @@ footer a:hover{color:var(--accent)}
 @keyframes confettiFall{to{transform:translateY(420px) rotate(720deg);opacity:0}}
 
 /* Date picker overlay */
-.datepick-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;width:340px;animation:winPop .35s cubic-bezier(.34,1.56,.64,1)}
-.datepick-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--accent);margin-bottom:16px;text-align:center;letter-spacing:.08em}
-.datepick-option{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;margin-bottom:8px;transition:all .15s}
+.datepick-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;width:min(380px,94vw);animation:winPop .35s cubic-bezier(.34,1.56,.64,1)}
+.datepick-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--accent);margin-bottom:14px;text-align:center;letter-spacing:.08em}
+.datepick-option{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;margin-bottom:6px;transition:all .15s}
 .datepick-option:hover{border-color:var(--accent-dim);background:#120e00}
-.datepick-option-icon{font-size:1.2rem;flex-shrink:0}
-.datepick-option-text{font-size:.88rem;color:var(--text-primary)}
-.datepick-option-sub{font-size:.72rem;color:var(--text-secondary);margin-top:1px}
-.datepick-sep{text-align:center;font-size:.72rem;color:var(--text-muted);margin:10px 0;font-style:italic}
-.datepick-input-row{display:flex;gap:8px;align-items:center}
+.datepick-option-icon{font-size:1.1rem;flex-shrink:0}
+.datepick-option-text{font-size:.85rem;color:var(--text-primary);font-family:'Cinzel',serif;letter-spacing:.03em}
+.datepick-option-sub{font-size:.7rem;color:var(--text-secondary);margin-top:1px}
 .datepick-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text-primary);font-size:.88rem;font-family:'Crimson Pro',serif;outline:none}
 .datepick-input:focus{border-color:var(--accent-dim)}
-.datepick-go{background:var(--accent);color:#160900;border:none;border-radius:6px;padding:7px 14px;font-family:'Cinzel',serif;font-size:.72rem;font-weight:700;cursor:pointer}
+.datepick-sep{text-align:center;font-size:.68rem;color:var(--text-muted);margin:10px 0;font-style:italic;letter-spacing:.06em;text-transform:uppercase}
+.datepick-go{background:var(--accent);color:#160900;border:none;border-radius:6px;padding:7px 14px;font-family:'Cinzel',serif;font-size:.72rem;font-weight:700;cursor:pointer;transition:background .15s}
 .datepick-go:hover{background:#deb870}
-.datepick-close{display:block;width:100%;margin-top:14px;background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.72rem;cursor:pointer}
+.datepick-close{display:block;width:100%;margin-top:12px;background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.72rem;cursor:pointer;transition:color .15s}
 .datepick-close:hover{color:var(--text-secondary)}
+
+/* Calendar */
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-month-label{font-family:'Cinzel',serif;font-size:.82rem;color:var(--accent);letter-spacing:.06em}
+.cal-nav{background:transparent;border:1px solid var(--border);border-radius:6px;width:26px;height:26px;cursor:pointer;color:var(--text-secondary);font-size:.8rem;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.cal-nav:hover{border-color:var(--accent-dim);color:var(--accent)}
+.cal-nav:disabled{opacity:.25;cursor:not-allowed}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-dow{font-family:'Cinzel',serif;font-size:.52rem;color:var(--text-muted);text-align:center;padding:3px 0;letter-spacing:.04em}
+.cal-day{aspect-ratio:1;border-radius:6px;border:1px solid transparent;cursor:pointer;font-family:'Cinzel',serif;font-size:.62rem;display:flex;align-items:center;justify-content:center;transition:all .15s;position:relative;color:var(--text-secondary)}
+.cal-day:hover:not(.cal-day-empty):not(.cal-day-disabled){border-color:var(--accent-dim);color:var(--accent);background:#120e00}
+.cal-day-empty{cursor:default}
+.cal-day-disabled{opacity:.2;cursor:not-allowed}
+.cal-day-today{border-color:var(--accent-dim)!important;color:var(--accent)!important}
+.cal-day-selected{background:var(--accent)!important;color:#160900!important;border-color:var(--accent)!important}
+.cal-day-ontime{background:var(--green-bg);color:var(--green-text);border-color:#2a5010}
+.cal-day-late{background:#2a1800;color:#d08030;border-color:#4a2800}
+.cal-day-ontime:hover,.cal-day-late:hover{opacity:.8}
+.cal-legend{display:flex;gap:10px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+.cal-legend-item{display:flex;align-items:center;gap:4px;font-size:.6rem;color:var(--text-muted);font-family:'Cinzel',serif}
+.cal-legend-dot{width:8px;height:8px;border-radius:3px}
 
 /* Hint picker overlay */
 .hint-card{background:var(--surface);border:1px solid var(--hint-border);border-radius:16px;padding:24px;width:380px;animation:winPop .35s cubic-bezier(.34,1.56,.64,1)}
@@ -411,8 +431,7 @@ footer a:hover{color:var(--accent)}
 .header-btn{position:absolute;top:2rem;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.06em;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 14px;cursor:pointer;color:var(--text-secondary);transition:all .15s;user-select:none;display:flex;align-items:center;gap:5px}
 .header-btn:hover{color:var(--accent);border-color:var(--accent-dim)}
 .header-btn-left{left:1rem}
-.header-btn-right{right:1rem;display:none}
-.header-btn-right.visible{display:flex}
+.header-btn-right{right:1rem;display:flex}
 .header-btn .htip{position:absolute;top:calc(100% + 6px);background:#1a1a28;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.68rem;color:var(--text-secondary);pointer-events:none;opacity:0;transition:opacity .15s;z-index:300;font-family:'Crimson Pro',serif;font-style:italic;width:180px;white-space:normal;text-align:center;line-height:1.4}
 .header-btn:hover .htip{opacity:1}
 .header-btn-left .htip{left:0;transform:none}
@@ -466,6 +485,101 @@ footer a:hover{color:var(--accent)}
 
 .completion-count{text-align:center;font-size:.72rem;color:var(--accent-dim);margin-top:4px;font-family:'Cinzel',serif;letter-spacing:.05em;font-style:italic;min-height:1.1em}
 .win-completion{text-align:center;font-size:.78rem;color:var(--accent-dim);margin-bottom:12px;font-style:italic}
+
+.profile-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;width:min(340px,92vw);animation:winPop .35s cubic-bezier(.34,1.56,.64,1)}
+.profile-avatar{width:52px;height:52px;border-radius:50%;background:var(--surface2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 12px;color:var(--accent)}
+.profile-name{font-family:'Cinzel',serif;font-size:.9rem;color:var(--accent);text-align:center;margin-bottom:4px}
+.profile-type{font-size:.72rem;color:var(--text-muted);text-align:center;font-style:italic;margin-bottom:16px}
+.profile-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.profile-stat{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center}
+.profile-stat-val{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--accent);font-weight:700}
+.profile-stat-label{font-size:.62rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.profile-btn{width:100%;border:none;border-radius:8px;padding:9px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;letter-spacing:.07em;cursor:pointer;transition:all .15s;margin-bottom:6px}
+.profile-btn.primary{background:var(--accent);color:#160900}
+.profile-btn.primary:hover{background:#deb870}
+.profile-btn.secondary{background:var(--surface2);color:var(--text-secondary);border:1px solid var(--border)}
+.profile-btn.secondary:hover{color:var(--text-primary)}
+.profile-btn.danger{background:transparent;color:#d05050;border:1px solid #3a1010}
+.profile-btn.danger:hover{background:#1a0808}
+.profile-divider{border:none;border-top:1px solid var(--border);margin:12px 0}
+
+.username-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;width:min(360px,92vw);animation:winPop .35s cubic-bezier(.34,1.56,.64,1)}
+.username-title{font-family:'Cinzel',serif;font-size:.9rem;color:var(--accent);margin-bottom:6px;letter-spacing:.07em}
+.username-sub{font-size:.8rem;color:var(--text-secondary);margin-bottom:16px;font-style:italic}
+.username-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text-primary);font-family:'Crimson Pro',serif;font-size:.95rem;outline:none;margin-bottom:6px;}
+.username-input:focus{border-color:var(--accent-dim)}
+.username-hint{font-size:.68rem;color:var(--text-muted);margin-bottom:14px;font-style:italic}
+.username-status{font-size:.72rem;min-height:1.2em;margin-bottom:10px;font-style:italic;text-align:center}
+
+.win-streak-prompt{text-align:center;margin:10px 0;padding:10px 14px;background:var(--surface2);border:1px solid var(--accent-dim);border-radius:8px;cursor:pointer;transition:all .15s}
+.win-streak-prompt:hover{border-color:var(--accent);background:#120e00}
+.win-streak-prompt-text{font-size:.78rem;color:var(--accent);font-family:'Cinzel',serif;letter-spacing:.04em}
+.win-streak-prompt-sub{font-size:.7rem;color:var(--text-muted);font-style:italic;margin-top:3px}
+
+.date-check{display:inline-block;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .2s}
+.date-check.show{opacity:1}
+.date-check svg{overflow:visible}
+.date-check .check-path{
+  stroke-dasharray:24;
+  stroke-dashoffset:24;
+}
+.date-check.show .check-path{
+  animation:drawCheck .5s cubic-bezier(.4,0,.2,1) .1s forwards;
+}
+.date-check.late .check-path{stroke:var(--amber,#d08030)}
+.date-check.ontime .check-path{stroke:var(--green-text,#a8d878)}
+@keyframes drawCheck{
+  to{stroke-dashoffset:0}
+}
+
+.legal-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;width:min(600px,94vw);margin:auto;max-height:80vh;display:flex;flex-direction:column;animation:popIn .35s cubic-bezier(.34,1.56,.64,1)}
+.legal-header{padding:20px 24px 16px;border-bottom:1px solid var(--border);flex-shrink:0}
+.legal-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--accent);letter-spacing:.08em}
+.legal-date{font-size:.7rem;color:var(--text-muted);margin-top:3px;font-style:italic}
+.legal-body{padding:20px 24px;overflow-y:auto;flex:1;font-size:.85rem;color:var(--text-secondary);line-height:1.8}
+.legal-body h3{font-family:'Cinzel',serif;font-size:.78rem;color:var(--accent-dim);letter-spacing:.06em;margin:16px 0 6px;text-transform:uppercase}
+.legal-body p{margin-bottom:10px}
+.legal-body a{color:var(--accent-dim)}
+.legal-footer{padding:14px 24px;border-top:1px solid var(--border);flex-shrink:0}
+.legal-close{width:100%;background:transparent;border:1px solid var(--border);border-radius:8px;padding:8px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.72rem;cursor:pointer;transition:color .15s}
+.legal-close:hover{color:var(--text-secondary)}
+.legal-body::-webkit-scrollbar{width:4px}
+.legal-body::-webkit-scrollbar-track{background:transparent}
+.legal-body::-webkit-scrollbar-thumb{background:var(--accent-dim);border-radius:4px}
+.legal-body::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+/* Leaderboard */
+.lb-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;width:min(520px,94vw);margin:auto;max-height:85vh;display:flex;flex-direction:column;animation:popIn .35s cubic-bezier(.34,1.56,.64,1)}
+.lb-header{padding:16px 20px 0;flex-shrink:0}
+.lb-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--accent);letter-spacing:.08em;margin-bottom:12px}
+.lb-guest-note{background:#120e00;border:1px solid var(--accent-dim);border-radius:8px;padding:8px 12px;font-size:.72rem;color:var(--accent-dim);margin-bottom:12px;cursor:pointer;transition:all .15s;font-family:'Cinzel',serif;letter-spacing:.03em;text-align:center}
+.lb-guest-note:hover{color:var(--accent);border-color:var(--accent)}
+.lb-tabs{display:flex;gap:2px;margin-bottom:0}
+.lb-tab{flex:1;padding:7px 4px;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.05em;color:var(--text-muted);cursor:pointer;border:1px solid transparent;border-bottom:none;border-radius:6px 6px 0 0;text-align:center;transition:all .15s;background:transparent;user-select:none}
+.lb-tab:hover{color:var(--text-secondary)}
+.lb-tab.active{color:var(--accent);border-color:var(--border);background:var(--surface2)}
+.lb-tab-desc{font-size:.72rem;font-style:italic;color:var(--text-muted);padding:6px 20px 8px;border-top:1px solid var(--border);font-family:'Crimson Pro',serif;flex-shrink:0}
+.lb-body{overflow-y:auto;flex:1;padding:8px 12px}
+.lb-body::-webkit-scrollbar{width:4px}
+.lb-body::-webkit-scrollbar-track{background:transparent}
+.lb-body::-webkit-scrollbar-thumb{background:var(--accent-dim);border-radius:4px}
+.lb-body::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+.lb-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;margin-bottom:3px;transition:background .15s}
+.lb-row:hover{background:var(--surface2)}
+.lb-row.me{background:#120e00;border:1px solid var(--accent-dim)}
+.lb-rank{font-family:'Cinzel',serif;font-size:.8rem;color:var(--text-muted);width:24px;text-align:right;flex-shrink:0}
+.lb-rank.gold{color:#f0c040}
+.lb-rank.silver{color:#b0b8c8}
+.lb-rank.bronze{color:#c07840}
+.lb-name{font-family:'Cinzel',serif;font-size:.8rem;color:var(--text-primary);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-name.me{color:var(--accent)}
+.lb-val{font-family:'Cinzel',serif;font-size:.8rem;color:var(--text-secondary);flex-shrink:0;text-align:right}
+.lb-empty{text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;font-size:.85rem}
+.lb-footer{padding:10px 20px 14px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.lb-refresh-info{font-size:.72rem;color:var(--text-muted);font-style:italic;font-family:'Crimson Pro',serif}
+.lb-close{background:transparent;border:1px solid var(--border);border-radius:8px;padding:6px 14px;color:var(--text-muted);font-family:'Cinzel',serif;font-size:.75rem;cursor:pointer;transition:color .15s}
+.lb-close:hover{color:var(--text-secondary)}
+.lb-loading{text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;font-size:.8rem}
 </style>
 </head>
 <body>
@@ -501,6 +615,10 @@ footer a:hover{color:var(--accent)}
       <div class="win-desc" id="win-desc"></div>
       <div class="win-guesses" id="win-guesses"></div>
       <div class="win-completion" id="win-completion"></div>
+      <div class="win-streak-prompt" id="win-streak-prompt" style="display:none" onclick="closeOverlay('win-overlay');openOverlay('profile-overlay')">
+        <div class="win-streak-prompt-text">🔥 Save your streak →</div>
+        <div class="win-streak-prompt-sub">Sign in with Google to keep it across devices</div>
+      </div>
       <div class="win-btns">
         <button class="win-btn primary" onclick="closeOverlay('win-overlay')">Continue ✦</button>
         <button class="win-btn secondary" id="win-share-btn" onclick="shareResultWin()">Share Result ↗</button>
@@ -513,32 +631,47 @@ footer a:hover{color:var(--accent)}
 <!-- Date picker overlay -->
 <div class="overlay-bg" id="date-overlay" onclick="closeOverlay('date-overlay',event)">
   <div class="datepick-card">
-    <div class="datepick-title">Choose a Spell to Guess</div>
-    <div class="datepick-option" onclick="setRandomSpell()">
-      <div class="datepick-option-icon">🎲</div>
+    <div class="datepick-title">✦ Choose a Spell</div>
+    <div class="datepick-option" onclick="setTodaySpell()">
+      <div class="datepick-option-icon">✦</div>
       <div>
-        <div class="datepick-option-text">Random Spell</div>
-        <div class="datepick-option-sub">Pick a completely random spell from all 482</div>
+        <div class="datepick-option-text">Today's Daily</div>
+        <div class="datepick-option-sub" id="today-date-sub"></div>
       </div>
     </div>
-    <div class="datepick-option" onclick="setTodaySpell()">
-      <div class="datepick-option-icon">📅</div>
+    <div class="datepick-option" onclick="setRandomSpell()">
+      <div class="datepick-option-icon">⚡</div>
       <div>
-        <div class="datepick-option-text">Today's Daily Spell</div>
-        <div class="datepick-option-sub" id="today-date-sub"></div>
+        <div class="datepick-option-text">Random Spell</div>
+        <div class="datepick-option-sub">Pick any spell from all 482</div>
       </div>
     </div>
     <div class="datepick-option" onclick="showChallengeCreator()">
       <div class="datepick-option-icon">⚔</div>
       <div>
         <div class="datepick-option-text">Create a Challenge</div>
-        <div class="datepick-option-sub">Pick a spell and share a secret link with a friend</div>
+        <div class="datepick-option-sub">Send a specific spell to a friend</div>
       </div>
     </div>
-    <div class="datepick-sep">— or pick a past date —</div>
-    <div class="datepick-input-row">
-      <input class="datepick-input" type="date" id="date-input" />
-      <button class="datepick-go" onclick="setDateSpell()">Go</button>
+    <div class="datepick-sep">— past daily spells —</div>
+    <div class="cal-header">
+      <button class="cal-nav" id="cal-prev" onclick="calNav(-1)">◀</button>
+      <div class="cal-month-label" id="cal-month-label"></div>
+      <button class="cal-nav" id="cal-next" onclick="calNav(1)">▶</button>
+    </div>
+    <div class="cal-grid">
+      <div class="cal-dow">Su</div>
+      <div class="cal-dow">Mo</div>
+      <div class="cal-dow">Tu</div>
+      <div class="cal-dow">We</div>
+      <div class="cal-dow">Th</div>
+      <div class="cal-dow">Fr</div>
+      <div class="cal-dow">Sa</div>
+    </div>
+    <div class="cal-grid" id="cal-days"></div>
+    <div class="cal-legend" id="cal-legend" style="display:none">
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--green-bg);border:1px solid #2a5010"></div>Completed on time</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#2a1800;border:1px solid #4a2800"></div>Completed late</div>
     </div>
     <button class="datepick-close" onclick="closeOverlay('date-overlay')">Cancel</button>
   </div>
@@ -546,11 +679,11 @@ footer a:hover{color:var(--accent)}
 
 
 <div class="overlay-bg" id="challenge-overlay" onclick="closeOverlay('challenge-overlay',event)">
-  <div class="datepick-card" style="width:380px">
+  <div class="datepick-card">
     <div class="datepick-title">Create a Challenge</div>
     <div style="font-size:.78rem;color:var(--text-secondary);text-align:center;font-style:italic;margin-bottom:14px">Pick a spell — your friend won't see the answer</div>
     <div style="position:relative;margin-bottom:10px">
-      <input id="challenge-spell-input" class="datepick-input" type="text" placeholder="Search for a spell..." autocomplete="off" style="width:100%"/>
+      <input id="challenge-spell-input" class="datepick-input" type="text" placeholder="Search for a spell..." autocomplete="off" style="width:100%;background:var(--surface2);color:var(--text-primary)"/>
       <div id="challenge-ac" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;max-height:200px;overflow-y:auto;z-index:300;margin-top:3px"></div>
     </div>
     <div id="challenge-selected" style="display:none;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:12px">
@@ -565,7 +698,7 @@ footer a:hover{color:var(--accent)}
         <button class="datepick-go" id="challenge-copy-btn" onclick="copyChallenge()">Copy</button>
       </div>
     </div>
-    <button class="datepick-go" onclick="generateChallenge()" id="challenge-gen-btn" style="width:100%;margin-top:12px;padding:9px;opacity:.4;cursor:not-allowed" disabled>Generate Link</button>
+    <button class="datepick-go" id="challenge-gen-btn" onclick="generateChallenge()" style="width:100%;margin-top:12px;padding:9px;opacity:.4;cursor:not-allowed;background:var(--accent);color:#160900;border:none;border-radius:8px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700" disabled>Generate Link</button>
     <button class="datepick-close" onclick="closeOverlay('challenge-overlay')">Cancel</button>
   </div>
 </div>
@@ -658,6 +791,57 @@ footer a:hover{color:var(--accent)}
 </div>
 
 
+<div class="overlay-bg" id="profile-overlay" onclick="closeOverlay('profile-overlay',event)">
+  <div class="profile-card">
+    <div class="profile-avatar" id="profile-avatar">✦</div>
+    <div class="profile-name" id="profile-name">Guest Wizard</div>
+    <div class="profile-type" id="profile-type">Anonymous</div>
+    <div class="profile-stats" id="profile-stats" style="display:none">
+      <div class="profile-stat">
+        <div class="profile-stat-val" id="stat-streak">0</div>
+        <div class="profile-stat-label">Current Streak</div>
+      </div>
+      <div class="profile-stat">
+        <div class="profile-stat-val" id="stat-longest">0</div>
+        <div class="profile-stat-label">Longest Streak</div>
+      </div>
+      <div class="profile-stat">
+        <div class="profile-stat-val" id="stat-completed">0</div>
+        <div class="profile-stat-label">On-Time Completed</div>
+      </div>
+      <div class="profile-stat">
+        <div class="profile-stat-val" id="stat-share">—</div>
+        <div class="profile-stat-label">Share Result</div>
+      </div>
+    </div>
+    <button class="profile-btn secondary" onclick="closeOverlay('profile-overlay');openLeaderboard()" style="margin-bottom:10px">View Leaderboards ↗</button>
+    <button class="profile-btn primary" id="profile-setup-btn" onclick="closeOverlay('profile-overlay');showUsernamePicker()" style="display:none">Set Username →</button>
+    <button class="profile-btn primary" id="profile-google-btn" onclick="handleGoogleSignIn()" style="display:none">
+      Sign in with Google ↗
+    </button>
+    <button class="profile-btn secondary" id="profile-share-btn" onclick="shareResultFromProfile()" style="display:none">
+      Share Result ↗
+    </button>
+    <hr class="profile-divider" id="profile-divider" style="display:none">
+    <button class="profile-btn danger" id="profile-signout-btn" onclick="handleSignOut()" style="display:none">
+      Sign Out
+    </button>
+    <button class="profile-btn secondary" onclick="closeOverlay('profile-overlay')" style="margin-top:4px">Close</button>
+  </div>
+</div>
+
+<div class="overlay-bg" id="username-overlay">
+  <div class="username-card">
+    <div class="username-title">✦ Choose Your Username</div>
+    <div class="username-sub" id="username-sub">Pick a username to save your streak and appear on leaderboards.</div>
+    <input class="username-input" id="username-input" type="text" placeholder="wizardfan" maxlength="20" autocapitalize="none" autocorrect="off" spellcheck="false" oninput="onUsernameInput()"/>
+    <div class="username-hint">3-20 characters · lowercase letters, numbers, - and _ only</div>
+    <div class="username-status" id="username-status"></div>
+    <button class="profile-btn primary" id="username-submit-btn" onclick="submitUsername()" disabled>Confirm Username</button>
+    <button class="profile-btn secondary" onclick="closeUsernameOverlay()">Maybe Later</button>
+  </div>
+</div>
+
 <div class="overlay-bg" id="bug-overlay" onclick="closeOverlay('bug-overlay',event)">
   <div class="settings-card" style="width:360px">
     <div class="settings-title">Report a Bug</div>
@@ -716,17 +900,25 @@ footer a:hover{color:var(--accent)}
       Settings
       <div class="htip">Customize your gameplay experience</div>
     </button>
-    <button class="header-btn header-btn-right" id="share-btn" onclick="shareResult()">
-      Share
-      <div class="htip">Copy your result to share with friends</div>
+    <button class="header-btn header-btn-right" id="profile-btn" onclick="openOverlay('profile-overlay')">
+      ✦ Profile
+      <div class="htip">View your stats and account</div>
     </button>
     <div class="logo">Spelldle<sup>101</sup></div>
     <div class="tagline">guess today's wizard101 spell</div>
-    <div class="date-pill" id="date-pill" onclick="openDatePicker()">
-      <span id="date-pill-text"></span>
-      <span class="date-pill-arrow">▾</span>
+    <div style="position:relative;display:inline-block">
+      <div class="date-pill" id="date-pill" onclick="openDatePicker()">
+        <span id="date-pill-text"></span>
+        <span class="date-pill-arrow">▾</span>
+      </div>
+      <span id="date-checkmark" class="date-check" style="position:absolute;left:calc(100% + 6px);top:50%;transform:translateY(-50%)">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+          <path class="check-path" d="M1.5 6L5.5 10.5L14.5 1.5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
     </div>
     <div class="completion-count" id="completion-count"></div>
+    <div class="completion-count" id="streak-display" style="color:var(--accent)"></div>
   </header>
 
   <div class="search-area">
@@ -828,10 +1020,44 @@ footer a:hover{color:var(--accent)}
 <footer>
   <div>Spelldle 101 is a fan-made project and is not affiliated with KingsIsle Entertainment.</div>
   <div>All Wizard101 spell names, images, and game content are property of <a href="https://www.kingsisle.com" target="_blank">KingsIsle Entertainment</a>.</div>
-  <div style="margin-top:4px;color:var(--text-muted)">A new spell is chosen daily at midnight UTC &nbsp;·&nbsp; Made with ✦ by a fan &nbsp;·&nbsp; Last updated April 2026 &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim);text-decoration:none" onclick="openOverlay('bug-overlay')">Report a Bug</span></div>
+  <div style="margin-top:4px;color:var(--text-muted)">A new spell is chosen daily at midnight UTC &nbsp;·&nbsp; Made with ✦ by a fan &nbsp;·&nbsp; Last updated April 2026 &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('bug-overlay')">Report a Bug</span> &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('privacy-overlay')">Privacy</span> &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('terms-overlay')">Terms</span></div>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-auth-compat.js"></script>
 <script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDpmCJgg7amogh96EvcFiXbyrTAbKhjUPs",
+  authDomain: "spelldle101-8bd90.firebaseapp.com",
+  projectId: "spelldle101-8bd90",
+  storageBucket: "spelldle101-8bd90.firebasestorage.app",
+  messagingSenderId: "568008023423",
+  appId: "1:568008023423:web:405dc1f12570eafd43ce4a"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const auth = firebase.auth();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
+// Only request minimal identity scope
+googleProvider.addScope('openid');
+
+// Current auth state
+let currentUser = null;
+auth.onAuthStateChanged(async user => {
+  currentUser = user;
+  if(user){
+    await loadUserProfile();
+    updateAuthUI();
+    // Load completions for checkmark and calendar colors
+    loadCalCompletions().then(() => updateDateCheckmark());
+  } else {
+    updateAuthUI();
+  }
+});
+
 
 
 // ─── Settings ────────────────────────────────────────────────────
@@ -944,58 +1170,425 @@ function shareResultWin(){
   });
 }
 
-function showShareBtn(){
-  document.getElementById('share-btn').classList.add('visible');
-}
-function hideShareBtn(){
-  document.getElementById('share-btn').classList.remove('visible');
-}
+function showShareBtn(){ updateAuthUI(); }
+function hideShareBtn(){ /* share only in win overlay/profile */ }
 
 
-// ─── API ──────────────────────────────────────────────────────────
-async function apiGet(params){
+
+
+// ─── Username filter ──────────────────────────────────────────────
+let _badWords = null;
+
+async function loadBadWords(){
+  if(_badWords) return;
   try{
-    const url=API_URL+'?'+new URLSearchParams(params).toString();
-    const res=await fetch(url);
-    return await res.json();
-  }catch{return null;}
+    const res = await fetch('/bad-words.txt');
+    const text = await res.text();
+    _badWords = new Set(text.split('\n').map(w => w.trim().toLowerCase()).filter(Boolean));
+  } catch(e){
+    console.warn('Could not load bad words list:', e);
+    _badWords = new Set(); // fail open — don't block usernames if fetch fails
+  }
 }
 
-async function apiPost(data){
+function sanitizeDisplayName(name){
+  if(!name || name === 'guest') return 'Guest';
+  if(!/^[a-z0-9_-]{3,20}$/.test(name)) return '[Redacted]';
+  if(containsBadWord(name)) return '[Redacted]';
+  return name;
+}
+
+function containsBadWord(username){
+  if(!_badWords || _badWords.size === 0) return false;
+  const lower = username.toLowerCase();
+  for(const word of _badWords){
+    if(word && lower.includes(word)) return true;
+  }
+  return false;
+}
+
+// ─── Auth ─────────────────────────────────────────────────────────
+let userProfile = null;
+let _usernameCheckTimeout = null;
+
+async function initAuth(){
+  loadBadWords(); // fire and forget
+  if(!currentUser){
+    try{ await auth.signInAnonymously(); }
+    catch(e){ console.warn('Anonymous sign in failed:', e); }
+  }
+}
+
+async function handleGoogleSignIn(){
+  closeOverlay('profile-overlay');
   try{
-    const res=await fetch(API_URL,{
-      method:'POST',
-      body:JSON.stringify(data)
-    });
-    return await res.json();
-  }catch{return null;}
-}
-
-async function fetchDailySpell(){
-  const data=await apiGet({action:'daily'});
-  if(data&&data.success&&data.spell){
-    const spell=SPELLS.find(s=>s.name===data.spell);
-    if(spell){
-      apiDate=data.date;
-      isApiDaily=true;
-      return spell;
+    if(currentUser && currentUser.isAnonymous){
+      // Link anonymous account to Google
+      await currentUser.linkWithPopup(googleProvider);
+      currentUser = auth.currentUser; // update to linked user
+      await loadUserProfile();
+      if(!userProfile || userProfile.displayName === 'guest'){
+        showUsernamePicker();
+      }
+    } else {
+      await auth.signInWithPopup(googleProvider);
+      currentUser = auth.currentUser;
+      await loadUserProfile();
+      if(!userProfile || userProfile.displayName === 'guest'){
+        showUsernamePicker();
+      }
+    }
+  } catch(e){
+    if(e.code === 'auth/credential-already-in-use'){
+      const hasData = userProfile && ((userProfile.onTimeCompleted||0) > 0 || getLiveStreak() > 0);
+      if(hasData){
+        showForfeitPrompt(e.credential);
+      } else {
+        try{
+          await auth.signInWithCredential(e.credential);
+          currentUser = auth.currentUser;
+          await loadUserProfile();
+          if(!userProfile || userProfile.displayName === 'guest') showUsernamePicker();
+          showToast('Signed into your existing Spelldle account');
+        } catch(e2){ console.warn('Sign in failed:', e2); }
+      }
+    } else {
+      console.warn('Google sign in failed:', e);
     }
   }
+}
+
+async function handleSignOut(){
+  closeOverlay('profile-overlay');
+  try{
+    await auth.signOut();
+    userProfile = null;
+    updateAuthUI();
+    // Sign back in anonymously
+    await auth.signInAnonymously();
+  } catch(e){ console.warn('Sign out failed:', e); }
+}
+
+async function recordPastCompletion(dateStr){
+  if(!currentUser) return;
+  try{
+    const uid = currentUser.uid;
+    const compRef = db.collection('completions').doc(uid).collection('days').doc(dateStr);
+    const compSnap = await compRef.get();
+    if(compSnap.exists) return; // already recorded
+
+    await compRef.set({
+      completedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      onTime: false
+    });
+    calCompletions[dateStr] = 'late';
+    updateDateCheckmark();
+    // No streak update, no leaderboard — past completions don't count
+  } catch(e){ console.warn('recordPastCompletion error:', e); }
+}
+
+
+async function loadUserProfile(){
+  if(!currentUser) return;
+  try{
+    const snap = await db.collection('userProfiles').doc(currentUser.uid).get();
+    userProfile = snap.exists ? snap.data() : null;
+  } catch(e){ console.warn('loadUserProfile error:', e); }
+}
+
+function updateAuthUI(){
+  if(!currentUser) return;
+  const isAnon = currentUser.isAnonymous;
+  const hasProfile = userProfile && userProfile.displayName !== 'guest';
+
+  // Profile button — update first text node only, preserve htip
+  const profileBtn = document.getElementById('profile-btn');
+  if(profileBtn){
+    const firstNode = profileBtn.childNodes[0];
+    if(firstNode) firstNode.textContent = hasProfile ? (' ' + sanitizeDisplayName(userProfile.displayName) + ' ') : ' ✦ Profile ';
+  }
+
+  // Profile overlay
+  const avatar = document.getElementById('profile-avatar');
+  const name = document.getElementById('profile-name');
+  const type = document.getElementById('profile-type');
+  const stats = document.getElementById('profile-stats');
+  const googleBtn = document.getElementById('profile-google-btn');
+  const shareBtn = document.getElementById('profile-share-btn');
+  const divider = document.getElementById('profile-divider');
+  const signoutBtn = document.getElementById('profile-signout-btn');
+
+  if(!avatar || !googleBtn) return;
+  
+  // Force show google btn for anonymous regardless of other state
+
+  const isGoogleNoUsername = !isAnon && (!userProfile || userProfile.displayName === 'guest');
+
+  if(isAnon){
+    // Anonymous user
+    avatar.textContent = '✦';
+    name.textContent = 'Guest Wizard';
+    type.textContent = 'Anonymous — streaks not saved';
+    stats.style.display = 'none';
+    googleBtn.style.display = 'block';
+    document.getElementById('profile-setup-btn').style.display = 'none';
+    shareBtn.style.display = won ? 'block' : 'none';
+    divider.style.display = 'none';
+    signoutBtn.style.display = 'none';
+  } else if(isGoogleNoUsername){
+    // Google linked but no username yet
+    avatar.textContent = '✦';
+    name.textContent = 'Signed In';
+    type.textContent = 'Google Account — username not set';
+    stats.style.display = 'none';
+    googleBtn.style.display = 'none';
+    document.getElementById('profile-setup-btn').style.display = 'block';
+    shareBtn.style.display = won ? 'block' : 'none';
+    divider.style.display = 'block';
+    signoutBtn.style.display = 'block';
+  } else {
+    const sdn = sanitizeDisplayName(userProfile.displayName);
+    avatar.textContent = sdn[0].toUpperCase();
+    name.textContent = sdn;
+    type.textContent = 'Google Account';
+    stats.style.display = 'grid';
+    // Calculate live streak
+    const streak = getLiveStreak();
+    document.getElementById('stat-streak').textContent = streak;
+    document.getElementById('stat-longest').textContent = userProfile.longestStreak || 0;
+    document.getElementById('stat-completed').textContent = userProfile.onTimeCompleted || 0;
+    document.getElementById('stat-share').textContent = won ? '↗' : '—';
+    document.getElementById('stat-share').style.cursor = won ? 'pointer' : 'default';
+    if(won) document.getElementById('stat-share').onclick = shareResultFromProfile;
+    googleBtn.style.display = 'none';
+    document.getElementById('profile-setup-btn').style.display = 'none';
+    shareBtn.style.display = won ? 'block' : 'none';
+    divider.style.display = 'block';
+    signoutBtn.style.display = 'block';
+  }
+
+  // Streak under date pill
+  updateStreakDisplay();
+}
+
+function getLiveStreak(){
+  if(!userProfile) return 0;
+  const today = new Date().toISOString().split('T')[0];
+  const yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
+  const last = userProfile.lastCompletedDate;
+  if(last !== today && last !== yesterday) return 0;
+  return userProfile.currentStreak || 0;
+}
+
+
+function updateDateCheckmark(){
+  const el = document.getElementById('date-checkmark');
+  if(!el) return;
+  if(!currentUser) { el.className='date-check'; return; }
+  if(challengeSpell || customSeed !== null || devSpell) { el.className='date-check'; return; }
+  const dateStr = customDateStr || apiDate || new Date().toISOString().split('T')[0];
+  if(!dateStr) { el.className='date-check'; return; }
+  const completion = calCompletions[dateStr];
+  if(!completion){ el.className='date-check'; return; }
+  // Reset animation then show
+  el.className='date-check';
+  void el.offsetWidth;
+  el.className = 'date-check show ' + (completion === 'ontime' ? 'ontime' : 'late');
+}
+
+function updateStreakDisplay(){
+  const el = document.getElementById('streak-display');
+  if(!el) return;
+  if(!currentUser || currentUser.isAnonymous || !userProfile || userProfile.displayName === 'guest'){
+    el.textContent = '';
+    return;
+  }
+  const streak = getLiveStreak();
+  el.textContent = streak > 0 ? '🔥 ' + streak + ' day streak' : '';
+}
+
+function shareResultFromProfile(){
+  closeOverlay('profile-overlay');
+  shareResultWin();
+}
+
+// ─── Username picker ──────────────────────────────────────────────
+function showUsernamePicker(){
+  document.getElementById('username-input').value = '';
+  document.getElementById('username-status').textContent = '';
+  document.getElementById('username-status').style.color = 'var(--text-muted)';
+  document.getElementById('username-submit-btn').disabled = true;
+  document.getElementById('username-overlay').classList.add('show');
+}
+
+function closeUsernameOverlay(){
+  document.getElementById('username-overlay').classList.remove('show');
+}
+
+async function onUsernameInput(){
+  const val = document.getElementById('username-input').value.toLowerCase();
+  document.getElementById('username-input').value = val;
+  const status = document.getElementById('username-status');
+  const btn = document.getElementById('username-submit-btn');
+  btn.disabled = true;
+
+  if(val.length < 3){
+    status.textContent = val.length > 0 ? 'Too short — minimum 3 characters' : '';
+    status.style.color = '#d05050';
+    return;
+  }
+  if(val.length > 20){
+    status.textContent = 'Too long — maximum 20 characters';
+    status.style.color = '#d05050';
+    return;
+  }
+  if(!/^[a-z0-9_-]+$/.test(val)){
+    status.textContent = 'Only lowercase letters, numbers, - and _ allowed';
+    status.style.color = '#d05050';
+    return;
+  }
+  if(val === 'guest'){
+    status.textContent = 'That username is reserved';
+    status.style.color = '#d05050';
+    return;
+  }
+  if(containsBadWord(val)){
+    status.textContent = 'That username is not allowed';
+    status.style.color = '#d05050';
+    return;
+  }
+
+  status.textContent = 'Checking availability...';
+  status.style.color = 'var(--text-muted)';
+
+  clearTimeout(_usernameCheckTimeout);
+  _usernameCheckTimeout = setTimeout(async () => {
+    try{
+      const snap = await db.collection('usernames').doc(val).get();
+      if(snap.exists){
+        status.textContent = 'Username already taken';
+        status.style.color = '#d05050';
+        btn.disabled = true;
+      } else {
+        status.textContent = '✓ Available!';
+        status.style.color = 'var(--green-text)';
+        btn.disabled = false;
+      }
+    } catch(e){
+      status.textContent = 'Could not check availability';
+      status.style.color = '#d05050';
+    }
+  }, 400);
+}
+
+async function submitUsername(){
+  const username = document.getElementById('username-input').value.toLowerCase().trim();
+  const status = document.getElementById('username-status');
+  const btn = document.getElementById('username-submit-btn');
+
+  // Final pre-check before sending
+  if(username.length < 3 || username.length > 20){
+    status.textContent = 'Invalid username length.'; status.style.color = '#d05050'; return;
+  }
+  if(!/^[a-z0-9_-]+$/.test(username)){
+    status.textContent = 'Invalid characters in username.'; status.style.color = '#d05050'; return;
+  }
+  if(username === 'guest'){
+    status.textContent = 'That username is reserved.'; status.style.color = '#d05050'; return;
+  }
+  if(containsBadWord(username)){
+    status.textContent = 'That username is not allowed.'; status.style.color = '#d05050'; return;
+  }
+
+  btn.disabled = true;
+  status.textContent = 'Saving...';
+  status.style.color = 'var(--text-muted)';
+
+  try{
+    const uid = currentUser.uid;
+    const today = new Date().toISOString().split('T')[0];
+
+    // 1. Register username
+    await db.collection('usernames').doc(username).set({ uid });
+
+    // 2. Create or update userProfiles
+    const profileSnap = await db.collection('userProfiles').doc(uid).get();
+    if(profileSnap.exists){
+      // Doc exists — was guest from a win, just update displayName
+      await db.collection('userProfiles').doc(uid).update({ displayName: username });
+    } else {
+      // Doc doesn't exist — fresh Google user with no wins yet, create with zeroed stats
+      await db.collection('userProfiles').doc(uid).set({
+        displayName: username,
+        currentStreak: 0,
+        longestStreak: 0,
+        lastCompletedDate: null,
+        onTimeCompleted: 0
+      });
+    }
+
+    // Reload profile and invalidate leaderboard cache
+    await loadUserProfile();
+    _profilesCache = null; _profilesCacheTime = 0; _profilesFetchedAt = 0;
+    try{ localStorage.removeItem('lb_profiles'); }catch(e){}
+
+    // If they completed today before setting username, add to daily leaderboard now
+    const todayStr = new Date().toISOString().split('T')[0];
+    try{
+      const compSnap = await db.collection('completions').doc(uid).collection('days').doc(todayStr).get();
+      if(compSnap.exists && compSnap.data().onTime){
+        const lbRef = db.collection('dailyLeaderboard').doc(todayStr).collection('entries').doc(uid);
+        const lbSnap = await lbRef.get();
+        if(!lbSnap.exists){
+          await lbRef.set({
+            displayName: username,
+            completedAt: compSnap.data().completedAt
+          });
+          // Invalidate daily cache too
+          _dailyLbCache = null; _dailyLbCacheTime = 0; _dailyFetchedAt = 0;
+          try{ localStorage.removeItem('lb_daily'); }catch(e){}
+        }
+      }
+    }catch(e){ console.warn('leaderboard backfill error:', e); }
+
+    closeUsernameOverlay();
+    updateAuthUI();
+    showToast('Welcome, ' + sanitizeDisplayName(username) + '! ✦');
+  } catch(e){
+    console.warn('submitUsername error:', e);
+    if(e.code === 'permission-denied'){
+      status.textContent = 'Username taken — try another';
+    } else {
+      status.textContent = 'Failed to save. Please try again.';
+    }
+    status.style.color = '#d05050';
+    btn.disabled = false;
+  }
+}
+
+// ─── API ──────────────────────────────────────────────────────────
+async function fetchDailySpell(){
+  try{
+    const today=new Date().toISOString().split('T')[0];
+    const snap=await db.collection('dailyStats').doc(today).get();
+    if(snap.exists){
+      const spellName=snap.data().spellName;
+      const spell=SPELLS.find(s=>s.name===spellName);
+      if(spell){ apiDate=today; isApiDaily=true; return spell; }
+      else{ console.warn('Daily spell not found in SPELLS array:', spellName); }
+    }
+  }catch(e){console.warn('fetchDailySpell error:',e);}
   return null;
 }
 
 async function fetchPastSpell(dateStr){
-  const data=await apiGet({action:'past',date:dateStr});
-  if(data&&data.success&&data.spell){
-    const spell=SPELLS.find(s=>s.name===data.spell);
-    if(spell) return spell;
-  }
-  return null;
-}
-
-async function fetchFirstDate(){
-  const data=await apiGet({action:'firstdate'});
-  if(data&&data.success&&data.firstDate) return data.firstDate;
+  try{
+    const snap=await db.collection('dailyStats').doc(dateStr).get();
+    if(snap.exists){
+      const spell=SPELLS.find(s=>s.name===snap.data().spellName);
+      if(spell) return spell;
+    }
+  }catch(e){console.warn('fetchPastSpell error:',e);}
   return null;
 }
 
@@ -1003,20 +1596,105 @@ async function fetchCompletions(){
   if(_fetchingCompletions) return null;
   _fetchingCompletions=true;
   try{
-    const data=await apiGet({action:'completions'});
-    return (data&&data.success) ? data.count : null;
-  } finally { _fetchingCompletions=false; }
+    const today=new Date().toISOString().split('T')[0];
+    const snap=await db.collection('dailyStats').doc(today).get();
+    return snap.exists ? (snap.data().count||0) : 0;
+  }catch(e){console.warn('fetchCompletions error:',e); return null;}
+  finally{ _fetchingCompletions=false; }
 }
 
 async function postCompletion(){
-  await apiPost({action:'complete'});
-  const count=await fetchCompletions();
-  if(count!==null){
-    completionCount=count;
-    updateCompletionDisplay();
-    const wc=document.getElementById('win-completion');
-    if(wc) wc.textContent=count===1?'1 wizard identified today\'s spell':`${count} wizards identified today\'s spell`;
-  }
+  try{
+    const today=new Date().toISOString().split('T')[0];
+
+    // 1. Increment daily count
+    await db.collection('dailyStats').doc(today).update({count:firebase.firestore.FieldValue.increment(1)});
+    const count=await fetchCompletions();
+    if(count!==null){
+      completionCount=count;
+      updateCompletionDisplay();
+      const wc=document.getElementById('win-completion');
+      if(wc) wc.textContent=count===1?'1 wizard identified today\'s spell':`${count} wizards identified today\'s spell`;
+    }
+
+    // 2. Record completion if logged in
+    if(currentUser){
+      await recordCompletion(today);
+    }
+  }catch(e){console.warn('postCompletion error:',e);}
+}
+
+async function recordCompletion(today){
+  try{
+    const uid = currentUser.uid;
+
+    // Write to completions — create only, immutable
+    const compRef = db.collection('completions').doc(uid).collection('days').doc(today);
+    const compSnap = await compRef.get();
+    if(compSnap.exists) return; // already completed today
+
+    await compRef.set({
+      completedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      onTime: true // postCompletion only called for today's daily
+    });
+
+    // Update or create userProfiles
+    const profileRef = db.collection('userProfiles').doc(uid);
+    const profileSnap = await profileRef.get();
+    const yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
+
+    if(!profileSnap.exists){
+      // Create new profile
+      // Always create with 'guest' — username is set separately via submitUsername
+      await profileRef.set({
+        displayName: 'guest',
+        currentStreak: 1,
+        longestStreak: 1,
+        lastCompletedDate: today,
+        onTimeCompleted: 1
+      });
+    } else {
+      const p = profileSnap.data();
+      const wasYesterday = p.lastCompletedDate === yesterday;
+      const newStreak = wasYesterday ? p.currentStreak + 1 : 1;
+      const newLongest = Math.max(p.longestStreak || 0, newStreak);
+      await profileRef.update({
+        currentStreak: newStreak,
+        longestStreak: newLongest,
+        lastCompletedDate: today,
+        onTimeCompleted: (p.onTimeCompleted || 0) + 1
+      });
+    }
+
+    // Reload profile and update UI
+    await loadUserProfile();
+    calCompletions[today] = 'ontime';
+    updateAuthUI();
+    updateDateCheckmark();
+    // Invalidate leaderboard caches so next open gets fresh data
+    _profilesCache = null; _profilesCacheTime = 0; _profilesFetchedAt = 0;
+    _dailyLbCache = null; _dailyLbCacheTime = 0; _dailyFetchedAt = 0;
+    try{ localStorage.removeItem('lb_profiles'); localStorage.removeItem('lb_daily'); }catch(e){}
+    // Update win overlay streak prompt with fresh streak
+    const sp = document.getElementById('win-streak-prompt');
+    if(sp && sp.style.display !== 'none'){
+      const newStreak = getLiveStreak();
+      sp.querySelector('.win-streak-prompt-text').textContent = '🔥 ' + newStreak + ' day streak — Save it →';
+    }
+
+    // Write to leaderboard if Google user with username
+    if(!currentUser.isAnonymous && userProfile && userProfile.displayName && userProfile.displayName !== 'guest'){
+      const lbRef = db.collection('dailyLeaderboard').doc(today).collection('entries').doc(uid);
+      const lbSnap = await lbRef.get();
+      if(!lbSnap.exists){
+        await lbRef.set({
+          displayName: userProfile.displayName,
+          completedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      }
+    }
+
+  }catch(e){console.warn('recordCompletion error:',e);}
 }
 
 function updateCompletionDisplay(){
@@ -1035,15 +1713,23 @@ async function submitBugReport(){
   const status=document.getElementById('bug-status');
   if(!description){status.textContent='Please add a description.';status.style.color='#d05050';return;}
   status.textContent='Submitting...';status.style.color='var(--text-muted)';
-  const res=await apiPost({action:'bug',type:'game',spellName:'',issueType,description});
-  if(res&&res.success){
+  try{
+    await db.collection('bugReports').add({
+      timestamp:firebase.firestore.FieldValue.serverTimestamp(),
+      type:'game',
+      spellName:'',
+      issueType,
+      description,
+      userId:currentUser?currentUser.uid:null
+    });
     status.textContent='Thanks! Report submitted.';status.style.color='var(--green-text)';
     document.getElementById('bug-description').value='';
     setTimeout(()=>closeOverlay('bug-overlay'),1500);
-  } else {
+  }catch(e){
     status.textContent='Failed to submit. Please try again.';status.style.color='#d05050';
   }
 }
+
 
 // ─── Toast ────────────────────────────────────────────────────────
 function showToast(msg){
@@ -1195,7 +1881,6 @@ let apiDate=null; // date string from API e.g. "2026-04-02"
 let completionCount=null;
 let isApiDaily=false; // true when playing today's API daily
 let _fetchingCompletions=false;
-const API_URL='https://script.google.com/macros/s/AKfycbwPtdVCmKiboeZUqwOThYCs8mIiLaNP2-QXat38p0FC8QKtbUmXupXizaOWMoCDNtXuXQ/exec';
 let guesses=[],won=false,acIdx=-1;
 let filters=[false,false,false]; // all off by default
 let schoolFilter=new Set();
@@ -1210,37 +1895,7 @@ const HINT_THRESHOLDS=[3,6,9];
 let hintRevealed={}; // col key -> answer value
 
 // ─── Load ─────────────────────────────────────────────────────────
-async function loadSpells(){
-  const bar=document.getElementById('loading-bar');
-  const txt=document.getElementById('loading-txt');
-  try{
-    const results=await Promise.all(
-      SCHOOL_FILES.map(async(school,i)=>{
-        txt.textContent=`Loading ${school} spells...`;
-        const res=await fetch(`assets/${school}/${school}Spells.json`);
-        if(!res.ok)throw new Error(`Failed to load ${school}Spells.json (${res.status})`);
-        const data=await res.json();
-        bar.style.width=`${((i+1)/SCHOOL_FILES.length)*100}%`;
-        return data;
-      })
-    );
-    SPELLS=results.flat();
-    bar.style.width='100%';
-    txt.textContent=`${SPELLS.length} spells loaded`;
-    setTimeout(()=>{
-      document.getElementById('loading-screen').classList.add('done');
-      document.getElementById('app').style.display='block';
-      initGame();
-    },400);
-  }catch(err){
-    txt.innerHTML='';
-    document.querySelector('.loading-bar-wrap').style.display='none';
-    const e=document.createElement('div');
-    e.className='loading-err';
-    e.textContent=`Error: ${err.message}. Make sure JSON files are in assets/{school}/ and the game is served from a web server.`;
-    document.getElementById('loading-screen').appendChild(e);
-  }
-}
+
 
 // ─── Date/seed ────────────────────────────────────────────────────
 function dateSeed(d){return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();}
@@ -1257,38 +1912,7 @@ function getAnswer(){
 }
 
 // ─── Init ─────────────────────────────────────────────────────────
-function initGame(resetAll=true){
-  if(resetAll){
-    isApiDaily=false;
-    completionCount=null;
-    customDateStr=null;
-    ANSWER=getAnswer();
-    guesses=[];won=false;acIdx=-1;
-    hintsUsed=0;hintRevealed={};
-    hideShareBtn();
-    document.getElementById('cast-btn').disabled=false;
-    document.getElementById('spell-input').disabled=false;
-    document.getElementById('err').textContent='';
-  }
-  // If no apiDate yet, show UTC date immediately as placeholder
-  if(!apiDate && !customDateStr && !devSpell && !challengeSpell && customSeed===null){
-    const utcStr=new Date().toISOString().split('T')[0];
-    const [y,m,da]=utcStr.split('-').map(Number);
-    const d=new Date(Date.UTC(y,m-1,da));
-    const txt=document.getElementById('date-pill-text');
-    if(txt) txt.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).toUpperCase();
-  } else {
-    updateDatePill();
-  }
-  renderFilters();
-  renderSchoolFilters();
-  updateFilterFooter();
-  updateHintBar();
-  renderBoard();
-  renderMobileCards();
-  loadSettings();
-  updateCount();
-}
+
 
 function updateDatePill(){
   const txt=document.getElementById('date-pill-text');
@@ -1357,6 +1981,7 @@ function targetMatch(gEffects,aEffects){
 
 // ─── Filter ───────────────────────────────────────────────────────
 function getFilteredSpells(){
+  if(!ANSWER) return [...SPELLS];
   let pool=[...SPELLS];
   if(schoolFilter.size>0)pool=pool.filter(s=>schoolFilter.has(s.school));
 
@@ -1518,10 +2143,19 @@ function attachTooltip(el,spell){
 }
 
 // ─── Overlays ─────────────────────────────────────────────────────
-function openOverlay(id){document.getElementById(id).classList.add('show');}
+function openOverlay(id){
+  if(id==='profile-overlay'){
+    updateAuthUI();
+    // Fallback: if no profile yet, always show google btn
+    const gb=document.getElementById('profile-google-btn');
+    if(gb && (!currentUser || currentUser.isAnonymous)) gb.style.display='block';
+  }
+  document.getElementById(id).classList.add('show');
+}
 function closeOverlay(id,e){
   if(e&&!e.target.classList.contains('overlay-bg'))return;
   document.getElementById(id).classList.remove('show');
+  if(id==='lb-overlay') clearInterval(_lbRefreshInterval);
 }
 
 // ─── Win ─────────────────────────────────────────────────────────
@@ -1530,6 +2164,18 @@ function showWin(){
   // Always clear completion count — repopulate only if isApiDaily via postCompletion
   const wc=document.getElementById('win-completion');
   if(wc)wc.textContent='';
+  const el=document.getElementById('date-checkmark');
+  if(el)el.className='date-check';
+  // Show streak save prompt for anonymous users with streak > 2
+  const sp=document.getElementById('win-streak-prompt');
+  if(sp){
+    const streak = userProfile ? getLiveStreak() : 0;
+    const showPrompt = currentUser && currentUser.isAnonymous && isApiDaily && streak > 2;
+    sp.style.display = showPrompt ? 'block' : 'none';
+    if(showPrompt){
+      sp.querySelector('.win-streak-prompt-text').textContent = '🔥 ' + streak + ' day streak — Save it →';
+    }
+  }
   document.getElementById('win-spell-name').textContent=s.name;
   document.getElementById('win-school').textContent=s.school.toUpperCase();
   document.getElementById('win-school').style.color=SCHOOL_COLORS[s.school]||'#888';
@@ -1537,7 +2183,9 @@ function showWin(){
   document.getElementById('win-guesses').textContent=`Identified in ${guesses.length} ${guesses.length===1?'guess':'guesses'}`;
   const ia=document.getElementById('win-img-area');
   ia.innerHTML=s.image?`<img src="${s.image}" class="win-card-img" onerror="this.parentElement.innerHTML='<div class=win-card-img-ph>✦</div>'"/>`:`<div class="win-card-img-ph">✦</div>`;
-  spawnConfetti();openOverlay('win-overlay');showShareBtn();if(isApiDaily)postCompletion();
+  spawnConfetti();openOverlay('win-overlay');showShareBtn();
+  if(isApiDaily) postCompletion();
+  else if(currentUser && customDateStr) recordPastCompletion(customDateStr);
 }
 function spawnConfetti(){
   const c=document.getElementById('confetti');c.innerHTML='';
@@ -1575,6 +2223,8 @@ function resetGameState(){
   updateCompletionDisplay();
   const wc=document.getElementById('win-completion');
   if(wc)wc.textContent='';
+  const el=document.getElementById('date-checkmark');
+  if(el)el.className='date-check';
 }
 
 function lockDatePill(loading=true){
@@ -1594,26 +2244,349 @@ function lockDatePill(loading=true){
   if(btn)btn.disabled=loading;
 }
 
+
+
+
+// ─── Leaderboard ──────────────────────────────────────────────────
+const LEADERBOARD_CACHE_MS = 3 * 60 * 60 * 1000; // 3 hours
+let _profilesCache = null;
+let _profilesCacheTime = 0;
+let _dailyLbCache = null;
+let _dailyLbCacheTime = 0;
+let _profilesFetchedAt = 0; // when fetched THIS session
+let _dailyFetchedAt = 0;   // when fetched THIS session
+
+// Invalidate daily lb cache if it's from a previous date
+try{
+  const d = localStorage.getItem('lb_daily');
+  if(d){
+    const {date} = JSON.parse(d);
+    const today = new Date().toISOString().split('T')[0];
+    if(date !== today) localStorage.removeItem('lb_daily');
+  }
+}catch(e){}
+let _currentLbTab = 'daily';
+let _lbRefreshInterval = null;
+const LB_TAB_DESCS = {
+  daily: "Who solved today's spell first",
+  streak: "Current active streaks",
+  longest: "All-time longest streaks",
+  completed: "Most on-time daily completions"
+};
+
+loadLbFromStorage();
+
+async function openLeaderboard(){
+  openOverlay('lb-overlay');
+  const guestNote = document.getElementById('lb-guest-note');
+  const noUsername = !userProfile || userProfile.displayName === 'guest';
+  if(guestNote){
+    if(currentUser && !currentUser.isAnonymous && noUsername){
+      guestNote.textContent = 'Set a username to appear on leaderboards →';
+      guestNote.onclick = () => { closeOverlay('lb-overlay'); showUsernamePicker(); };
+      guestNote.style.display = 'block';
+    } else if(!currentUser || currentUser.isAnonymous){
+      guestNote.textContent = 'Sign in with Google to appear on leaderboards →';
+      guestNote.onclick = () => { closeOverlay('lb-overlay'); openOverlay('profile-overlay'); };
+      guestNote.style.display = 'block';
+    } else {
+      guestNote.style.display = 'none';
+    }
+  }
+  await renderLeaderboard();
+  startRefreshTimer();
+}
+
+function switchLbTab(tab){
+  _currentLbTab = tab;
+  ['daily','streak','longest','completed'].forEach(t => {
+    document.getElementById('lb-tab-'+t).classList.toggle('active', t===tab);
+  });
+  document.getElementById('lb-tab-desc').textContent = LB_TAB_DESCS[tab];
+  updateRefreshInfo();
+  renderLeaderboard();
+}
+
+function loadLbFromStorage(){
+  try{
+    const p = localStorage.getItem('lb_profiles');
+    if(p){ const {data,time} = JSON.parse(p); if(Date.now()-time < LEADERBOARD_CACHE_MS){ _profilesCache=data; _profilesCacheTime=time; } }
+    const d = localStorage.getItem('lb_daily');
+    if(d){ const {data,time} = JSON.parse(d); if(Date.now()-time < LEADERBOARD_CACHE_MS){ _dailyLbCache=data; _dailyLbCacheTime=time; } }
+  }catch(e){}
+}
+
+async function fetchProfiles(){
+  const now = Date.now();
+  if(_profilesCache && now - _profilesCacheTime < LEADERBOARD_CACHE_MS) return _profilesCache;
+  const snap = await db.collection('userProfiles').get();
+  _profilesCache = snap.docs.map(d => ({id:d.id, ...d.data()}));
+  _profilesCacheTime = now;
+  _profilesFetchedAt = now;
+  try{ localStorage.setItem('lb_profiles', JSON.stringify({data:_profilesCache, time:_profilesCacheTime})); }catch(e){}
+  return _profilesCache;
+}
+
+async function fetchDailyLb(){
+  const now = Date.now();
+  if(_dailyLbCache && now - _dailyLbCacheTime < LEADERBOARD_CACHE_MS) return _dailyLbCache;
+  const today = new Date().toISOString().split('T')[0];
+  const snap = await db.collection('dailyLeaderboard').doc(today)
+    .collection('entries').orderBy('completedAt').limit(50).get();
+  _dailyLbCache = snap.docs.map(d => ({id:d.id, ...d.data()}));
+  _dailyLbCacheTime = now;
+  _dailyFetchedAt = now;
+  try{ localStorage.setItem('lb_daily', JSON.stringify({data:_dailyLbCache, time:_dailyLbCacheTime, date:today})); }catch(e){}
+  return _dailyLbCache;
+}
+
+function getLiveStreakFromProfile(p){
+  const today = new Date().toISOString().split('T')[0];
+  const yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
+  if(p.lastCompletedDate !== today && p.lastCompletedDate !== yesterday) return 0;
+  return p.currentStreak || 0;
+}
+
+function formatLbTime(ts){
+  if(!ts) return '';
+  let d;
+  if(ts.toDate) d = ts.toDate();
+  else if(ts.seconds) d = new Date(ts.seconds * 1000 + Math.floor((ts.nanoseconds||0)/1e6));
+  else d = new Date(ts);
+  if(isNaN(d)) return '';
+  return d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'UTC',hour12:true}) + ' UTC';
+}
+
+async function renderLeaderboard(){
+  const body = document.getElementById('lb-body');
+  body.innerHTML = '<div class="lb-loading">Loading...</div>';
+  try{
+    if(_currentLbTab === 'daily'){
+      const entries = await fetchDailyLb();
+      if(!entries.length){ body.innerHTML='<div class="lb-empty">No completions yet today</div>'; return; }
+      body.innerHTML = entries.map((e,i) => {
+        const isMe = currentUser && e.id === currentUser.uid;
+        const rankCls = i===0?'gold':i===1?'silver':i===2?'bronze':'';
+        return `<div class="lb-row ${isMe?'me':''}">
+          <div class="lb-rank ${rankCls}">#${i+1}</div>
+          <div class="lb-name ${isMe?'me':''}">${sanitizeDisplayName(e.displayName)}</div>
+          <div class="lb-val">${formatLbTime(e.completedAt)}</div>
+        </div>`;
+      }).join('');
+    } else {
+      const profiles = await fetchProfiles();
+      const today = new Date().toISOString().split('T')[0];
+      const yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
+
+      let sorted;
+      if(_currentLbTab === 'streak'){
+        sorted = profiles
+          /* .filter(p => p.displayName !== 'guest') */
+          .filter(p => p.displayName !== 'guest')
+          .map(p => ({...p, liveStreak: getLiveStreakFromProfile(p)}))
+          .filter(p => p.liveStreak > 0)
+          .sort((a,b) => b.liveStreak - a.liveStreak)
+          .slice(0,50);
+      } else if(_currentLbTab === 'longest'){
+        sorted = profiles
+          .filter(p => p.displayName !== 'guest' && (p.longestStreak||0) > 0)
+          .sort((a,b) => (b.longestStreak||0) - (a.longestStreak||0))
+          .slice(0,50);
+      } else {
+        sorted = profiles
+          .filter(p => p.displayName !== 'guest' && (p.onTimeCompleted||0) > 0)
+          .sort((a,b) => (b.onTimeCompleted||0) - (a.onTimeCompleted||0))
+          .slice(0,50);
+      }
+
+      if(!sorted.length){ body.innerHTML='<div class="lb-empty">No entries yet</div>'; return; }
+
+      let rank = 1;
+      body.innerHTML = sorted.map((p,i) => {
+        const isMe = currentUser && p.id === currentUser.uid;
+        if(i > 0){
+          const prev = sorted[i-1];
+          const prevVal = _currentLbTab==='streak' ? prev.liveStreak : _currentLbTab==='longest' ? (prev.longestStreak||0) : (prev.onTimeCompleted||0);
+          const curVal = _currentLbTab==='streak' ? p.liveStreak : _currentLbTab==='longest' ? (p.longestStreak||0) : (p.onTimeCompleted||0);
+          if(curVal !== prevVal) rank = i + 1;
+        }
+        const rankCls = rank===1?'gold':rank===2?'silver':rank===3?'bronze':'';
+        let val;
+        if(_currentLbTab === 'streak') val = '🔥 ' + p.liveStreak + ' days';
+        else if(_currentLbTab === 'longest') val = '🏆 ' + (p.longestStreak||0) + ' days';
+        else val = '✦ ' + (p.onTimeCompleted||0);
+        return `<div class="lb-row ${isMe?'me':''}">
+          <div class="lb-rank ${rankCls}">#${rank}</div>
+          <div class="lb-name ${isMe?'me':''}">${sanitizeDisplayName(p.displayName)}</div>
+          <div class="lb-val">${val}</div>
+        </div>`;
+      }).join('');
+    }
+  } catch(e){
+    console.warn('Leaderboard error:', e);
+    body.innerHTML = '<div class="lb-empty">Failed to load leaderboard</div>';
+  }
+}
+
+function startRefreshTimer(){
+  clearInterval(_lbRefreshInterval);
+  updateRefreshInfo();
+  _lbRefreshInterval = setInterval(updateRefreshInfo, 60000); // update every minute
+}
+
+function updateRefreshInfo(){
+  const el = document.getElementById('lb-refresh-info');
+  if(!el) return;
+  const fetchedAt = _currentLbTab === 'daily' ? _dailyFetchedAt : _profilesFetchedAt;
+  const cacheTime = _currentLbTab === 'daily' ? _dailyLbCacheTime : _profilesCacheTime;
+  if(!fetchedAt){
+    // Not fetched this session yet — show when cache expires from localStorage
+    if(!cacheTime){ el.textContent = ''; return; }
+    const remaining = Math.max(0, Math.round((LEADERBOARD_CACHE_MS - (Date.now() - cacheTime)) / 60000));
+    el.textContent = remaining > 0 ? `Refreshes in ${remaining} min` : 'Ready to refresh';
+    return;
+  }
+  const elapsed = Date.now() - fetchedAt;
+  const remaining = Math.max(0, Math.round((LEADERBOARD_CACHE_MS - (Date.now() - cacheTime)) / 60000));
+  const elapsedMin = Math.round(elapsed / 60000);
+  el.textContent = remaining > 0
+    ? `Fetched ${elapsedMin > 0 ? elapsedMin + ' min ago · ' : 'just now · '}Refreshes in ${remaining} min`
+    : 'Ready to refresh';
+}
+
+
+let _forfeitCredential = null;
+
+async function showForfeitPrompt(credential){
+  _forfeitCredential = credential;
+  const streak = getLiveStreak();
+  const completed = userProfile ? (userProfile.onTimeCompleted || 0) : 0;
+  const stats = document.getElementById('forfeit-stats');
+  if(stats){
+    let lines = [];
+    if(streak > 0) lines.push('🔥 ' + streak + ' day current streak');
+    if(completed > 0) lines.push('✦ ' + completed + ' on-time completion' + (completed !== 1 ? 's' : ''));
+    stats.innerHTML = lines.join('<br>') || 'No significant progress';
+  }
+  document.getElementById('forfeit-overlay').classList.add('show');
+}
+
+async function confirmForfeit(){
+  closeOverlay('forfeit-overlay');
+  if(!_forfeitCredential) return;
+  try{
+    await auth.signInWithCredential(_forfeitCredential);
+    currentUser = auth.currentUser;
+    await loadUserProfile();
+    if(!userProfile || userProfile.displayName === 'guest') showUsernamePicker();
+    showToast('Signed into your existing Spelldle account');
+  } catch(e){ console.warn('Forfeit sign in failed:', e); }
+  _forfeitCredential = null;
+}
+
+// ─── Calendar ─────────────────────────────────────────────────────
+const LAUNCH_DATE = '2026-03-26';
+let calYear, calMonth;
+let calCompletions = {};
+
 function openDatePicker(){
-  const d=new Date();
-  document.getElementById('today-date-sub').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-  const pad=n=>String(n).padStart(2,'0');
-  const maxDate=new Date().toISOString().split('T')[0];
-  const inp=document.getElementById('date-input');
-  inp.max=maxDate;
-  if(window._firstDate) inp.min=window._firstDate;
-  if(!inp.value)inp.value=maxDate;
-  // Clear challenge so date picker can freely switch spell
-  // devSpell intentionally NOT cleared here — dev mode stays locked to URL param
-  challengeSpell=null;
+  // Default to the date currently being viewed, not today
+  const activeStr = customDateStr || apiDate || new Date().toISOString().split('T')[0];
+  const [ay, am] = activeStr.split('-').map(Number);
+  calYear = ay;
+  calMonth = am - 1;
+  challengeSpell = null;
+  const [y,m,da] = activeStr.split('-').map(Number);
+  const dt = new Date(Date.UTC(y,m-1,da));
+  document.getElementById('today-date-sub').textContent =
+    dt.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
+  loadCalCompletions().then(() => renderCalendar());
   openOverlay('date-overlay');
 }
+
+async function loadCalCompletions(){
+  calCompletions = {};
+  if(!currentUser) return;
+  try{
+    const snap = await db.collection('completions').doc(currentUser.uid).collection('days').get();
+    snap.forEach(doc => { calCompletions[doc.id] = doc.data().onTime ? 'ontime' : 'late'; });
+    const legend = document.getElementById('cal-legend');
+    if(legend) legend.style.display = Object.keys(calCompletions).length ? 'flex' : 'none';
+    updateDateCheckmark();
+  } catch(e){ console.warn('loadCalCompletions:', e); }
+}
+
+function calNav(dir){
+  calMonth += dir;
+  if(calMonth < 0){ calMonth = 11; calYear--; }
+  if(calMonth > 11){ calMonth = 0; calYear++; }
+  renderCalendar();
+}
+
+function renderCalendar(){
+  const todayStr = new Date().toISOString().split('T')[0];
+  const [ly,lm,ld] = LAUNCH_DATE.split('-').map(Number);
+  const launchMs = Date.UTC(ly, lm-1, ld);
+
+  const labelDate = new Date(Date.UTC(calYear, calMonth, 1));
+  document.getElementById('cal-month-label').textContent =
+    labelDate.toLocaleDateString('en-US',{month:'long',year:'numeric',timeZone:'UTC'}).toUpperCase();
+
+  const prevBtn = document.getElementById('cal-prev');
+  const nextBtn = document.getElementById('cal-next');
+  const prevYear = calMonth === 0 ? calYear-1 : calYear;
+  const prevMonth = calMonth === 0 ? 11 : calMonth-1;
+  prevBtn.disabled = Date.UTC(prevYear, prevMonth, 1) < Date.UTC(ly, lm-1, 1);
+  const now = new Date();
+  nextBtn.disabled = calYear > now.getUTCFullYear() ||
+    (calYear === now.getUTCFullYear() && calMonth >= now.getUTCMonth());
+
+  const daysInMonth = new Date(Date.UTC(calYear, calMonth+1, 0)).getUTCDate();
+  const firstDow = new Date(Date.UTC(calYear, calMonth, 1)).getUTCDay();
+  const todayMs = new Date(todayStr).getTime();
+
+  const container = document.getElementById('cal-days');
+  container.innerHTML = '';
+  for(let i = 0; i < firstDow; i++){
+    const empty = document.createElement('div');
+    empty.className = 'cal-day cal-day-empty';
+    container.appendChild(empty);
+  }
+
+  for(let d = 1; d <= daysInMonth; d++){
+    const dateStr = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    const dateMs = Date.UTC(calYear, calMonth, d);
+    const isToday = dateStr === todayStr;
+    const isFuture = dateMs > Date.UTC(...todayStr.split('-').map((n,i)=>i===1?Number(n)-1:Number(n)));
+    const isBeforeLaunch = dateMs < launchMs;
+    const completion = calCompletions[dateStr];
+
+    const cell = document.createElement('div');
+    let cls = 'cal-day';
+    if(isFuture || isBeforeLaunch) cls += ' cal-day-disabled';
+    else if(completion === 'ontime') cls += ' cal-day-ontime';
+    else if(completion === 'late') cls += ' cal-day-late';
+    if(isToday) cls += ' cal-day-today';
+    cell.className = cls;
+    cell.textContent = d;
+
+    if(!isFuture && !isBeforeLaunch){
+      cell.onclick = () => {
+        closeOverlay('date-overlay');
+        if(isToday) setTodaySpell();
+        else setDateSpell(dateStr);
+      };
+    }
+    container.appendChild(cell);
+  }
+}
+
 function setRandomSpell(){
   resetGameState();
   customSeed=Math.floor(Math.random()*999999);
   closeOverlay('date-overlay');
   ANSWER=getAnswer();
-  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();
+  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();
 }
 async function setTodaySpell(){
   resetGameState();
@@ -1623,11 +2596,11 @@ async function setTodaySpell(){
   if(spell){ANSWER=spell;isApiDaily=true;}
   else{ANSWER=getDailyAnswer();}
   lockDatePill(false);
-  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();
+  renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();
   fetchCompletions().then(count=>{if(count!==null){completionCount=count;updateCompletionDisplay();}});
 }
-async function setDateSpell(){
-  const val=document.getElementById('date-input').value;
+async function setDateSpell(dateStr){
+  const val = dateStr || new Date().toISOString().split('T')[0];
   if(!val)return;
   closeOverlay('date-overlay');
   resetGameState();
@@ -1639,7 +2612,7 @@ async function setDateSpell(){
     if(spell){ANSWER=spell;isApiDaily=true;}
     else{ANSWER=getDailyAnswer();}
     lockDatePill(false);
-    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();
+    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();
     fetchCompletions().then(count=>{if(count!==null){completionCount=count;updateCompletionDisplay();}});
   } else {
     // Past date
@@ -1652,7 +2625,7 @@ async function setDateSpell(){
       ANSWER=getAnswer();
     }
     lockDatePill(false);
-    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();
+    renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();
   }
 }
 
@@ -1726,6 +2699,7 @@ function useHint(colKey){
 
 // ─── Submit ───────────────────────────────────────────────────────
 function submitGuess(){
+  if(!ANSWER){showToast("Spell not loaded yet, please wait.");return;}
   if(won)return;
   const input=document.getElementById('spell-input');
   const name=input.value.trim();
@@ -2122,7 +3096,7 @@ function attachInputEvents(){
   });
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'){
-      ['win-overlay','date-overlay','hint-overlay','help-overlay','bug-overlay'].forEach(id=>document.getElementById(id).classList.remove('show'));
+      ['win-overlay','date-overlay','hint-overlay','help-overlay','bug-overlay','profile-overlay','privacy-overlay','terms-overlay','lb-overlay','forfeit-overlay'].forEach(id=>document.getElementById(id).classList.remove('show'));
     }
   });
   document.addEventListener('touchstart',e=>{
@@ -2130,9 +3104,6 @@ function attachInputEvents(){
   });
 }
 
-loadSpells().then(()=>{}).catch(()=>{});
-// attachInputEvents is called inside initGame after load
-const _origInit=initGame;
 function initGame(resetAll=true){
   if(resetAll){
     isApiDaily=false;
@@ -2149,7 +3120,16 @@ function initGame(resetAll=true){
     const err=document.getElementById('err');
     if(err)err.textContent='';
   }
-  updateDatePill();
+  // Show UTC date immediately as placeholder if apiDate not set yet
+  if(!apiDate && !customDateStr && !devSpell && !challengeSpell && customSeed===null){
+    const utcStr=new Date().toISOString().split('T')[0];
+    const [y,m,da]=utcStr.split('-').map(Number);
+    const d=new Date(Date.UTC(y,m-1,da));
+    const txt=document.getElementById('date-pill-text');
+    if(txt) txt.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).toUpperCase();
+  } else {
+    updateDatePill();
+  }
   renderFilters();
   renderSchoolFilters();
   updateFilterFooter();
@@ -2199,6 +3179,9 @@ async function loadSpells(){
 
     document.getElementById('loading-screen').classList.add('done');
     document.getElementById('app').style.display='block';
+    // Handle hash deep links
+    if(window.location.hash==='#privacy') openOverlay('privacy-overlay');
+    if(window.location.hash==='#terms') openOverlay('terms-overlay');
 
     // Immediately show date in pill — don't wait for initGame
     {
@@ -2212,6 +3195,7 @@ async function loadSpells(){
     }
 
     setupChallengeAC();
+    initAuth(); // silent anonymous sign-in
     const _invalidChallenge = !challengeValid;
     if(_invalidChallenge) challengeValid=true;
 
@@ -2233,6 +3217,7 @@ async function loadSpells(){
       loadSettings();
     }
     updateDatePill();
+    updateDateCheckmark();
     if(_invalidChallenge) showToast("Challenge link was invalid — playing today\'s daily instead");
   }catch(err){
     txt.innerHTML='';
@@ -2244,7 +3229,124 @@ async function loadSpells(){
   }
 }
 
+
+window.addEventListener('hashchange', () => {
+  if(window.location.hash === '#privacy') openOverlay('privacy-overlay');
+  if(window.location.hash === '#terms') openOverlay('terms-overlay');
+});
 loadSpells();
 </script>
+
+<div class="overlay-bg" id="lb-overlay" onclick="closeOverlay('lb-overlay',event)">
+  <div class="lb-card">
+    <div class="lb-header">
+      <div class="lb-title">✦ Leaderboards</div>
+      <div class="lb-guest-note" id="lb-guest-note" style="display:none" onclick="closeOverlay('lb-overlay');openOverlay('profile-overlay')">
+        Sign in with Google to appear on leaderboards →
+      </div>
+      <div class="lb-tabs">
+        <div class="lb-tab active" id="lb-tab-daily" onclick="switchLbTab('daily')">Daily</div>
+        <div class="lb-tab" id="lb-tab-streak" onclick="switchLbTab('streak')">Streak</div>
+        <div class="lb-tab" id="lb-tab-longest" onclick="switchLbTab('longest')">Longest</div>
+        <div class="lb-tab" id="lb-tab-completed" onclick="switchLbTab('completed')">Completed</div>
+      </div>
+    </div>
+    <div class="lb-tab-desc" id="lb-tab-desc">Who solved today's spell first</div>
+    <div class="lb-body" id="lb-body">
+      <div class="lb-loading">Loading...</div>
+    </div>
+    <div class="lb-footer">
+      <div class="lb-refresh-info" id="lb-refresh-info"></div>
+      <button class="lb-close" onclick="closeOverlay('lb-overlay')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay-bg" id="forfeit-overlay">
+  <div class="settings-card" style="width:380px">
+    <div class="settings-title">⚠ Account Already Exists</div>
+    <div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:14px;line-height:1.7">
+      This Google account already has a Spelldle 101 profile. Signing in will use that account instead.
+    </div>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:16px">
+      <div style="font-family:'Cinzel',serif;font-size:.62rem;color:var(--text-muted);letter-spacing:.06em;margin-bottom:6px">YOUR ANONYMOUS PROGRESS</div>
+      <div id="forfeit-stats" style="font-size:.82rem;color:var(--text-secondary);line-height:1.8"></div>
+      <div style="font-size:.72rem;color:#d05050;margin-top:6px;font-style:italic">This will be lost if you continue.</div>
+    </div>
+    <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:14px;font-style:italic">
+      To keep your anonymous progress, sign in with a Google account not previously used on Spelldle 101.
+    </div>
+    <div style="display:flex;gap:8px">
+      <button onclick="confirmForfeit()" style="flex:1;background:#a32d2d;color:#fff;border:none;border-radius:8px;padding:9px;font-family:'Cinzel',serif;font-size:.72rem;font-weight:700;cursor:pointer">Sign In Anyway</button>
+      <button onclick="closeOverlay('forfeit-overlay')" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px;font-family:'Cinzel',serif;font-size:.72rem;color:var(--text-secondary);cursor:pointer">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay-bg" id="privacy-overlay" onclick="closeOverlay('privacy-overlay',event)">
+  <div class="legal-card">
+    <div class="legal-header">
+      <div class="legal-title">Privacy Policy</div>
+      <div class="legal-date">Last updated: April 2026</div>
+    </div>
+    <div class="legal-body">
+      <h3>Overview</h3>
+      <p>Spelldle 101 is a fan-made game. We collect minimal data to provide game features like streaks and leaderboards. We do not sell, share, or monetize your data in any way.</p>
+
+      <h3>What We Collect</h3>
+      <p>If you play anonymously, Firebase assigns you a temporary anonymous identifier stored in your browser. Your completion history is stored in our database under this identifier. No name, email, or personally identifiable information is collected. Anonymous accounts and their data are automatically deleted by Firebase after 30 days of inactivity.</p>
+      <p>If you sign in with Google, we collect: a unique identifier (your Firebase UID), your chosen Spelldle username, and your completion history (dates completed and whether they were on time). We do <strong>not</strong> store your Google name, email address, or profile photo.</p>
+
+      <h3>How We Use It</h3>
+      <p>Your data is used solely to track streaks, display leaderboards, and show your completion history in the calendar. It is never used for advertising or shared with third parties.</p>
+
+      <h3>Where It's Stored</h3>
+      <p>Data is stored in Google Firebase Firestore, hosted on Google's infrastructure. See <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase's privacy policy</a> for details on their data handling.</p>
+
+      <h3>Data Deletion</h3>
+      <p>To request deletion of your account data, contact us via the bug report feature on the site. Anonymous accounts are automatically deleted by Firebase after 30 days of inactivity.</p>
+
+      <h3>Cookies</h3>
+      <p>Firebase uses browser storage to maintain your authentication state. No third-party tracking cookies are used.</p>
+
+      <h3>KingsIsle Content</h3>
+      <p>All Wizard101 spell names, images, and game content are property of KingsIsle Entertainment. This site is not affiliated with KingsIsle.</p>
+    </div>
+    <div class="legal-footer">
+      <button class="legal-close" onclick="closeOverlay('privacy-overlay')">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay-bg" id="terms-overlay" onclick="closeOverlay('terms-overlay',event)">
+  <div class="legal-card">
+    <div class="legal-header">
+      <div class="legal-title">Terms of Service</div>
+      <div class="legal-date">Last updated: April 2026</div>
+    </div>
+    <div class="legal-body">
+      <h3>Fan Project</h3>
+      <p>Spelldle 101 is an unofficial fan-made project and is not affiliated with, endorsed by, or connected to KingsIsle Entertainment. All Wizard101 content belongs to KingsIsle Entertainment.</p>
+
+      <h3>Use of the Service</h3>
+      <p>Spelldle 101 is free to use for personal, non-commercial enjoyment. You agree not to abuse, exploit, or attempt to manipulate the game's systems, including leaderboards and streak tracking.</p>
+
+      <h3>Usernames</h3>
+      <p>By choosing a username you agree that it does not impersonate another person, does not contain offensive or inappropriate language, and follows the character restrictions (3-20 characters, lowercase letters, numbers, hyphens, and underscores only). We reserve the right to remove usernames that violate these rules.</p>
+
+      <h3>Account Termination</h3>
+      <p>We reserve the right to remove any account or username that violates these terms, at our sole discretion.</p>
+
+      <h3>Disclaimer</h3>
+      <p>This service is provided as-is with no guarantees of uptime or data retention. We are not responsible for any loss of streak or game data.</p>
+
+      <h3>Changes</h3>
+      <p>These terms may be updated at any time. Continued use of the site constitutes acceptance of the current terms.</p>
+    </div>
+    <div class="legal-footer">
+      <button class="legal-close" onclick="closeOverlay('terms-overlay')">Close</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
