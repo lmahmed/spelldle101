@@ -836,7 +836,8 @@ footer a:hover{color:var(--accent)}
       </div>
     </div>
     <button class="profile-btn secondary" onclick="closeOverlay('profile-overlay');openLeaderboard()" style="margin-bottom:10px">View Leaderboards ↗</button>
-    <button class="profile-btn primary" id="profile-setup-btn" onclick="closeOverlay('profile-overlay');showUsernamePicker()" style="display:none">Set Username →</button>
+    <button class="profile-btn secondary" onclick="closeOverlay('profile-overlay');openLeaderboard()" style="display:none;margin-bottom:10px">View Leaderboards ↗</button>
+    <button class="profile-btn primary" id="profile-setup-btn" onclick="closeOverlay('profile-overlay');showUsernamePicker()" style="display:none!important">Set Username →</button>
     <button class="profile-btn primary" id="profile-google-btn" onclick="handleGoogleSignIn()" style="display:none">
       Sign in with Google ↗
     </button>
@@ -1043,7 +1044,7 @@ footer a:hover{color:var(--accent)}
 <footer>
   <div>Spelldle 101 is a fan-made project and is not affiliated with KingsIsle Entertainment.</div>
   <div>All Wizard101 spell names, images, and game content are property of <a href="https://www.kingsisle.com" target="_blank">KingsIsle Entertainment</a>.</div>
-  <div style="margin-top:4px;color:var(--text-muted)">A new spell is chosen daily at midnight UTC &nbsp;·&nbsp; Made with ✦ by a fan &nbsp;·&nbsp; Last updated April 2026 &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('bug-overlay')">Report a Bug</span> &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('privacy-overlay')">Privacy</span> &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('terms-overlay')">Terms</span></div>
+  <div style="margin-top:4px;color:var(--text-muted)">A new spell is chosen daily at midnight UTC &nbsp;·&nbsp; Made with ✦ by a fan &nbsp;·&nbsp; Last updated April 2026 &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('bug-overlay')">Report a Bug</span> &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('privacy-overlay')">Privacy</span> &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('terms-overlay')">Terms</span> &nbsp;·&nbsp; <span style="cursor:pointer;color:var(--accent-dim)" onclick="openOverlay('updates-overlay')">Updates</span></div>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
@@ -1250,16 +1251,12 @@ async function handleGoogleSignIn(){
       await currentUser.linkWithPopup(googleProvider);
       currentUser = auth.currentUser; // update to linked user
       await loadUserProfile();
-      if(!userProfile || userProfile.displayName === 'guest'){
-        showUsernamePicker();
-      }
+      // username picker removed
     } else {
       await auth.signInWithPopup(googleProvider);
       currentUser = auth.currentUser;
       await loadUserProfile();
-      if(!userProfile || userProfile.displayName === 'guest'){
-        showUsernamePicker();
-      }
+      // username picker removed
     }
   } catch(e){
     if(e.code === 'auth/credential-already-in-use'){
@@ -1271,8 +1268,7 @@ async function handleGoogleSignIn(){
           await auth.signInWithCredential(e.credential);
           currentUser = auth.currentUser;
           await loadUserProfile();
-          if(!userProfile || userProfile.displayName === 'guest') showUsernamePicker();
-          showToast('Signed into your existing Spelldle account');
+          showToast('Signed into your existing Spelldle 101 account');
         } catch(e2){ console.warn('Sign in failed:', e2); }
       }
     } else {
@@ -1312,7 +1308,7 @@ function updateAuthUI(){
   const profileBtn = document.getElementById('profile-btn');
   if(profileBtn){
     const firstNode = profileBtn.childNodes[0];
-    if(firstNode) firstNode.textContent = hasProfile ? (' ' + sanitizeDisplayName(userProfile.displayName) + ' ') : ' ✦ Profile ';
+    if(firstNode) firstNode.textContent = (!currentUser || currentUser.isAnonymous) ? ' ✦ Profile ' : ' ✦ Profile · Signed In ';
   }
 
   // Profile overlay
@@ -1329,46 +1325,46 @@ function updateAuthUI(){
   
   // Force show google btn for anonymous regardless of other state
 
-  const isGoogleNoUsername = !isAnon && (!userProfile || userProfile.displayName === 'guest');
-
   if(isAnon){
     // Anonymous user
     avatar.textContent = '✦';
     name.textContent = 'Guest Wizard';
-    type.textContent = 'Sign in to appear on leaderboards';
-    stats.style.display = 'none';
+    type.textContent = 'Sign in to save your stats online';
+    stats.style.display = "grid";
+    if(!userProfile){
+      document.getElementById('stat-streak').textContent = 0;
+      document.getElementById('stat-longest').textContent = 0;
+      document.getElementById('stat-completed').textContent = 0;
+      document.getElementById('stat-share').textContent = '—';
+      document.getElementById('stat-share').style.cursor = 'default';
+    }
+    if(userProfile){
+      const streak = getLiveStreak();
+      document.getElementById('stat-streak').textContent = streak;
+      document.getElementById('stat-longest').textContent = userProfile.longestStreak || 0;
+      document.getElementById('stat-completed').textContent = userProfile.onTimeCompleted || 0;
+      document.getElementById('stat-share').textContent = won ? '↗' : '—';
+      document.getElementById('stat-share').style.cursor = won ? 'pointer' : 'default';
+      if(won) document.getElementById('stat-share').onclick = shareResultFromProfile;
+    }
     googleBtn.style.display = 'block';
-    document.getElementById('profile-setup-btn').style.display = 'none';
     shareBtn.style.display = won ? 'block' : 'none';
     divider.style.display = 'none';
     signoutBtn.style.display = 'none';
-  } else if(isGoogleNoUsername){
-    // Google linked but no username yet
+  } else {
+    // Google signed in
     avatar.textContent = '✦';
     name.textContent = 'Signed In';
-    type.textContent = 'Google Account — username not set';
-    stats.style.display = 'none';
-    googleBtn.style.display = 'none';
-    document.getElementById('profile-setup-btn').style.display = 'block';
-    shareBtn.style.display = won ? 'block' : 'none';
-    divider.style.display = 'block';
-    signoutBtn.style.display = 'block';
-  } else {
-    const sdn = sanitizeDisplayName(userProfile.displayName);
-    avatar.textContent = sdn[0].toUpperCase();
-    name.textContent = sdn;
-    type.textContent = 'Google Account';
+    type.textContent = currentUser.email || 'Google Account';
     stats.style.display = 'grid';
-    // Calculate live streak
     const streak = getLiveStreak();
     document.getElementById('stat-streak').textContent = streak;
-    document.getElementById('stat-longest').textContent = userProfile.longestStreak || 0;
-    document.getElementById('stat-completed').textContent = userProfile.onTimeCompleted || 0;
+    document.getElementById('stat-longest').textContent = userProfile ? (userProfile.longestStreak || 0) : 0;
+    document.getElementById('stat-completed').textContent = userProfile ? (userProfile.onTimeCompleted || 0) : 0;
     document.getElementById('stat-share').textContent = won ? '↗' : '—';
     document.getElementById('stat-share').style.cursor = won ? 'pointer' : 'default';
     if(won) document.getElementById('stat-share').onclick = shareResultFromProfile;
     googleBtn.style.display = 'none';
-    document.getElementById('profile-setup-btn').style.display = 'none';
     shareBtn.style.display = won ? 'block' : 'none';
     divider.style.display = 'block';
     signoutBtn.style.display = 'block';
@@ -1407,7 +1403,7 @@ function updateStreakDisplay(){
   const el = document.getElementById('streak-display');
   if(!el) return;
   const isOnToday = apiDate !== null && apiDate === new Date().toISOString().split('T')[0];
-  if(!isOnToday || !currentUser || currentUser.isAnonymous || !userProfile || userProfile.displayName === 'guest'){
+  if(!isOnToday || !currentUser || !userProfile){
     el.textContent = '';
     return;
   }
@@ -2614,8 +2610,7 @@ async function confirmForfeit(){
     await auth.signInWithCredential(_forfeitCredential);
     currentUser = auth.currentUser;
     await loadUserProfile();
-    if(!userProfile || userProfile.displayName === 'guest') showUsernamePicker();
-    showToast('Signed into your existing Spelldle account');
+    showToast('Signed into your existing Spelldle 101 account');
   } catch(e){ console.warn('Forfeit sign in failed:', e); }
   _forfeitCredential = null;
 }
@@ -3245,7 +3240,7 @@ function attachInputEvents(){
   });
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'){
-      ['win-overlay','date-overlay','hint-overlay','help-overlay','bug-overlay','profile-overlay','privacy-overlay','terms-overlay','lb-overlay','forfeit-overlay'].forEach(id=>document.getElementById(id).classList.remove('show'));
+      ['win-overlay','date-overlay','hint-overlay','help-overlay','bug-overlay','profile-overlay','privacy-overlay','terms-overlay','lb-overlay','forfeit-overlay','updates-overlay'].forEach(id=>document.getElementById(id).classList.remove('show'));
     }
   });
   document.addEventListener('touchstart',e=>{
@@ -3331,6 +3326,7 @@ async function loadSpells(){
     // Handle hash deep links
     if(window.location.hash==='#privacy') openOverlay('privacy-overlay');
     if(window.location.hash==='#terms') openOverlay('terms-overlay');
+    if(window.location.hash==='#updates') openOverlay('updates-overlay');
 
     // Immediately show date in pill — don't wait for initGame
     {
@@ -3383,6 +3379,7 @@ async function loadSpells(){
 window.addEventListener('hashchange', () => {
   if(window.location.hash === '#privacy') openOverlay('privacy-overlay');
   if(window.location.hash === '#terms') openOverlay('terms-overlay');
+  if(window.location.hash === '#updates') openOverlay('updates-overlay');
 });
 loadSpells();
 </script>
@@ -3433,6 +3430,33 @@ loadSpells();
   </div>
 </div>
 
+<div class="overlay-bg" id="updates-overlay" onclick="closeOverlay('updates-overlay',event)">
+  <div class="legal-card">
+    <div class="legal-header">
+      <div class="legal-title">Updates</div>
+      <div class="legal-date">Last updated: April 2026</div>
+    </div>
+    <div class="legal-body">
+      <h3>April 6, 2026 — Simplified Accounts</h3>
+      <p>We've made some significant changes to how accounts work in Spelldle 101, based on where the game is right now.</p>
+
+      <p><strong>Leaderboards permanently removed.</strong> Leaderboards and daily rankings have been removed. They aren't important to the core game experience.</p>
+      
+      <p><strong>Usernames removed.</strong> Without leaderboards there's no need for a public username. You no longer need to choose one when signing in. Your email address is now displayed in the profile overlay so you know which Google account you're signed into — it is only visible to you and never shared with other users.</p>
+
+      <p><strong>Stats now shown for everyone.</strong> Previously, anonymous users couldn't see their streak or completion stats in the profile overlay. Now all users — whether signed in or not — can see their current streak, longest streak, and on-time completions. Your stats are private and never visible to other users.</p>
+
+      <p><strong>Streak under the date pill.</strong> Your streak is now always visible under the date pill when playing today's daily, regardless of whether you're signed in.</p>
+
+      <h3>Privacy & Terms Updates</h3>
+      <p>Our Privacy Policy and Terms of Service have been updated to reflect these changes. The username section has been removed from the Terms of Service. The Privacy Policy now accurately describes that your email is used only to identify your account to you — it is never stored in our database or shown to other users.</p>
+    </div>
+    <div class="legal-footer">
+      <button class="legal-close" onclick="closeOverlay('updates-overlay')">Close</button>
+    </div>
+  </div>
+</div>
+
 <div class="overlay-bg" id="privacy-overlay" onclick="closeOverlay('privacy-overlay',event)">
   <div class="legal-card">
     <div class="legal-header">
@@ -3441,14 +3465,14 @@ loadSpells();
     </div>
     <div class="legal-body">
       <h3>Overview</h3>
-      <p>Spelldle 101 is a fan-made game. We collect minimal data to provide game features like streaks and leaderboards. We do not sell, share, or monetize your data in any way.</p>
+      <p>Spelldle 101 is a fan-made game. We collect minimal data to power game features such as streak tracking and completion history. We do not sell, share, or monetize your data in any way.</p>
 
       <h3>What We Collect</h3>
       <p>If you play anonymously, Firebase assigns you a temporary anonymous identifier stored in your browser. Your completion history is stored in our database under this identifier. No name, email, or personally identifiable information is collected. Anonymous accounts and their data are automatically deleted by Firebase after 30 days of inactivity.</p>
-      <p>If you sign in with Google, Google's authentication service processes your Google account information (such as email, name, and profile photo) as part of the sign-in process. This is handled by Firebase Auth on Google's infrastructure and is subject to Google's privacy policy. Within our Firestore database, we only store a unique identifier (your Firebase UID), your chosen Spelldle 101 username, and your completion history (dates completed and whether they were on time). We do not use your Google name, email, or profile photo for any purpose within or outside of the game.</p>
+      <p>If you sign in with Google, Google's authentication service processes your Google account information (such as email, name, and profile photo) as part of the sign-in process. This is handled by Firebase Auth on Google's infrastructure and is subject to Google's privacy policy. Your email address is displayed only to you within the app to confirm which account you are signed in with. Within our Firestore database, we only store a unique identifier (your Firebase UID) and your completion history (dates completed and whether they were on time). We do not share your email or any Google account information with other users or third parties.</p>
 
       <h3>How We Use It</h3>
-      <p>Your data is used solely to track streaks, display leaderboards, and show your completion history in the calendar. It is never used for advertising or shared with third parties.</p>
+      <p>Your data is used solely to track streaks, display your stats in the profile overlay, and show your completion history in the calendar. It is never used for advertising or shared with third parties.</p>
 
       <h3>Where It's Stored</h3>
       <p>Data is stored in Google Firebase Firestore, hosted on Google's infrastructure. See <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase's privacy policy</a> for details on their data handling.</p>
@@ -3479,13 +3503,10 @@ loadSpells();
       <p>Spelldle 101 is an unofficial fan-made project and is not affiliated with, endorsed by, or connected to KingsIsle Entertainment. All Wizard101 content belongs to KingsIsle Entertainment.</p>
 
       <h3>Use of the Service</h3>
-      <p>Spelldle 101 is free to use for personal, non-commercial enjoyment. You agree not to abuse, exploit, or attempt to manipulate the game's systems, including leaderboards and streak tracking.</p>
-
-      <h3>Usernames</h3>
-      <p>By choosing a username you agree that it does not impersonate another person, does not contain offensive or inappropriate language, and follows the character restrictions (3-20 characters, lowercase letters, numbers, hyphens, and underscores only). We reserve the right to remove usernames that violate these rules.</p>
+      <p>Spelldle 101 is free to use for personal, non-commercial enjoyment. You agree not to abuse, exploit, or attempt to manipulate the game's systems.</p>
 
       <h3>Account Termination</h3>
-      <p>We reserve the right to remove any account or username that violates these terms, at our sole discretion.</p>
+      <p>We reserve the right to remove any account that violates these terms, at our sole discretion.</p>
 
       <h3>Disclaimer</h3>
       <p>This service is provided as-is with no guarantees of uptime or data retention. We are not responsible for any loss of streak or game data.</p>
