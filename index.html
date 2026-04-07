@@ -1625,6 +1625,7 @@ async function recordCompletion(spellDate){
   try{
     const uid = currentUser.uid;
     const utcNow = new Date().toISOString().split('T')[0];
+    const utcNowMs = new Date(utcNow + 'T00:00:00Z').getTime();
     const onTime = spellDate === utcNow;
 
     // Write to completions — create only, immutable
@@ -1640,7 +1641,7 @@ async function recordCompletion(spellDate){
     // Update or create userProfiles
     const profileRef = db.collection('userProfiles').doc(uid);
     const profileSnap = await profileRef.get();
-    const yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
+    const yesterday = new Date(utcNowMs - 86400000).toISOString().split('T')[0];
 
     if(!onTime){
       // Past date or late completion — don't update streak or profile
