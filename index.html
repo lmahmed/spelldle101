@@ -1631,12 +1631,27 @@ async function recordCompletion(spellDate){
     // Write to completions — create only, immutable
     const compRef = db.collection('completions').doc(uid).collection('days').doc(spellDate);
     const compSnap = await compRef.get();
-    if(compSnap.exists) return; // already completed today
+    if(compSnap.exists){
+      if(!calCompletions[spellDate]){
+        const existingOnTime = compSnap.data().onTime === true;
+        await db.collection('completions').doc(uid).set({
+          dates: firebase.firestore.FieldValue.arrayUnion({ date: spellDate, onTime: existingOnTime })
+        }, { merge: true });
+        calCompletions[spellDate] = existingOnTime ? 'ontime' : 'late';
+      }
+      updateDateCheckmark();
+      return;
+    }
 
     await compRef.set({
       completedAt: firebase.firestore.FieldValue.serverTimestamp(),
       onTime: onTime
     });
+
+    // Write to single completion doc for fast reads
+    await db.collection('completions').doc(uid).set({
+      dates: firebase.firestore.FieldValue.arrayUnion({ date: spellDate, onTime: onTime })
+    }, { merge: true });
 
     // Update or create userProfiles
     const profileRef = db.collection('userProfiles').doc(uid);
@@ -2652,8 +2667,16 @@ async function loadCalCompletions(){
   calCompletions = {};
   if(!currentUser) return;
   try{
-    const snap = await db.collection('completions').doc(currentUser.uid).collection('days').get();
-    snap.forEach(doc => { calCompletions[doc.id] = doc.data().onTime ? 'ontime' : 'late'; });
+    const snap = await db.collection('completions').doc(currentUser.uid).get();
+    if(snap.exists){
+      const dates = snap.data().dates || [];
+      dates.forEach(e => {
+        // If date already exists, ontime wins over late
+        if(!calCompletions[e.date] || e.onTime){
+          calCompletions[e.date] = e.onTime ? 'ontime' : 'late';
+        }
+      });
+    }
     const legend = document.getElementById('cal-legend');
     if(legend) legend.style.display = Object.keys(calCompletions).length ? 'flex' : 'none';
     updateDateCheckmark();
