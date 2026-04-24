@@ -73,6 +73,20 @@
   --ec3-bg:#280a2e;--ec3-t:#c060d8;
   --ec4-bg:#281000;--ec4-t:#d86040;
 }
+/* Colorblind mode */
+body.colorblind{
+  --green-bg:#0a1e3a;--green-text:#60b4f0;
+  --hint-bg:#0e1a30;--hint-border:#2a4a80;--hint-text:#80b8f0;
+  --ec2-bg:#0a1e3a;--ec2-t:#60b4f0;
+  --ec0-bg:#1e0a2e;--ec0-t:#b070e0;
+  --ec1-bg:#2a1500;--ec1-t:#f0c060;
+}
+/* Reduce animations */
+body.reduce-animations *{transition:none !important;animation:none !important;}
+#settings-overlay.no-anim,#settings-overlay.no-anim .settings-card{animation:none !important;}
+body.reduce-animations .cell-reveal.revealed{opacity:1 !important;}
+body.reduce-animations .check-path{stroke-dashoffset:0 !important;}
+
 html,body{max-width:100%;overflow-x:hidden}body{background:var(--page-bg);color:var(--text-primary);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;display:flex;flex-direction:column}
 .bg-glow{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 15% 60%,#0d082022 0%,transparent 55%),radial-gradient(ellipse at 85% 15%,#0a152022 0%,transparent 50%)}
 .app{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:1rem 1rem 2rem;flex:1;width:100%}
@@ -912,6 +926,20 @@ footer a:hover{color:var(--accent)}
       </div>
       <button class="settings-toggle on" id="st-hints" onclick="toggleSetting('hints')"></button>
     </div>
+    <div class="settings-row">
+      <div>
+        <div class="settings-label">Colorblind Mode</div>
+        <div class="settings-sub">Use blue instead of green for correct matches</div>
+      </div>
+      <button class="settings-toggle" id="st-colorblind" onclick="toggleSetting('colorblind')"></button>
+    </div>
+    <div class="settings-row">
+      <div>
+        <div class="settings-label">Reduce Animations</div>
+        <div class="settings-sub">Disable transitions and animations</div>
+      </div>
+      <button class="settings-toggle" id="st-reduceanimations" onclick="toggleSetting('reduceanimations')"></button>
+    </div>
     <div class="settings-note">&#128190; Your preferences are saved automatically</div>
     <button class="settings-close" onclick="closeOverlay('settings-overlay')">Close</button>
   </div>
@@ -1084,7 +1112,7 @@ auth.onAuthStateChanged(async user => {
 
 
 // ─── Settings ────────────────────────────────────────────────────
-const SETTING_DEFAULTS = {smartfilters:true, schoolfilter:true, hints:true};
+const SETTING_DEFAULTS = {smartfilters:true, schoolfilter:true, hints:true, colorblind:false, reduceanimations:false};
 let settings = {...SETTING_DEFAULTS};
 
 function loadSettings(){
@@ -1103,6 +1131,22 @@ function toggleSetting(key){
   settings[key] = !settings[key];
   saveSettings();
   applySettings();
+  if(key === 'reduceanimations'){
+    const overlay = document.getElementById('settings-overlay');
+    if(overlay.classList.contains('show')) overlay.classList.add('no-anim');
+
+    document.querySelectorAll('.cell-reveal').forEach(el => {
+      el.classList.remove('cell-reveal', 'revealed');
+      el.style.opacity = '';
+    });
+    document.querySelectorAll('.mcard-reveal-el').forEach(el => {
+      el.style.opacity = '';
+      el.style.animation = '';
+    });
+    document.querySelectorAll('.mcard').forEach(el => {
+      el.style.animation = 'none'; 
+    });
+  }
 }
 
 function applySettings(){
@@ -1120,6 +1164,11 @@ function applySettings(){
   // Hint bar: always hide if setting off, otherwise re-evaluate normally
   if(hb && !settings.hints) hb.classList.add('hidden');
   else if(hb && settings.hints) updateHintBar();
+  // Colorblind mode
+  document.body.classList.toggle('colorblind', !!settings.colorblind);
+  SCHOOL_COLORS = settings.colorblind ? {...SCHOOL_COLORS_CB} : {...SCHOOL_COLORS_NORMAL};
+  // Reduce animations
+  document.body.classList.toggle('reduce-animations', !!settings.reduceanimations);
 }
 
 // ─── Share ────────────────────────────────────────────────────────
@@ -1328,7 +1377,7 @@ function updateAuthUI(){
     // Anonymous user
     avatar.textContent = '✦';
     name.textContent = 'Guest Wizard';
-    type.textContent = 'Sign in to save your stats online';
+    type.textContent = `ID: ${currentUser.uid.slice(0, 8)}`;
     stats.style.display = "grid";
     if(!userProfile){
       document.getElementById('stat-streak').textContent = 0;
@@ -1878,7 +1927,9 @@ const SCHOOLS_LIST=['Ice','Fire','Storm','Myth','Life','Death','Balance'];
 const SCHOOL_FILES=['ice','death','myth','storm','fire','life','balance'];
 const TL=['tl0','tl1','tl2','tl3','tl4'];
 const LK=['lk0','lk1','lk2','lk3','lk4'];
-const SCHOOL_COLORS={Fire:'#e05020',Ice:'#60a8e0',Storm:'#9060e0',Myth:'#e0b820',Life:'#40b840',Death:'#a060d0',Balance:'#d09040'};
+const SCHOOL_COLORS_NORMAL = {Fire:'#e05020',Ice:'#60a8e0',Storm:'#9060e0',Myth:'#e0b820',Life:'#40b840',Death:'#a060d0',Balance:'#d09040'};
+const SCHOOL_COLORS_CB     = {Fire:'#e07820',Ice:'#60a8e0',Storm:'#6080e0',Myth:'#e0c820',Life:'#20b8d0',Death:'#c060a0',Balance:'#d09040'};
+let SCHOOL_COLORS = {...SCHOOL_COLORS_NORMAL};
 const FILTER_TIPS=[
   'Narrows the search to spells that share all green (correct) attribute values with your guesses.',
   'Narrows the search to spells that share at least one yellow (partial) attribute value with your guesses.',
@@ -2165,13 +2216,15 @@ function openOverlay(id){
     updateAuthUI();
     // Fallback: if no profile yet, always show google btn
     const gb=document.getElementById('profile-google-btn');
-    if(gb && (!currentUser || currentUser.isAnonymous)) gb.style.display='block';
+    if(gb && (!currentUser || currentUser.isAnonymous)) gb.style.display='none';
   }
   document.getElementById(id).classList.add('show');
 }
 function closeOverlay(id,e){
   if(e&&!e.target.classList.contains('overlay-bg'))return;
-  document.getElementById(id).classList.remove('show');
+  const el = document.getElementById(id);
+  el.classList.remove('show');
+  el.classList.remove('no-anim');
   if(id==='lb-overlay') clearInterval(_lbRefreshInterval);
 }
 
@@ -2185,14 +2238,14 @@ function showWin(){
   if(el)el.className='date-check';
   // Show streak save prompt for anonymous users with streak > 2
   const sp=document.getElementById('win-streak-prompt');
-  if(sp){
+  /*if(sp){
     const streak = userProfile ? getLiveStreak() : 0;
     const showPrompt = currentUser && currentUser.isAnonymous && (apiDate !== null && apiDate === new Date().toISOString().split('T')[0]) && streak > 2;
     sp.style.display = showPrompt ? 'block' : 'none';
     if(showPrompt){
       sp.querySelector('.win-streak-prompt-text').textContent = '🔥 ' + streak + ' day streak — Save it →';
     }
-  }
+  }*/
   document.getElementById('win-spell-name').textContent=s.name;
   document.getElementById('win-school').textContent=s.school.toUpperCase();
   document.getElementById('win-school').style.color=SCHOOL_COLORS[s.school]||'#888';
@@ -3460,6 +3513,15 @@ loadSpells();
       <div class="legal-date">Last updated: April 2026</div>
     </div>
     <div class="legal-body">
+      <h3>April 23, 2026 — Accessibility & Account Changes</h3>
+      <p>A few small but meaningful updates to the game today.</p>
+
+      <p><strong>Colorblind mode.</strong> A new colorblind mode is available in Settings. When enabled, correct matches display in blue instead of green, making them easier to distinguish from partial matches for users with red-green color blindness.</p>
+
+      <p><strong>Reduce animations.</strong> A new option in Settings lets you disable transitions and animations across the game for a cleaner, distraction-free experience.</p>
+
+      <p><strong>Google sign-in temporarily removed.</strong> Google sign-in has been removed for now while we rework how accounts and device syncing work. Anonymous play continues to work as normal — your streak and stats are still saved to your account. To keep access to your progress, avoid clearing your browser's site data for this site, as anonymous accounts are tied to your browser session.</p> 
+
       <h3>April 6, 2026 — Simplified Accounts</h3>
       <p>We've made some significant changes to how accounts work in Spelldle 101, based on where the game is right now.</p>
 
@@ -3491,7 +3553,7 @@ loadSpells();
       <p>Spelldle 101 is a fan-made game. We collect minimal data to power game features such as streak tracking and completion history. We do not sell, share, or monetize your data in any way.</p>
 
       <h3>What We Collect</h3>
-      <p>If you play anonymously, Firebase assigns you a temporary anonymous identifier stored in your browser. Your completion history is stored in our database under this identifier. No name, email, or personally identifiable information is collected. Anonymous accounts and their data are automatically deleted by Firebase after 30 days of inactivity.</p>
+      <p>If you play anonymously, Firebase assigns you a temporary anonymous identifier stored in your browser. Your completion history is stored in our database under this identifier. No name, email, or personally identifiable information is collected.</p>
       <p>If you sign in with Google, Google's authentication service processes your Google account information (such as email, name, and profile photo) as part of the sign-in process. This is handled by Firebase Auth on Google's infrastructure and is subject to Google's privacy policy. Your email address is displayed only to you within the app to confirm which account you are signed in with. Within our Firestore database, we only store a unique identifier (your Firebase UID) and your completion history (dates completed and whether they were on time). We do not share your email or any Google account information with other users or third parties.</p>
 
       <h3>How We Use It</h3>
@@ -3499,9 +3561,6 @@ loadSpells();
 
       <h3>Where It's Stored</h3>
       <p>Data is stored in Google Firebase Firestore, hosted on Google's infrastructure. See <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase's privacy policy</a> for details on their data handling.</p>
-
-      <h3>Data Deletion</h3>
-      <p>To request deletion of your account data, contact us via the bug report feature on the site. Anonymous accounts are automatically deleted by Firebase after 30 days of inactivity.</p>
 
       <h3>Cookies</h3>
       <p>Firebase uses browser storage to maintain your authentication state. No third-party tracking cookies are used.</p>
