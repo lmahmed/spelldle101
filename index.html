@@ -610,6 +610,11 @@ footer a:hover{color:var(--accent)}
 .nudge-play{background:var(--accent);color:#160900;border:none;border-radius:6px;padding:5px 12px;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;cursor:pointer;flex-shrink:0}
 .nudge-dismiss{background:transparent;border:none;color:var(--text-muted);font-size:1rem;cursor:pointer;padding:0 4px;flex-shrink:0;line-height:1}
 .nudge-dismiss:hover{color:var(--text-secondary)}
+
+/* Update toast */
+.update-toast{position:fixed;top:0;left:0;right:0;z-index:8999;background:var(--surface);border-bottom:1px solid var(--accent-dim);transform:translateY(-100%);transition:transform .4s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column}
+.update-toast.show{transform:translateY(0)}
+.update-progress{height:3px;background:var(--accent);width:100%;transform-origin:left;transition:width linear}
 </style>
 </head>
 <body>
@@ -1808,6 +1813,8 @@ function showToast(msg){
   setTimeout(()=>t.remove(),4200);
 }
 
+
+
 // ─── URL param handling ───────────────────────────────────────────
 function parseURLParams(){
   const params=new URLSearchParams(window.location.search);
@@ -2388,6 +2395,47 @@ function dismissNudge(){
 function nudgePlayNow(){
   dismissNudge();
   setTodaySpell();
+}
+
+// ─── Update Toast ─────────────────────────────────────────────────
+const LATEST_UPDATE_DATE = '2026-04-23';
+const UPDATE_TOAST_SECS = 8;
+
+function checkUpdateToast(){
+  const seen = localStorage.getItem('update_seen_date');
+  if(seen >= LATEST_UPDATE_DATE) return;
+  showUpdateToast();
+}
+
+function showUpdateToast(){
+  localStorage.setItem('update_seen_date', LATEST_UPDATE_DATE);
+  const [y,m,d] = LATEST_UPDATE_DATE.split('-').map(Number);
+  const formatted = new Date(Date.UTC(y,m-1,d))
+    .toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+  document.getElementById('update-toast-text').textContent = `✦ New Update — ${formatted}`;
+
+  const progress = document.getElementById('update-progress');
+  if(progress){
+    progress.style.transition = 'none';
+    progress.style.width = '100%';
+    void progress.offsetWidth;
+    progress.style.transition = `width ${UPDATE_TOAST_SECS}s linear`;
+    progress.style.width = '0%';
+  }
+
+  document.getElementById('update-toast').classList.add('show');
+  setTimeout(dismissUpdate, UPDATE_TOAST_SECS * 1000);
+}
+
+function dismissUpdate(){
+  document.getElementById('update-toast').classList.remove('show');
+}
+
+function viewUpdate(){
+  dismissUpdate();
+  const overlay = document.getElementById('updates-overlay');
+  overlay.style.zIndex = '501';
+  openOverlay('updates-overlay');
 }
 
 function startCountdownTimer(){
@@ -3440,6 +3488,7 @@ async function loadSpells(){
     updateDatePill();
     updateDateCheckmark();
     startCountdownTimer();
+    checkUpdateToast();
     if(_invalidChallenge) showToast("Challenge link was invalid — playing today\'s daily instead");
   }catch(err){
     txt.innerHTML='';
@@ -3599,6 +3648,15 @@ loadSpells();
     <div class="legal-footer">
       <button class="legal-close" onclick="closeOverlay('terms-overlay')">Close</button>
     </div>
+  </div>
+</div>
+
+<div class="update-toast" id="update-toast">
+  <div class="update-progress" id="update-progress"></div>
+  <div class="nudge-body">
+    <div class="nudge-text" id="update-toast-text">✦ New Update</div>
+    <button class="nudge-play" onclick="viewUpdate()">View</button>
+    <button class="nudge-dismiss" onclick="dismissUpdate()">✕</button>
   </div>
 </div>
 
