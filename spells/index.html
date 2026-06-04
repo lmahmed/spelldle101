@@ -375,19 +375,11 @@ footer a:hover{color:var(--accent)}
   <div style="margin-top:4px;color:var(--text-muted)">Made with ✦ by a fan &nbsp;·&nbsp; Last updated April 2026</div>
 </footer>
 
-<script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyDpmCJgg7amogh96EvcFiXbyrTAbKhjUPs",
-  authDomain: "spelldle101-8bd90.firebaseapp.com",
-  projectId: "spelldle101-8bd90",
-  storageBucket: "spelldle101-8bd90.firebasestorage.app",
-  messagingSenderId: "568008023423",
-  appId: "1:568008023423:web:405dc1f12570eafd43ce4a"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+const SUPABASE_URL = 'https://cbofjsyhnqqhqfejdrxo.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_JgUCgXIaxBdIpGySkkm3tg_1rdrHqSq';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const SCHOOL_FILES = ['ice','death','myth','storm','fire','life','balance'];
 const SCHOOL_COLORS = {Fire:'#e05020',Ice:'#60a8e0',Storm:'#9060e0',Myth:'#e0b820',Life:'#40b840',Death:'#a060d0',Balance:'#d09040'};
 const SCHOOL_BGS = {Fire:'#2e1000',Ice:'#001828',Storm:'#1a0a30',Myth:'#2a2000',Life:'#002800',Death:'#1a0a28',Balance:'#1a1000'};
@@ -854,16 +846,14 @@ function encodeChallenge(spellIndex){
 
 
 async function apiPost(data){
-  // Route bug reports to Firestore
   if(data.action === 'bug'){
     try{
-      await db.collection('bugReports').add({
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        type: data.type || 'spell',
-        spellName: data.spellName || '',
-        issueType: data.issueType || '',
+      await supabaseClient.from('bug_reports').insert({
+        source: 'spells',
+        issue_type: data.issueType || '',
+        spell_name: data.spellName || '',
         description: data.description || '',
-        userId: null
+        save_id: null
       });
       return {success: true};
     }catch(e){ console.warn('Bug report error:', e); return null; }

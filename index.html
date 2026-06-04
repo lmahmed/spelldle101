@@ -854,6 +854,31 @@ footer a:hover{color:var(--accent)}
         <div class="profile-stat-label">Share Result</div>
       </div>
     </div>
+
+    <!-- Transfer code section -->
+    <div id="transfer-section" style="width:100%;margin:12px 0;">
+      <!-- Generate code -->
+      <div id="transfer-generate" style="margin-bottom:10px">
+        <button class="profile-btn secondary" onclick="handleGenerateCode()" style="width:100%">
+          Generate Sync Code
+        </button>
+        <div id="transfer-code-display" style="display:none;margin-top:8px;text-align:center">
+          <div style="font-family:'Cinzel',serif;font-size:1.2rem;letter-spacing:.1em;color:var(--accent)" id="transfer-code-text"></div>
+          <div style="font-size:.72rem;color:var(--text-muted);margin:4px 0">Expires in 24 hours</div>
+          <button class="profile-btn secondary" onclick="copyTransferCode()" style="margin-top:4px">Copy Code</button>
+        </div>
+      </div>
+      <!-- Claim code -->
+      <div id="transfer-claim">
+        <input id="transfer-code-input" type="text" placeholder="Enter sync code"
+          style="width:100%;box-sizing:border-box;padding:8px;background:var(--surface);border:1px solid var(--border);color:var(--text-primary);border-radius:4px;font-size:.85rem;margin-bottom:6px"/>
+        <button class="profile-btn secondary" onclick="handleClaimCode()" style="width:100%">
+          Restore Save →
+        </button>
+        <div id="transfer-status" style="font-size:.72rem;text-align:center;margin-top:4px;min-height:1em"></div>
+      </div>
+    </div>
+
     <button class="profile-btn secondary" onclick="closeOverlay('profile-overlay');openLeaderboard()" style="display:none;margin-bottom:10px">View Leaderboards ↗</button>
     <button class="profile-btn primary" id="profile-setup-btn" onclick="closeOverlay('profile-overlay');showUsernamePicker()" style="display:none!important">Set Username →</button>
     <button class="profile-btn primary" id="profile-google-btn" onclick="handleGoogleSignIn()" style="display:none">
@@ -1082,6 +1107,8 @@ footer a:hover{color:var(--accent)}
 <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-auth-compat.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyDpmCJgg7amogh96EvcFiXbyrTAbKhjUPs",
@@ -1103,17 +1130,124 @@ googleProvider.addScope('openid');
 // Current auth state
 let currentUser = null;
 auth.onAuthStateChanged(async user => {
+  console.log("firebase auth");
   currentUser = user;
   if(user){
-    await loadUserProfile();
+    /* loadUserProfile();
     updateAuthUI();
     // Load completions for checkmark and calendar colors
-    loadCalCompletions().then(() => updateDateCheckmark());
+    loadCalCompletions().then(() => updateDateCheckmark()); */
   } else {
+    //updateAuthUI();
+  }
+});
+
+function waitForFirebaseUser(){
+  return new Promise(resolve => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      unsubscribe();
+      resolve(user);
+    });
+  });
+}
+
+
+// Current supabase auth state
+const supabaseClient = supabase.createClient(
+  'https://cbofjsyhnqqhqfejdrxo.supabase.co',
+  'sb_publishable_JgUCgXIaxBdIpGySkkm3tg_1rdrHqSq'
+);
+
+let supabaseUser = null;
+let saveId = null;
+
+
+async function fetchSaveId(){
+  const { data, error } = await supabaseClient.from('user_saves').select('save_id').single();
+  return data?.save_id ?? null;
+}
+
+let authInitialized = false;
+
+supabaseClient.auth.onAuthStateChange(async (event, session) => {
+  supabaseUser = session?.user ?? null;
+  if(supabaseUser && !authInitialized){
+    authInitialized = true;
+    console.log("supabase auth " + event);
+    setTimeout(async () => {
+      saveId = await fetchSaveId();
+      
+      currentUser = await waitForFirebaseUser();
+      if(currentUser){
+       await migrateFromFirebase();
+      }
+
+      await loadUserProfile();
+      updateAuthUI();
+      loadCalCompletions().then(() => {updateDateCheckmark()});
+    }, 0);
+  } else if(event === 'SIGNED_OUT'){
     updateAuthUI();
   }
 });
 
+async function migrateFromFirebase(){
+  try{
+    // Check if already migrated
+    const { data: saveData } = await supabaseClient
+      .from('saves')
+      .select('has_migrated')
+      .eq('id', saveId)
+      .single();
+    
+    if(saveData?.has_migrated) return;
+
+    console.log("Migration start");
+    // Read Firebase profile
+    const profileSnap = await db.collection('userProfiles').doc(currentUser.uid).get();
+    const profile = profileSnap.exists ? profileSnap.data() : null;
+
+    // Read Firebase completion subcollection
+    const daysSnap = await db.collection('completions').doc(currentUser.uid).collection('days').get();
+    const completions = [];
+    daysSnap.forEach(doc => {
+    completions.push({
+      spell_date: doc.id,
+      on_time: doc.data().onTime === true,
+      completed_at: doc.data().completedAt?.toDate?.()?.toISOString() || null
+      });
+    });
+
+    // Read settings from localStorage
+    const savedSettings = JSON.parse(localStorage.getItem('spelldle_settings') || '{}');
+    const colorBlind = savedSettings.colorblind ?? false;
+    const reduceAnimations = savedSettings.reduceanimations ?? false;
+    const showSmartFilters = savedSettings.smartfilters ?? true;
+    const showSchoolFilters = savedSettings.schoolfilter ?? true;
+    const showHints = savedSettings.hints ?? true;
+
+    // Call RPC
+    const { data, error } = await supabaseClient.rpc('migrate_from_firebase', {
+      p_firebase_uid: currentUser.uid,
+      p_current_streak: profile?.currentStreak || 0,
+      p_longest_streak: profile?.longestStreak || 0,
+      p_last_completed_date: profile?.lastCompletedDate || null,
+      p_on_time_completed: profile?.onTimeCompleted || 0,
+      p_completions: completions,
+      p_color_blind_mode: colorBlind,
+      p_reduce_animations: reduceAnimations,
+      p_show_smart_filters: showSmartFilters,
+      p_show_school_filters: showSchoolFilters,
+      p_show_hints: showHints
+    });
+
+    if(error) throw error;
+    console.log('Migration complete:', data);
+
+  } catch(e){
+    console.warn('Migration failed:', e);
+  }
+}
 
 
 // ─── Settings ────────────────────────────────────────────────────
@@ -1136,6 +1270,21 @@ function toggleSetting(key){
   settings[key] = !settings[key];
   saveSettings();
   applySettings();
+  // Sync to Supabase fire and forget
+  if(saveId){
+    const keyMap = {
+      colorblind: 'p_color_blind_mode',
+      reduceanimations: 'p_reduce_animations',
+      smartfilters: 'p_show_smart_filters',
+      schoolfilter: 'p_show_school_filters',
+      hints: 'p_show_hints'
+    };
+    const param = keyMap[key];
+    if(param){
+      supabaseClient.rpc('update_settings', { [param]: settings[key] })
+      .then(({ error }) => { if(error) console.warn('Settings sync failed:', error); })
+    }
+  }
   if(key === 'reduceanimations'){
     const overlay = document.getElementById('settings-overlay');
     if(overlay.classList.contains('show')) overlay.classList.add('no-anim');
@@ -1286,12 +1435,20 @@ function containsBadWord(username){
 
 // ─── Auth ─────────────────────────────────────────────────────────
 let userProfile = null;
+let supabaseProfile = null;
 let _usernameCheckTimeout = null;
 
 async function initAuth(){
   loadBadWords(); // fire and forget
-  if(!currentUser){
+  /* if(!currentUser){
     try{ await auth.signInAnonymously(); }
+    catch(e){ console.warn('Anonymous sign in failed:', e); }
+  } */
+  
+  const { data: { session } } = await supabaseClient.auth.getSession();
+  if(!session){
+    console.log("supabase anonymous signin");
+    try{ await supabaseClient.auth.signInAnonymously(); }
     catch(e){ console.warn('Anonymous sign in failed:', e); }
   }
 }
@@ -1343,28 +1500,60 @@ async function handleSignOut(){
 
 // recordPastCompletion merged into recordCompletion
 
+let settingsLoadedFromSupabase = false;
 
 async function loadUserProfile(){
-  if(!currentUser) return;
+  if(!supabaseUser) return;
   try{
-    const snap = await db.collection('userProfiles').doc(currentUser.uid).get();
-    userProfile = snap.exists ? snap.data() : null;
+    // Firebase
+    if(currentUser){
+      const snap = await db.collection('userProfiles').doc(currentUser.uid).get();
+      //userProfile = snap.exists ? snap.data() : null;
+    }
+
+    // Supabase
+    if(saveId){
+      const { data, error } = await supabaseClient
+        .from('saves')
+        .select('*')
+        .eq('id', saveId)
+        .single();
+      supabaseProfile = data ?? null;
+
+      if(data && !settingsLoadedFromSupabase){
+        console.log("Load User Profile");
+        settingsLoadedFromSupabase = true;
+        settings.colorblind = data.color_blind_mode;
+        settings.reduceanimations = data.reduce_animations;
+        settings.smartfilters = data.show_smart_filters;
+        settings.schoolfilter = data.show_school_filters;
+        settings.hints = data.show_hints;
+        saveSettings();
+      }
+      if(data){
+        userProfile = {
+          currentStreak: data.current_streak,
+          displayName: 'guest',
+          lastCompletedDate: data.last_completed_date,
+          longestStreak: data.longest_streak,
+          onTimeCompleted: data.on_time_completed
+        };
+      } else {
+        userProfile = null;
+      }
+    }
   } catch(e){ console.warn('loadUserProfile error:', e); }
 }
 
 function updateAuthUI(){
-  if(!currentUser) return;
-  const isAnon = currentUser.isAnonymous;
-  const hasProfile = userProfile && userProfile.displayName !== 'guest';
+  if(!supabaseUser) return;
 
-  // Profile button — update first text node only, preserve htip
   const profileBtn = document.getElementById('profile-btn');
   if(profileBtn){
     const firstNode = profileBtn.childNodes[0];
-    if(firstNode) firstNode.textContent = (!currentUser || currentUser.isAnonymous) ? ' ✦ Profile ' : ' ✦ Profile · Signed In ';
+    if(firstNode) firstNode.textContent = ' ✦ Profile ';
   }
 
-  // Profile overlay
   const avatar = document.getElementById('profile-avatar');
   const name = document.getElementById('profile-name');
   const type = document.getElementById('profile-type');
@@ -1375,55 +1564,33 @@ function updateAuthUI(){
   const signoutBtn = document.getElementById('profile-signout-btn');
 
   if(!avatar || !googleBtn) return;
-  
-  // Force show google btn for anonymous regardless of other state
 
-  if(isAnon){
-    // Anonymous user
-    avatar.textContent = '✦';
-    name.textContent = 'Guest Wizard';
-    type.textContent = `ID: ${currentUser.uid.slice(0, 8)}`;
-    stats.style.display = "grid";
-    if(!userProfile){
-      document.getElementById('stat-streak').textContent = 0;
-      document.getElementById('stat-longest').textContent = 0;
-      document.getElementById('stat-completed').textContent = 0;
-      document.getElementById('stat-share').textContent = '—';
-      document.getElementById('stat-share').style.cursor = 'default';
-    }
-    if(userProfile){
-      const streak = getLiveStreak();
-      document.getElementById('stat-streak').textContent = streak;
-      document.getElementById('stat-longest').textContent = userProfile.longestStreak || 0;
-      document.getElementById('stat-completed').textContent = userProfile.onTimeCompleted || 0;
-      document.getElementById('stat-share').textContent = won ? '↗' : '—';
-      document.getElementById('stat-share').style.cursor = won ? 'pointer' : 'default';
-      if(won) document.getElementById('stat-share').onclick = shareResultFromProfile;
-    }
-    googleBtn.style.display = 'block';
-    shareBtn.style.display = won ? 'block' : 'none';
-    divider.style.display = 'none';
-    signoutBtn.style.display = 'none';
+  avatar.textContent = '✦';
+  name.textContent = 'Wizard';
+  type.textContent = `Save ID: ${saveId}`;
+  stats.style.display = 'grid';
+
+  if(!userProfile){
+    document.getElementById('stat-streak').textContent = 0;
+    document.getElementById('stat-longest').textContent = 0;
+    document.getElementById('stat-completed').textContent = 0;
+    document.getElementById('stat-share').textContent = '—';
+    document.getElementById('stat-share').style.cursor = 'default';
   } else {
-    // Google signed in
-    avatar.textContent = '✦';
-    name.textContent = 'Signed In';
-    type.textContent = currentUser.email || 'Google Account';
-    stats.style.display = 'grid';
     const streak = getLiveStreak();
     document.getElementById('stat-streak').textContent = streak;
-    document.getElementById('stat-longest').textContent = userProfile ? (userProfile.longestStreak || 0) : 0;
-    document.getElementById('stat-completed').textContent = userProfile ? (userProfile.onTimeCompleted || 0) : 0;
+    document.getElementById('stat-longest').textContent = userProfile.longestStreak || 0;
+    document.getElementById('stat-completed').textContent = userProfile.onTimeCompleted || 0;
     document.getElementById('stat-share').textContent = won ? '↗' : '—';
     document.getElementById('stat-share').style.cursor = won ? 'pointer' : 'default';
     if(won) document.getElementById('stat-share').onclick = shareResultFromProfile;
-    googleBtn.style.display = 'none';
-    shareBtn.style.display = won ? 'block' : 'none';
-    divider.style.display = 'block';
-    signoutBtn.style.display = 'block';
   }
 
-  // Streak under date pill
+  googleBtn.style.display = 'none';
+  shareBtn.style.display = won ? 'block' : 'none';
+  divider.style.display = 'none';
+  signoutBtn.style.display = 'none';
+
   updateStreakDisplay();
 }
 
@@ -1440,7 +1607,7 @@ function getLiveStreak(){
 function updateDateCheckmark(){
   const el = document.getElementById('date-checkmark');
   if(!el) return;
-  if(!currentUser) { el.className='date-check'; return; }
+  if(!saveId) { el.className='date-check'; return; }
   if(challengeSpell || customSeed !== null || devSpell) { el.className='date-check'; return; }
   const dateStr = customDateStr || apiDate || new Date().toISOString().split('T')[0];
   if(!dateStr) { el.className='date-check'; return; }
@@ -1626,153 +1793,110 @@ async function submitUsername(){
 // ─── API ──────────────────────────────────────────────────────────
 async function fetchDailySpell(){
   try{
-    const today=new Date().toISOString().split('T')[0];
-    const snap=await db.collection('dailyStats').doc(today).get();
-    if(snap.exists){
-      const spellName=snap.data().spellName;
-      const spell=SPELLS.find(s=>s.name===spellName);
-      if(spell){ apiDate=today; return spell; }
-      else{ console.warn('Daily spell not found in SPELLS array:', spellName); }
+    const today = new Date().toISOString().split('T')[0];
+    const { data, error } = await supabaseClient
+      .from('daily_spells')
+      .select('spell_name')
+      .eq('spell_date', today)
+      .single();
+    if(error) throw error;
+    if(data){
+      const spell = SPELLS.find(s => s.name === data.spell_name);
+      if(spell){ apiDate = today; return spell; }
+      else{ console.warn('Daily spell not found in SPELLS array:', data.spell_name); }
     }
-  }catch(e){console.warn('fetchDailySpell error:',e);}
+  }catch(e){ console.warn('fetchDailySpell error:', e); }
   return null;
 }
 
 async function fetchPastSpell(dateStr){
   try{
-    const snap=await db.collection('dailyStats').doc(dateStr).get();
-    if(snap.exists){
-      const spell=SPELLS.find(s=>s.name===snap.data().spellName);
+    const { data, error } = await supabaseClient
+      .from('daily_spells')
+      .select('spell_name')
+      .eq('spell_date', dateStr)
+      .single();
+    if(error) throw error;
+    if(data){
+      const spell = SPELLS.find(s => s.name === data.spell_name);
       if(spell) return spell;
     }
-  }catch(e){console.warn('fetchPastSpell error:',e);}
+  }catch(e){ console.warn('fetchPastSpell error:', e); }
   return null;
 }
 
 async function fetchCompletions(){
   if(_fetchingCompletions) return null;
-  _fetchingCompletions=true;
+  _fetchingCompletions = true;
   try{
-    const today=new Date().toISOString().split('T')[0];
-    const snap=await db.collection('dailyStats').doc(today).get();
-    return snap.exists ? (snap.data().count||0) : 0;
-  }catch(e){console.warn('fetchCompletions error:',e); return null;}
-  finally{ _fetchingCompletions=false; }
+    const today = new Date().toISOString().split('T')[0];
+    const { data, error } = await supabaseClient
+      .from('daily_spells')
+      .select('completion_count')
+      .eq('spell_date', today)
+      .single();
+    if(error) throw error;
+    return data?.completion_count ?? 0;
+  }catch(e){ console.warn('fetchCompletions error:', e); return null; }
+  finally{ _fetchingCompletions = false; }
 }
 
 async function postCompletion(spellDate){
   try{
-    // spellDate is guaranteed to equal utcNow by showWin before calling this
-    await db.collection('dailyStats').doc(spellDate).update({count:firebase.firestore.FieldValue.increment(1)});
-    const count=await fetchCompletions();
-    if(count!==null){
-      completionCount=count;
-      updateCompletionDisplay();
-      const wc=document.getElementById('win-completion');
-      if(wc) wc.textContent=count===1?'1 wizard identified today\'s spell':`${count} wizards identified today\'s spell`;
-    }
-    await recordCompletion(spellDate);
-  }catch(e){console.warn('postCompletion error:',e);}
-}
-
-async function recordCompletion(spellDate){
-  try{
-    const uid = currentUser.uid;
-    const utcNow = new Date().toISOString().split('T')[0];
-    const utcNowMs = new Date(utcNow + 'T00:00:00Z').getTime();
-    const onTime = spellDate === utcNow;
-
-    // Write to completions — create only, immutable
-    const compRef = db.collection('completions').doc(uid).collection('days').doc(spellDate);
-    const compSnap = await compRef.get();
-    if(compSnap.exists){
-      if(!calCompletions[spellDate]){
-        const existingOnTime = compSnap.data().onTime === true;
-        await db.collection('completions').doc(uid).set({
-          dates: firebase.firestore.FieldValue.arrayUnion({ date: spellDate, onTime: existingOnTime })
-        }, { merge: true });
-        calCompletions[spellDate] = existingOnTime ? 'ontime' : 'late';
-      }
-      updateDateCheckmark();
-      return;
-    }
-
-    await compRef.set({
-      completedAt: firebase.firestore.FieldValue.serverTimestamp(),
-      onTime: onTime
+    const { data: isNew, error } = await supabaseClient.rpc('record_completion', {
+      p_spell_date: spellDate
     });
-
-    // Write to single completion doc for fast reads
-    await db.collection('completions').doc(uid).set({
-      dates: firebase.firestore.FieldValue.arrayUnion({ date: spellDate, onTime: onTime })
-    }, { merge: true });
-
-    // Update or create userProfiles
-    const profileRef = db.collection('userProfiles').doc(uid);
-    const profileSnap = await profileRef.get();
-    const yesterday = new Date(utcNowMs - 86400000).toISOString().split('T')[0];
-
-    if(!onTime){
-      // Past date or late completion — don't update streak or profile
-    } else if(!profileSnap.exists){
-      // Create new profile
-      await profileRef.set({
-        displayName: 'guest',
-        currentStreak: 1,
-        longestStreak: 1,
-        lastCompletedDate: spellDate,
-        onTimeCompleted: 1
-      });
-    } else {
-      const p = profileSnap.data();
-      const wasYesterday = p.lastCompletedDate === yesterday;
-      const newStreak = wasYesterday ? p.currentStreak + 1 : 1;
-      const newLongest = Math.max(p.longestStreak || 0, newStreak);
-      await profileRef.update({
-        currentStreak: newStreak,
-        longestStreak: newLongest,
-        lastCompletedDate: spellDate,
-        onTimeCompleted: (p.onTimeCompleted || 0) + 1
-      });
-    }
+    if(error) throw error;
 
     // Reload profile and update UI
     await loadUserProfile();
+    
+    // Check if it was recorded as ontime by reading back from completions
+    const { data } = await supabaseClient
+      .from('completions')
+      .select('on_time')
+      .eq('save_id', saveId)
+      .eq('spell_date', spellDate)
+      .single();
+    
+    const onTime = data?.on_time ?? false;
     calCompletions[spellDate] = onTime ? 'ontime' : 'late';
+    
     updateAuthUI();
     updateDateCheckmark();
-    // Auto-dismiss nudge toast if completed today
     if(onTime) dismissNudge();
-    // Invalidate leaderboard caches so next open gets fresh data
-    _profilesCache = null; _profilesCacheTime = 0; _profilesFetchedAt = 0;
-    _dailyLbCache = null; _dailyLbCacheTime = 0; _dailyFetchedAt = 0;
-    try{ localStorage.removeItem('lb_profiles'); localStorage.removeItem('lb_daily'); }catch(e){}
-    // Update win overlay streak prompt with fresh streak
+
+    // Update completion count display
+    if (isNew && onTime)
+    {
+      const count = await fetchCompletions();
+      if(count !== null){
+        completionCount = count;
+        updateCompletionDisplay();
+        const wc = document.getElementById('win-completion');
+        const ordinal = n => {
+          const s = ['th','st','nd','rd'];
+          const v = n % 100;
+          return n + (s[(v-20)%10] || s[v] || s[0]);
+        };
+        if(wc) wc.textContent = `You were the ${ordinal(count)} wizard to identify today's spell!`;
+      }
+    }
+
+    // Update win streak prompt
     const sp = document.getElementById('win-streak-prompt');
     if(sp && sp.style.display !== 'none'){
       const newStreak = getLiveStreak();
       sp.querySelector('.win-streak-prompt-text').textContent = '🔥 ' + newStreak + ' day streak — Save it →';
     }
 
-    // Write to leaderboard if Google user with username
-    if(onTime && !currentUser.isAnonymous && userProfile && userProfile.displayName && userProfile.displayName !== 'guest'){
-      const lbRef = db.collection('dailyLeaderboard').doc(spellDate).collection('entries').doc(uid);
-      const lbSnap = await lbRef.get();
-      if(!lbSnap.exists){
-        await lbRef.set({
-          displayName: userProfile.displayName,
-          completedAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
-      }
-    }
-
-  }catch(e){console.warn('recordCompletion error:',e);}
+  }catch(e){ console.warn('postCompletion error:', e); }
 }
 
 function updateCompletionDisplay(){
   const el=document.getElementById('completion-count');
   if(!el)return;
-  if((apiDate !== null && apiDate === new Date().toISOString().split('T')[0])&&completionCount!==null){
+  if((apiDate !== null && apiDate === new Date().toISOString().split('T')[0])&&completionCount!==null && (calCompletions[apiDate] || won)){
     el.textContent=completionCount===1?'✦ 1 wizard identified today\'s spell':`✦ ${completionCount} wizards identified today\'s spell`;
   } else {
     el.textContent='';
@@ -1780,25 +1904,25 @@ function updateCompletionDisplay(){
 }
 
 async function submitBugReport(){
-  const issueType=document.getElementById('bug-issue-type').value;
-  const description=document.getElementById('bug-description').value.trim();
-  const status=document.getElementById('bug-status');
-  if(!description){status.textContent='Please add a description.';status.style.color='#d05050';return;}
-  status.textContent='Submitting...';status.style.color='var(--text-muted)';
+  const issueType = document.getElementById('bug-issue-type').value;
+  const description = document.getElementById('bug-description').value.trim();
+  const status = document.getElementById('bug-status');
+  if(!description){ status.textContent='Please add a description.'; status.style.color='#d05050'; return; }
+  status.textContent='Submitting...'; status.style.color='var(--text-muted)';
   try{
-    await db.collection('bugReports').add({
-      timestamp:firebase.firestore.FieldValue.serverTimestamp(),
-      type:'game',
-      spellName:'',
-      issueType,
-      description,
-      userId:currentUser?currentUser.uid:null
+    const { error } = await supabaseClient.from('bug_reports').insert({
+      source: 'game',
+      issue_type: issueType,
+      spell_name: '',
+      description: description,
+      save_id: saveId ?? null
     });
-    status.textContent='Thanks! Report submitted.';status.style.color='var(--green-text)';
+    if(error) throw error;
+    status.textContent='Thanks! Report submitted.'; status.style.color='var(--green-text)';
     document.getElementById('bug-description').value='';
-    setTimeout(()=>closeOverlay('bug-overlay'),1500);
+    setTimeout(() => closeOverlay('bug-overlay'), 1500);
   }catch(e){
-    status.textContent='Failed to submit. Please try again.';status.style.color='#d05050';
+    status.textContent='Failed to submit. Please try again.'; status.style.color='#d05050';
   }
 }
 
@@ -2261,17 +2385,12 @@ function showWin(){
   const ia=document.getElementById('win-img-area');
   ia.innerHTML=s.image?`<img src="${s.image}" class="win-card-img" onerror="this.parentElement.innerHTML='<div class=win-card-img-ph>✦</div>'"/>`:`<div class="win-card-img-ph">✦</div>`;
   spawnConfetti();openOverlay('win-overlay');showShareBtn();
-  if(currentUser){
+  if(supabaseUser){
     const spellDate = customDateStr || apiDate;
-    if(spellDate){
-      const utcNow = new Date().toISOString().split('T')[0];
-      const onTime = spellDate === utcNow;
-      if(onTime) postCompletion(spellDate);
-      else recordCompletion(spellDate);
-    }
+    if(spellDate) postCompletion(spellDate);
   }
-
 }
+
 function spawnConfetti(){
   const c=document.getElementById('confetti');c.innerHTML='';
   const cols=['#c8a060','#a8d878','#60a8e0','#c060d8','#d88030','#40b878'];
@@ -2398,10 +2517,14 @@ function nudgePlayNow(){
 }
 
 // ─── Update Toast ─────────────────────────────────────────────────
-const LATEST_UPDATE_DATE = '2026-04-23';
+const LATEST_UPDATE_DATE = '2026-06-04';
 const UPDATE_TOAST_SECS = 8;
 
 function checkUpdateToast(){
+  // Check Supabase profile first, fall back to localStorage
+  if (supabaseProfile?.last_seen_update != null){
+    localStorage.setItem('update_seen_date', supabaseProfile?.last_seen_update);
+  }
   const seen = localStorage.getItem('update_seen_date');
   if(seen >= LATEST_UPDATE_DATE) return;
   showUpdateToast();
@@ -2409,6 +2532,13 @@ function checkUpdateToast(){
 
 function showUpdateToast(){
   localStorage.setItem('update_seen_date', LATEST_UPDATE_DATE);
+  // Sync to Supabase fire and forget
+   if(saveId){
+    (async () => {
+      const { error } = await supabaseClient.rpc('update_last_seen_update', { p_date: LATEST_UPDATE_DATE });
+      if(error) console.warn('update_last_seen_update failed:', error);
+    })();
+  }
   const [y,m,d] = LATEST_UPDATE_DATE.split('-').map(Number);
   const formatted = new Date(Date.UTC(y,m-1,d))
     .toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
@@ -2766,9 +2896,10 @@ function openDatePicker(){
 
 async function loadCalCompletions(){
   calCompletions = {};
-  if(!currentUser) return;
+  //if(!currentUser) return;
+  if (!saveId) return;
   try{
-    const snap = await db.collection('completions').doc(currentUser.uid).get();
+    /* const snap = await db.collection('completions').doc(currentUser.uid).get();
     if(snap.exists){
       const dates = snap.data().dates || [];
       dates.forEach(e => {
@@ -2777,10 +2908,22 @@ async function loadCalCompletions(){
           calCompletions[e.date] = e.onTime ? 'ontime' : 'late';
         }
       });
+    } */
+    const { data, error } = await supabaseClient
+    .from('completions')
+    .select('spell_date, on_time')
+    .eq('save_id', saveId);
+    if(data){
+    data.forEach(e => {
+      if(!calCompletions[e.spell_date] || e.on_time){
+        calCompletions[e.spell_date] = e.on_time ? 'ontime' : 'late';
+      }
+      });
     }
     const legend = document.getElementById('cal-legend');
     if(legend) legend.style.display = Object.keys(calCompletions).length ? 'flex' : 'none';
     updateDateCheckmark();
+    updateCompletionDisplay();
   } catch(e){ console.warn('loadCalCompletions:', e); }
 }
 
@@ -2895,6 +3038,39 @@ async function setDateSpell(dateStr){
     lockDatePill(false);
     renderBoard();renderMobileCards();renderFilters();renderSchoolFilters();updateFilterFooter();updateHintBar();updateCount();updateDatePill();loadSettings();updateDateCheckmark();updateStreakDisplay();
   }
+}
+//  ─── Sync Code ────────────────────────────────────────────────────────
+async function handleGenerateCode(){
+  const { data: code, error } = await supabaseClient.rpc('generate_transfer_code');
+  if(error){ console.warn('Generate code failed:', error); return; }
+  document.getElementById('transfer-code-text').textContent = code;
+  document.getElementById('transfer-code-display').style.display = 'block';
+}
+
+function copyTransferCode(){
+  const code = document.getElementById('transfer-code-text').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    showToast('Transfer code copied!');
+  });
+}
+
+async function handleClaimCode(){
+  const code = document.getElementById('transfer-code-input').value.trim();
+  const status = document.getElementById('transfer-status');
+  if(!code){ status.textContent = 'Please enter a code.'; status.style.color = '#d05050'; return; }
+  status.textContent = 'Restoring...'; status.style.color = 'var(--text-muted)';
+  const { data: success, error } = await supabaseClient.rpc('claim_transfer_code', { p_code: code });
+  if(error || !success){
+    status.textContent = 'Invalid or expired code.'; status.style.color = '#d05050'; return;
+  }
+  // Reload everything with new save
+  saveId = await fetchSaveId();
+  await loadUserProfile();
+  await loadCalCompletions();
+  updateAuthUI();
+  updateDateCheckmark();
+  status.textContent = 'Save restored!'; status.style.color = 'var(--green-text)';
+  document.getElementById('transfer-code-input').value = '';
 }
 
 // ─── Hints ────────────────────────────────────────────────────────
@@ -3559,9 +3735,17 @@ loadSpells();
   <div class="legal-card">
     <div class="legal-header">
       <div class="legal-title">Updates</div>
-      <div class="legal-date">Last updated: April 2026</div>
+      <div class="legal-date">Last updated: June 2026</div>
     </div>
     <div class="legal-body">
+
+      <h3>June 4, 2026 — Sync Codes & Backend Update</h3>
+      <img src="sync.png" style="width:100%;border-radius:6px;margin:10px 0"/>
+      
+      <p><strong>Sync codes.</strong> You can now generate a sync code from your profile to link your save across multiple devices. Once claimed, the device entering the code will switch to the save that generated it — <span style="color:#d05050">generate the code from the device with the save you want to keep.</span> Completions, streak, and stats will then stay in sync across both devices automatically. Codes expire after 24 hours — generate a new one anytime from the profile overlay.</p>    
+      
+      <p><strong>Backend migration.</strong> Spelldle 101 has moved to a new backend. Everything should work as before — if you notice anything broken, please submit a bug report.</p>
+      
       <h3>April 23, 2026 — Accessibility & Account Changes</h3>
       <p>A few small but meaningful updates to the game today.</p>
 
@@ -3595,7 +3779,7 @@ loadSpells();
   <div class="legal-card">
     <div class="legal-header">
       <div class="legal-title">Privacy Policy</div>
-      <div class="legal-date">Last updated: April 2026</div>
+      <div class="legal-date">Last updated: June 2026</div>
     </div>
     <div class="legal-body">
       <h3>Overview</h3>
@@ -3603,6 +3787,7 @@ loadSpells();
 
       <h3>What We Collect</h3>
       <p>If you play anonymously, Firebase assigns you a temporary anonymous identifier stored in your browser. Your completion history is stored in our database under this identifier. No name, email, or personally identifiable information is collected.</p>
+      <p>If you play anonymously, Supabase assigns you a temporary anonymous identifier stored in your browser. Your completion history is stored in our database under this identifier. No name, email, or personally identifiable information is collected.</p>
       <p>If you sign in with Google, Google's authentication service processes your Google account information (such as email, name, and profile photo) as part of the sign-in process. This is handled by Firebase Auth on Google's infrastructure and is subject to Google's privacy policy. Your email address is displayed only to you within the app to confirm which account you are signed in with. Within our Firestore database, we only store a unique identifier (your Firebase UID) and your completion history (dates completed and whether they were on time). We do not share your email or any Google account information with other users or third parties.</p>
 
       <h3>How We Use It</h3>
@@ -3610,9 +3795,11 @@ loadSpells();
 
       <h3>Where It's Stored</h3>
       <p>Data is stored in Google Firebase Firestore, hosted on Google's infrastructure. See <a href="https://firebase.google.com/support/privacy" target="_blank">Firebase's privacy policy</a> for details on their data handling.</p>
+      <p>Data is stored in Supabase, hosted on AWS infrastructure. See <a href="https://supabase.com/privacy" target="_blank">Supabase's privacy policy</a> for details on their data handling.</p>
 
       <h3>Cookies</h3>
       <p>Firebase uses browser storage to maintain your authentication state. No third-party tracking cookies are used.</p>
+      <p>Supabase uses browser storage to maintain your authentication state. No third-party tracking cookies are used.</p>
 
       <h3>KingsIsle Content</h3>
       <p>All Wizard101 spell names, images, and game content are property of KingsIsle Entertainment. This site is not affiliated with KingsIsle.</p>
